@@ -4,14 +4,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.0</title>
-            <pubDate>Sat, 05 Sep 2026 14:29:19 +0300</pubDate>
+            <title>0.4.1</title>
+            <pubDate>Sat, 05 Sep 2026 14:44:45 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
+            <sparkle:version>16</sparkle:version>
+            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.0
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.1
+
+- Убрана лишняя прямоугольная подсветка поверх нативных кнопок в настройках. Hover и нажатие оформляет macOS; курсор-указатель сохранён.
+- Системный компонент не менялся: это исправление интерфейса не требует его переустановки.
+- Пинг показывает н/д (n/a на английском), когда прямой замер не получен; во время проверки — многоточие. У автовыбора пинг скрыт.
+
+## Версия 0.4.0
 
 - Ссылка подписки хранится локально: автоматический перенос из Keychain с сохранением прежнего HWID. После переноса запуск больше не обращается к Keychain. При самой миграции macOS ещё может запросить доступ. Файл доступен программам вашей учётной записи; старые записи Keychain сохраняются как резервная копия.
 - Упрощены настройки: обновления перенесены в «Приложение», сетевые подробности сворачиваются. Кнопки используют Liquid Glass на macOS 26+, на старых системах — нативное оформление.
@@ -72,10 +78,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.0/SubVost-VPN-macOS-arm64-0.4.0.dmg" length="28455182" type="application/octet-stream" sparkle:edSignature="TyGFhdbdLv7XhUbBXBgm2Z3hk1hfVoTvZkLOg8XsWVL2iraHjEYCbPx58BwbFHzjeRzVI6/QEwmWWFjO9tiQDA=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.1/SubVost-VPN-macOS-arm64-0.4.1.dmg" length="28451959" type="application/octet-stream" sparkle:edSignature="7U1xASvwZ7luLZUly+wTsFm15OGvOWj3K2pcEzn8rGBZLmSQ02mEdipbQXQcRezyVazNpfAirMKLddJH/KtWBg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: Rjps1cz6ZGsVcqv/spnrcKrvZx38IBbZFajKNg7RmPHSUuhC+W3CqZDxUlYXJCMEMT75OCKlSgjfBpe3JK2bDw==
-length: 9897
+edSignature: lgh8yhV1TysW30mPY0vVaOXYHcvmBsKh8zV9IIq7fo+BLvnEjhxof9dqVcBSfrVJxN4FLr8ngjOgJLBTs9/kDA==
+length: 10561
 -->
