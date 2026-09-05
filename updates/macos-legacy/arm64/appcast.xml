@@ -4,14 +4,26 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.2</title>
-            <pubDate>Sat, 05 Sep 2026 15:55:28 +0300</pubDate>
+            <title>0.4.3</title>
+            <pubDate>Sat, 05 Sep 2026 23:22:44 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>17</sparkle:version>
-            <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
+            <sparkle:version>18</sparkle:version>
+            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.2
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.3
+
+- Новый welcome-экран вместо пустой карты: вставка подписки и добавление стрелкой или Enter.
+- Настройки упрощены до «Приложение», «Сеть», «Диагностика». Удаление подписки перенесено в «Приложение» и после подтверждения возвращает welcome; HWID сохраняется. Горячие клавиши разделов — ⌘1–3.
+- Единое оформление кнопок и hover, самостоятельный раздел клавиатуры, ровные отступы и плавные края прокрутки на macOS 26. Диагностика обновляет логи автоматически; копирование расположено поверх консоли.
+- Акцентный цвет следует настройкам macOS. Дата окончания подписки следует выбранному языку приложения. Старые системы сохраняют совместимое нативное оформление.
+- Сохранены исходные параметры sniffing/routeOnly подписки; DNS- и loopback-теги больше не подменяются тегом клиентского TUN.
+- Проверка HTTPS может повториться на том же маршруте в пределах прежнего общего лимита 12 секунд. Логи показывают DNS, TCP, TLS, общее время и текст ошибки curl.
+- Установщик проверяет отключённый launchd-компонент и завершение остановки прежнего экземпляра. Неудачная установка не запускает повторные запросы пароля при каждом подключении; повторить установку можно явно в настройках.
+
+Обновляется системный компонент: при первом подключении может потребоваться однократное подтверждение администратора. Жалоба на нестабильный upload остаётся в исследовании; полного исправления скорости эта версия не обещает. Сборки без Developer ID и нотарификации Apple. Legacy для macOS 11–12 пока не проверена на настоящей macOS 11.7.
+
+## Версия 0.4.2
 
 - Восстановлен прежний выпадающий список языка. Горячие клавиши работают по кодам клавиш, в том числе при русской раскладке; сочетания перечислены в настройках приложения.
 - Настройки открываются на вкладке «Приложение», если подписка уже добавлена. Исправлен выход через ⌘Q при открытых настройках.
@@ -88,10 +100,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.2/SubVost-VPN-macOS-Legacy-arm64-0.4.2.dmg" length="32438872" type="application/octet-stream" sparkle:edSignature="pJNRSgrHB4e0cFcpga4ll21lunNqTTI+C5A1obf2qLx1kedv0QuHyBFaQUVEB87KfZXT8qYBr4UuywWX3U2ZCA=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.3/SubVost-VPN-macOS-Legacy-arm64-0.4.3.dmg" length="28567378" type="application/octet-stream" sparkle:edSignature="f71NJLbrGOKM6xUGZ2vIz+w+A8r8bQvsZ53QTSl28tQ/sv5CouoRu5S3/vYJHPxHAnNxHsLCs7AIoCG9DNzLDg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: HgnkSZiz6/So5xmbmU4RpkvQV4xjCFJOUuvU27leKcjZ4oHUF2qqmtRD+irsIOUljtspDUhtJjYAKQMzwPuhCg==
-length: 12546
+edSignature: 49HGgRda3JvjoHvpL6tDrJt3GeLHYPXCNwfxFFdn6QvAMe01dQEIP7drs2HnhNoXpcLvJgW/F4b8qKQyAwzJCA==
+length: 15212
 -->
