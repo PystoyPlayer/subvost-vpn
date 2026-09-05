@@ -4,13 +4,26 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.3.8</title>
-            <pubDate>Sat, 05 Sep 2026 03:29:21 +0300</pubDate>
+            <title>0.4.0</title>
+            <pubDate>Sat, 05 Sep 2026 14:29:22 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>0.3.8</sparkle:shortVersionString>
+            <sparkle:version>14</sparkle:version>
+            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.3.8
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.0
+
+- Ссылка подписки хранится локально: автоматический перенос из Keychain с сохранением прежнего HWID. После переноса запуск больше не обращается к Keychain. При самой миграции macOS ещё может запросить доступ. Файл доступен программам вашей учётной записи; старые записи Keychain сохраняются как резервная копия.
+- Упрощены настройки: обновления перенесены в «Приложение», сетевые подробности сворачиваются. Кнопки используют Liquid Glass на macOS 26+, на старых системах — нативное оформление.
+- Менее навязчивая полоса прокрутки; в настройках для неё оставлено отдельное место справа.
+- Европа на карте мира подсвечивается одной группой. Нажатие на группу или европейскую страну приближает Европу, не переключая сервер.
+- Фрагментация включается одним переключателем, по умолчанию выключена. При изменении с активным VPN приложение запрашивает подтверждение переподключения.
+- Импорт правил приложений из установленного Happ: сначала просмотр и черновик, затем сохранение. DNS и подписки не импортируются.
+- Увеличена иконка приложения, осветлён текст подключения. Улучшено распознавание модемных PPP-интерфейсов.
+- Сохраняются подробности последней неудачной попытки подключения до закрытия приложения. В диагностике объясняются предупреждения фоновых проверок автовыбора.
+
+Системный компонент не менялся относительно локальной 0.3.9; обновление с публичной 0.3.8 может один раз запросить пароль администратора. Сборки пока без Developer ID и нотарификации Apple. Legacy предназначена для macOS 11–12, но запуск на настоящей 11.7 ещё не проверен.
+
+## Версия 0.3.8
 
 - Компактный список локаций в настройках, заголовок SubVost VPN. Новые страны из подписки распознаются по флагу или названию RU/EN без обновления приложения.
 - Правила sing-box можно редактировать при активном VPN: кнопка сохранения автоматически переподключает его с новым списком.
@@ -58,10 +71,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.3.8/SubVost-VPN-macOS-Legacy-x86_64-0.3.8.dmg" length="34475382" type="application/octet-stream" sparkle:edSignature="MvT+iAn3px4AilC4F0D+xpjmEn8RA3ApweDpdnvJidAue6eJSFfiWuKqq7C8eAQW3hTj1qh89C1VvknzNcq3BQ=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.0/SubVost-VPN-macOS-Legacy-x86_64-0.4.0.dmg" length="33843211" type="application/octet-stream" sparkle:edSignature="QE19qlmQVfDV7kKdCar0ZnB+hCklBGi2ckphCMWmJLX/EQiP/noN4yOFoRPOLoGW0DJDtZI5vLvG2sNuzC5LBw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: JtGF44/um3aYgIbkmYIxgwxxsSrUCgRZnfkvJAc2uukYFZ07oQXpTUMajKFup2PVwo7ugfFWJWOoLvU08Ul7Cw==
-length: 7053
+edSignature: 9qCOD4x3p7P2CYg2LGSlNuScotloOv2i677Q1DBWAERYuk6lFG0VG+lReZKsrKLXDcJz2Q4xmKPpsLLpL1pSDQ==
+length: 9826
 -->
