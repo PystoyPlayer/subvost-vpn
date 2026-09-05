@@ -4,14 +4,24 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.1</title>
-            <pubDate>Sat, 05 Sep 2026 14:44:45 +0300</pubDate>
+            <title>0.4.2</title>
+            <pubDate>Sat, 05 Sep 2026 15:55:26 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>16</sparkle:version>
-            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
+            <sparkle:version>17</sparkle:version>
+            <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.1
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.2
+
+- Восстановлен прежний выпадающий список языка. Горячие клавиши работают по кодам клавиш, в том числе при русской раскладке; сочетания перечислены в настройках приложения.
+- Настройки открываются на вкладке «Приложение», если подписка уже добавлена. Исправлен выход через ⌘Q при открытых настройках.
+- Поле подписки получает фокус по всей своей площади и снимает его при клике снаружи. Заголовки раскрывающихся сетевых разделов нажимаются по всей строке.
+- На macOS 15+ курсором кнопок и стран на карте управляет нативный pointerStyle, без конкурирующих ручных переключений курсора. Области отслеживания ограничены границами элементов.
+- Способ подключения можно менять при работающем VPN: перед применением запрашивается подтверждение переподключения.
+- Восстановление соединения после обновления больше не запускается параллельно с обновлением подписки. При тайм-ауте проверки связи после обновления выполняется одна повторная попытка с сохранением логов первой ошибки.
+- Иконка Dock перечитывается из обновлённого приложения при запуске. Системный компонент не менялся.
+
+## Версия 0.4.1
 
 - Убрана лишняя прямоугольная подсветка поверх нативных кнопок в настройках. Hover и нажатие оформляет macOS; курсор-указатель сохранён.
 - Системный компонент не менялся: это исправление интерфейса не требует его переустановки.
@@ -78,10 +88,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.1/SubVost-VPN-macOS-arm64-0.4.1.dmg" length="28451959" type="application/octet-stream" sparkle:edSignature="7U1xASvwZ7luLZUly+wTsFm15OGvOWj3K2pcEzn8rGBZLmSQ02mEdipbQXQcRezyVazNpfAirMKLddJH/KtWBg=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.2/SubVost-VPN-macOS-arm64-0.4.2.dmg" length="28487369" type="application/octet-stream" sparkle:edSignature="J8X1HXvveTDsPR/5wCnhLIi05JORrvdwo+JIqtwbIg0U6iZl504dSgOk5EZQBR3bc3ifUIYYgofJwOOca31wDQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: lgh8yhV1TysW30mPY0vVaOXYHcvmBsKh8zV9IIq7fo+BLvnEjhxof9dqVcBSfrVJxN4FLr8ngjOgJLBTs9/kDA==
-length: 10561
+edSignature: 2zwi7YpCKcaq34yOAtXfyfOC8Ve8Ft9H+GpM4+fctAgOnDL3UpmhNkRg7+9eLKnTivJ9PzwDiCOQImiW5YgpAA==
+length: 12539
 -->
