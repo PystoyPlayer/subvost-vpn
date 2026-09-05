@@ -7,27 +7,21 @@
   <meta name="description" content="Скачать SubVost VPN: выберите операционную систему и процессор. Официальные сборки из GitHub Releases и инструкция по установке.">
   <title>Скачать SubVost VPN</title>
   <link rel="icon" href="brand.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="app.mjs"></script>
+  <link rel="stylesheet" href="style.css?v=20260906-steps">
+  <script type="module" src="app.mjs?v=20260906-steps"></script>
 </head>
 <body>
-<!-- THESIS: An honest file selector, not a promotional landing page.
-OWN-WORLD: SubVost charcoal surfaces, white system type, calm blue selection, rounded controls.
-STORY: Choose OS, confirm CPU and compatibility, download one published asset.
-FIRST VIEWPORT: Quiet brand header; centered title, OS strip, two labelled choices, one download action.
-FORM: User-approved centered composition A; precise selector brief, no random structural assignment.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
   <a class="skip" href="#selector">К выбору файла</a>
   <header>
-    <a class="brand" href="./"><img src="brand.png" alt="" width="38" height="38">SubVost VPN</a>
-    <nav aria-label="Основная навигация"><a href="https://github.com/PystoyPlayer/subvost-vpn">GitHub</a><a href="https://t.me/subvost_vpn_bot">Поддержка</a></nav>
+    <a class="brand" href="https://t.me/subvost_vpn" aria-label="SubVost VPN — канал в Telegram"><img src="brand.png" alt="" width="38" height="38">SubVost VPN</a>
+    <nav aria-label="Основная навигация"><a href="https://github.com/PystoyPlayer/subvost-vpn">GitHub</a><a href="https://t.me/subvost_vpn_bot">Бот</a></nav>
   </header>
   <main id="selector">
     <h1>Скачать SubVost VPN</h1>
     <p class="intro">Выберите систему — подберём подходящую сборку.</p>
     <form id="choices">
       <fieldset class="os"><legend class="sr-only">Операционная система</legend>
-        <label><input type="radio" name="os" value="macos" checked><span>macOS</span></label>
+        <label><input type="radio" name="os" value="macos"><span>macOS</span></label>
         <label><input type="radio" name="os" value="linux"><span>Linux</span></label>
         <label><input type="radio" name="os" value="windows"><span>Windows</span></label>
         <label><input type="radio" name="os" value="ios"><span>iOS</span></label>
@@ -35,15 +29,15 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       </fieldset>
       <div id="platform-options"></div>
     </form>
-    <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true">
-      <h2 id="result-title">Загружаем список версий…</h2>
-      <p id="result-detail">Проверяем официальные GitHub Releases.</p>
+    <p id="step-status" class="sr-only" role="status"></p>
+    <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true" hidden>
+      <h2 id="result-title"></h2>
+      <p id="result-detail"></p>
       <a id="download" class="primary" hidden>Скачать</a>
       <p id="catalog-status" class="note"></p>
       <a class="history" href="https://github.com/PystoyPlayer/subvost-vpn/releases">Все версии и изменения <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
-      <details id="checksum" hidden><summary>Проверить SHA256 файла</summary><code id="digest"></code></details>
     </section>
-    <section class="help" aria-label="Установка и помощь">
+    <section class="help" aria-label="Установка и помощь" hidden>
       <details id="processor-help"><summary>Как узнать процессор?</summary><p id="processor-description">Меню Apple → «Об этом Mac». Если указано «Чип Apple M…» — выбирайте Apple Silicon. Если «Процессор Intel» — Intel.</p></details>
       <div id="mac-help">
         <details><summary>Как установить на Mac?</summary><ol><li>Скачайте DMG для своего процессора и версии macOS.</li><li>Откройте DMG и перетащите SubVost VPN в папку «Программы» (Applications).</li><li>Откройте приложение из «Программ», добавьте ссылку из бота и следуйте инструкции установки VPN-компонента.</li></ol><p>Для macOS 11–12 выбирайте Legacy. Проверка на вашем устройстве всё равно важна: она не заменяется сборкой пакета.</p></details>
@@ -57,10 +51,9 @@ open "/Applications/SubVost VPN.app"</code></pre>
         <details><summary>«No such file», «Operation not permitted» или ошибка процессора</summary><p>«No such file» — проверьте, что приложение перенесено в Applications и называется SubVost VPN.app. В Terminal вставляйте только команды, без приглашения вида <code>user@Mac %</code> и без текста прошлой ошибки.</p><p>«Bad CPU type» или несовместимая версия системы — проверьте процессор и выбор Legacy. При «Operation not permitted» после инструкции выше пришлите точный текст в поддержку; не отключайте SIP или Gatekeeper целиком и не запускайте приложение через sudo.</p></details>
         <details><summary>Туннель запускается, но интернет не работает</summary><p>Повторите подключение или выберите другую локацию. Если ошибка повторяется, откройте «Настройки» → «Диагностика» и отправьте в поддержку журнал последней неудачной попытки. Не отправляйте публично ссылку подписки, UUID и полную конфигурацию. Обычный TCP-пинг не гарантирует, что VPN-маршрут проходит ограничения сети.</p></details>
       </div>
-      <div id="linux-help" hidden><details open><summary>Как выбрать пакет для Linux?</summary><p>DEB — Debian, Ubuntu и производные. RPM — Fedora и openSUSE, с проверкой зависимостей конкретной сборки. AppImage и переносимый архив удобны без пакетного менеджера, но не гарантируют работу на любой версии glibc или на Alpine/musl.</p><p>Совместимость с NixOS, системами без systemd, Flatpak/Snap и архитектурами проверяется отдельно. Не запускайте графическое приложение через sudo и не отключайте его sandbox ради запуска.</p></details></div>
+      <div id="linux-help" hidden><details><summary>Как выбрать пакет для Linux?</summary><p>DEB — Debian, Ubuntu и производные. RPM — Fedora и openSUSE, с проверкой зависимостей конкретной сборки. AppImage и переносимый архив удобны без пакетного менеджера, но не гарантируют работу на любой версии glibc или на Alpine/musl.</p><p>Совместимость с NixOS, системами без systemd, Flatpak/Snap и архитектурами проверяется отдельно. Не запускайте графическое приложение через sudo и не отключайте его sandbox ради запуска.</p></details></div>
     </section>
     <noscript><p>Для селектора нужен JavaScript. Все файлы доступны напрямую на <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">GitHub Releases</a>.</p></noscript>
   </main>
-  <footer>Файлы из официальных GitHub Releases.</footer>
 </body>
 </html>

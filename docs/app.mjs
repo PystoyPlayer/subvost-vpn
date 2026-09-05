@@ -1,9 +1,13 @@
-import { buildCatalog, selectBuild, reconcileLinuxFormat } from './lib/catalog.mjs';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
-const state = { os: 'macos', arch: 'arm64', variant: 'modern', format: 'dmg' };
+let state = initialSelection();
 let builds = [], loading = true, catalogMessage = '';
+const processorHelp = $('processor-help');
+const result = document.querySelector('.result');
+const help = document.querySelector('.help');
 
 function svgIcon(kind) {
   const paths = {
@@ -11,7 +15,7 @@ function svgIcon(kind) {
     phone: '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/>',
     windows: '<path d="M3 4h8v7H3zm10 0h8v7h-8zM3 13h8v7H3zm10 0h8v7h-8z"/>',
     download: '<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
-    help: '<circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 1 1 5 2c-2 1-2 2-2 3m0 3h.01"/>',
+    help: '<path d="m3 10 18-7-6 18-4-7-8-4Zm8 4L21 3"/>',
     version: '<circle cx="12" cy="12" r="10"/><path d="m7 12 3 3 7-7"/>',
   };
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -33,6 +37,7 @@ document.querySelector('nav a:last-child').prepend(svgIcon('help'));
 
 function group(title, name, options, hint = '') {
   const field = document.createElement('fieldset');
+  field.dataset.step = name;
   const legend = document.createElement('legend'); legend.textContent = title; field.append(legend);
   const segments = document.createElement('div'); segments.className = 'segments';
   for (const [value, caption] of options) {
@@ -46,38 +51,53 @@ function group(title, name, options, hint = '') {
 }
 
 function renderOptions() {
-  const content = $('platform-options'); content.replaceChildren();
+  const content = $('platform-options');
+  const active = document.activeElement;
+  const restore = active instanceof HTMLInputElement && content.contains(active) ? { name: active.name, value: active.value } : null;
+  const previousSteps = new Set([...content.querySelectorAll('fieldset')].map(field => field.dataset.step));
+  processorHelp.remove();
+  content.replaceChildren();
   if (state.os === 'macos') {
-    content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']]));
+    content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), processorHelp);
+    if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
   } else if (state.os === 'linux') {
-    Object.assign(state, reconcileLinuxFormat(builds, state));
-    content.append(group('Процессор', 'arch', [['x86_64', 'Intel / AMD · x86_64'], ['arm64', 'ARM · arm64']]));
+    content.append(group('Процессор', 'arch', [['x86_64', 'Intel / AMD · x86_64'], ['arm64', 'ARM · arm64']]), processorHelp);
     const available = [...new Set(builds.filter(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant).map(b => b.format))];
+    if (!available.includes(state.format)) state.format = null;
     if (available.length) {
-      if (!available.includes(state.format)) state.format = available[0];
-      content.append(group('Формат пакета', 'format', available.map(format => [format, format]), 'Пакет — не гарантия совместимости со всеми дистрибутивами. Проверьте требования в описании релиза.'));
+      const captions = { deb: 'DEB · Ubuntu / Debian', rpm: 'RPM · Fedora / openSUSE', 'pkg.tar.zst': 'Arch Linux', AppImage: 'AppImage', 'tar.gz': 'Архив .tar.gz' };
+      content.append(group('Формат пакета', 'format', available.map(format => [format, captions[format] ?? format])));
     }
   }
-  $('processor-help').hidden = !['macos', 'linux'].includes(state.os);
-  $('mac-help').hidden = state.os !== 'macos'; $('linux-help').hidden = state.os !== 'linux';
-  $('processor-description').textContent = state.os === 'linux'
+  for (const field of content.querySelectorAll('fieldset')) if (!previousSteps.has(field.dataset.step)) field.classList.add('reveal');
+  if (restore) content.querySelector(`input[name="${restore.name}"][value="${restore.value}"]`)?.focus({ preventScroll: true });
+  processorHelp.querySelector('p').textContent = state.os === 'linux'
     ? 'В Terminal выполните uname -m. x86_64 означает Intel / AMD, aarch64 — ARM64. armv7l и riscv64 требуют отдельной сборки: не выбирайте вместо них ARM64.'
     : 'Меню Apple → «Об этом Mac». Если указано «Чип Apple M…» — выбирайте Apple Silicon. Если «Процессор Intel» — Intel.';
 }
 
 function renderResult() {
-  const build = selectBuild(builds, state);
-  $('download').hidden = !build; $('download').removeAttribute('href'); $('checksum').hidden = !build?.sha256;
+  const supported = ['macos', 'linux'].includes(state.os);
+  const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
+  const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
+  if (result.hidden && show) result.classList.add('reveal');
+  else result.classList.remove('reveal');
+  result.hidden = !show;
+  help.hidden = state.os === 'macos' ? !selectionComplete(state) : state.os !== 'linux' || !state.arch;
+  $('mac-help').hidden = state.os !== 'macos' || !selectionComplete(state);
+  $('linux-help').hidden = state.os !== 'linux';
+  const build = selectionComplete(state) ? selectBuild(builds, state) : null;
+  $('download').hidden = !build; $('download').removeAttribute('href');
   $('catalog-status').textContent = catalogMessage;
   if (build) {
     const cpu = state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
     $('result-title').textContent = `${build.version} · ${osNames[state.os]} · ${cpu}`;
-    $('result-detail').textContent = `${state.variant === 'legacy' ? 'Legacy · ' : ''}${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ · стабильный релиз`;
-    $('download').href = build.url; $('download').textContent = `Скачать .${build.format}`; $('download').prepend(svgIcon('download'));
-    $('digest').textContent = build.sha256 ?? '';
+    $('result-detail').textContent = '';
+    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM' }[build.format] ?? build.format;
+    $('download').href = build.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
   } else {
-    $('result-title').textContent = loading ? 'Проверяем доступные сборки…' : `Сборка для ${osNames[state.os]} пока не опубликована`;
-    $('result-detail').textContent = loading ? 'Проверяем официальные GitHub Releases.' : 'Для выбранной системы и процессора пока нет файла. Уже доступные версии можно посмотреть на GitHub.';
+    $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
+    $('result-detail').textContent = '';
   }
 }
 
@@ -85,18 +105,11 @@ $('choices').addEventListener('submit', event => event.preventDefault());
 $('choices').addEventListener('change', event => {
   const input = event.target;
   if (!(input instanceof HTMLInputElement) || input.type !== 'radio') return;
-  if (input.name === 'os') {
-    state.os = input.value; state.arch = state.os === 'macos' ? 'arm64' : 'x86_64';
-    state.variant = state.os === 'macos' ? 'modern' : 'glibc'; state.format = state.os === 'macos' ? 'dmg' : 'AppImage';
-    renderOptions();
-  } else if (['arch', 'variant', 'format'].includes(input.name)) {
-    state[input.name] = input.value;
-    if (input.name === 'arch' && state.os === 'linux') {
-      renderOptions();
-      document.querySelector(`input[name="arch"][value="${state.arch}"]`)?.focus();
-    }
-  }
+  if (!['os', 'arch', 'variant', 'format'].includes(input.name)) return;
+  state = choose(state, input.name, input.value);
+  renderOptions();
   renderResult();
+  $('step-status').textContent = !result.hidden ? '' : !state.arch ? 'Теперь выберите процессор.' : state.os === 'macos' ? 'Теперь выберите версию macOS.' : 'Теперь выберите формат пакета.';
 });
 
 $('copy-command').addEventListener('click', async () => {
@@ -129,7 +142,7 @@ async function fetchJSON(url, timeout, headers = {}) {
 async function loadCatalog() {
   try {
     const data = await fetchJSON('./catalog.json', 5000);
-    builds = buildCatalog(data.releases); catalogMessage = `Каталог от ${new Date(data.generatedAt).toLocaleDateString('ru')}. Проверяем новые файлы…`;
+    builds = buildCatalog(data.releases);
     catalogChanged();
   } catch { /* The live request can recover. */ }
   try {
@@ -144,9 +157,9 @@ async function loadCatalog() {
       try { localStorage.setItem('subvost-public-releases-v1', JSON.stringify({ time: Date.now(), releases })); } catch { /* caching is optional */ }
     }
     builds = buildCatalog(releases);
-    catalogMessage = 'Проверено по GitHub Releases.';
+    catalogMessage = '';
   } catch {
-    catalogMessage = builds.length ? 'GitHub API сейчас недоступен. Показан сохранённый каталог; новые версии можно проверить по ссылке ниже.' : 'Не удалось загрузить каталог. Откройте список релизов по ссылке ниже.';
+    catalogMessage = builds.length ? '' : 'Не удалось загрузить каталог. Откройте «Все версии и изменения».';
   }
   loading = false;
   catalogChanged();
