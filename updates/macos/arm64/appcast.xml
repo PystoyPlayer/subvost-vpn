@@ -4,14 +4,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.3.7</title>
-            <pubDate>Sat, 05 Sep 2026 02:14:21 +0300</pubDate>
+            <title>0.3.8</title>
+            <pubDate>Sat, 05 Sep 2026 03:23:39 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>0.3.7</sparkle:shortVersionString>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>0.3.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.3.7
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.3.8
+
+- Компактный список локаций в настройках, заголовок SubVost VPN. Новые страны из подписки распознаются по флагу или названию RU/EN без обновления приложения.
+- Правила sing-box можно редактировать при активном VPN: кнопка сохранения автоматически переподключает его с новым списком.
+- Перед замером старые пинги очищаются; у автовыбора нет ни числа, ни подписи «Авто». Карта больше не перехватывает курсор у кнопок поверх неё.
+- Проверка и загрузка обновлений больше не требуют отключать VPN. Проверка каждый час, ускоренная после запуска; установка сама подготавливает перезапуск и повторное подключение.
+- Настройки закрываются перед окном обновления; исправлена блокировка Install and Relaunch.
+- Системный прокси ждёт готовности SOCKS-порта Xray перед проверкой HTTPS — устранён преждевременный curl=7.
+- Фильтры sing-box: все приложения через VPN, выбранные напрямую, только выбранные через VPN. Выбор .app включает её встроенных помощников; внешние процессы добавляются отдельно.
+- Русский и английский языки в настройках. Содержимое подписки и технические логи сохраняют исходные данные.
+- Нативная нейтральная кнопка подключения и устойчивые области курсора-указателя.
+- Автовыбор больше не показывает TCP-задержку одного случайного узла; обычные локации проверяют основной входной узел своего маршрута.
+- Ссылка и существующий HWID объединены в одну запись Keychain. После миграции требуется меньше обращений к хранилищу. Без Developer ID macOS всё ещё может запрашивать доступ после обновлений; системному компоненту также нужно подтверждение.
+
+## Версия 0.3.7
 
 - Спокойная синяя кнопка со светлым текстом; название выровнено по центру панели.
 - Плавное сворачивание панели с сохранением положения флагов.
@@ -45,10 +59,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.3.7/SubVost-VPN-macOS-arm64-0.3.7.dmg" length="28400258" type="application/octet-stream" sparkle:edSignature="EAos9juvxLMhKA6BeTkwzmAybdQ30PTxYYifNetjYKODrS6xjFGq3vSBgkhvtw+grxJ7iyX7VsHhS7ceLBpiCw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.3.8/SubVost-VPN-macOS-arm64-0.3.8.dmg" length="28912099" type="application/octet-stream" sparkle:edSignature="irX8NZCfbOWQM40or6+rW+y7pfMKSX512scgR0OtVq198UZzNtBzGaR85aM2L0eTmupSlUR6a7RmOkPUAmonAA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: OUjcDH19bnpAKxWgAyV+sWscGC9RUSjFDgwhEXjGPq8StQgib6A0mg50iMxpnFz3b5bcE1kBkp6T5xcv+OD7AA==
-length: 4358
+edSignature: dyD32VDMhiLTv1C3m1BMfs9fK11KZ8my+dt89hf+UbXy/oTmDCrUA3Nsxqnb888dqyvMdwkcD9ywTrMJovNJAw==
+length: 7124
 -->
