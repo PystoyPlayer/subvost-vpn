@@ -4,13 +4,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.0</title>
-            <pubDate>Sat, 05 Sep 2026 14:29:22 +0300</pubDate>
+            <title>0.4.1</title>
+            <pubDate>Sat, 05 Sep 2026 14:44:48 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
+            <sparkle:version>16</sparkle:version>
+            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.0
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.1
+
+- Убрана лишняя прямоугольная подсветка поверх нативных кнопок в настройках. Hover и нажатие оформляет macOS; курсор-указатель сохранён.
+- Системный компонент не менялся: это исправление интерфейса не требует его переустановки.
+- Пинг показывает н/д (n/a на английском), когда прямой замер не получен; во время проверки — многоточие. У автовыбора пинг скрыт.
+
+## Версия 0.4.0
 
 - Ссылка подписки хранится локально: автоматический перенос из Keychain с сохранением прежнего HWID. После переноса запуск больше не обращается к Keychain. При самой миграции macOS ещё может запросить доступ. Файл доступен программам вашей учётной записи; старые записи Keychain сохраняются как резервная копия.
 - Упрощены настройки: обновления перенесены в «Приложение», сетевые подробности сворачиваются. Кнопки используют Liquid Glass на macOS 26+, на старых системах — нативное оформление.
@@ -71,10 +77,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.0/SubVost-VPN-macOS-Legacy-x86_64-0.4.0.dmg" length="33843211" type="application/octet-stream" sparkle:edSignature="QE19qlmQVfDV7kKdCar0ZnB+hCklBGi2ckphCMWmJLX/EQiP/noN4yOFoRPOLoGW0DJDtZI5vLvG2sNuzC5LBw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.1/SubVost-VPN-macOS-Legacy-x86_64-0.4.1.dmg" length="33828978" type="application/octet-stream" sparkle:edSignature="nsGZkWlVLcFHLNK7r/AYQ9GbFYA46UiHLzGBa6bKne/3hKcHFtNx+Pxlko6QaJQ02FofpOrwyg55WcF42sq/Cg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 9qCOD4x3p7P2CYg2LGSlNuScotloOv2i677Q1DBWAERYuk6lFG0VG+lReZKsrKLXDcJz2Q4xmKPpsLLpL1pSDQ==
-length: 9826
+edSignature: ZslLscIDWhSJo9Fk0JT7wU8OmZfoKnjyxWjCY5IViJMwyrSDiMZUmq/3hokptsPy47/7kEznmKo4JnjsWCu0Cw==
+length: 10490
 -->
