@@ -5,13 +5,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>SubVost VPN</title>
         <item>
             <title>0.4.3</title>
-            <pubDate>Sat, 05 Sep 2026 23:22:44 +0300</pubDate>
+            <pubDate>Sat, 05 Sep 2026 23:42:22 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>18</sparkle:version>
+            <sparkle:version>19</sparkle:version>
             <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.3
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.3 — исправленная упаковка Legacy (build 19)
+
+- Исправлена упаковка Swift Concurrency для macOS 11: настоящая libswift_Concurrency.dylib теперь включена в приложение. Это устраняет найденную причину аварийного завершения DYLD при запуске 0.4.3 на macOS 11.7.10.
+- Добавлена обязательная проверка встроенных библиотек, архитектур, пути загрузки и подписей. Проверка отклоняет неисправную 0.4.3.
+- Только исправление упаковки Legacy (Intel и Apple Silicon) в том же релизе 0.4.3. Интерфейс, VPN-ядра и системный компонент не изменены. Обычная macOS-сборка остаётся build 18, Legacy — build 19; Linux — 0.5.2.
+
+Пакеты проверены локально; подтверждение запуска на настоящей macOS 11.7 пока ожидается. Если первоначальная 0.4.3 не запускается, повторно скачайте исправленную Legacy 0.4.3 и замените приложение; удалять подписку или системный компонент не нужно.
+
+## Версия 0.4.3
 
 - Новый welcome-экран вместо пустой карты: вставка подписки и добавление стрелкой или Enter.
 - Настройки упрощены до «Приложение», «Сеть», «Диагностика». Удаление подписки перенесено в «Приложение» и после подтверждения возвращает welcome; HWID сохраняется. Горячие клавиши разделов — ⌘1–3.
@@ -100,10 +108,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.3/SubVost-VPN-macOS-Legacy-arm64-0.4.3.dmg" length="28567378" type="application/octet-stream" sparkle:edSignature="f71NJLbrGOKM6xUGZ2vIz+w+A8r8bQvsZ53QTSl28tQ/sv5CouoRu5S3/vYJHPxHAnNxHsLCs7AIoCG9DNzLDg=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.3/SubVost-VPN-macOS-Legacy-arm64-0.4.3.dmg" length="32526239" type="application/octet-stream" sparkle:edSignature="EuO2yEg93YPOH88urjr9qGcDtL9lgjeYYe4DcwTwqqoOGIaQLPvk7iaz9LTuwEHvCMoNVdzxv/M4UQfZj4A8Bg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 49HGgRda3JvjoHvpL6tDrJt3GeLHYPXCNwfxFFdn6QvAMe01dQEIP7drs2HnhNoXpcLvJgW/F4b8qKQyAwzJCA==
-length: 15212
+edSignature: zNoAN9pVqDzTnd9a5bBNFk5trAsLet4pA77aT60bDiNwuEkpaA7MNVc8PGEYXD0JjU/hXQyymkTpnG2Kthr9Dw==
+length: 16626
 -->
