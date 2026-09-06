@@ -4,13 +4,23 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.3</title>
-            <pubDate>Sat, 05 Sep 2026 23:42:23 +0300</pubDate>
+            <title>0.4.4</title>
+            <pubDate>Sun, 06 Sep 2026 05:29:56 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>19</sparkle:version>
-            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
+            <sparkle:version>20</sparkle:version>
+            <sparkle:shortVersionString>0.4.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.3 — исправленная упаковка Legacy (build 19)
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.4
+
+- Плавное изменение масштаба и центра карты: границы и точки движутся вместе, переключение можно изменить до завершения анимации. Учитывается Reduce Motion.
+- Исправлены hover/нажатие кнопок, заголовки раскрывающихся настроек и контраст кнопки удаления. Значок строки меню скрыт по умолчанию и включается в настройках.
+- Консоль использует нативное выделение текста без пустого правого столбца; Copy имеет приоритет курсора над текстом.
+- Хьюстон определяется как город, а не центр Техаса. Добавлен офлайн-справочник 34 тысяч городов с международными названиями и координатами. Неизвестные/неоднозначные названия сохраняются, данные подписки не отправляются переводчику.
+- Включены исправления установки системного компонента из тестовой сборки и диагностика времени подключения. Упаковка Swift Concurrency для Legacy сохранена.
+
+Полное устранение задержки первого подключения/после сна и разницы upload с Happ не подтверждено. Новое системное подключение на рабочем Mac в этом прогоне не переключалось. Legacy проверяется сборкой и упаковкой; запуск на физическом macOS 11.7 ещё требует проверки. Без Developer ID и нотарификации Apple.
+
+## Версия 0.4.3 — исправленная упаковка Legacy (build 19)
 
 - Исправлена упаковка Swift Concurrency для macOS 11: настоящая libswift_Concurrency.dylib теперь включена в приложение. Это устраняет найденную причину аварийного завершения DYLD при запуске 0.4.3 на macOS 11.7.10.
 - Добавлена обязательная проверка встроенных библиотек, архитектур, пути загрузки и подписей. Проверка отклоняет неисправную 0.4.3.
@@ -107,10 +117,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.3/SubVost-VPN-macOS-Legacy-x86_64-0.4.3.dmg" length="33968942" type="application/octet-stream" sparkle:edSignature="YDDuDrcY6QMk1ecdDgKyrELv0JYPa3HObXxrqAXBVaPUS/apy2SO8aA/syBszLo8UNTCOi/ovVDOdZ2a2NblAQ=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.4/SubVost-VPN-macOS-Legacy-x86_64-0.4.4.dmg" length="34816187" type="application/octet-stream" sparkle:edSignature="iCgczd5iNpUed1V3Zk3ummP2K4u9G0LNe8LZHpoOeAWgjaHlPf7P//y5mceOdCIP/Hnghn05lnfYUPkcwacRCA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: T5HSF3v63nOcxm21HQ25dP/SR8uFFLk6EwhITYOMJL91r7kzVsEmFXGUuG3H7TpWARixIf8KJadgge3wTDh2Aw==
-length: 16548
+edSignature: 6a7ykgWIUyvYGmA6Aa6h98YMgXGJ8i/xq9LK+OWi/apjYClLVrMJfrsocbKY3iemQ6NvTOkAjIRWqkqZiHsnAA==
+length: 18581
 -->

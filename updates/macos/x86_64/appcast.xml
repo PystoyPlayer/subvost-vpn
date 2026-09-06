@@ -4,13 +4,31 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.3</title>
-            <pubDate>Sat, 05 Sep 2026 23:22:43 +0300</pubDate>
+            <title>0.4.4</title>
+            <pubDate>Sun, 06 Sep 2026 05:29:53 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>18</sparkle:version>
-            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
+            <sparkle:version>20</sparkle:version>
+            <sparkle:shortVersionString>0.4.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.3
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.4
+
+- Плавное изменение масштаба и центра карты: границы и точки движутся вместе, переключение можно изменить до завершения анимации. Учитывается Reduce Motion.
+- Исправлены hover/нажатие кнопок, заголовки раскрывающихся настроек и контраст кнопки удаления. Значок строки меню скрыт по умолчанию и включается в настройках.
+- Консоль использует нативное выделение текста без пустого правого столбца; Copy имеет приоритет курсора над текстом.
+- Хьюстон определяется как город, а не центр Техаса. Добавлен офлайн-справочник 34 тысяч городов с международными названиями и координатами. Неизвестные/неоднозначные названия сохраняются, данные подписки не отправляются переводчику.
+- Включены исправления установки системного компонента из тестовой сборки и диагностика времени подключения. Упаковка Swift Concurrency для Legacy сохранена.
+
+Полное устранение задержки первого подключения/после сна и разницы upload с Happ не подтверждено. Новое системное подключение на рабочем Mac в этом прогоне не переключалось. Legacy проверяется сборкой и упаковкой; запуск на физическом macOS 11.7 ещё требует проверки. Без Developer ID и нотарификации Apple.
+
+## Версия 0.4.3 — исправленная упаковка Legacy (build 19)
+
+- Исправлена упаковка Swift Concurrency для macOS 11: настоящая libswift_Concurrency.dylib теперь включена в приложение. Это устраняет найденную причину аварийного завершения DYLD при запуске 0.4.3 на macOS 11.7.10.
+- Добавлена обязательная проверка встроенных библиотек, архитектур, пути загрузки и подписей. Проверка отклоняет неисправную 0.4.3.
+- Только исправление упаковки Legacy (Intel и Apple Silicon) в том же релизе 0.4.3. Интерфейс, VPN-ядра и системный компонент не изменены. Обычная macOS-сборка остаётся build 18, Legacy — build 19; Linux — 0.5.2.
+
+Пакеты проверены локально; подтверждение запуска на настоящей macOS 11.7 пока ожидается. Если первоначальная 0.4.3 не запускается, повторно скачайте исправленную Legacy 0.4.3 и замените приложение; удалять подписку или системный компонент не нужно.
+
+## Версия 0.4.3
 
 - Новый welcome-экран вместо пустой карты: вставка подписки и добавление стрелкой или Enter.
 - Настройки упрощены до «Приложение», «Сеть», «Диагностика». Удаление подписки перенесено в «Приложение» и после подтверждения возвращает welcome; HWID сохраняется. Горячие клавиши разделов — ⌘1–3.
@@ -99,10 +117,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.3/SubVost-VPN-macOS-x86_64-0.4.3.dmg" length="30661194" type="application/octet-stream" sparkle:edSignature="9l7ZOfIoIDix+ebTPMlu0dgcAwVFICqfLbnKKV1ELZoEF11wAU2niw3UKT05TdVF6jpDZUxeM9uHUkXTuwVQBw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.4/SubVost-VPN-macOS-x86_64-0.4.4.dmg" length="32780317" type="application/octet-stream" sparkle:edSignature="edhIdQn4gUF5OiUpgrh6gpAO9wcaJh+vJk2lRmeaJz3s3syVrbxfLAQ+67RdCXCd3sapr75uIKNsZsNheAf5Cw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: aY602AP6OxqLwbeXnBI1/5Ltnin5EsdEKp9f9wJwDV6Jr86xRHUTgoNVYKIB/lO28cRNeHBmeUXJ4ntgSv0NDg==
-length: 15127
+edSignature: 2wV6QIiQ4K2cuj9p2G8KM1hF1/cF9GgJWq+3tC8K7cqSxnxCvXOMwB4canBCh4wrjoZitOyWzmfsH3BiA92OCg==
+length: 18574
 -->
