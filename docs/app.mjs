@@ -1,5 +1,5 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260906-windows';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260906-windows';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
@@ -143,7 +143,7 @@ async function fetchJSON(url, timeout, headers = {}) {
 }
 async function loadCatalog() {
   try {
-    const data = await fetchJSON('./catalog.json', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260906-windows', 5000);
     builds = buildCatalog(data.releases);
     catalogChanged();
   } catch { /* The live request can recover. */ }
