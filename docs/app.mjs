@@ -60,6 +60,8 @@ function renderOptions() {
   if (state.os === 'macos') {
     content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), processorHelp);
     if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
+  } else if (state.os === 'windows') {
+    content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Тип системы: Параметры → Система → О системе. Выбирайте сборку под свою систему.'));
   } else if (state.os === 'linux') {
     content.append(group('Процессор', 'arch', [['x86_64', 'Intel / AMD · x86_64'], ['arm64', 'ARM · arm64']]), processorHelp);
     const available = [...new Set(builds.filter(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant).map(b => b.format))];
@@ -77,7 +79,7 @@ function renderOptions() {
 }
 
 function renderResult() {
-  const supported = ['macos', 'linux'].includes(state.os);
+  const supported = ['macos', 'linux', 'windows'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
   if (result.hidden && show) result.classList.add('reveal');
@@ -92,8 +94,8 @@ function renderResult() {
   if (build) {
     const cpu = state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
     $('result-title').textContent = `${build.version} · ${osNames[state.os]} · ${cpu}`;
-    $('result-detail').textContent = '';
-    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM' }[build.format] ?? build.format;
+    $('result-detail').textContent = build.prerelease ? 'Тестовая версия Windows. Распакуйте архив и запустите SubVost VPN. При обновлении переустановите системный компонент в настройках приложения.' : '';
+    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP' }[build.format] ?? build.format;
     $('download').href = build.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
   } else {
     $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
