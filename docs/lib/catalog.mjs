@@ -3,18 +3,20 @@ export const REPOSITORY = 'PystoyPlayer/subvost-vpn';
 export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
 
 export function versionParts(tag) {
-  const match = /^v?(\d+)\.(\d+)(?:\.(\d+))?$/.exec(tag ?? '');
-  return match ? match.slice(1).map(n => Number(n ?? 0)) : null;
+  const match = /^(?:windows-)?v?(\d+)\.(\d+)(?:\.(\d+))?(?:-preview\.(\d+))?$/.exec(tag ?? '');
+  return match ? [...match.slice(1, 4).map(n => Number(n ?? 0)), match[4] === undefined ? Infinity : Number(match[4])] : null;
 }
 
 export function compareVersions(a, b) {
   const av = versionParts(a), bv = versionParts(b);
   if (!av || !bv) throw new Error('Invalid stable version');
-  for (let i = 0; i < 3; i++) if (av[i] !== bv[i]) return av[i] - bv[i];
+  for (let i = 0; i < 4; i++) if (av[i] !== bv[i]) return av[i] - bv[i];
   return 0;
 }
 
 export function classifyAsset(name) {
+  const windows = /^SubVost-VPN-Windows-(\d+\.\d+\.\d+(?:-preview\.\d+)?)-win-(x64|arm64|x86)\.zip$/.exec(name);
+  if (windows) return { os: 'windows', variant: 'desktop', arch: windows[2], version: windows[1], format: 'zip' };
   let match = /^SubVost-VPN-macOS-(Legacy-)?(arm64|x86_64)-(\d+\.\d+(?:\.\d+)?)\.dmg$/.exec(name);
   if (match) return { os: 'macos', variant: match[1] ? 'legacy' : 'modern', arch: match[2], version: match[3], format: 'dmg' };
   match = /^SubVost-VPN-Linux-(x86_64|arm64|armv7)-(\d+\.\d+(?:\.\d+)?)(?:-(glibc|musl))?\.(AppImage|deb|rpm|tar\.gz|tar\.xz|pkg\.tar\.zst|flatpak|snap)$/.exec(name);
@@ -26,17 +28,18 @@ export function buildCatalog(releases) {
   if (!Array.isArray(releases)) throw new Error('GitHub returned an invalid release list');
   const builds = new Map();
   for (const release of releases) {
-    if (release.draft || release.prerelease || !versionParts(release.tag_name)) continue;
+    const windowsRelease = /^windows-v\d+\.\d+\.\d+(?:-preview\.\d+)?$/.test(release.tag_name ?? '');
+    if (release.draft || (release.prerelease && !windowsRelease) || !versionParts(release.tag_name)) continue;
     for (const asset of Array.isArray(release.assets) ? release.assets : []) {
       const info = classifyAsset(asset.name);
-      if (!info || compareVersions(info.version, release.tag_name) !== 0) continue;
+      if (!info || (info.os === 'windows') !== windowsRelease || compareVersions(info.version, release.tag_name) !== 0) continue;
       const expected = `${RELEASES_URL}/download/${release.tag_name}/${asset.name}`;
       if (asset.browser_download_url !== expected || !Number.isSafeInteger(asset.size) || asset.size <= 0) continue;
       const key = [info.os, info.variant, info.arch, info.format].join(':');
       const previous = builds.get(key);
       if (previous && compareVersions(previous.version, info.version) >= 0) continue;
       builds.set(key, {
-        ...info, name: asset.name, url: expected, size: asset.size,
+        ...info, prerelease: Boolean(release.prerelease || info.version.includes('-preview.')), name: asset.name, url: expected, size: asset.size,
         sha256: /^sha256:[a-f0-9]{64}$/.test(asset.digest ?? '') ? asset.digest.slice(7) : null,
         releaseUrl: `${RELEASES_URL}/tag/${release.tag_name}`,
         publishedAt: release.published_at ?? null,
