@@ -9,7 +9,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 344,
-          "digest": "sha256:",
+          "digest": "sha256:96bbb73a5ac1d638dc4abb6fd5d68759445d257bb5352a717339080deed27088",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.5/SHA256SUMS.txt"
         },
         {
@@ -41,7 +41,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 1037,
-          "digest": "sha256:",
+          "digest": "sha256:21206fb36f18b99c578c701f7899a6e1092fe77bb35ea7fca95295321d1bc82f",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.7/SHA256SUMS.txt"
         },
         {
@@ -115,7 +115,7 @@
         {
           "name": "SHA256SUMS.txt",
           "size": 416,
-          "digest": "sha256:",
+          "digest": "sha256:04d2c264da3e9f6c17f32ab7bd462f36b7040d3b6dcc592f08fce793ad71bcd0",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SHA256SUMS.txt"
         },
         {
