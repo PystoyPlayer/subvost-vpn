@@ -16,7 +16,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Кнопка копирования журнала не мигает и остаётся поверх консоли.
 - Предупреждения не сдвигают карту; обновлены правила маршрутизации и геоданные.
 ]]></description>
-      <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SubVost-VPN-macOS-x86_64-0.4.5.dmg" length="32943746" type="application/octet-stream" sparkle:edSignature="BlgKX2WtVtiu+DWFjDxxA9c3/yvdve8k4N8vQ2WOVfE1E1ZFXO8ByXRwYijy5WhDvlxh93gl6KvXwQefN24yAw=="></enclosure>
+      <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SubVost-VPN-macOS-x86_64-0.4.5.dmg" length="32943746" type="application/octet-stream" sparkle:edSignature="BlgKX2WtVtiu+DWFjDxxA9c3/yvdve8k4N8vQ2WOVfE1E1ZFX8OByXRwYijy5WhDvlxh93gl6KvXwQefN24yAw=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
