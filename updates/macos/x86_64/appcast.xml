@@ -1,1 +1,25 @@
-cat: work/xhttp-client-macos/appcast-fix-modern-x86_64.xml: Operation canceled
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+  <channel>
+    <title>SubVost VPN</title>
+    <item>
+      <title>0.4.5</title>
+      <pubDate>Mon, 07 Sep 2026 06:00:00 +0300</pubDate>
+      <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.5</sparkle:fullReleaseNotesLink>
+      <sparkle:version>21</sparkle:version>
+      <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <description sparkle:format="markdown"><![CDATA[## Версия 0.4.5
+
+- Исправлены состояния hover/click карты и нативный вид кнопок в окне настроек.
+- Кнопка копирования журнала не мигает и остаётся поверх консоли.
+- Предупреждения не сдвигают карту; обновлены правила маршрутизации и геоданные.
+]]></description>
+      <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SubVost-VPN-macOS-x86_64-0.4.5.dmg" length="32943746" type="application/octet-stream" sparkle:edSignature="BlgKX2WtVtiu+DWFjDxxA9c3/yvdve8k4N8vQ2WOVfE1E1ZFXO8ByXRwYijy5WhDvlxh93gl6KvXwQefN24yAw=="></enclosure>
+    </item>
+  </channel>
+</rss><!-- sparkle-signatures:
+edSignature: nh38XRJlO7xjDWyFNOVmbrO7sjxIeK0zlr9VmjjsD9jBF+n3mo9xv5iRnj2nLwJJDKNVB5JRdEgEMGxkj1YzDQ==
+length: 1664
+-->
