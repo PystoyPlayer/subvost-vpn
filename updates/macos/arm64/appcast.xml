@@ -13,15 +13,14 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
       <description sparkle:format="markdown"><![CDATA[## Версия 0.4.5
 
-- Стабилизированы hover/click-состояния карты и нативный вид кнопок в отдельном окне настроек.
-- Кнопка копирования журнала остаётся поверх консоли и не мигает при уходе курсора.
-- Предупреждение под заголовком больше не сдвигает карту; для обхода белых списков сохранены мобильное предупреждение и отсутствие замера пинга.
-- Обновлены базы правил маршрутизации и геоданные.
+- Исправлены состояния hover/click карты и нативный вид кнопок в окне настроек.
+- Кнопка копирования журнала не мигает и остаётся поверх консоли.
+- Предупреждения не сдвигают карту; обновлены правила маршрутизации и геоданные.
 ]]></description>
-      <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SubVost-VPN-macOS-arm64-0.4.5.dmg" length="30787016" type="application/octet-stream"></enclosure>
+      <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SubVost-VPN-macOS-arm64-0.4.5.dmg" length="30787016" type="application/octet-stream" sparkle:edSignature="1PQiOGb6uwxecykMvgaGBEZzzsMn2i5PM3dVKPSJBDilheZnoOyoQwPpJEPvCKnhMwM1x1TTYf3IVjGyym7dDg=="></enclosure>
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: TOXSSeegkecyKTe7C6XxYOY/Q+2O+CgxJHuaGeVg5dw8L6riJBgwl2zUDLMFign/F/vNSNq4D806eWyLzyg9BA==
-length: 1899
+edSignature: SII8ZCS4FuWc6PtibJMlDrY4Je1zKjCM5oogOvguvpWHapLWlMKTbJNvErsGwFrar9UAqvKMsPdgLm2FJBP2AQ==
+length: 1736
 -->
