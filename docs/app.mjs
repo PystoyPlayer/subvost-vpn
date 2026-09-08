@@ -1,5 +1,5 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260908-setup';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260908-setup';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260908-desktop13';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260908-desktop13';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
@@ -61,7 +61,7 @@ function renderOptions() {
     content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), processorHelp);
     if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
   } else if (state.os === 'windows') {
-    content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Тип системы: Параметры → Система → О системе. Выбирайте сборку под свою систему.'));
+    content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Для Windows 10 (1809 и новее) и Windows 11. Тип системы: Параметры → Система → О системе.'));
   } else if (state.os === 'linux') {
     content.append(group('Процессор', 'arch', [['x86_64', 'Intel / AMD · x86_64'], ['arm64', 'ARM · arm64']]), processorHelp);
     const available = [...new Set(builds.filter(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant).map(b => b.format))];
@@ -146,20 +146,20 @@ async function fetchJSON(url, timeout, headers = {}) {
 }
 async function loadCatalog() {
   try {
-    const data = await fetchJSON('./catalog.json?v=20260908-setup', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260908-desktop13', 5000);
     builds = buildCatalog(data.releases);
     catalogChanged();
   } catch { /* The live request can recover. */ }
   try {
     let cache;
-    try { cache = JSON.parse(localStorage.getItem('subvost-public-releases-v2')); } catch { /* storage may be disabled */ }
+    try { cache = JSON.parse(localStorage.getItem('subvost-public-releases-v3')); } catch { /* storage may be disabled */ }
     let releases;
     if (cache && Date.now() - cache.time >= 0 && Date.now() - cache.time < 600000) releases = cache.releases;
     else {
       releases = await fetchJSON('https://api.github.com/repos/PystoyPlayer/subvost-vpn/releases?per_page=100', 8000, { Accept: 'application/vnd.github+json' });
       const checked = buildCatalog(releases);
       if (!checked.length) throw new Error('No usable release assets');
-      try { localStorage.setItem('subvost-public-releases-v2', JSON.stringify({ time: Date.now(), releases })); } catch { /* caching is optional */ }
+      try { localStorage.setItem('subvost-public-releases-v3', JSON.stringify({ time: Date.now(), releases })); } catch { /* caching is optional */ }
     }
     builds = buildCatalog(releases);
     catalogMessage = '';
