@@ -1,5 +1,5 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260909-android1';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android1';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260909-android2';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
@@ -146,9 +146,11 @@ async function fetchJSON(url, timeout, headers = {}) {
   } finally { clearTimeout(timer); }
 }
 async function loadCatalog() {
+  let snapshot = [];
   try {
-    const data = await fetchJSON('./catalog.json?v=20260909-android1', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260909-android2', 5000);
     builds = buildCatalog(data.releases);
+    snapshot = data.releases;
     catalogChanged();
   } catch { /* The live request can recover. */ }
   try {
@@ -162,7 +164,10 @@ async function loadCatalog() {
       if (!checked.length) throw new Error('No usable release assets');
       try { localStorage.setItem('subvost-public-releases-v3', JSON.stringify({ time: Date.now(), releases })); } catch { /* caching is optional */ }
     }
-    builds = buildCatalog(releases);
+    // GitHub/CDN and the ten-minute browser cache can predate the published
+    // snapshot. Keep the newest validated asset per OS/CPU/package in that case.
+    // Release removal must also update the checked-in snapshot.
+    builds = buildCatalog([...snapshot, ...releases]);
     catalogMessage = '';
   } catch {
     catalogMessage = builds.length ? '' : 'Не удалось загрузить каталог. Откройте «Все версии и изменения».';
