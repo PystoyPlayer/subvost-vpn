@@ -6,6 +6,23 @@ function release(version, names, extra = {}) {
   return { tag_name: `v${version}`, draft: false, prerelease: false, assets: names.map(name => ({ name, size: 123, browser_download_url: `${RELEASES_URL}/download/v${version}/${name}` })), ...extra };
 }
 const mac = (version, arch = 'arm64', legacy = false) => `SubVost-VPN-macOS-${legacy ? 'Legacy-' : ''}${arch}-${version}.dmg`;
+test('Android alpha APK is explicit; a stable unified tag can serve all platforms', () => {
+  const tag = 'android-v0.1.0-alpha.1', name = 'SubVost-VPN-Android-0.1.0-alpha.1.apk';
+  const input = { tag_name: tag, prerelease: true, assets: [{ name, size: 123, browser_download_url: `${RELEASES_URL}/download/${tag}/${name}` }] };
+  const [apk] = buildCatalog([input]);
+  assert.equal(apk.os, 'android'); assert.equal(apk.arch, 'universal'); assert.equal(apk.prerelease, true);
+  assert.equal(classifyAsset(name + '.bak'), null);
+  assert.equal(buildCatalog([{ ...input, draft: true }]).length, 0);
+  const unified = buildCatalog([input, release('1.0.0', [mac('1.0.0'), 'SubVost-VPN-Linux-arm64-1.0.0.deb', 'SubVost-VPN-1.0.0-Windows-x64-Setup.exe', 'SubVost-VPN-Android-1.0.0.apk'])]);
+  assert.equal(unified.length, 4);
+  assert.ok(unified.every(b => b.version === '1.0.0' && !b.prerelease));
+});
+test('SemVer prerelease order and build metadata do not depend on tag prefixes', () => {
+  const sequence = ['1.0.0-alpha.1', '1.0.0-alpha.2', '1.0.0-alpha.10', '1.0.0-beta.1', '1.0.0-rc.1', '1.0.0', '1.0.1'];
+  for (let i = 1; i < sequence.length; i++) assert.ok(compareVersions(sequence[i], sequence[i - 1]) > 0);
+  assert.equal(compareVersions('android-v1.0.0+2', 'v1.0.0+1'), 0);
+  for (const bad of ['1.0.0-alpha.01', '01.0.0', '1.0.0-', '1.0.0.exe']) assert.throws(() => compareVersions(bad, '1.0.0'));
+});
 test('Windows chooses newest same-architecture EXE, with portable fallback only when needed', () => {
   const build = (version, format, arch = 'x64') => ({ os: 'windows', variant: 'desktop', arch, version, format });
   const state = { os: 'windows', variant: 'desktop', arch: 'x64', format: 'zip' };
