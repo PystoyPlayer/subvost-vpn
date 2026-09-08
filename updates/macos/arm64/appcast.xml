@@ -1,26 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
 --><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-  <channel>
-    <title>SubVost VPN</title>
-    <item>
-      <title>0.4.5</title>
-      <pubDate>Mon, 07 Sep 2026 06:00:00 +0300</pubDate>
-      <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.5</sparkle:fullReleaseNotesLink>
-      <sparkle:version>21</sparkle:version>
-      <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <description sparkle:format="markdown"><![CDATA[## Версия 0.4.5
+    <channel>
+        <title>SubVost VPN</title>
+        <item>
+            <title>0.4.6</title>
+            <pubDate>Tue, 08 Sep 2026 09:52:50 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Улучшено автоматическое резервное подключение при ограничениях сети: приложение даёт резервному маршруту время запуститься. Ожидание можно отменить.
 
-- Исправлены состояния hover/click карты и нативный вид кнопок в окне настроек.
-- Кнопка копирования журнала не мигает и остаётся поверх консоли.
-- Предупреждения не сдвигают карту; обновлены правила маршрутизации и геоданные.
+Обновлён системный компонент. Правила раздельного туннелирования и настройки подписки сохраняются.
 ]]></description>
-      <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.5/SubVost-VPN-macOS-arm64-0.4.5.dmg" length="30787016" type="application/octet-stream" sparkle:edSignature="1PQiOGb6uwxecykMvgaGBEZzzsMn2i5PM3dVKPSJBDilheZnoOyoQwPpJEPvCKnhMwM1x1TTYf3IVjGyym7dDg=="></enclosure>
-    </item>
-  </channel>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-arm64-0.4.6.dmg" length="30796811" type="application/octet-stream" sparkle:edSignature="Bld5JPBk8kW5OIi7cOVL+Xyjb3fNywbwEvlwbMf0z4R9IGL3w2X658CmSea4dQmCn6SkjJDb2825ZV/WfE2UAA=="></enclosure>
+        </item>
+    </channel>
 </rss><!-- sparkle-signatures:
-edSignature: SII8ZCS4FuWc6PtibJMlDrY4Je1zKjCM5oogOvguvpWHapLWlMKTbJNvErsGwFrar9UAqvKMsPdgLm2FJBP2AQ==
-length: 1736
+edSignature: /Wu/qKYjwl6Mno0CAa6qBEwvd86pZCll/1e5fml/DQiuT3U7igoG6vWamFtqUShl5DcB0D18EzEd7GAKchMxCg==
+length: 1817
 -->
