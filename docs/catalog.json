@@ -1,126 +1,90 @@
 {
   "releases": [
     {
-      "tag_name": "windows-v0.1.0-preview.8",
-      "draft": false,
-      "prerelease": true,
-      "published_at": "2026-09-08T07:03:13Z",
-      "assets": [
-        {
-          "name": "core-tests.txt",
-          "size": 2916,
-          "digest": "sha256:3fc507b0cfcb7070c709f53194dd63af38bfd498e3d1d3b9bf6372866d0d2aa6",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/core-tests.txt"
-        },
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 344,
-          "digest": "sha256:fbc613ae4f6b8bc2d2cbedc3236006c52992848820c7bab2b3208a02fe8f5cbd",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SHA256SUMS.txt"
-        },
-        {
-          "name": "SubVost-VPN-Windows-0.1.0-preview.8-win-arm64.zip",
-          "size": 73533236,
-          "digest": "sha256:2eacceb0f6c050aa34f310f8adb3acec044dd456fbc9669121e94e31dbdefd5f",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SubVost-VPN-Windows-0.1.0-preview.8-win-arm64.zip"
-        },
-        {
-          "name": "SubVost-VPN-Windows-0.1.0-preview.8-win-x64.zip",
-          "size": 79893131,
-          "digest": "sha256:3d90892b0fa1ec6ba20ab099e13c92da5f1f27a4db5ebb0c97709957ab9eb2be",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SubVost-VPN-Windows-0.1.0-preview.8-win-x64.zip"
-        },
-        {
-          "name": "SubVost-VPN-Windows-0.1.0-preview.8-win-x86.zip",
-          "size": 74989612,
-          "digest": "sha256:4f5e33f0dad32316f35848633e6c4b2ceeb2e742b34279bd0a45f2ff3898de55",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SubVost-VPN-Windows-0.1.0-preview.8-win-x86.zip"
-        },
-        {
-          "name": "verification.json",
-          "size": 1254,
-          "digest": "sha256:98f98fba0c537c974b806d48d1c6bf622b62b7358467b96e152b130e4564dee3",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/verification.json"
-        }
-      ]
-    },
-    {
       "tag_name": "v0.5.8",
       "draft": false,
       "prerelease": false,
       "published_at": "2026-09-08T07:49:27Z",
       "assets": [
         {
-          "name": "SHA256SUMS.txt",
-          "size": 1037,
-          "digest": "sha256:3761d42b7ad98f18dc8af126d1916122bc635d338aac9ae7318f1cb0107495d1",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SHA256SUMS.txt"
-        },
-        {
           "name": "SubVost-VPN-Linux-arm64-0.5.8.AppImage",
           "size": 56351240,
-          "digest": "sha256:a004848ed5ddffdf81115d7e98744fe7617981aeb7c65e87886bc1012347e71f",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.AppImage"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.AppImage",
+          "digest": "sha256:a004848ed5ddffdf81115d7e98744fe7617981aeb7c65e87886bc1012347e71f"
         },
         {
           "name": "SubVost-VPN-Linux-arm64-0.5.8.deb",
           "size": 42862068,
-          "digest": "sha256:d9db8ca8692dd85c38158ae50a8d14170f75fadd777eb07c5e7df1dab769f92f",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.deb"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.deb",
+          "digest": "sha256:d9db8ca8692dd85c38158ae50a8d14170f75fadd777eb07c5e7df1dab769f92f"
         },
         {
           "name": "SubVost-VPN-Linux-arm64-0.5.8.pkg.tar.zst",
           "size": 59641984,
-          "digest": "sha256:27fd1fb73d225bff658425065b6185835adba8caa58a2bfcb324d4e45de78828",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.pkg.tar.zst"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.pkg.tar.zst",
+          "digest": "sha256:27fd1fb73d225bff658425065b6185835adba8caa58a2bfcb324d4e45de78828"
         },
         {
           "name": "SubVost-VPN-Linux-arm64-0.5.8.rpm",
           "size": 70303196,
-          "digest": "sha256:529fcb469dcadc9c0f4260dc8e2bb5c184fbf69044439f2e8b382aae83c4fe11",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.rpm"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.rpm",
+          "digest": "sha256:529fcb469dcadc9c0f4260dc8e2bb5c184fbf69044439f2e8b382aae83c4fe11"
         },
         {
           "name": "SubVost-VPN-Linux-arm64-0.5.8.tar.gz",
           "size": 68708414,
-          "digest": "sha256:74f4239b02810c4391552c1335f9ca231ffb07f939c6a41537fc944cef1edcf8",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.tar.gz"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-arm64-0.5.8.tar.gz",
+          "digest": "sha256:74f4239b02810c4391552c1335f9ca231ffb07f939c6a41537fc944cef1edcf8"
         },
         {
           "name": "SubVost-VPN-Linux-x86_64-0.5.8.AppImage",
           "size": 58821112,
-          "digest": "sha256:05622ced4d03ab20d8e361d7d1dc6dc9d8489756c1692afd7562d7f1b4bad1f9",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.AppImage"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.AppImage",
+          "digest": "sha256:05622ced4d03ab20d8e361d7d1dc6dc9d8489756c1692afd7562d7f1b4bad1f9"
         },
         {
           "name": "SubVost-VPN-Linux-x86_64-0.5.8.deb",
           "size": 46159652,
-          "digest": "sha256:8f99f5cf6ceda7ba90acd4ff8ec924cf466301059153a5c123589c726da64997",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.deb"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.deb",
+          "digest": "sha256:8f99f5cf6ceda7ba90acd4ff8ec924cf466301059153a5c123589c726da64997"
         },
         {
           "name": "SubVost-VPN-Linux-x86_64-0.5.8.pkg.tar.zst",
           "size": 62090154,
-          "digest": "sha256:2857f65381f964e73b44d575fb31c2728b2de3320875db87ce9edaf406900a2b",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.pkg.tar.zst"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.pkg.tar.zst",
+          "digest": "sha256:2857f65381f964e73b44d575fb31c2728b2de3320875db87ce9edaf406900a2b"
         },
         {
           "name": "SubVost-VPN-Linux-x86_64-0.5.8.rpm",
           "size": 72782247,
-          "digest": "sha256:37686536b838081b29561fa04b20d326ea995e31e3df948ef7174ef7e3afebec",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.rpm"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.rpm",
+          "digest": "sha256:37686536b838081b29561fa04b20d326ea995e31e3df948ef7174ef7e3afebec"
         },
         {
           "name": "SubVost-VPN-Linux-x86_64-0.5.8.tar.gz",
           "size": 71210146,
-          "digest": "sha256:73d67feeb1321059e89a4a33d96f3449d503aadb6a778a2d3be7a0fab81f1eff",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.tar.gz"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/SubVost-VPN-Linux-x86_64-0.5.8.tar.gz",
+          "digest": "sha256:73d67feeb1321059e89a4a33d96f3449d503aadb6a778a2d3be7a0fab81f1eff"
+        }
+      ]
+    },
+    {
+      "tag_name": "windows-v0.1.0-preview.12",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-08T16:21:17Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-0.1.0-preview.12-Windows-x64-Setup.exe",
+          "size": 57614855,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.12/SubVost-VPN-0.1.0-preview.12-Windows-x64-Setup.exe",
+          "digest": "sha256:b35182506ac178126d5a06972823a9abfe99f43da7bb1d45c5f4946d2ae74dda"
         },
         {
-          "name": "verification.json",
-          "size": 1058,
-          "digest": "sha256:879b278f1c04b957733a563d82c75d4345b3e07da47239b2321a414d982cdd04",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.5.8/verification.json"
+          "name": "SubVost-VPN-Windows-0.1.0-preview.12-win-x64.zip",
+          "size": 80418942,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.12/SubVost-VPN-Windows-0.1.0-preview.12-win-x64.zip",
+          "digest": "sha256:0a467f9c563ba586d6bb96d086fc89c188902d75e7b82fae335efc74473bcdbc"
         }
       ]
     },
@@ -131,40 +95,54 @@
       "published_at": "2026-09-08T07:36:01Z",
       "assets": [
         {
-          "name": "SHA256SUMS.txt",
-          "size": 416,
-          "digest": "sha256:fa8a7a9398b49cf5760e0ba11b79f8cf582fdcdbe33dda793893951c53f8091f",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SHA256SUMS.txt"
-        },
-        {
           "name": "SubVost-VPN-macOS-arm64-0.4.6.dmg",
           "size": 30796811,
-          "digest": "sha256:10684f6d5d0c7f17d3f9703138812a38d1d4124cb01398977d7e7b93686d008a",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-arm64-0.4.6.dmg"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-arm64-0.4.6.dmg",
+          "digest": "sha256:10684f6d5d0c7f17d3f9703138812a38d1d4124cb01398977d7e7b93686d008a"
         },
         {
           "name": "SubVost-VPN-macOS-Legacy-arm64-0.4.6.dmg",
           "size": 33363478,
-          "digest": "sha256:500a3b8641309564307940fd5b5418caed725eb263c14bcf0b6c33d38fe0edb1",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-Legacy-arm64-0.4.6.dmg"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-Legacy-arm64-0.4.6.dmg",
+          "digest": "sha256:500a3b8641309564307940fd5b5418caed725eb263c14bcf0b6c33d38fe0edb1"
         },
         {
           "name": "SubVost-VPN-macOS-Legacy-x86_64-0.4.6.dmg",
           "size": 34820952,
-          "digest": "sha256:548d82ebb60dae0109f01f512300a2db6b702f8a09ca1c6c07d80ce359097c20",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-Legacy-x86_64-0.4.6.dmg"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-Legacy-x86_64-0.4.6.dmg",
+          "digest": "sha256:548d82ebb60dae0109f01f512300a2db6b702f8a09ca1c6c07d80ce359097c20"
         },
         {
           "name": "SubVost-VPN-macOS-x86_64-0.4.6.dmg",
           "size": 32938288,
-          "digest": "sha256:81a853b43532e7b38bdf8dc921878c408b0fc052fcc7a1e277d9d9b02afcb250",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-x86_64-0.4.6.dmg"
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/SubVost-VPN-macOS-x86_64-0.4.6.dmg",
+          "digest": "sha256:81a853b43532e7b38bdf8dc921878c408b0fc052fcc7a1e277d9d9b02afcb250"
+        }
+      ]
+    },
+    {
+      "tag_name": "windows-v0.1.0-preview.8",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-08T07:03:13Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-Windows-0.1.0-preview.8-win-arm64.zip",
+          "size": 73533236,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SubVost-VPN-Windows-0.1.0-preview.8-win-arm64.zip",
+          "digest": "sha256:2eacceb0f6c050aa34f310f8adb3acec044dd456fbc9669121e94e31dbdefd5f"
         },
         {
-          "name": "verification.json",
-          "size": 1021,
-          "digest": "sha256:e011241c53a909911949862bb7168e3da2ed31ba700171ef5a55fac0276dd813",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.6/verification.json"
+          "name": "SubVost-VPN-Windows-0.1.0-preview.8-win-x64.zip",
+          "size": 79893131,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SubVost-VPN-Windows-0.1.0-preview.8-win-x64.zip",
+          "digest": "sha256:3d90892b0fa1ec6ba20ab099e13c92da5f1f27a4db5ebb0c97709957ab9eb2be"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.1.0-preview.8-win-x86.zip",
+          "size": 74989612,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.8/SubVost-VPN-Windows-0.1.0-preview.8-win-x86.zip",
+          "digest": "sha256:4f5e33f0dad32316f35848633e6c4b2ceeb2e742b34279bd0a45f2ff3898de55"
         }
       ]
     }

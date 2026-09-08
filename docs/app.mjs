@@ -1,5 +1,5 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260906-windows';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260906-windows';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260908-setup';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260908-setup';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
@@ -94,8 +94,11 @@ function renderResult() {
   if (build) {
     const cpu = state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
     $('result-title').textContent = `${build.version} · ${osNames[state.os]} · ${cpu}`;
-    $('result-detail').textContent = build.prerelease ? 'Тестовая версия Windows. Распакуйте архив и запустите SubVost VPN. При обновлении переустановите системный компонент в настройках приложения.' : '';
-    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP' }[build.format] ?? build.format;
+    $('result-detail').textContent = state.os === 'windows'
+      ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
+        ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
+        : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.') : '';
+    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE' }[build.format] ?? build.format;
     $('download').href = build.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
   } else {
     $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
@@ -143,20 +146,20 @@ async function fetchJSON(url, timeout, headers = {}) {
 }
 async function loadCatalog() {
   try {
-    const data = await fetchJSON('./catalog.json?v=20260906-windows', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260908-setup', 5000);
     builds = buildCatalog(data.releases);
     catalogChanged();
   } catch { /* The live request can recover. */ }
   try {
     let cache;
-    try { cache = JSON.parse(localStorage.getItem('subvost-public-releases-v1')); } catch { /* storage may be disabled */ }
+    try { cache = JSON.parse(localStorage.getItem('subvost-public-releases-v2')); } catch { /* storage may be disabled */ }
     let releases;
     if (cache && Date.now() - cache.time >= 0 && Date.now() - cache.time < 600000) releases = cache.releases;
     else {
       releases = await fetchJSON('https://api.github.com/repos/PystoyPlayer/subvost-vpn/releases?per_page=100', 8000, { Accept: 'application/vnd.github+json' });
       const checked = buildCatalog(releases);
       if (!checked.length) throw new Error('No usable release assets');
-      try { localStorage.setItem('subvost-public-releases-v1', JSON.stringify({ time: Date.now(), releases })); } catch { /* caching is optional */ }
+      try { localStorage.setItem('subvost-public-releases-v2', JSON.stringify({ time: Date.now(), releases })); } catch { /* caching is optional */ }
     }
     builds = buildCatalog(releases);
     catalogMessage = '';

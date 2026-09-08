@@ -3,7 +3,7 @@ export const REPOSITORY = 'PystoyPlayer/subvost-vpn';
 export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
 
 export function versionParts(tag) {
-  const match = /^(?:windows-)?v?(\d+)\.(\d+)(?:\.(\d+))?(?:-preview\.(\d+))?$/.exec(tag ?? '');
+  const match = /^(?:(?:windows|macos|linux)-)?v?(\d+)\.(\d+)(?:\.(\d+))?(?:-preview\.(\d+))?$/.exec(tag ?? '');
   return match ? [...match.slice(1, 4).map(n => Number(n ?? 0)), match[4] === undefined ? Infinity : Number(match[4])] : null;
 }
 
@@ -15,6 +15,8 @@ export function compareVersions(a, b) {
 }
 
 export function classifyAsset(name) {
+  const setup = /^SubVost-VPN-(\d+\.\d+\.\d+(?:-preview\.\d+)?)-Windows-(x64|arm64|x86)-Setup\.exe$/.exec(name);
+  if (setup) return { os: 'windows', variant: 'desktop', arch: setup[2], version: setup[1], format: 'exe' };
   const windows = /^SubVost-VPN-Windows-(\d+\.\d+\.\d+(?:-preview\.\d+)?)-win-(x64|arm64|x86)\.zip$/.exec(name);
   if (windows) return { os: 'windows', variant: 'desktop', arch: windows[2], version: windows[1], format: 'zip' };
   let match = /^SubVost-VPN-macOS-(Legacy-)?(arm64|x86_64)-(\d+\.\d+(?:\.\d+)?)\.dmg$/.exec(name);
@@ -29,10 +31,11 @@ export function buildCatalog(releases) {
   const builds = new Map();
   for (const release of releases) {
     const windowsRelease = /^windows-v\d+\.\d+\.\d+(?:-preview\.\d+)?$/.test(release.tag_name ?? '');
+    const platform = /^(windows|macos|linux)-v/.exec(release.tag_name ?? '')?.[1];
     if (release.draft || (release.prerelease && !windowsRelease) || !versionParts(release.tag_name)) continue;
     for (const asset of Array.isArray(release.assets) ? release.assets : []) {
       const info = classifyAsset(asset.name);
-      if (!info || (info.os === 'windows') !== windowsRelease || compareVersions(info.version, release.tag_name) !== 0) continue;
+      if (!info || (platform && info.os !== platform) || (info.os === 'windows') !== windowsRelease || compareVersions(info.version, release.tag_name) !== 0) continue;
       const expected = `${RELEASES_URL}/download/${release.tag_name}/${asset.name}`;
       if (asset.browser_download_url !== expected || !Number.isSafeInteger(asset.size) || asset.size <= 0) continue;
       const key = [info.os, info.variant, info.arch, info.format].join(':');
@@ -50,6 +53,12 @@ export function buildCatalog(releases) {
 }
 
 export function selectBuild(builds, { os, arch, variant, format }) {
+  if (os === 'windows') {
+    // Prefer an installer within the newest release, never an obsolete EXE
+    // over a newer portable build, nor a build for another architecture.
+    return builds.filter(b => b.os === os && b.arch === arch && b.variant === variant && ['exe', 'zip'].includes(b.format))
+      .sort((a, b) => compareVersions(b.version, a.version) || Number(b.format === 'exe') - Number(a.format === 'exe'))[0] ?? null;
+  }
   return builds.find(b => b.os === os && b.arch === arch && b.variant === variant && b.format === format) ?? null;
 }
 
