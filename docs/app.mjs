@@ -1,5 +1,5 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260908-desktop13';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260908-desktop13';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260909-android1';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android1';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
@@ -79,7 +79,7 @@ function renderOptions() {
 }
 
 function renderResult() {
-  const supported = ['macos', 'linux', 'windows'].includes(state.os);
+  const supported = ['macos', 'linux', 'windows', 'android'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
   if (result.hidden && show) result.classList.add('reveal');
@@ -92,13 +92,14 @@ function renderResult() {
   $('download').hidden = !build; $('download').removeAttribute('href');
   $('catalog-status').textContent = catalogMessage;
   if (build) {
-    const cpu = state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
+    const cpu = state.os === 'android' ? 'Универсальный APK' : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
     $('result-title').textContent = `${build.version} · ${osNames[state.os]} · ${cpu}`;
     $('result-detail').textContent = state.os === 'windows'
       ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
         ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
-        : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.') : '';
-    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE' }[build.format] ?? build.format;
+        : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.')
+      : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + 'Android 6 и новее. Откройте APK на телефоне и разрешите установку этого приложения. Проверено на эмуляторе Android 16; проверка на реальных устройствах продолжается.' : '';
+    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE', apk: 'APK' }[build.format] ?? build.format;
     $('download').href = build.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
   } else {
     $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
@@ -146,7 +147,7 @@ async function fetchJSON(url, timeout, headers = {}) {
 }
 async function loadCatalog() {
   try {
-    const data = await fetchJSON('./catalog.json?v=20260908-desktop13', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260909-android1', 5000);
     builds = buildCatalog(data.releases);
     catalogChanged();
   } catch { /* The live request can recover. */ }

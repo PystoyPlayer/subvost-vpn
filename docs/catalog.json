@@ -1,6 +1,20 @@
 {
   "releases": [
     {
+      "tag_name": "android-v0.1.0-alpha.1",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-08T21:11:41Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-Android-0.1.0-alpha.1.apk",
+          "size": 158402925,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-alpha.1/SubVost-VPN-Android-0.1.0-alpha.1.apk",
+          "digest": "sha256:6a8c1aabb4a00d755fa871ea91c45a329f70ddaa8fd612609c71a019b46a69b1"
+        }
+      ]
+    },
+    {
       "tag_name": "v0.5.9",
       "draft": false,
       "prerelease": false,
