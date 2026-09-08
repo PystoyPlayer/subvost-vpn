@@ -71,6 +71,13 @@ test('latest is selected per platform, not globally', () => {
   assert.equal(catalog.length, 2);
   assert.equal(catalog.find(b => b.os === 'macos').version, '0.4.2');
 });
+test('an older cached API response cannot downgrade the published snapshot', () => {
+  const snapshot = [release('0.4.8', [mac('0.4.8')])];
+  const cached = [release('0.4.7', [mac('0.4.7')])];
+  assert.equal(buildCatalog([...snapshot, ...cached])[0].version, '0.4.8');
+  const fresh = [release('0.4.9', [mac('0.4.9')])];
+  assert.equal(buildCatalog([...snapshot, ...fresh])[0].version, '0.4.9');
+});
 test('draft, prerelease, wrong version and source archives never become downloads', () => {
   const catalog = buildCatalog([release('0.4.2', [mac('0.4.2')], { draft: true }), release('0.4.2', [mac('0.4.2')], { prerelease: true }), release('0.4.2', [mac('0.4.1'), 'source.zip', 'credentials.json'])]);
   assert.deepEqual(catalog, []);
