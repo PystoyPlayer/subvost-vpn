@@ -2,9 +2,9 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 3,
-  "version": "0.1.0-alpha.3",
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-alpha.3/SubVost-VPN-Android-0.1.0-alpha.3.apk",
-  "size": 158425670,
-  "sha256": "bdb7af80dcb778d1fae1ceee31a57427764ce8ac7ecbf68a72e22f1215250066"
+  "build": 4,
+  "version": "0.1.0-alpha.4",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-alpha.4/SubVost-VPN-Android-0.1.0-alpha.4.apk",
+  "size": 158425672,
+  "sha256": "d02d59f82d632501c1895dd4d535b1db70011d30effeb62e9eb9d532ea11471c"
 }
