@@ -4,14 +4,25 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.8</title>
-            <pubDate>Wed, 09 Sep 2026 00:17:08 +0300</pubDate>
+            <title>0.4.9</title>
+            <pubDate>Thu, 10 Sep 2026 18:07:00 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>24</sparkle:version>
-            <sparkle:shortVersionString>0.4.8</sparkle:shortVersionString>
+            <sparkle:version>25</sparkle:version>
+            <sparkle:shortVersionString>0.4.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.8
+            <description sparkle:format="markdown"><![CDATA[## Версия 0.4.9
+
+- Добавлены исключения сайтов для Xray TUN, sing-box и системного прокси: домены, поддомены, wildcard, IP и подсети. Правила сохраняются отдельно от подписки; доступны массовое добавление, редактирование и временное отключение.
+- Раздельное туннелирование вынесено в начало сетевых настроек, сайты и приложения разделены вкладками. Системный компонент находится внутри способа подключения. Перед применением правил к работающему VPN запрашивается подтверждение переподключения.
+- Тёмная тема включена по умолчанию; светлая и тёмная переключаются в настройках. Системные акцентные цвета сохранены, исправлен контраст светлой карты и выбранного региона.
+- Незанятая часть полосы трафика различима на светлом фоне в обычной и Legacy-версиях; поддержан системный повышенный контраст.
+- Доработаны области курсора переключателя «Мир / Европа» и сгруппированных точек; список локаций больше не показывает полосу прокрутки только из-за возврата после ⌘H, кроме системного режима постоянного отображения.
+- Адреса и ключ подписанных обновлений сохранены, номер сборки увеличен до 25.
+
+Исключения приложений по-прежнему требуют sing-box. Для SSH и соединений без распознаваемого домена может потребоваться IP/подсеть и доступный корпоративный DNS. Реальный корпоративный Git, физический Legacy Mac и редкий артефакт размытия не подтверждены этим выпуском. Сборки для Intel и Apple Silicon, обычная и Legacy. Без Developer ID и нотарификации Apple.
+
+## Версия 0.4.8
 
 - Исправлены подписи при подключении: статус «Подключение…», кнопка «Отменить».
 - Разделены области курсора карты и переключателя «Мир / Европа».
@@ -138,10 +149,10 @@ Intel и Apple Silicon, обычная и Legacy-сборки. Изменени�
 - Доработаны режимы «Мир» и «Европа» и выбор локаций.
 - Упрощён интерфейс подписки и настроек.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.8/SubVost-VPN-macOS-Legacy-arm64-0.4.8.dmg" length="33421114" type="application/octet-stream" sparkle:edSignature="mMSFZsfRKvBteB1ji8f7S8bPDF8XLRZbPlQClF3OtALFVGExIyr1oNfmKqvRN+PHT9GcBToaou+xXJjQ+Z/1Cg=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.9/SubVost-VPN-macOS-Legacy-arm64-0.4.9.dmg" length="33681173" type="application/octet-stream" sparkle:edSignature="vAigISUBX0rpt+yZ/8pcJ0ean/8Nzlh2AshALUZ6lXooEpA6ehBOAU71PGVPmamNd9fEG6LiJIdPqpVaeOtiDg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: JyuC14dvwW/5A6Pc3z64SPdXSVqABOrnkfrctBv/gRzbCHPF3T6gMaLHv+SW6Fb9mUTmjnLYVF7HbGAGf5CaAw==
-length: 20947
+edSignature: RdUhMxSO7Av9B47gX39n7vpkG/ai1xvJodGg7i1sHxziPryWaXYpd5H4Hw9bp4y92UIz2xmkVxiDYJHPK8lFAw==
+length: 23518
 -->
