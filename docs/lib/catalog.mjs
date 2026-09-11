@@ -30,8 +30,8 @@ export function compareVersions(a, b) {
 }
 
 export function classifyAsset(name) {
-  const android = /^SubVost-VPN-Android-(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)\.apk$/.exec(name);
-  if (android) return { os: 'android', variant: 'mobile', arch: 'universal', version: android[1], format: 'apk' };
+  const android = /^SubVost-VPN-Android-(Legacy-)?(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)\.apk$/.exec(name);
+  if (android) return { os: 'android', variant: android[1] ? 'legacy' : 'mobile', arch: 'universal', version: android[2], format: 'apk' };
   const setup = /^SubVost-VPN-(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)-Windows-(x64|arm64|x86)-Setup\.exe$/.exec(name);
   if (setup) return { os: 'windows', variant: 'desktop', arch: setup[2], version: setup[1], format: 'exe' };
   const windows = /^SubVost-VPN-Windows-(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)-win-(x64|arm64|x86)\.zip$/.exec(name);
