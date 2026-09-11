@@ -1,4 +1,4 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260909-android2';
+import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260911-legacy';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
 
 const $ = id => document.getElementById(id);
@@ -60,6 +60,8 @@ function renderOptions() {
   if (state.os === 'macos') {
     content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), processorHelp);
     if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
+  } else if (state.os === 'android') {
+    content.append(group('Версия Android', 'variant', [['mobile', 'Android 6 и новее'], ['legacy', 'Android 5.0–5.1 · Legacy']], 'Android ниже 5 не поддерживается. Обе APK включают ARM64, ARMv7 и x86_64.'));
   } else if (state.os === 'windows') {
     content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Для Windows 10 (1809 и новее) и Windows 11. Тип системы: Параметры → Система → О системе.'));
   } else if (state.os === 'linux') {
@@ -92,13 +94,13 @@ function renderResult() {
   $('download').hidden = !build; $('download').removeAttribute('href');
   $('catalog-status').textContent = catalogMessage;
   if (build) {
-    const cpu = state.os === 'android' ? 'Универсальный APK' : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
+    const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy APK' : 'Универсальный APK') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
     $('result-title').textContent = `${build.version} · ${osNames[state.os]} · ${cpu}`;
     $('result-detail').textContent = state.os === 'windows'
       ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
         ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
         : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.')
-      : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + 'Android 6 и новее. Откройте APK на телефоне и разрешите установку этого приложения. Проверено на эмуляторе Android 16; проверка на реальных устройствах продолжается.' : '';
+      : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + (state.variant === 'legacy' ? 'Для Android 5.0–5.1. ' : 'Для Android 6 и новее. ') + 'Откройте APK на телефоне. При обновлении не удаляйте приложение — подписка сохранится. Проверки на реальных устройствах продолжаются.' : '';
     const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE', apk: 'APK' }[build.format] ?? build.format;
     $('download').href = build.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
   } else {
@@ -148,7 +150,7 @@ async function fetchJSON(url, timeout, headers = {}) {
 async function loadCatalog() {
   let snapshot = [];
   try {
-    const data = await fetchJSON('./catalog.json?v=20260909-android2', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260911-legacy', 5000);
     builds = buildCatalog(data.releases);
     snapshot = data.releases;
     catalogChanged();

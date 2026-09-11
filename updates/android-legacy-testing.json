@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "platform": "android",
+  "channel": "testing",
+  "build": 6,
+  "version": "0.1.0-beta.2",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.2/SubVost-VPN-Android-Legacy-0.1.0-beta.2.apk",
+  "size": 160157265,
+  "sha256": "1fe50f260bbbe4454797c2a5ca848dca04cb68a0f60794a9dd61ec9ac7c6ed9a"
+}
