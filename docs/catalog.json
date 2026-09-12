@@ -1,6 +1,50 @@
 {
   "releases": [
     {
+      "tag_name": "windows-v0.1.0-preview.17",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-12T11:36:21Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-0.1.0-preview.17-Windows-arm64-Setup.exe",
+          "size": 50035582,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-0.1.0-preview.17-Windows-arm64-Setup.exe",
+          "digest": "sha256:2f078c381be6db92c0d8f63f1fee8d0dfa885e546ea950ef802f66a689bd0219"
+        },
+        {
+          "name": "SubVost-VPN-0.1.0-preview.17-Windows-x64-Setup.exe",
+          "size": 57579096,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-0.1.0-preview.17-Windows-x64-Setup.exe",
+          "digest": "sha256:ef44d6c7df67d6aade1604c4b9c6f06dbdf7c3ed6f725928ad6d4a8f4d0598c7"
+        },
+        {
+          "name": "SubVost-VPN-0.1.0-preview.17-Windows-x86-Setup.exe",
+          "size": 53153842,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-0.1.0-preview.17-Windows-x86-Setup.exe",
+          "digest": "sha256:2aa6416ea24b0acd1e3cec80abb33f1064a3e1757da69afa8f0169311fd50710"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.1.0-preview.17-win-arm64.zip",
+          "size": 74236345,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-Windows-0.1.0-preview.17-win-arm64.zip",
+          "digest": "sha256:4fca673ea9520bff6f40e84743aa6c233b14e0d1d18228af39b2b43903c078bd"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.1.0-preview.17-win-x64.zip",
+          "size": 80596668,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-Windows-0.1.0-preview.17-win-x64.zip",
+          "digest": "sha256:238ac757fd7ec8b1387ab9ea8be0d304f32fd7bf1b267307a562b4c68bf3a6e9"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.1.0-preview.17-win-x86.zip",
+          "size": 75693361,
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-Windows-0.1.0-preview.17-win-x86.zip",
+          "digest": "sha256:b45fb88a39accc163c6638ae310fba79aca5bb6052a37715f44ee541f25f31e9"
+        }
+      ]
+    },
+    {
       "tag_name": "windows-v0.1.0-preview.15",
       "draft": false,
       "prerelease": true,

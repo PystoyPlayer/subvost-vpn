@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "platform": "windows",
+  "channel": "testing",
+  "version": "0.1.0-preview.17",
+  "notes": {
+    "ru": "• Исправлена очистка собственного Wintun-адаптера при смене локации. Для подтверждённой коллизии — одна повторная попытка.\n• Отдельная вкладка «Обновления»: автопроверка, список изменений, проверка файла и установка с подтверждением.\n• Более удобные кнопки и список локаций, индикатор подключения и ошибка рядом с действием.\n• Компактные настройки сети, журнал без перекрытий, полоса трафика по ширине окна.\n• Установщики для x64, ARM64 и x86.\n\nПосле обновления установите VPN-компонент этой версии в разделе «Сеть».\nТестовая версия: 335 автоматических тестов пройдено; нативная проверка Windows у тестера ещё требуется.",
+    "en": "• Fixed owned Wintun adapter teardown on location changes; one retry for a confirmed adapter collision.\n• Updates tab: automatic checks, release notes, verified downloads and confirmed installation.\n• Clearer buttons, location list, connection progress and nearby error recovery.\n• Compact network settings, unobstructed logs and a full-width traffic bar.\n• x64, ARM64 and x86 installers.\n\nUpdate the VPN service in Network settings after upgrading.\nTest release: 335 automated tests passed; native Windows tester validation is still required."
+  },
+  "assets": [
+    {
+      "rid": "win-arm64",
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-0.1.0-preview.17-Windows-arm64-Setup.exe",
+      "size": 50035582,
+      "sha256": "2f078c381be6db92c0d8f63f1fee8d0dfa885e546ea950ef802f66a689bd0219"
+    },
+    {
+      "rid": "win-x64",
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-0.1.0-preview.17-Windows-x64-Setup.exe",
+      "size": 57579096,
+      "sha256": "ef44d6c7df67d6aade1604c4b9c6f06dbdf7c3ed6f725928ad6d4a8f4d0598c7"
+    },
+    {
+      "rid": "win-x86",
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.17/SubVost-VPN-0.1.0-preview.17-Windows-x86-Setup.exe",
+      "size": 53153842,
+      "sha256": "2aa6416ea24b0acd1e3cec80abb33f1064a3e1757da69afa8f0169311fd50710"
+    }
+  ]
+}
