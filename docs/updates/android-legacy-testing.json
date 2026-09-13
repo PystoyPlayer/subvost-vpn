@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 9,
-  "version": "0.1.0-beta.3",
+  "build": 14,
+  "version": "0.1.0-beta.5",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.3/SubVost-VPN-Android-Legacy-0.1.0-beta.3.apk",
-  "size": 160157271,
-  "sha256": "e671472fc614f76f60ec2d7e6cd6a59bc1885741ed6e7ae5987dbbccdd362ba9",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.5/SubVost-VPN-Android-Legacy-0.1.0-beta.5.apk",
+  "size": 160190427,
+  "sha256": "0f293866756a76ce5d3307262700b0be3de0dbf3744ff1a8ca578c52b7dd3c2a",
   "notes": {
-    "ru": "• Обновление подписки при подключённом VPN без остановки сессии.\n• Пинг и запросы подписки вне Android-туннеля; исправлен выбор физической сети.\n• Сайты и приложения без VPN объединены; быстрое управление — в разделе подключения.\n• Автоматическая проверка обновлений и список изменений на русском и английском.\n• Корректные статус локации и отключение после обновления каталога.",
-    "en": "• Refresh subscriptions while connected without stopping the session.\n• Direct latency and subscription requests; fixed physical-network selection.\n• Unified site/app exclusions; Quick Settings under Connection.\n• Automatic-update preference and RU/EN release notes.\n• Truthful active-location status and disconnect controls after catalog updates."
+    "ru": "Улучшены подключение, автовыбор и обход белых списков. Исправлены ошибки при долгом подключении и смене сети. Добавлена чёрная тема OLED (Настройки → Тема).",
+    "en": "Improved connections, automatic location selection and restricted-network recovery. Fixed slow-start and network-switching errors. Added a black OLED theme (Settings → Theme)."
   }
 }

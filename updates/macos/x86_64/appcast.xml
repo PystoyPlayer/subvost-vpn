@@ -4,29 +4,34 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.10</title>
-            <pubDate>Fri, 11 Sep 2026 19:33:57 +0300</pubDate>
+            <title>0.4.11</title>
+            <pubDate>Mon, 14 Sep 2026 02:35:21 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>26</sparkle:version>
-            <sparkle:shortVersionString>0.4.10</sparkle:shortVersionString>
+            <sparkle:version>38</sparkle:version>
+            <sparkle:shortVersionString>0.4.11</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.10 — macOS
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN — macOS 0.4.11
 
-- Исправлены светлая тема: фон боковой панели, читаемость кнопок и полоса трафика.
-- Welcome-экран: видимая стрелка во всех состояниях, hover и текстовый курсор, одинаковый фон при растягивании окна.
-- Сброс и сохранение теперь находятся внутри раздельного туннелирования; улучшена проверка правил сайтов.
-- Проверка работоспособности туннеля учитывает защищённый маршрут, чтобы прямое соединение не давало ложный успешный результат.
-- Убран QR-импорт на Mac: добавление подписки — по ссылке.
-- Системный DNS в TUN подключён к DNS из подписки. Серверы, правила и fallback подписки сохраняются; временная настройка удаляется при отключении и завершении системного компонента.
+- Улучшены подключение, автовыбор и автоматический обход белых списков.
+- Исправлены ошибки при долгом подключении и смене сети.
+- Сохранены ручной выбор страны, настройки и подписка.
 
-Сборки для macOS 13+ и Legacy для macOS 11–12, отдельно Apple Silicon и Intel. Номер сборки 26; сохранены существующие подписи обновлений и отдельные каналы Modern/Legacy.
+Перед установкой отключите VPN. Обход белых списков зависит от сети оператора; возможны краткие переподключения. Сборка пока без нотариализации Apple. Не отключайте системные средства защиты ради установки.
 
-Устранение конкретного сбоя YouTube/NXDOMAIN на сети пользователя ещё требует повторной проверки. На «Авто-выборе» замечены отдельные тайм-ауты DNS через fallback подписки; это ещё исследуется. Исключения приложений требуют sing-box. Legacy не проверена на физическом старом Mac. Приложение пока без Developer ID и нотариализации Apple.
+<details><summary>Лицензии и проверка файлов</summary>
+
+Контрольные суммы — в SHA256SUMS.txt. Лицензии включены в приложение. [Исходники открытых компонентов](https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.10); изменённый компонент приложен отдельно.
+
+</details>
+
+## English
+
+Improved connections, automatic location selection and restricted-network recovery. Fixed slow-start and network-switching errors. Your subscription and settings are preserved. Disconnect VPN before installing. This build is not yet notarized by Apple; do not disable system protections to install it.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.10/SubVost-VPN-macOS-x86_64-0.4.10.dmg" length="33165785" type="application/octet-stream" sparkle:edSignature="4CLVOrU/8+sYYp7Z3c7Z36UPS0jz4KTgntfMp2HPAaLj+iOlTWPOhWDl+eTGWjSiuhv+iZ0Fjy2f0Wz9hZatCA=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.11/SubVost-VPN-macOS-x86_64-0.4.11.dmg" length="33417477" type="application/octet-stream" sparkle:edSignature="s9kAFRqIvd85LQm82+WbMr9WEZ9fsu/he9qovRup6K/pGi/EIkpQiO1frE7DaUBdmf0UT4Nrop+TZkxrAqpHCA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: oCu0+wJeuOUIfQQE07Xi/zwc/0Ijp54D7dA3kkLFzlu4rwb1yjuoPqq+PE9HuUKpBYHN0P6QjDKbxAJy/DVwCA==
-length: 3337
+edSignature: WNiSiQSbsNraOUNyUQuJbVvUlHpQurNr6iNm6fPg+7VU9q68a6yx2lgj2aXhJamYGnGbuM9VMgw3CHIGkRJnBQ==
+length: 2745
 -->

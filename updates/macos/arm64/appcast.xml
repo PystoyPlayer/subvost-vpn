@@ -4,30 +4,35 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.10</title>
-            <pubDate>Fri, 11 Sep 2026 19:33:22 +0300</pubDate>
+            <title>0.4.11</title>
+            <pubDate>Mon, 14 Sep 2026 02:22:04 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>26</sparkle:version>
-            <sparkle:shortVersionString>0.4.10</sparkle:shortVersionString>
+            <sparkle:version>38</sparkle:version>
+            <sparkle:shortVersionString>0.4.11</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.10 — macOS
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN — macOS 0.4.11
 
-- Исправлены светлая тема: фон боковой панели, читаемость кнопок и полоса трафика.
-- Welcome-экран: видимая стрелка во всех состояниях, hover и текстовый курсор, одинаковый фон при растягивании окна.
-- Сброс и сохранение теперь находятся внутри раздельного туннелирования; улучшена проверка правил сайтов.
-- Проверка работоспособности туннеля учитывает защищённый маршрут, чтобы прямое соединение не давало ложный успешный результат.
-- Убран QR-импорт на Mac: добавление подписки — по ссылке.
-- Системный DNS в TUN подключён к DNS из подписки. Серверы, правила и fallback подписки сохраняются; временная настройка удаляется при отключении и завершении системного компонента.
+- Улучшены подключение, автовыбор и автоматический обход белых списков.
+- Исправлены ошибки при долгом подключении и смене сети.
+- Сохранены ручной выбор страны, настройки и подписка.
 
-Сборки для macOS 13+ и Legacy для macOS 11–12, отдельно Apple Silicon и Intel. Номер сборки 26; сохранены существующие подписи обновлений и отдельные каналы Modern/Legacy.
+Перед установкой отключите VPN. Обход белых списков зависит от сети оператора; возможны краткие переподключения. Сборка пока без нотариализации Apple. Не отключайте системные средства защиты ради установки.
 
-Устранение конкретного сбоя YouTube/NXDOMAIN на сети пользователя ещё требует повторной проверки. На «Авто-выборе» замечены отдельные тайм-ауты DNS через fallback подписки; это ещё исследуется. Исключения приложений требуют sing-box. Legacy не проверена на физическом старом Mac. Приложение пока без Developer ID и нотариализации Apple.
+<details><summary>Лицензии и проверка файлов</summary>
+
+Контрольные суммы — в SHA256SUMS.txt. Лицензии включены в приложение. [Исходники открытых компонентов](https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.10); изменённый компонент приложен отдельно.
+
+</details>
+
+## English
+
+Improved connections, automatic location selection and restricted-network recovery. Fixed slow-start and network-switching errors. Your subscription and settings are preserved. Disconnect VPN before installing. This build is not yet notarized by Apple; do not disable system protections to install it.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.10/SubVost-VPN-macOS-arm64-0.4.10.dmg" length="31137908" type="application/octet-stream" sparkle:edSignature="wRM5rHXTELmjYndFRJWhh390aoJqAxFTszFgIW4kmhdL8C4UobtH68L0+bemJsiQMvzSlkCyEWQMCFhp3fRZAw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.11/SubVost-VPN-macOS-arm64-0.4.11.dmg" length="30503769" type="application/octet-stream" sparkle:edSignature="owb7nXSg34tAm26Ep5Lj5IWSA5mpiYIVYxY9w/bKYv84P3V1VQ8ssEah8JZQXCJvJ2HwvSqFkAnt+8GN4bpQCg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: Lv4dizSFf832kNj5yPVloj8yR0wlyg6QyhBQVKq7PtAf5FwEWTNpHA72jIdhBidxRNK1C9HlV61gI0cYRtEJBw==
-length: 3415
+edSignature: J7gMvzlzRYF8qPGckHo5k8esQVLWIUiniWZkp84WY/YM3mTmo4LcGfGF4Qb+PkpOE5EPjFvhlMNQZ8lCZt1BDg==
+length: 2823
 -->
