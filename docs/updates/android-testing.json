@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 14,
-  "version": "0.1.0-beta.5",
+  "build": 15,
+  "version": "0.1.0-beta.6",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.5/SubVost-VPN-Android-0.1.0-beta.5.apk",
-  "size": 160157513,
-  "sha256": "b41e59af622ee16df27c7ac111bb5c516c4d831e9738363b023c6101b06b7f18",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.6/SubVost-VPN-Android-0.1.0-beta.6.apk",
+  "size": 160157503,
+  "sha256": "2c453cbc79928999782abb40cb0943aa398d674c5176a55c70f7a76fbb9a41da",
   "notes": {
-    "ru": "Улучшены подключение, автовыбор и обход белых списков. Исправлены ошибки при долгом подключении и смене сети. Добавлена чёрная тема OLED (Настройки → Тема).",
-    "en": "Improved connections, automatic location selection and restricted-network recovery. Fixed slow-start and network-switching errors. Added a black OLED theme (Settings → Theme)."
+    "ru": "Улучшено подключение и восстановление связи. Исправлена карточка автовыбора, добавлены иконки приложений и понятные сообщения об ошибках.",
+    "en": "Improved connection startup and recovery. Fixed the automatic-location card, added app icons and clearer error messages."
   }
 }

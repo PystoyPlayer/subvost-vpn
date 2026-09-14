@@ -2,29 +2,29 @@
   "schema": 1,
   "platform": "windows",
   "channel": "testing",
-  "version": "0.1.0-preview.20",
+  "version": "0.1.0-preview.21",
   "notes": {
-    "ru": "Улучшены подключение, автовыбор и обход белых списков. Исправлены ошибки при долгом подключении и смене сети.",
-    "en": "Improved connections, automatic location selection and restricted-network recovery. Fixed slow-start and network-switching errors."
+    "ru": "Уточнены подсказки при запуске приложения от администратора. Существующие настройки сохраняются.",
+    "en": "Clearer guidance when the app is launched as administrator. Existing settings are preserved."
   },
   "assets": [
     {
       "rid": "win-x64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.20/SubVost-VPN-0.1.0-preview.20-Windows-x64-Setup.exe",
-      "size": 57622885,
-      "sha256": "575a51f32c78b4b5e10d2ef4792d5036538089de7fad2062ac37799c3ae88121"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.21/SubVost-VPN-0.1.0-preview.21-Windows-x64-Setup.exe",
+      "size": 57610519,
+      "sha256": "37e80a366a6ae5498fc5a4e6de4dca25e5b143b5a4164c7a0c9c023f39f406ef"
     },
     {
       "rid": "win-arm64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.20/SubVost-VPN-0.1.0-preview.20-Windows-arm64-Setup.exe",
-      "size": 50061919,
-      "sha256": "1832719bbce80f344a7ec042dc181bfa12afc53108a2adfee1cd8e8947c87b79"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.21/SubVost-VPN-0.1.0-preview.21-Windows-arm64-Setup.exe",
+      "size": 50064244,
+      "sha256": "e897e1e696241ab548da677f4ca907ac3b1d1043f6e81e4d4922ed54b9bfe5e8"
     },
     {
       "rid": "win-x86",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.20/SubVost-VPN-0.1.0-preview.20-Windows-x86-Setup.exe",
-      "size": 53199487,
-      "sha256": "928b27b04f87e076b33506d19afa162a27bbb5523aa414ce86dc32f63f9ad71d"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.21/SubVost-VPN-0.1.0-preview.21-Windows-x86-Setup.exe",
+      "size": 53188780,
+      "sha256": "e9bdf187619380aa2d9b2fe0f60874c76e76ae0680c41f00b72b689d8878526b"
     }
   ]
 }
