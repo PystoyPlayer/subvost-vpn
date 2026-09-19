@@ -39,12 +39,28 @@ cat /var/lib/subvost-download-mirror/last-success.json
 systemctl list-timers subvost-download-mirror.timer
 ```
 
-The timer refreshes **release files and catalogue**, not executable scripts or
-website source. Website changes are deployed separately from this repository's
-`docs/`, excluding `catalog.json`, `tests/`, and `updates/`. Preserve the mirror's
-generated catalogue. This separation prevents an unreviewed upstream script
-from executing on the server. Legacy update feeds should not be rewritten to
-the mirror until a client release explicitly trusts its exact host/path.
+That timer refreshes **release files and catalogue**, not scripts or website UI.
+The independent `subvost-download-site.timer` checks `main` every ten minutes.
+It publishes a fixed allowlist of static `docs/` files only after the exact commit
+passes the `Site checks` push workflow. Each file is verified against its Git blob
+hash, then the complete snapshot is activated atomically. Failed checks, downloads,
+or checksums leave the current site intact. Three snapshots are retained.
+
+The root-owned `/opt/subvost-download-mirror/sync-site.py` runs as `subvost-site`,
+which can write only `/var/lib/subvost-download-site`. It never executes upstream
+scripts and does not need GitHub or SSH credentials. Nginx serves `current/` there
+for UI, while catalogue, manifest, file list and installers stay under the old
+root. Website publishing cannot overwrite those generated resources.
+
+GitHub Pages still publishes `main:/docs` independently as a working backup,
+without a forced redirect. `download.subvost.fun` is the canonical website; both
+sites default to GitHub installers and offer the same official files from Russia.
+Legacy update feeds remain unchanged until clients explicitly trust the mirror.
+
+Inspect publication with `journalctl -u subvost-download-site.service -n 50`,
+`readlink /var/lib/subvost-download-site/current`, and
+`systemctl list-timers subvost-download-site.timer`. Stop this timer before a
+manual rollback, then atomically repoint `current` to a retained revision.
 
 The RU node's existing conservative TCP/443 traffic guard remains unchanged.
 Direct downloads are not billed as VK CDN traffic, but consume RU node traffic
