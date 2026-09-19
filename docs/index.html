@@ -7,8 +7,8 @@
   <meta name="description" content="Скачать SubVost VPN: выберите операционную систему и процессор. Официальные сборки из GitHub Releases и инструкция по установке.">
   <title>Скачать SubVost VPN</title>
   <link rel="icon" href="brand.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=20260920-compact">
-  <script type="module" src="app.mjs?v=20260920-compact"></script>
+  <link rel="stylesheet" href="style.css?v=20260920-polish">
+  <script type="module" src="app.mjs?v=20260920-polish"></script>
 </head>
 <body>
   <a class="skip" href="#selector">К выбору файла</a>
@@ -38,18 +38,34 @@
         </div>
         <div id="download-actions" class="download-actions" hidden>
           <a id="download" class="primary" hidden>Скачать</a>
-          <div class="download-source">
-            <label for="download-source">Источник</label>
-            <select id="download-source" aria-describedby="source-status">
-              <option value="github">GitHub</option>
-              <option id="mirror-option" value="mirror" disabled>Сервер в РФ</option>
-            </select>
+        </div>
+      </div>
+      <div class="download-footer">
+        <a class="history" href="https://github.com/PystoyPlayer/subvost-vpn/releases">Все версии и изменения <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+        <div id="source-controls" class="download-source" hidden>
+          <span class="source-label" id="source-label">Источник</span>
+          <div id="source-picker" class="source-picker">
+            <button id="source-toggle" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="source-menu" aria-labelledby="source-label source-current">
+              <span id="source-current">GitHub</span>
+              <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg>
+            </button>
+            <div id="source-menu" class="source-menu" role="menu" aria-label="Источник загрузки" hidden>
+              <button type="button" role="menuitemradio" aria-checked="true" data-source="github" tabindex="-1" aria-label="GitHub" aria-describedby="github-description">
+                <img class="source-icon brand-symbol" src="icons/github.svg" alt="" width="20" height="20">
+                <span class="source-copy"><span class="source-name">GitHub</span><span class="source-description" id="github-description">Основной источник</span></span>
+                <svg class="source-check" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 3 3 7-7"/></svg>
+              </button>
+              <button type="button" role="menuitemradio" aria-checked="false" aria-disabled="true" data-source="mirror" tabindex="-1" aria-label="Сервер в РФ" aria-describedby="mirror-description">
+                <svg class="source-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M16 6.5h2M16 17.5h2"/></svg>
+                <span class="source-copy"><span class="source-name">Сервер в РФ</span><span class="source-description" id="mirror-description">Проверяем наличие файла…</span></span>
+                <svg class="source-check" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 3 3 7-7"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
       <p id="source-status" class="note"></p>
       <p id="catalog-status" class="note"></p>
-      <a class="history" href="https://github.com/PystoyPlayer/subvost-vpn/releases">Все версии и изменения <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
     </section>
     <section class="help" aria-label="Установка и помощь" hidden>
       <details id="processor-help"><summary>Как узнать процессор?</summary><p id="processor-description">Меню Apple → «Об этом Mac». Если указано «Чип Apple M…» — выбирайте Apple Silicon. Если «Процессор Intel» — Intel.</p></details>
