@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { downloadSource, MIRROR_ORIGIN } from '../lib/mirror.mjs';
+import { downloadSource, downloadOptions, MIRROR_ORIGIN } from '../lib/mirror.mjs';
 const build = { url: 'https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.12/SubVost-VPN-macOS-arm64-0.4.12.dmg', size: 123, sha256: 'a'.repeat(64) };
 const entry = { source: build.url, url: `${MIRROR_ORIGIN}/releases/v0.4.12/SubVost-VPN-macOS-arm64-0.4.12.dmg`, size: build.size, sha256: build.sha256 };
 test('verified exact asset uses mirror, preserving the original build', () => {
@@ -19,4 +19,14 @@ test('traversal and lookalike sources cannot become mirror paths', () => {
   for (const url of [build.url.replace('/v0.4.12/', '/../'), build.url.replace('github.com/', 'github.com.evil/'), build.url + '#x']) {
     assert.equal(downloadSource({ ...build, url }, { schema: 1, assets: [{ ...entry, source: url }] }).mirrored, false);
   }
+});
+test('GitHub stays primary before and after mirror metadata arrives', () => {
+  const pending = downloadOptions(build, null);
+  const ready = downloadOptions(build, { schema: 1, assets: [entry] });
+  assert.equal(pending.primary, build.url);
+  assert.equal(ready.primary, build.url);
+  assert.equal(ready.alternate, entry.url);
+  assert.equal(ready.verifiedMirror, true);
+  assert.equal(pending.alternate, `${MIRROR_ORIGIN}/files.html`);
+  assert.equal(pending.verifiedMirror, false);
 });

@@ -7,8 +7,8 @@
   <meta name="description" content="Скачать SubVost VPN: выберите операционную систему и процессор. Официальные сборки из GitHub Releases и инструкция по установке.">
   <title>Скачать SubVost VPN</title>
   <link rel="icon" href="brand.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=20260920-mirror">
-  <script type="module" src="app.mjs?v=20260920-mirror"></script>
+  <link rel="stylesheet" href="style.css?v=20260920-secondary">
+  <script type="module" src="app.mjs?v=20260920-secondary"></script>
 </head>
 <body>
   <a class="skip" href="#selector">К выбору файла</a>
@@ -32,10 +32,13 @@
     <p id="step-status" class="sr-only" role="status"></p>
     <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true" hidden>
       <h2 id="result-title"></h2>
+      <p id="result-meta"></p>
       <p id="result-detail"></p>
       <a id="download" class="primary" hidden>Скачать</a>
-      <p id="download-source" class="note"></p>
-      <a id="download-fallback" class="history" hidden></a>
+      <div id="alternate-download" class="alternate-download" hidden>
+        <p>GitHub загружает медленно?</p>
+        <a id="download-fallback" class="alternate-link" hidden></a>
+      </div>
       <p id="catalog-status" class="note"></p>
       <a class="history" href="https://github.com/PystoyPlayer/subvost-vpn/releases">Все версии и изменения <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
     </section>
