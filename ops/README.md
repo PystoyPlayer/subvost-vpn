@@ -4,7 +4,8 @@ Public entry point: https://download.subvost.fun/
 
 The Russian download site serves static copies. It does not
 proxy arbitrary URLs, subscriptions, or VPN traffic. GitHub Releases remains
-the canonical publisher and a visible fallback. Existing application update
+the canonical publisher and primary download; Russia is an explicit secondary
+option for slow GitHub downloads on both selectors. Existing application update
 feeds are deliberately unchanged: old Windows/Android clients restrict asset
 hosts to GitHub, and macOS appcasts are signed independently of their DMGs.
 

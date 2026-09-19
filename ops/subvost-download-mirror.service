@@ -18,4 +18,3 @@ ProtectHome=true
 PrivateTmp=true
 ReadWritePaths=/var/www/subvost-downloads /var/lib/subvost-download-mirror
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-
