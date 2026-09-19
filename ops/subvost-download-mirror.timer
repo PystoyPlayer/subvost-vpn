@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep the SubVost release mirror current
+
+[Timer]
+OnBootSec=15min
+OnUnitInactiveSec=1h
+RandomizedDelaySec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

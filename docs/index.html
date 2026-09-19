@@ -7,8 +7,8 @@
   <meta name="description" content="Скачать SubVost VPN: выберите операционную систему и процессор. Официальные сборки из GitHub Releases и инструкция по установке.">
   <title>Скачать SubVost VPN</title>
   <link rel="icon" href="brand.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=20260906-steps">
-  <script type="module" src="app.mjs?v=20260911-legacy"></script>
+  <link rel="stylesheet" href="style.css?v=20260920-mirror">
+  <script type="module" src="app.mjs?v=20260920-mirror"></script>
 </head>
 <body>
   <a class="skip" href="#selector">К выбору файла</a>
@@ -34,6 +34,8 @@
       <h2 id="result-title"></h2>
       <p id="result-detail"></p>
       <a id="download" class="primary" hidden>Скачать</a>
+      <p id="download-source" class="note"></p>
+      <a id="download-fallback" class="history" hidden></a>
       <p id="catalog-status" class="note"></p>
       <a class="history" href="https://github.com/PystoyPlayer/subvost-vpn/releases">Все версии и изменения <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
     </section>
@@ -53,7 +55,7 @@ open "/Applications/SubVost VPN.app"</code></pre>
       </div>
       <div id="linux-help" hidden><details><summary>Как выбрать пакет для Linux?</summary><p>DEB — Debian, Ubuntu и производные. RPM — Fedora и openSUSE, с проверкой зависимостей конкретной сборки. AppImage и переносимый архив удобны без пакетного менеджера, но не гарантируют работу на любой версии glibc или на Alpine/musl.</p><p>Совместимость с NixOS, системами без systemd, Flatpak/Snap и архитектурами проверяется отдельно. Не запускайте графическое приложение через sudo и не отключайте его sandbox ради запуска.</p></details></div>
     </section>
-    <noscript><p>Для селектора нужен JavaScript. Все файлы доступны напрямую на <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">GitHub Releases</a>.</p></noscript>
+    <noscript><p>Для селектора нужен JavaScript. Откройте <a href="https://download.subvost.fun/files.html">список файлов на российском зеркале</a> или <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">GitHub Releases</a>.</p></noscript>
   </main>
 </body>
 </html>
