@@ -1,0 +1,17 @@
+[Unit]
+Description=Publish tested SubVost download website snapshot
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=oneshot
+User=subvost-site
+Group=subvost-site
+ExecStart=/usr/bin/python3 /opt/subvost-download-mirror/sync-site.py
+TimeoutStartSec=10min
+MemoryMax=128M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/subvost-download-site
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
