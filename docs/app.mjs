@@ -1,12 +1,13 @@
 import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260911-legacy';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
-import { downloadOptions, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-secondary';
+import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
 let state = initialSelection();
 let builds = [], loading = true, catalogMessage = '';
 let mirrorManifest = null;
+let selectedSource = 'github';
 const processorHelp = $('processor-help');
 const result = document.querySelector('.result');
 const help = document.querySelector('.help');
@@ -89,35 +90,48 @@ function renderResult() {
   if (result.hidden && show) result.classList.add('reveal');
   else result.classList.remove('reveal');
   result.hidden = !show;
-  help.hidden = state.os === 'macos' ? !selectionComplete(state) : state.os !== 'linux' || !state.arch;
+  const build = selectionComplete(state) ? selectBuild(builds, state) : null;
+  const hasInstallHelp = Boolean(build && ['android', 'windows'].includes(state.os));
+  help.hidden = !(hasInstallHelp || (state.os === 'macos' && selectionComplete(state)) || (state.os === 'linux' && state.arch));
   $('mac-help').hidden = state.os !== 'macos' || !selectionComplete(state);
   $('linux-help').hidden = state.os !== 'linux';
-  const build = selectionComplete(state) ? selectBuild(builds, state) : null;
+  $('install-help').hidden = !hasInstallHelp;
   $('download').hidden = !build; $('download').removeAttribute('href');
-  $('alternate-download').hidden = !build;
-  $('download-fallback').hidden = true; $('download-fallback').removeAttribute('href');
+  $('download-actions').hidden = !build;
+  $('source-status').textContent = '';
   $('result-meta').textContent = '';
   $('catalog-status').textContent = catalogMessage;
   if (build) {
     const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy' : 'Универсальная сборка') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') + (state.variant === 'legacy' ? ' · Legacy' : '') : state.arch;
-    $('result-title').textContent = `${build.version} · ${osNames[state.os]}`;
+    $('result-title').textContent = `${osNames[state.os]} · ${build.version}`;
+    $('install-summary').textContent = build.prerelease ? 'Установка тестовой версии' : 'Как установить?';
     $('result-detail').textContent = state.os === 'windows'
       ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
         ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
         : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.')
       : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + (state.variant === 'legacy' ? 'Для Android 5.0–5.1. ' : 'Для Android 6 и новее. ') + 'Откройте APK на телефоне. При обновлении не удаляйте приложение — подписка сохранится. Проверки на реальных устройствах продолжаются.' : '';
     const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE', apk: 'APK' }[build.format] ?? build.format;
-    const options = downloadOptions(build, mirrorManifest);
+    const mirror = downloadSource(build, mirrorManifest);
+    const url = selectedDownload(build, mirrorManifest, selectedSource);
     $('result-meta').textContent = `${cpu} · ${format} · ${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ`;
-    $('download').href = options.primary; $('download').textContent = 'Скачать с GitHub'; $('download').prepend(svgIcon('download'));
-    $('download-fallback').href = options.alternate;
-    $('download-fallback').textContent = options.verifiedMirror ? 'Скачать с сервера в РФ' : 'Открыть зеркало в РФ';
-    $('download-fallback').hidden = false;
+    if (url) $('download').href = url;
+    $('download').setAttribute('aria-disabled', String(!url));
+    $('download').textContent = 'Скачать ' + format;
+    $('download').setAttribute('aria-label', `Скачать ${format} ${selectedSource === 'mirror' ? 'с сервера в РФ' : 'с GitHub'}`);
+    $('download').prepend(svgIcon('download'));
+    $('mirror-option').disabled = !mirror.mirrored;
+    $('download-source').value = selectedSource;
+    if (!url) $('source-status').textContent = 'Этой сборки на зеркале пока нет. Выберите GitHub или попробуйте позже.';
   } else {
     $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
     $('result-detail').textContent = '';
   }
 }
+
+$('download-source').addEventListener('change', event => {
+  selectedSource = event.target.value;
+  renderResult();
+});
 
 $('choices').addEventListener('submit', event => event.preventDefault());
 $('choices').addEventListener('change', event => {
@@ -197,4 +211,4 @@ async function loadCatalog() {
 loadCatalog();
 fetchJSON(`${MIRROR_ORIGIN}/manifest.json`, 5000)
   .then(manifest => { mirrorManifest = manifest; renderResult(); })
-  .catch(() => { /* GitHub stays primary; the mirror file list remains an option. */ });
+  .catch(() => { /* GitHub remains available; unverified mirror options stay disabled. */ });
