@@ -1,16 +1,22 @@
 import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260911-legacy';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
+import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
 let state = initialSelection();
 let builds = [], loading = true, catalogMessage = '';
 let mirrorManifest = null;
+let mirrorLoading = true;
 let selectedSource = 'github';
 const processorHelp = $('processor-help');
 const result = document.querySelector('.result');
 const help = document.querySelector('.help');
+const sourceMenu = createSourceMenu($('source-picker'), source => {
+  selectedSource = source;
+  renderResult();
+});
 
 function svgIcon(kind) {
   const paths = {
@@ -19,7 +25,6 @@ function svgIcon(kind) {
     windows: '<path d="M3 4h8v7H3zm10 0h8v7h-8zM3 13h8v7H3zm10 0h8v7h-8z"/>',
     download: '<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
     help: '<path d="m3 10 18-7-6 18-4-7-8-4Zm8 4L21 3"/>',
-    version: '<circle cx="12" cy="12" r="10"/><path d="m7 12 3 3 7-7"/>',
   };
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('class', 'icon');
@@ -46,7 +51,9 @@ function group(title, name, options, hint = '') {
   for (const [value, caption] of options) {
     const label = document.createElement('label'), input = document.createElement('input'), span = document.createElement('span');
     input.type = 'radio'; input.name = name; input.value = value; input.checked = state[name] === value;
-    span.textContent = caption; span.prepend(svgIcon(name === 'arch' ? 'cpu' : 'version')); label.append(input, span); segments.append(label);
+    span.textContent = caption;
+    if (name === 'arch') span.prepend(svgIcon('cpu'));
+    label.append(input, span); segments.append(label);
   }
   field.append(segments);
   if (hint) { const p = document.createElement('p'); p.className = 'hint'; p.textContent = hint; field.append(p); }
@@ -57,7 +64,6 @@ function renderOptions() {
   const content = $('platform-options');
   const active = document.activeElement;
   const restore = active instanceof HTMLInputElement && content.contains(active) ? { name: active.name, value: active.value } : null;
-  const previousSteps = new Set([...content.querySelectorAll('fieldset')].map(field => field.dataset.step));
   processorHelp.remove();
   content.replaceChildren();
   if (state.os === 'macos') {
@@ -76,7 +82,6 @@ function renderOptions() {
       content.append(group('Формат пакета', 'format', available.map(format => [format, captions[format] ?? format])));
     }
   }
-  for (const field of content.querySelectorAll('fieldset')) if (!previousSteps.has(field.dataset.step)) field.classList.add('reveal');
   if (restore) content.querySelector(`input[name="${restore.name}"][value="${restore.value}"]`)?.focus({ preventScroll: true });
   processorHelp.querySelector('p').textContent = state.os === 'linux'
     ? 'В Terminal выполните uname -m. x86_64 означает Intel / AMD, aarch64 — ARM64. armv7l и riscv64 требуют отдельной сборки: не выбирайте вместо них ARM64.'
@@ -87,8 +92,6 @@ function renderResult() {
   const supported = ['macos', 'linux', 'windows', 'android'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
-  if (result.hidden && show) result.classList.add('reveal');
-  else result.classList.remove('reveal');
   result.hidden = !show;
   const build = selectionComplete(state) ? selectBuild(builds, state) : null;
   const hasInstallHelp = Boolean(build && ['android', 'windows'].includes(state.os));
@@ -98,6 +101,8 @@ function renderResult() {
   $('install-help').hidden = !hasInstallHelp;
   $('download').hidden = !build; $('download').removeAttribute('href');
   $('download-actions').hidden = !build;
+  $('source-controls').hidden = !build;
+  if (!build) sourceMenu.close();
   $('source-status').textContent = '';
   $('result-meta').textContent = '';
   $('catalog-status').textContent = catalogMessage;
@@ -119,19 +124,13 @@ function renderResult() {
     $('download').textContent = 'Скачать ' + format;
     $('download').setAttribute('aria-label', `Скачать ${format} ${selectedSource === 'mirror' ? 'с сервера в РФ' : 'с GitHub'}`);
     $('download').prepend(svgIcon('download'));
-    $('mirror-option').disabled = !mirror.mirrored;
-    $('download-source').value = selectedSource;
+    sourceMenu.update(selectedSource, mirror.mirrored, mirrorLoading ? 'Проверяем наличие файла…' : mirrorManifest ? 'Этой сборки пока нет' : 'Не удалось проверить файл');
     if (!url) $('source-status').textContent = 'Этой сборки на зеркале пока нет. Выберите GitHub или попробуйте позже.';
   } else {
     $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
     $('result-detail').textContent = '';
   }
 }
-
-$('download-source').addEventListener('change', event => {
-  selectedSource = event.target.value;
-  renderResult();
-});
 
 $('choices').addEventListener('submit', event => event.preventDefault());
 $('choices').addEventListener('change', event => {
@@ -210,5 +209,6 @@ async function loadCatalog() {
 }
 loadCatalog();
 fetchJSON(`${MIRROR_ORIGIN}/manifest.json`, 5000)
-  .then(manifest => { mirrorManifest = manifest; renderResult(); })
-  .catch(() => { /* GitHub remains available; unverified mirror options stay disabled. */ });
+  .then(manifest => { mirrorManifest = manifest; })
+  .catch(() => { /* GitHub remains available; unverified mirror options stay disabled. */ })
+  .finally(() => { mirrorLoading = false; renderResult(); });
