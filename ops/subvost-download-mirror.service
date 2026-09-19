@@ -1,0 +1,21 @@
+[Unit]
+Description=Verify and mirror public SubVost application releases
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=subvost-mirror
+Group=subvost-mirror
+ExecStart=/usr/bin/python3 /opt/subvost-download-mirror/sync-mirror.py
+TimeoutStartSec=45min
+Nice=15
+IOSchedulingClass=idle
+MemoryMax=256M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/www/subvost-downloads /var/lib/subvost-download-mirror
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+

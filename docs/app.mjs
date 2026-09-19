@@ -1,10 +1,12 @@
 import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260911-legacy';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
+import { downloadSource, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920';
 
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
 let state = initialSelection();
 let builds = [], loading = true, catalogMessage = '';
+let mirrorManifest = null;
 const processorHelp = $('processor-help');
 const result = document.querySelector('.result');
 const help = document.querySelector('.help');
@@ -92,6 +94,8 @@ function renderResult() {
   $('linux-help').hidden = state.os !== 'linux';
   const build = selectionComplete(state) ? selectBuild(builds, state) : null;
   $('download').hidden = !build; $('download').removeAttribute('href');
+  $('download-fallback').hidden = true; $('download-fallback').removeAttribute('href');
+  $('download-source').textContent = '';
   $('catalog-status').textContent = catalogMessage;
   if (build) {
     const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy APK' : 'Универсальный APK') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') : state.arch;
@@ -102,7 +106,12 @@ function renderResult() {
         : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.')
       : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + (state.variant === 'legacy' ? 'Для Android 5.0–5.1. ' : 'Для Android 6 и новее. ') + 'Откройте APK на телефоне. При обновлении не удаляйте приложение — подписка сохранится. Проверки на реальных устройствах продолжаются.' : '';
     const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE', apk: 'APK' }[build.format] ?? build.format;
-    $('download').href = build.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
+    const source = downloadSource(build, mirrorManifest);
+    $('download').href = source.url; $('download').textContent = `Скачать ${format} (${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ)`; $('download').prepend(svgIcon('download'));
+    $('download-source').textContent = source.mirrored ? 'Загрузка с нашего сервера в России.' : 'Загрузка с GitHub. Если медленно, попробуйте зеркало.';
+    $('download-fallback').href = source.mirrored ? build.url : `${MIRROR_ORIGIN}/`;
+    $('download-fallback').textContent = source.mirrored ? 'Скачать с GitHub' : 'Открыть российское зеркало';
+    $('download-fallback').hidden = false;
   } else {
     $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
     $('result-detail').textContent = '';
@@ -150,11 +159,18 @@ async function fetchJSON(url, timeout, headers = {}) {
 async function loadCatalog() {
   let snapshot = [];
   try {
-    const data = await fetchJSON('./catalog.json?v=20260911-legacy', 5000);
+    const data = await fetchJSON('./catalog.json?v=20260920-mirror', 5000);
     builds = buildCatalog(data.releases);
     snapshot = data.releases;
     catalogChanged();
   } catch { /* The live request can recover. */ }
+  // The Russian page needs no GitHub API request. Its catalogue is published
+  // only after the corresponding release bytes have passed SHA-256 checks.
+  if (location.origin === MIRROR_ORIGIN && builds.length) {
+    loading = false;
+    catalogChanged();
+    return;
+  }
   try {
     let cache;
     try { cache = JSON.parse(localStorage.getItem('subvost-public-releases-v3')); } catch { /* storage may be disabled */ }
@@ -178,3 +194,6 @@ async function loadCatalog() {
   catalogChanged();
 }
 loadCatalog();
+fetchJSON(`${MIRROR_ORIGIN}/manifest.json`, 5000)
+  .then(manifest => { mirrorManifest = manifest; renderResult(); })
+  .catch(() => { /* Keep a working GitHub link and an explicit mirror alternative. */ });

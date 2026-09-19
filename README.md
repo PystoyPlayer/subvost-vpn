@@ -1,6 +1,6 @@
 # SubVost VPN
 
-[Скачать приложение](https://pystoyplayer.github.io/subvost-vpn/) · [История обновлений](https://github.com/PystoyPlayer/subvost-vpn/releases)
+[Скачать приложение](https://pystoyplayer.github.io/subvost-vpn/) · [Российское зеркало](https://download.subvost.fun/) · [История обновлений](https://github.com/PystoyPlayer/subvost-vpn/releases)
 
 На сайте выберите систему и процессор — он покажет подходящий файл.
 
