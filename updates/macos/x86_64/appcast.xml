@@ -4,30 +4,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.12</title>
-            <pubDate>Mon, 14 Sep 2026 17:19:24 +0300</pubDate>
+            <title>0.4.13</title>
+            <pubDate>Sun, 20 Sep 2026 15:22:55 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>39</sparkle:version>
-            <sparkle:shortVersionString>0.4.12</sparkle:shortVersionString>
+            <sparkle:version>44</sparkle:version>
+            <sparkle:shortVersionString>0.4.13</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[- Улучшена совместимость версии Legacy с Apple Silicon.
-- Уточнены сообщения об ошибках подключения и установки компонента VPN.
-- Упрощена отправка диагностики в поддержку.
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.13
 
-Обычная версия — macOS 13+. Legacy — macOS 11–12. Выберите файл для своего процессора. Настройки сохраняются.
+- Обновлён блок подключения над картой; статус, таймер и кнопка расположены компактнее.
+- Переключатель обхода белых списков перенесён к шкале трафика под картой.
+- Подтверждение смены режима: мягкая анимация по часовой стрелке вдоль полного контура окна, без схлопывания в точку. Учитывается «Уменьшение движения».
+- Обновление подписки сохраняет положение карты. Автовыбор показывает полученную страну и доступные подтверждённые сведения о городе.
+- Режим обхода выбирается явно; фоновая проверка не меняет его самопроизвольно.
+- Пока в обоих режимах используется общая квота подписки; интерфейс не показывает вымышленные отдельные лимиты.
 
-Приложение пока не нотарифицировано Apple; при первом запуске macOS может запросить подтверждение.
+macOS 13 и новее: обычная сборка. macOS 11–12: Legacy. Для каждой версии доступны Apple Silicon и Intel.
 
-<details><summary>Лицензии сторонних компонентов</summary>
-
-Архив sing-box содержит исходники стороннего компонента, предоставляемые по его лицензии. Для установки VPN он не нужен.
-
-</details>
+Приложение пока не нотарифицировано Apple. Не устанавливайте неизвестные сборки; сверяйте SHA256SUMS.txt. Дополнительный архив sing-box содержит исходники стороннего компонента по его лицензии, а не исходники приложения.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.12/SubVost-VPN-macOS-x86_64-0.4.12.dmg" length="33435972" type="application/octet-stream" sparkle:edSignature="t3JEOozgw7QEdHB4WjEdY2ZGYfZCbAyxAE4aOKyMOy9V+BoMBeulvmeDd4vu/UA2tH7eoc4Ss3TiOdgJuJbsBw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.13/SubVost-VPN-macOS-x86_64-0.4.13.dmg" length="32113864" type="application/octet-stream" sparkle:edSignature="AhIcfqvrVdfHD2U7/i2tiwrqRFMjovxhDvpbdIarHA6W3FF8the9iL4tlUCTZp0MejWGx7+phsRUreHZ5mCHCg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: Oynpebr+Yu7wHRYefUCRuH3dKH2OSwe2QIwXjiP8Osz83JniZykVS/Ax/wD5HXQkqW/fT0WswzTEYmFc3jJLBA==
-length: 2241
+edSignature: 4ATXQlq/XEOQxs0l3tz2GknF6eNEdxumhorYPqMJv5SgwDhYhOksXhafbVB/7aK92pGkyYbvBT9g5BIeMKNPBQ==
+length: 3015
 -->

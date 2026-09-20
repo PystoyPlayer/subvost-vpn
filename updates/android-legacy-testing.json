@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 15,
-  "version": "0.1.0-beta.6",
+  "build": 17,
+  "version": "0.1.0-beta.8",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.6/SubVost-VPN-Android-Legacy-0.1.0-beta.6.apk",
-  "size": 160190424,
-  "sha256": "f39a06876941d3d48fc3636d61902202957b4ce1f6e1e3f14def0de168205f26",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.8/SubVost-VPN-Android-Legacy-0.1.0-beta.8.apk",
+  "size": 160190420,
+  "sha256": "accf1c96a8da51f437adaa03722f2e15bcac7ff49d3728326d103a2c64c4ff22",
   "notes": {
-    "ru": "Улучшено подключение и восстановление связи. Исправлена карточка автовыбора, добавлены иконки приложений и понятные сообщения об ошибках.",
-    "en": "Improved connection startup and recovery. Fixed the automatic-location card, added app icons and clearer error messages."
+    "ru": "Переключатель обхода сохраняет выбранную локацию. Подпись общей квоты обновляется сразу; измеренный пинг заменяет город без изменения размера карточки.",
+    "en": "The allowlist-bypass switch preserves your selected location. Shared-quota labels update immediately; measured latency replaces the city without resizing the tile."
   }
 }
