@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 17,
-  "version": "0.1.0-beta.8",
+  "build": 18,
+  "version": "0.1.0-beta.9",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.8/SubVost-VPN-Android-Legacy-0.1.0-beta.8.apk",
-  "size": 160190420,
-  "sha256": "accf1c96a8da51f437adaa03722f2e15bcac7ff49d3728326d103a2c64c4ff22",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.9/SubVost-VPN-Android-Legacy-0.1.0-beta.9.apk",
+  "size": 160210909,
+  "sha256": "fa9914ec9fc651742cc460ac6a1386e06b552d616ed156734211e14f3560c0cf",
   "notes": {
-    "ru": "Переключатель обхода сохраняет выбранную локацию. Подпись общей квоты обновляется сразу; измеренный пинг заменяет город без изменения размера карточки.",
-    "en": "The allowlist-bypass switch preserves your selected location. Shared-quota labels update immediately; measured latency replaces the city without resizing the tile."
+    "ru": "Исправлена совместимость каталога. Добавлена история диагностики; настройки и переключатель автоподключения выровнены с iOS.",
+    "en": "Fixed catalog compatibility. Added diagnostic history and aligned settings and the launch switch with iOS."
   }
 }
