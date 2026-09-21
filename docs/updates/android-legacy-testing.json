@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 18,
-  "version": "0.1.0-beta.9",
+  "build": 19,
+  "version": "0.1.0-beta.10",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.9/SubVost-VPN-Android-Legacy-0.1.0-beta.9.apk",
-  "size": 160210909,
-  "sha256": "fa9914ec9fc651742cc460ac6a1386e06b552d616ed156734211e14f3560c0cf",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.10/SubVost-VPN-Android-Legacy-0.1.0-beta.10.apk",
+  "size": 160210903,
+  "sha256": "d3dfa7e7ddc15b3e586cd07bf8a209a12f1961c243598246659b41b4d268319c",
   "notes": {
-    "ru": "Исправлена совместимость каталога. Добавлена история диагностики; настройки и переключатель автоподключения выровнены с iOS.",
-    "en": "Fixed catalog compatibility. Added diagnostic history and aligned settings and the launch switch with iOS."
+    "ru": "Пинг скрывается через 10 секунд с отсчётом на иконке. Совет об обходе основан на проверке обычного VPN; смена сети не выключает обход.",
+    "en": "Ping results return to city labels after a 10-second countdown. Bypass advice checks the regular VPN; network changes preserve your choice."
   }
 }
