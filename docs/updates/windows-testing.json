@@ -2,29 +2,29 @@
   "schema": 1,
   "platform": "windows",
   "channel": "testing",
-  "version": "0.1.0-preview.25",
+  "version": "0.1.0-preview.26",
   "notes": {
-    "ru": "Исправлен обычный запуск при отключённом UAC без изменения настроек Windows. Обновление больше не требует отключать отсутствующий или остановленный VPN-компонент. Для активного VPN есть действие «Завершить VPN и установить», при ошибке — повторная проверка и диагностика. Установка компонента продолжается без лишних окон.",
-    "en": "Normal launch with UAC disabled no longer requires changing Windows settings. Updates no longer ask to disconnect a missing or stopped VPN component. Active VPN gets an explicit Stop VPN and install action; errors offer Retry check and Diagnostics. Component setup continues without duplicate dialogs."
+    "ru": "Фоновое обновление больше не регистрирует заново удалённое устройство. Сохранены автоматическая подготовка к установке обновления и понятные действия при недоступности системного компонента. Приложение не меняет настройки UAC.",
+    "en": "Background refresh no longer re-enrolls removed devices. Includes automatic update preparation and actionable system-component recovery. The app does not change UAC settings."
   },
   "assets": [
     {
       "rid": "win-x64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.25/SubVost-VPN-0.1.0-preview.25-Windows-x64-Setup.exe",
-      "size": 57683688,
-      "sha256": "630f6fd30d8c953129947dfba26432dfe75f3c2c376dbbba5e237dfc2311622f"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.26/SubVost-VPN-0.1.0-preview.26-Windows-x64-Setup.exe",
+      "size": 57622400,
+      "sha256": "61061851eb637931908d11b841632011cf87e78ac28ac11700014e9d1028ddab"
     },
     {
       "rid": "win-arm64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.25/SubVost-VPN-0.1.0-preview.25-Windows-arm64-Setup.exe",
-      "size": 50128359,
-      "sha256": "78ca02895bd1a2ac16e188c807cfaed2a780c33c6de567902938e5bbf3e9174b"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.26/SubVost-VPN-0.1.0-preview.26-Windows-arm64-Setup.exe",
+      "size": 50071799,
+      "sha256": "e2e976ac810a6d9f764831cf1f8960cf0d680b626c5cfd4ebe612920f34dd1ff"
     },
     {
       "rid": "win-x86",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.25/SubVost-VPN-0.1.0-preview.25-Windows-x86-Setup.exe",
-      "size": 53231752,
-      "sha256": "c586d960e8786cacdad20c240f3f26d0c0c4f0f22fecac7256ddf17da995e794"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.26/SubVost-VPN-0.1.0-preview.26-Windows-x86-Setup.exe",
+      "size": 53201192,
+      "sha256": "4156bd222545c437cf32779c3e7b650e97532d28c7afcdac4ae9010ddcc54382"
     }
   ]
 }
