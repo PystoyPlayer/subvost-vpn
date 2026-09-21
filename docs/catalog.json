@@ -1,6 +1,38 @@
 {
   "releases": [
     {
+      "tag_name": "v0.4.17",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-09-21T19:32:43Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-macOS-arm64-0.4.17.dmg",
+          "size": 30357814,
+          "digest": "sha256:e0e7b06739862fc70fa43177ba3343419b6740f62482f66381db57ff0fed16ae",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-arm64-0.4.17.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-Legacy-arm64-0.4.17.dmg",
+          "size": 28227396,
+          "digest": "sha256:eddfc9100a009eb0a4dfc83132226e94836d6c855a64a675ea3d2b071e131f8e",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-Legacy-arm64-0.4.17.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-Legacy-x86_64-0.4.17.dmg",
+          "size": 32074180,
+          "digest": "sha256:b742c7255f98733a7cea8f941768559e805202158429a339f584d6cc4df518fa",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-Legacy-x86_64-0.4.17.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-x86_64-0.4.17.dmg",
+          "size": 32735297,
+          "digest": "sha256:1777920306d07404a2dc889ad2eb274ceaaa89b9227b60f5a948c05b104c16de",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-x86_64-0.4.17.dmg"
+        }
+      ]
+    },
+    {
       "tag_name": "android-v0.1.0-beta.11",
       "draft": false,
       "prerelease": true,

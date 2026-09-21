@@ -4,32 +4,51 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.16</title>
-            <pubDate>Mon, 21 Sep 2026 18:17:45 +0300</pubDate>
+            <title>0.4.17</title>
+            <pubDate>Mon, 21 Sep 2026 22:25:12 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>47</sparkle:version>
-            <sparkle:shortVersionString>0.4.16</sparkle:shortVersionString>
+            <sparkle:version>48</sparkle:version>
+            <sparkle:shortVersionString>0.4.17</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.16 (47)
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.17 (48)
 
-- Срок подписки из данных аккаунта сохраняется между запусками и больше не затирается нулевым сроком из ответа загрузки конфигураций.
-- Перед включением обхода проверяется действующее обычное VPN-подключение. Совет, что обход не нужен, появляется только после успешной проверки; можно продолжить по своему выбору. Wi-Fi и модем сами по себе не вызывают предупреждение.
-- Улучшено восстановление DNS через защищённый VPN-маршрут; настройки DNS провайдера и явный запрет резервных резолверов сохраняются.
-- Обновлённая установка системного компонента не блокируется ошибкой прежней версии. Повторные запросы пароля после ошибки текущей версии по-прежнему ограничены.
-- Доработаны размытие списка и настроек, наведение на подключение, общие переключатели и нативный переключатель Мир / Европа.
+- Обычное обновление подписки больше не регистрирует HWID заново. Удалённое устройство не восстанавливает доступ фоновым обновлением; повторная регистрация возможна только через явное добавление подписки с проверкой лимита устройств.
 
-Modern — macOS 13+, Legacy — macOS 11–12. ARM64 — Apple Silicon; x86_64 — Intel.
-Сборки подписаны ad-hoc, не нотарифицированы Apple. Sparkle-обновления подписаны прежним ключом проекта.
-Проверены автоматические регрессии, состав пакетов и подписи; это не гарантия работы на каждом провайдере и устройстве.
+- Проверка обычного маршрута перед включением обхода теперь работает и при
+  отключённом VPN. Если выбранная локация доступна обычным способом, приложение
+  предлагает оставить обход выключенным.
+- Проверку можно отменить. Она не устанавливает системный компонент, не меняет
+  системный VPN и не выбирает другую локацию. Смена сети, локации или переход
+  компьютера в сон отменяют устаревший результат.
+- Исправлена подпись обновления: «Напомнить позже».
 
-Изменений стороннего ядра нет. Соответствующий исходный код:
-[sing-box 1.13.21-subvost.app4](https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.11/sing-box-1.13.21-subvost.app4-source.tar.gz).
+Неудачная проверка не объявляется доказательством блокировки. Системный компонент
+остаётся 0.4.16-app8 (Legacy: 0.4.16-legacy-app8); его повторная установка только
+ради этой версии не требуется.
+
+Сборки Modern и Legacy для Apple Silicon и Intel. Приложение подписано ad-hoc,
+не notarized. Закреплённые ядра не изменялись; опубликованные исходники изменений
+к ним остаются доступны в предыдущих релизах.
+
+## English
+
+- Background/manual refresh no longer registers a removed HWID again. Only
+  explicit subscription import can enroll a device, subject to the device limit.
+- Before enabling bypass, macOS can now verify the selected regular route while
+  disconnected. A successful authenticated route proof displays the same advice
+  as an already connected regular VPN.
+- The check is cancellable and does not install the helper, change system routes
+  or switch locations. Stale results are discarded after selection/network/sleep
+  changes. Failed checks do not claim that filtering is proven.
+- Corrected the Russian “Remind me later” action.
+
+The app8 system helper and pinned engines are unchanged.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.16/SubVost-VPN-macOS-arm64-0.4.16.dmg" length="30328693" type="application/octet-stream" sparkle:edSignature="HZY4OWMcvsJ46BeNFiBhfIpzrGBcCDNKq6BQWjLoQvlnRs/jLiOHeC7Ir49n1gNXtHqB1xWluekRXj15y0HIBQ=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-arm64-0.4.17.dmg" length="30357814" type="application/octet-stream" sparkle:edSignature="4nZgMeU8GFuRhHXitvdlp/9e4DybNsPHunn07zS7/fokmphJnTDdj7HdCIeJWP3cpN6FN22CAL5mfzOCDfUdDg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: gqQtGjAkenqloPJIfQifMaXtFAJO/B+hyiv6yjFOsVeGUKcxB2inWxEOM1XzlmJuJBa6FMrMZTfc8rVZQSARCQ==
-length: 3573
+edSignature: Jgs2AEk5AIEi8ikfp+ybnSZKPmxWFoC+mp/EWFPWyXqSb2P8YdGHxfWpaCDa9rYfOQTu6hc1v0HcmRHlx6ZECw==
+length: 4012
 -->
