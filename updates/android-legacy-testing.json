@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 19,
-  "version": "0.1.0-beta.10",
+  "build": 20,
+  "version": "0.1.0-beta.11",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.10/SubVost-VPN-Android-Legacy-0.1.0-beta.10.apk",
-  "size": 160210903,
-  "sha256": "d3dfa7e7ddc15b3e586cd07bf8a209a12f1961c243598246659b41b4d268319c",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.11/SubVost-VPN-Android-Legacy-0.1.0-beta.11.apk",
+  "size": 160210912,
+  "sha256": "3acb9f05bf9f16fbfe251f39cd8632cf949c74558ecbe586b8848d9de980e8ab",
   "notes": {
-    "ru": "Пинг скрывается через 10 секунд с отсчётом на иконке. Совет об обходе основан на проверке обычного VPN; смена сети не выключает обход.",
-    "en": "Ping results return to city labels after a 10-second countdown. Bypass advice checks the regular VPN; network changes preserve your choice."
+    "ru": "Фоновое обновление подписки больше не регистрирует заново устройство, удалённое в боте. Недоступность API не считается отзывом доступа; срок и трафик обновляются с сервера.",
+    "en": "Background subscription refresh no longer re-enrolls a device removed in the bot. API unavailability is not treated as revocation; expiry and usage refresh from the server."
   }
 }

@@ -1,6 +1,26 @@
 {
   "releases": [
     {
+      "tag_name": "android-v0.1.0-beta.11",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-21T19:24:56Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-Android-0.1.0-beta.11.apk",
+          "size": 160161601,
+          "digest": "sha256:f35811ea37476039e5a5a07d306e52159583153ef161ee527ab79cbbdbdceabe",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.11/SubVost-VPN-Android-0.1.0-beta.11.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-Legacy-0.1.0-beta.11.apk",
+          "size": 160210912,
+          "digest": "sha256:3acb9f05bf9f16fbfe251f39cd8632cf949c74558ecbe586b8848d9de980e8ab",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.11/SubVost-VPN-Android-Legacy-0.1.0-beta.11.apk"
+        }
+      ]
+    },
+    {
       "tag_name": "windows-v0.1.0-preview.25",
       "draft": false,
       "prerelease": true,
