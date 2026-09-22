@@ -4,51 +4,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.17</title>
-            <pubDate>Mon, 21 Sep 2026 22:25:13 +0300</pubDate>
+            <title>0.4.18</title>
+            <pubDate>Tue, 22 Sep 2026 19:56:07 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>48</sparkle:version>
-            <sparkle:shortVersionString>0.4.17</sparkle:shortVersionString>
+            <sparkle:version>49</sparkle:version>
+            <sparkle:shortVersionString>0.4.18</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.17 (48)
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.18
 
-- Обычное обновление подписки больше не регистрирует HWID заново. Удалённое устройство не восстанавливает доступ фоновым обновлением; повторная регистрация возможна только через явное добавление подписки с проверкой лимита устройств.
+- Исправлен выбор сервера внутри локации: проверка соединения и DNS используют реально выбранный маршрут.
+- При недоступности первого сервера приложение проверяет до трёх разрешённых серверов той же страны, без изменения режима подключения.
+- Устранён ложный отказ при запуске туннеля, когда проверки транспорта и VPN завершаются в разных циклах.
+- Авто-выбор сообщает об отсутствии допущенных маршрутов и предлагает выбрать страну вручную.
+- Исправлено размытие строк в настройках и прокрутка списков.
+- Актуальная версия больше не отображается как ошибка обновления.
 
-- Проверка обычного маршрута перед включением обхода теперь работает и при
-  отключённом VPN. Если выбранная локация доступна обычным способом, приложение
-  предлагает оставить обход выключенным.
-- Проверку можно отменить. Она не устанавливает системный компонент, не меняет
-  системный VPN и не выбирает другую локацию. Смена сети, локации или переход
-  компьютера в сон отменяют устаревший результат.
-- Исправлена подпись обновления: «Напомнить позже».
-
-Неудачная проверка не объявляется доказательством блокировки. Системный компонент
-остаётся 0.4.16-app8 (Legacy: 0.4.16-legacy-app8); его повторная установка только
-ради этой версии не требуется.
-
-Сборки Modern и Legacy для Apple Silicon и Intel. Приложение подписано ad-hoc,
-не notarized. Закреплённые ядра не изменялись; опубликованные исходники изменений
-к ним остаются доступны в предыдущих релизах.
-
-## English
-
-- Background/manual refresh no longer registers a removed HWID again. Only
-  explicit subscription import can enroll a device, subject to the device limit.
-- Before enabling bypass, macOS can now verify the selected regular route while
-  disconnected. A successful authenticated route proof displays the same advice
-  as an already connected regular VPN.
-- The check is cancellable and does not install the helper, change system routes
-  or switch locations. Stale results are discarded after selection/network/sleep
-  changes. Failed checks do not claim that filtering is proven.
-- Corrected the Russian “Remind me later” action.
-
-The app8 system helper and pinned engines are unchanged.
+Есть сборки Modern (macOS 13+) и Legacy (macOS 11+) для Apple Silicon и Intel.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-Legacy-arm64-0.4.17.dmg" length="28227396" type="application/octet-stream" sparkle:edSignature="K3mS8L8jwAKs5fo8sI4DrM5ugG4j39Z+ttYS2Ym1kW6vnMmyX3lrvpOPu7ebS9nyVx7fMwCV+7mKzH0LFBTGDw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.18/SubVost-VPN-macOS-Legacy-arm64-0.4.18.dmg" length="28295833" type="application/octet-stream" sparkle:edSignature="+yGasL9ZJbp/f27pkG19bDduNjV5YJWzUEibCVjhiI6Zdtsm5300Pqa3CCCFTRSHp69S79xgXku1xIM0iqOTBw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: G4bnMhh0G7GS5zvjuRbNEr66t5pCNED75/+BDt+/AtCTNNZszpmYJ4uMPganmKJyB7xVItJkdZBgty8NhrZKCQ==
-length: 4019
+edSignature: AppwY0r1BKIOiRBL7Exqo7gwYquSf9HnRfIr0eSB5wW/wOVogOVVmQwH5MpxDYfBgV1nvNE9gIsnuEsFxe1mDg==
+length: 2517
 -->

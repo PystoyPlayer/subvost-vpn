@@ -4,50 +4,27 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.17</title>
-            <pubDate>Mon, 21 Sep 2026 22:25:12 +0300</pubDate>
+            <title>0.4.18</title>
+            <pubDate>Tue, 22 Sep 2026 19:56:06 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>48</sparkle:version>
-            <sparkle:shortVersionString>0.4.17</sparkle:shortVersionString>
+            <sparkle:version>49</sparkle:version>
+            <sparkle:shortVersionString>0.4.18</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.17 (48)
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.18
 
-- Обычное обновление подписки больше не регистрирует HWID заново. Удалённое устройство не восстанавливает доступ фоновым обновлением; повторная регистрация возможна только через явное добавление подписки с проверкой лимита устройств.
+- Исправлен выбор сервера внутри локации: проверка соединения и DNS используют реально выбранный маршрут.
+- При недоступности первого сервера приложение проверяет до трёх разрешённых серверов той же страны, без изменения режима подключения.
+- Устранён ложный отказ при запуске туннеля, когда проверки транспорта и VPN завершаются в разных циклах.
+- Авто-выбор сообщает об отсутствии допущенных маршрутов и предлагает выбрать страну вручную.
+- Исправлено размытие строк в настройках и прокрутка списков.
+- Актуальная версия больше не отображается как ошибка обновления.
 
-- Проверка обычного маршрута перед включением обхода теперь работает и при
-  отключённом VPN. Если выбранная локация доступна обычным способом, приложение
-  предлагает оставить обход выключенным.
-- Проверку можно отменить. Она не устанавливает системный компонент, не меняет
-  системный VPN и не выбирает другую локацию. Смена сети, локации или переход
-  компьютера в сон отменяют устаревший результат.
-- Исправлена подпись обновления: «Напомнить позже».
-
-Неудачная проверка не объявляется доказательством блокировки. Системный компонент
-остаётся 0.4.16-app8 (Legacy: 0.4.16-legacy-app8); его повторная установка только
-ради этой версии не требуется.
-
-Сборки Modern и Legacy для Apple Silicon и Intel. Приложение подписано ad-hoc,
-не notarized. Закреплённые ядра не изменялись; опубликованные исходники изменений
-к ним остаются доступны в предыдущих релизах.
-
-## English
-
-- Background/manual refresh no longer registers a removed HWID again. Only
-  explicit subscription import can enroll a device, subject to the device limit.
-- Before enabling bypass, macOS can now verify the selected regular route while
-  disconnected. A successful authenticated route proof displays the same advice
-  as an already connected regular VPN.
-- The check is cancellable and does not install the helper, change system routes
-  or switch locations. Stale results are discarded after selection/network/sleep
-  changes. Failed checks do not claim that filtering is proven.
-- Corrected the Russian “Remind me later” action.
-
-The app8 system helper and pinned engines are unchanged.
+Есть сборки Modern (macOS 13+) и Legacy (macOS 11+) для Apple Silicon и Intel.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.17/SubVost-VPN-macOS-x86_64-0.4.17.dmg" length="32735297" type="application/octet-stream" sparkle:edSignature="vJf/0KRTx/TfVk/ws7TRGPmGopPB1oh0wTfl5JYZd0ml4B6ShMquZidgiCqlhsQnyfz+20jAn6Lxkb8tQhziBg=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.18/SubVost-VPN-macOS-x86_64-0.4.18.dmg" length="32828612" type="application/octet-stream" sparkle:edSignature="AF0J6I9USeoYRywXsWhaRb0yQ/tqY/TYDO0LqFadB7wXRBA6jxkorUtyKhuQrqulh2xy92O44J+EHsFthqduAw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: OEzKuzwwRmZpXiHBGBxT3bNR5+bfDgiw5t5qxOW2smnYhg69pVnlH7bOqNWlF9wa02o6kucU3Jesbe1GEeHACw==
-length: 3934
+edSignature: L0zrpLkDSVdOwiRDJkg0jcFzYuYwwgUVVpfZKBR9CbNHWJV0m+U7o0DrEPb144NGmIwaW8cnYFQ5SVHn5XwMCQ==
+length: 2432
 -->
