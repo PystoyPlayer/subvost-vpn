@@ -1,6 +1,58 @@
 {
   "releases": [
     {
+      "tag_name": "v0.4.19",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-09-24T13:48:08Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-macOS-arm64-0.4.19.dmg",
+          "size": 30399901,
+          "digest": "sha256:9ed7f2c5e2732520f2b789ffe5cd5241ff0cabd675fa3c85ceaf35992d5e95c5",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.19/SubVost-VPN-macOS-arm64-0.4.19.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-Legacy-arm64-0.4.19.dmg",
+          "size": 28342912,
+          "digest": "sha256:072afa83865589a0d32b65260f1db85ea7b8c2900e033c2e2a39326f18c30019",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.19/SubVost-VPN-macOS-Legacy-arm64-0.4.19.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-Legacy-x86_64-0.4.19.dmg",
+          "size": 32210207,
+          "digest": "sha256:d2360ee371e4ec0a1226e45641873e97d1cb7d75269eec385c5fb4976b20f837",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.19/SubVost-VPN-macOS-Legacy-x86_64-0.4.19.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-x86_64-0.4.19.dmg",
+          "size": 32871618,
+          "digest": "sha256:26868173c65dec9b70db4e25d5174158855aff3da8ab9d87a9254ccbe419c8f1",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.19/SubVost-VPN-macOS-x86_64-0.4.19.dmg"
+        }
+      ]
+    },
+    {
+      "tag_name": "android-v0.1.0-beta.12",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-24T13:48:41Z",
+      "assets": [
+        {
+          "name": "SubVost-VPN-Android-0.1.0-beta.12.apk",
+          "size": 160176449,
+          "digest": "sha256:28c9d22b959f987c621bca36aa0cfd2336dee05d43a01158e5c0bf59932ae47b",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.12/SubVost-VPN-Android-0.1.0-beta.12.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-Legacy-0.1.0-beta.12.apk",
+          "size": 160209370,
+          "digest": "sha256:5fdc0725d311e873a1860dd970342917db6c86bbefd6f88fef5437b50ddff870",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.12/SubVost-VPN-Android-Legacy-0.1.0-beta.12.apk"
+        }
+      ]
+    },
+    {
       "tag_name": "windows-v0.1.0-preview.28",
       "draft": false,
       "prerelease": true,

@@ -4,28 +4,25 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.18</title>
-            <pubDate>Tue, 22 Sep 2026 19:56:06 +0300</pubDate>
+            <title>0.4.19</title>
+            <pubDate>Thu, 24 Sep 2026 16:45:48 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>49</sparkle:version>
-            <sparkle:shortVersionString>0.4.18</sparkle:shortVersionString>
+            <sparkle:version>50</sparkle:version>
+            <sparkle:shortVersionString>0.4.19</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.18
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.19 (50)
 
-- Исправлен выбор сервера внутри локации: проверка соединения и DNS используют реально выбранный маршрут.
-- При недоступности первого сервера приложение проверяет до трёх разрешённых серверов той же страны, без изменения режима подключения.
-- Устранён ложный отказ при запуске туннеля, когда проверки транспорта и VPN завершаются в разных циклах.
-- Авто-выбор сообщает об отсутствии допущенных маршрутов и предлагает выбрать страну вручную.
-- Исправлено размытие строк в настройках и прокрутка списков.
-- Актуальная версия больше не отображается как ошибка обновления.
+- Обновление подписки явно показывает прогресс, успешное завершение или ошибку. Недоступность сервера не выдаётся за успешное обновление.
+- Сохранены три режима маршрутизации приложений и отдельные правила сайтов.
+- Сборки для Apple Silicon и Intel, включая Legacy для macOS 11–12.
 
-Есть сборки Modern (macOS 13+) и Legacy (macOS 11+) для Apple Silicon и Intel.
+Проверены офлайн-тесты, сборка, версии, локализации и целостность пакетов. Реальные звонки FaceTime и подключение из ограниченной сети в этой проверке не воспроизводились.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.18/SubVost-VPN-macOS-arm64-0.4.18.dmg" length="30359960" type="application/octet-stream" sparkle:edSignature="qAveC6rytEYgidxEPwE9AI0lvmoTI1MSQ4OmXkJhMPDRzzXlAvpyZXc/Lh7IumZBepAU3Ux5OfQsbdUQlWh8BQ=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.19/SubVost-VPN-macOS-arm64-0.4.19.dmg" length="30399901" type="application/octet-stream" sparkle:edSignature="ea2goMLP/XGZ9UlbG2OIbgBkAM3LBvl4V7xSM5mOTcZYuMuP1vZHGeGuX2KbY25XR0lhRAgGOuTzIzCfybNnDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: ZocGYsE7LYHJzLEFkLB4c2DsHaCKXqVxuUvKCQ6snGnuunzakf0M3ilox8ANtFkNMfz1iiDrGUZTbkakheE4Bg==
-length: 2510
+edSignature: ga6Krnwu3ltz4eTJR5QROtVT+rTA5/UBF336tXN0tV21xAHIOCgLzeDjWV0beyWERYoVpsivo5Bi4DuDoLI8Dw==
+length: 2177
 -->

@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 20,
-  "version": "0.1.0-beta.11",
+  "build": 21,
+  "version": "0.1.0-beta.12",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.11/SubVost-VPN-Android-Legacy-0.1.0-beta.11.apk",
-  "size": 160210912,
-  "sha256": "3acb9f05bf9f16fbfe251f39cd8632cf949c74558ecbe586b8848d9de980e8ab",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.12/SubVost-VPN-Android-Legacy-0.1.0-beta.12.apk",
+  "size": 160209370,
+  "sha256": "5fdc0725d311e873a1860dd970342917db6c86bbefd6f88fef5437b50ddff870",
   "notes": {
-    "ru": "Фоновое обновление подписки больше не регистрирует заново устройство, удалённое в боте. Недоступность API не считается отзывом доступа; срок и трафик обновляются с сервера.",
-    "en": "Background subscription refresh no longer re-enrolls a device removed in the bot. API unavailability is not treated as revocation; expiry and usage refresh from the server."
+    "ru": "Три режима маршрутизации приложений с сохранением списка. Выбор сетки или списка локаций в настройках. Улучшены состояния подключения и защита от повторных нажатий.",
+    "en": "Three application routing modes with a preserved selection. Choose location grid or list in settings. Improved connection feedback and repeated-tap protection."
   }
 }
