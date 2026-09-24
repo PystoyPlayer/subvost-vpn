@@ -89,6 +89,7 @@ function renderOptions() {
 }
 
 function renderResult() {
+  result.classList.toggle('ios-result', state.os === 'ios');
   const supported = ['macos', 'linux', 'windows', 'android'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));

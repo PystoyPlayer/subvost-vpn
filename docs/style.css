@@ -46,6 +46,7 @@ label input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px
 
 /* One primary action, with source and history on a quieter shared baseline. */
 .result{padding:24px 24px 10px;text-align:left;border:1px solid var(--line);border-radius:16px;background:var(--surface);margin-top:24px}
+.result.ios-result{padding-bottom:24px}
 .download-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px}
 .result h2{font-size:22px;line-height:1.35;letter-spacing:-.015em;font-weight:600;margin:0 0 7px;overflow-wrap:anywhere}
 .result #result-meta{font-size:14px;line-height:1.6;margin:0;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -120,6 +121,7 @@ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
   .segments{flex-direction:column}label span{min-height:48px}
   #platform-options fieldset[data-step="format"] .segments{grid-template-columns:1fr}
   .result{padding:20px 20px 10px}.download-row{grid-template-columns:1fr;gap:18px}
+  .result.ios-result{padding-bottom:20px}
   .result h2{font-size:21px}.download-actions{min-width:0}
   .download-footer{flex-wrap:wrap;gap:0 12px;margin-top:14px}
   .download-source{position:relative}.source-picker{position:static}
