@@ -2,29 +2,29 @@
   "schema": 1,
   "platform": "windows",
   "channel": "testing",
-  "version": "0.1.0-preview.27",
+  "version": "0.1.0-preview.28",
   "notes": {
-    "ru": "Исправлена блокировка подключения из-за резервного маршрута виртуального адаптера. Системный компонент больше не создаёт второй ярлык в «Пуске» и удаляет свой старый дубликат при обновлении. Диагностика показывает параметры конфликтующего маршрута без личных данных.",
-    "en": "Fixes connection rejection caused by a lower-priority virtual adapter default route. Service setup no longer creates a second Start menu shortcut and removes its own legacy duplicate on upgrade. Conflict diagnostics include privacy-safe route details."
+    "ru": "Три режима маршрутизации приложений: все, выбранные напрямую, только выбранные через туннель. Список сохраняется при смене режима. Улучшены обработка сна и состояния подключения.",
+    "en": "Three application routing modes: all, bypass selected, and tunnel selected only. Selection is preserved across modes. Improved sleep handling and connection feedback."
   },
   "assets": [
     {
       "rid": "win-x64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.27/SubVost-VPN-0.1.0-preview.27-Windows-x64-Setup.exe",
-      "size": 57632584,
-      "sha256": "6fefa3cee866f00eaa9113d58b566d13a3b710c54fefd838a858d2f2d7400bcd"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.28/SubVost-VPN-0.1.0-preview.28-Windows-x64-Setup.exe",
+      "size": 57635006,
+      "sha256": "90dba6ec10e391916bdbc0bb5a8acfaddf93ee815907d5eefc5e0b249a65c5e1"
     },
     {
       "rid": "win-arm64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.27/SubVost-VPN-0.1.0-preview.27-Windows-arm64-Setup.exe",
-      "size": 50066657,
-      "sha256": "eda96f032599eef61c145ae684e45cc1febf408eeca9e5cfe9fa4202b442c1dd"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.28/SubVost-VPN-0.1.0-preview.28-Windows-arm64-Setup.exe",
+      "size": 50080768,
+      "sha256": "2cf2f9ada415c1c114241cc4139ff26801da8b812c3978535588e63f6443be88"
     },
     {
       "rid": "win-x86",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.27/SubVost-VPN-0.1.0-preview.27-Windows-x86-Setup.exe",
-      "size": 53195070,
-      "sha256": "9f7410b7285e1ae3188a8b1979e1a3d3148683d892ec3e62fcb4242f699563b3"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.1.0-preview.28/SubVost-VPN-0.1.0-preview.28-Windows-x86-Setup.exe",
+      "size": 53217420,
+      "sha256": "f4bb1f1b49bf1f18e19949694bc68744efa4cb1dce31dffc1b2f751d7527745e"
     }
   ]
 }
