@@ -106,6 +106,21 @@ function renderResult() {
   $('source-status').textContent = '';
   $('result-meta').textContent = '';
   $('catalog-status').textContent = catalogMessage;
+  document.querySelector('.download-footer').hidden = state.os === 'ios';
+  if (state.os === 'ios') {
+    $('result-title').textContent = 'iOS · TestFlight';
+    $('result-meta').textContent = 'Тестовая версия';
+    $('catalog-status').textContent = '';
+    $('result-detail').textContent = '';
+    $('download-actions').hidden = false;
+    $('download').hidden = false;
+    $('download').href = 'https://testflight.apple.com/join/XPHxBArP';
+    $('download').setAttribute('aria-disabled', 'false');
+    $('download').setAttribute('aria-label', 'Открыть SubVost VPN в TestFlight');
+    $('download').textContent = 'Открыть TestFlight';
+    $('download').prepend(brandIcon('apple'));
+    return;
+  }
   if (build) {
     const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy' : 'Универсальная сборка') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') + (state.variant === 'legacy' ? ' · Legacy' : '') : state.arch;
     $('result-title').textContent = `${osNames[state.os]} · ${build.version}`;
