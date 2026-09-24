@@ -4,25 +4,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.19</title>
-            <pubDate>Thu, 24 Sep 2026 16:45:48 +0300</pubDate>
+            <title>0.4.20</title>
+            <pubDate>Thu, 24 Sep 2026 17:28:23 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>50</sparkle:version>
-            <sparkle:shortVersionString>0.4.19</sparkle:shortVersionString>
+            <sparkle:version>51</sparkle:version>
+            <sparkle:shortVersionString>0.4.20</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.19 (50)
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.20 (51)
 
-- Обновление подписки явно показывает прогресс, успешное завершение или ошибку. Недоступность сервера не выдаётся за успешное обновление.
-- Сохранены три режима маршрутизации приложений и отдельные правила сайтов.
-- Сборки для Apple Silicon и Intel, включая Legacy для macOS 11–12.
+- Новая настройка «Компактное окно без карты»: список локаций, подписка, обход и подключение в одном узком окне. Плотность строк настраивается отдельно.
+- Первое явное подключение подготавливает системный компонент до проверки доступности маршрута. После отмены установки можно повторить попытку кнопкой подключения.
+- Проверка автовыбора больше не пытается запустить служебную запись как VLESS-конфигурацию. Убраны технические ключи локализации из этой диагностики.
+- Кнопки поддержки и бота в настройках получили подсветку при наведении.
 
-Проверены офлайн-тесты, сборка, версии, локализации и целостность пакетов. Реальные звонки FaceTime и подключение из ограниченной сети в этой проверке не воспроизводились.
+Автовыбор по-прежнему учитывает состав автопула, нагрузку и лимиты серверов. Если все разрешённые узлы перегружены или исчерпали квоту, он сообщает о недоступности; это обновление не отключает серверные ограничения.
+
+Нативные визуальные проверки использовали тестовые данные. Реальное подключение пользователя и установленный компонент при сборке не менялись.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.19/SubVost-VPN-macOS-arm64-0.4.19.dmg" length="30399901" type="application/octet-stream" sparkle:edSignature="ea2goMLP/XGZ9UlbG2OIbgBkAM3LBvl4V7xSM5mOTcZYuMuP1vZHGeGuX2KbY25XR0lhRAgGOuTzIzCfybNnDw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.20/SubVost-VPN-macOS-arm64-0.4.20.dmg" length="30407107" type="application/octet-stream" sparkle:edSignature="YxMvSlWRvCX1SERKRiDFah+kvc0byUjIRCqArHfFAFzRuec+Yp7vgTpr3DvgGgAo0YvuDSmUab4LwV1gmryEDA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: ga6Krnwu3ltz4eTJR5QROtVT+rTA5/UBF336tXN0tV21xAHIOCgLzeDjWV0beyWERYoVpsivo5Bi4DuDoLI8Dw==
-length: 2177
+edSignature: 4YQb3qLJTdRPqiuE0uR7ScB5i2eGKJI6cWuhOUZ8nhBN7hfOhdR4WOz/zOvhAb8kY4HSbhYQtgMYj1Z1O4dKCg==
+length: 3042
 -->
