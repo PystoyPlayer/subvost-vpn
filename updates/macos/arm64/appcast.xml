@@ -4,28 +4,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.20</title>
-            <pubDate>Thu, 24 Sep 2026 17:28:23 +0300</pubDate>
+            <title>0.4.21</title>
+            <pubDate>Fri, 25 Sep 2026 22:27:05 +0300</pubDate>
             <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>51</sparkle:version>
-            <sparkle:shortVersionString>0.4.20</sparkle:shortVersionString>
+            <sparkle:version>52</sparkle:version>
+            <sparkle:shortVersionString>0.4.21</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.20 (51)
+            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.21 (52)
 
-- Новая настройка «Компактное окно без карты»: список локаций, подписка, обход и подключение в одном узком окне. Плотность строк настраивается отдельно.
-- Первое явное подключение подготавливает системный компонент до проверки доступности маршрута. После отмены установки можно повторить попытку кнопкой подключения.
-- Проверка автовыбора больше не пытается запустить служебную запись как VLESS-конфигурацию. Убраны технические ключи локализации из этой диагностики.
-- Кнопки поддержки и бота в настройках получили подсветку при наведении.
+- При включённом VPN выбор другой локации сразу переключает соединение. Когда VPN выключен, выбор локации не включает его.
+- Быстрые последовательные нажатия сохраняют последний выбор; отмена очищает очередь переключений.
+- Доработаны компактное окно, читаемость списка и уведомления об обновлении подписки. Успешное уведомление исчезает автоматически, ошибки остаются доступны до закрытия.
+- Улучшены подсветка действий в настройках и состояния кнопки подключения.
 
-Автовыбор по-прежнему учитывает состав автопула, нагрузку и лимиты серверов. Если все разрешённые узлы перегружены или исчерпали квоту, он сообщает о недоступности; это обновление не отключает серверные ограничения.
+Автовыбор по-прежнему учитывает доступность, нагрузку и лимиты разрешённых серверов. Это обновление не отключает серверные ограничения и не меняет общую конфигурацию подписки.
 
-Нативные визуальные проверки использовали тестовые данные. Реальное подключение пользователя и установленный компонент при сборке не менялись.
+Проверены регрессионные сценарии, нативный интерфейс с тестовыми данными, подписи и состав пакетов. Проверка не заменяет тест реального VPN на устройстве пользователя.
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.20/SubVost-VPN-macOS-arm64-0.4.20.dmg" length="30407107" type="application/octet-stream" sparkle:edSignature="YxMvSlWRvCX1SERKRiDFah+kvc0byUjIRCqArHfFAFzRuec+Yp7vgTpr3DvgGgAo0YvuDSmUab4LwV1gmryEDA=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.21/SubVost-VPN-macOS-arm64-0.4.21.dmg" length="30484735" type="application/octet-stream" sparkle:edSignature="C1CkFJlyk9Hd2DzwA/FIPTQ3U+TC7c9UDRIPSkbXzJKStX4DnSaqbSt8CO9at5Mmgpw/ljMHGfizDQ7CaJExCg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 4YQb3qLJTdRPqiuE0uR7ScB5i2eGKJI6cWuhOUZ8nhBN7hfOhdR4WOz/zOvhAb8kY4HSbhYQtgMYj1Z1O4dKCg==
-length: 3042
+edSignature: n6vW/P7YbsHkpXDVyk6kcGbsAxfibMbyvZD4BcBHz0lAPRJIWZmiCSg/JxhDN4LPbXhPC6iZDU++S1qlVIZJCw==
+length: 2872
 -->
