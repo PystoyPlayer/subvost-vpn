@@ -27,6 +27,7 @@ ROOT = Path(os.environ.get('MIRROR_ROOT', '/var/www/subvost-downloads'))
 STATE = Path(os.environ.get('MIRROR_STATE', '/var/lib/subvost-download-mirror'))
 LIMIT = 12 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
+WINDOWS_RELEASE_CEILING = '0.1.0-preview.27'  # User-confirmed recovery; preserve newer release files.
 
 
 def version(value):
@@ -85,6 +86,8 @@ def choose_releases(releases):
             continue
         platform = re.match(r'(windows|macos|linux|android)-v', tag)
         platform = platform[1] if platform else None
+        if platform == 'windows' and compare(tag, WINDOWS_RELEASE_CEILING) > 0:
+            continue
         if (release.get('prerelease') or ver[1]) and platform not in ('windows', 'android'):
             continue
         for asset in release.get('assets', []):
@@ -92,6 +95,8 @@ def choose_releases(releases):
             if not info:
                 continue
             key, asset_version = info
+            if key[0] == 'windows' and compare(asset_version, WINDOWS_RELEASE_CEILING) > 0:
+                continue
             if compare(tag, asset_version) != 0 or (platform and key[0] != platform):
                 continue
             if key not in selected or compare(tag, selected[key]['tag_name']) > 0:

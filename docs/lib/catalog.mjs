@@ -1,6 +1,9 @@
 // Public release metadata only. Never accepts subscription URLs or app configuration.
 export const REPOSITORY = 'PystoyPlayer/subvost-vpn';
 export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
+// Incident rollback: .27 is the user-confirmed recovery build. Keep newer
+// diagnostic releases available in GitHub history, never select them here.
+export const WINDOWS_RELEASE_CEILING = '0.1.0-preview.27';
 
 export function versionParts(tag) {
   if (typeof tag !== 'string' || tag.length > 256) return null;
@@ -49,10 +52,12 @@ export function buildCatalog(releases) {
   for (const release of releases) {
     const platform = /^(windows|macos|linux|android)-v/.exec(release.tag_name ?? '')?.[1];
     const version = versionParts(release.tag_name);
+    if (platform === 'windows' && version && compareVersions(release.tag_name, WINDOWS_RELEASE_CEILING) > 0) continue;
     const testing = Boolean(release.prerelease || version?.[3]);
     if (release.draft || !version || (testing && !['windows', 'android'].includes(platform))) continue;
     for (const asset of Array.isArray(release.assets) ? release.assets : []) {
       const info = classifyAsset(asset.name);
+      if (info?.os === 'windows' && compareVersions(info.version, WINDOWS_RELEASE_CEILING) > 0) continue;
       if (!info || !versionParts(info.version) || (platform && info.os !== platform) || compareVersions(info.version, release.tag_name) !== 0) continue;
       const expected = `${RELEASES_URL}/download/${release.tag_name}/${asset.name}`;
       if (asset.browser_download_url !== expected || !Number.isSafeInteger(asset.size) || asset.size <= 0) continue;
