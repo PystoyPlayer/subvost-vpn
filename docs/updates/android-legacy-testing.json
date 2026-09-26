@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 21,
-  "version": "0.1.0-beta.12",
+  "build": 22,
+  "version": "0.1.0-beta.13",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.12/SubVost-VPN-Android-Legacy-0.1.0-beta.12.apk",
-  "size": 160209370,
-  "sha256": "5fdc0725d311e873a1860dd970342917db6c86bbefd6f88fef5437b50ddff870",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.13/SubVost-VPN-Android-Legacy-0.1.0-beta.13.apk",
+  "size": 160211157,
+  "sha256": "939ccd8016bd9aafcf714f851f9a0850347a9a8f4f2cd314f40deec8dd2a412f",
   "notes": {
-    "ru": "Три режима маршрутизации приложений с сохранением списка. Выбор сетки или списка локаций в настройках. Улучшены состояния подключения и защита от повторных нажатий.",
-    "en": "Three application routing modes with a preserved selection. Choose location grid or list in settings. Improved connection feedback and repeated-tap protection."
+    "ru": "Обновлён главный экран: компактная шапка, сетка локаций, обход белых списков и синяя кнопка подключения с таймером. Новая иконка пинга, единый адаптивный размер названий стран и городов, улучшения светлой и тёмной темы.",
+    "en": "Updated home screen: compact header, location grid, allowlist bypass and blue connection control with session timer. New latency icon, consistent adaptive country/city typography, and light/dark theme refinements."
   }
 }
