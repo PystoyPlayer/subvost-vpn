@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 22,
-  "version": "0.1.0-beta.13",
+  "build": 23,
+  "version": "0.2.0-beta.1",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.1.0-beta.13/SubVost-VPN-Android-Legacy-0.1.0-beta.13.apk",
-  "size": 160211157,
-  "sha256": "939ccd8016bd9aafcf714f851f9a0850347a9a8f4f2cd314f40deec8dd2a412f",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.1/SubVost-VPN-Android-Legacy-0.2.0-beta.1.apk",
+  "size": 217284906,
+  "sha256": "7bcdcf7f1fa0d5cfe5ccdf2eacb605ccf7710bbbcb11b356bd3bf018795b647a",
   "notes": {
-    "ru": "Обновлён главный экран: компактная шапка, сетка локаций, обход белых списков и синяя кнопка подключения с таймером. Новая иконка пинга, единый адаптивный размер названий стран и городов, улучшения светлой и тёмной темы.",
-    "en": "Updated home screen: compact header, location grid, allowlist bypass and blue connection control with session timer. New latency icon, consistent adaptive country/city typography, and light/dark theme refinements."
+    "ru": "Обновлено ядро Xray до 26.9.9 с исправлениями жизненного цикла транспорта. Автоматическое обновление локаций, исправления списка кандидатов автовыбора и интерфейса. Проверены Release, unit-тесты, подпись и native-пакеты Modern/Legacy; новое ядро проверено в ARM64-эмуляторе. Физический Android и все сети операторов не проверены — это бета-версия.",
+    "en": "Xray 26.9.9 with transport lifecycle fixes, automatic location refresh, Auto candidate and UI improvements. Release tests, signing and Modern/Legacy native packages verified. Core tested in ARM64 emulator; physical Android and all ISP networks are not qualified. Beta release."
   }
 }

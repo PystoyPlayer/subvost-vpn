@@ -4,27 +4,16 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.21</title>
-            <pubDate>Fri, 25 Sep 2026 22:27:15 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>52</sparkle:version>
-            <sparkle:shortVersionString>0.4.21</sparkle:shortVersionString>
+            <title>0.4.22</title>
+            <pubDate>Sun, 27 Sep 2026 22:37:18 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.22</sparkle:fullReleaseNotesLink>
+            <sparkle:version>53</sparkle:version>
+            <sparkle:shortVersionString>0.4.22</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# SubVost VPN 0.4.21 (52)
-
-- При включённом VPN выбор другой локации сразу переключает соединение. Когда VPN выключен, выбор локации не включает его.
-- Быстрые последовательные нажатия сохраняют последний выбор; отмена очищает очередь переключений.
-- Доработаны компактное окно, читаемость списка и уведомления об обновлении подписки. Успешное уведомление исчезает автоматически, ошибки остаются доступны до закрытия.
-- Улучшены подсветка действий в настройках и состояния кнопки подключения.
-
-Автовыбор по-прежнему учитывает доступность, нагрузку и лимиты разрешённых серверов. Это обновление не отключает серверные ограничения и не меняет общую конфигурацию подписки.
-
-Проверены регрессионные сценарии, нативный интерфейс с тестовыми данными, подписи и состав пакетов. Проверка не заменяет тест реального VPN на устройстве пользователя.
-]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.21/SubVost-VPN-macOS-Legacy-x86_64-0.4.21.dmg" length="32304189" type="application/octet-stream" sparkle:edSignature="TagW3YKMoYIybhOMCAFK/ewpTMqfPYT9BpPp47Fqg4kTsz7yM3CBZb3oZWkOBfIJDvYFk3dT/6TIQTWeUunICQ=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.22/SubVost-VPN-macOS-Legacy-x86_64-0.4.22.dmg" length="32166723" type="application/octet-stream" sparkle:edSignature="n/4huOIQ1Kze29kEePbW/OWLJTc7gnUwvb6yKT7X9lwv/T3WhP9q7sp03tgND5I4tfcJ8TDBrFYAGsuBzCCjBw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: zCrggeaZQFOyXvsF2Hvkz7C8A4rtfIqa7wvplWB18EnnRDsqiBYYho8SoOxWDIEf5Xu1AETyn9QHCdnEDLa+CA==
-length: 2801
+edSignature: uGm/mC5rWlmekfHbuSXdPwYanlD/z6NORyi1GWeOh3LqAxPduop58Bvrr3viClk6cbfgnyWayXAdbN81MVZ3BQ==
+length: 1218
 -->
