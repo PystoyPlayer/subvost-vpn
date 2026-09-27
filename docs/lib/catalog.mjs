@@ -1,9 +1,8 @@
 // Public release metadata only. Never accepts subscription URLs or app configuration.
 export const REPOSITORY = 'PystoyPlayer/subvost-vpn';
 export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
-// Incident rollback: .27 is the user-confirmed recovery build. Keep newer
-// diagnostic releases available in GitHub history, never select them here.
-export const WINDOWS_RELEASE_CEILING = '0.1.0-preview.27';
+// Explicitly qualified publication ceiling; future diagnostic releases remain excluded.
+export const WINDOWS_RELEASE_CEILING = '0.2.0-preview.1';
 
 export function versionParts(tag) {
   if (typeof tag !== 'string' || tag.length > 256) return null;
