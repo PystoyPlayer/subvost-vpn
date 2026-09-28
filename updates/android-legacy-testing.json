@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 23,
-  "version": "0.2.0-beta.1",
+  "build": 24,
+  "version": "0.2.0-beta.2",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.1/SubVost-VPN-Android-Legacy-0.2.0-beta.1.apk",
-  "size": 217284906,
-  "sha256": "7bcdcf7f1fa0d5cfe5ccdf2eacb605ccf7710bbbcb11b356bd3bf018795b647a",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.2/SubVost-VPN-Android-Legacy-0.2.0-beta.2.apk",
+  "size": 217284904,
+  "sha256": "e8d801ba4614793cb2813c6a391fd9e206f036a81b4e32ba2d4632bafca2b3cb",
   "notes": {
-    "ru": "Обновлено ядро Xray до 26.9.9 с исправлениями жизненного цикла транспорта. Автоматическое обновление локаций, исправления списка кандидатов автовыбора и интерфейса. Проверены Release, unit-тесты, подпись и native-пакеты Modern/Legacy; новое ядро проверено в ARM64-эмуляторе. Физический Android и все сети операторов не проверены — это бета-версия.",
-    "en": "Xray 26.9.9 with transport lifecycle fixes, automatic location refresh, Auto candidate and UI improvements. Release tests, signing and Modern/Legacy native packages verified. Core tested in ARM64 emulator; physical Android and all ISP networks are not qualified. Beta release."
+    "ru": "Обновление подписки: без VPN только напрямую; с VPN сначала через туннель, при сетевом сбое одна прямая попытка. Ограничены ожидание и число попыток, доступна отмена. Отказы подписки и ошибки TLS не запускают fallback. Исправлены скачки кнопок при обновлении; отключение VPN остаётся доступным. Бета: физическая сеть с БС и смена радиосетей не аттестованы.",
+    "en": "Subscription refresh uses direct networking without VPN; with VPN it prefers the tunnel and allows one direct retry after a transport failure. Bounded attempts and cancellation; no fallback on entitlement or TLS errors. Stable refresh controls. Beta: physical restricted networks and radio handover are not qualified."
   }
 }

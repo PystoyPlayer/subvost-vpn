@@ -4,16 +4,16 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.22</title>
-            <pubDate>Sun, 27 Sep 2026 22:37:18 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.22</sparkle:fullReleaseNotesLink>
-            <sparkle:version>53</sparkle:version>
-            <sparkle:shortVersionString>0.4.22</sparkle:shortVersionString>
+            <title>0.4.23</title>
+            <pubDate>Mon, 28 Sep 2026 23:58:01 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.23</sparkle:fullReleaseNotesLink>
+            <sparkle:version>54</sparkle:version>
+            <sparkle:shortVersionString>0.4.23</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.22/SubVost-VPN-macOS-Legacy-x86_64-0.4.22.dmg" length="32166723" type="application/octet-stream" sparkle:edSignature="n/4huOIQ1Kze29kEePbW/OWLJTc7gnUwvb6yKT7X9lwv/T3WhP9q7sp03tgND5I4tfcJ8TDBrFYAGsuBzCCjBw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.23/SubVost-VPN-macOS-Legacy-x86_64-0.4.23.dmg" length="32377828" type="application/octet-stream" sparkle:edSignature="DWtMgrxKPPgQZaNH7alCfc4XdTSFgooA6fnx3ajS069/mc+iJtm601y7TVXNMTQMGPyByxKW2r0CB2Ap3b+oCQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: uGm/mC5rWlmekfHbuSXdPwYanlD/z6NORyi1GWeOh3LqAxPduop58Bvrr3viClk6cbfgnyWayXAdbN81MVZ3BQ==
+edSignature: 1Uret45BJr7r+qwVJlsf788kOIUnhxJLpAtS/eKHZHuW5/9tX5fVV3GQBjooaDeyhY0BGx8Dt55wh8nnGRv4Bw==
 length: 1218
 -->
