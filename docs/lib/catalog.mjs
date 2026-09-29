@@ -4,6 +4,23 @@ export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
 // Explicitly qualified publication ceiling; future diagnostic releases remain excluded.
 export const WINDOWS_RELEASE_CEILING = '0.2.0-preview.3';
 
+// Manually published, byte-verified release. The mirror's generated catalog
+// may lag its static UI. Advertise the public asset without claiming a local
+// mirror exists: mirror.mjs still requires an exact manifest/hash match.
+const PUBLISHED_WINDOWS_X64 = {
+  tag_name: 'windows-v0.2.0-preview.3', prerelease: true,
+  assets: [{
+    name: 'SubVost-VPN-0.2.0-preview.3-Windows-x64-Setup.exe', size: 56807107,
+    digest: 'sha256:245b42ba7bee2ff3c3937e25d4740e2c25138f38519da820a1d67676c270b238',
+    browser_download_url: `${RELEASES_URL}/download/windows-v0.2.0-preview.3/SubVost-VPN-0.2.0-preview.3-Windows-x64-Setup.exe`,
+  }],
+};
+
+export function buildPublishedCatalog(releases) {
+  if (!Array.isArray(releases)) throw new Error('Invalid public release list');
+  return buildCatalog([PUBLISHED_WINDOWS_X64, ...releases]);
+}
+
 export function versionParts(tag) {
   if (typeof tag !== 'string' || tag.length > 256) return null;
   const match = /^(?:(?:windows|macos|linux|android)-)?v?(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/.exec(tag);
