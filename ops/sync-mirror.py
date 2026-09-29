@@ -27,7 +27,7 @@ ROOT = Path(os.environ.get('MIRROR_ROOT', '/var/www/subvost-downloads'))
 STATE = Path(os.environ.get('MIRROR_STATE', '/var/lib/subvost-download-mirror'))
 LIMIT = 12 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
-WINDOWS_RELEASE_CEILING = '0.2.0-preview.3'  # Explicit publication ceiling; future diagnostics remain excluded.
+WINDOWS_RELEASE_CEILING = '0.2.0-preview.4'  # Explicit publication ceiling; future diagnostics remain excluded.
 
 
 def version(value):
