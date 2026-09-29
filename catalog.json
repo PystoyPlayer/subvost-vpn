@@ -1,6 +1,26 @@
 {
   "releases": [
     {
+      "tag_name": "windows-v0.2.0-preview.3",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-09-29T00:04:08Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 116,
+          "digest": "sha256:bdb3548c94dd8b8bbb39134e6041eb75a66e0d45f3c846fb1ebcb55ee12e08f0",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.3/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-0.2.0-preview.3-Windows-x64-Setup.exe",
+          "size": 56807107,
+          "digest": "sha256:245b42ba7bee2ff3c3937e25d4740e2c25138f38519da820a1d67676c270b238",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.3/SubVost-VPN-0.2.0-preview.3-Windows-x64-Setup.exe"
+        }
+      ]
+    },
+    {
       "tag_name": "v0.4.23",
       "draft": false,
       "prerelease": false,

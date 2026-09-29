@@ -2,7 +2,7 @@
 export const REPOSITORY = 'PystoyPlayer/subvost-vpn';
 export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
 // Explicitly qualified publication ceiling; future diagnostic releases remain excluded.
-export const WINDOWS_RELEASE_CEILING = '0.2.0-preview.1';
+export const WINDOWS_RELEASE_CEILING = '0.2.0-preview.3';
 
 export function versionParts(tag) {
   if (typeof tag !== 'string' || tag.length > 256) return null;
