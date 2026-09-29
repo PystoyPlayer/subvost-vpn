@@ -19,7 +19,10 @@ class MirrorTests(unittest.TestCase):
                 release('linux-v0.5.20',['SubVost-VPN-Linux-x86_64-0.5.20.deb']),
                 release('android-v0.1.0-beta.99',['SubVost-VPN-Android-0.1.0-beta.99.apk'])]
         selected=m.choose_releases(windows+others)
-        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.1'})
+        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.3'})
+        windows[2]['assets'] = [a for a in windows[2]['assets'] if '-x64-' in a['name']]
+        selected=m.choose_releases([windows[0], windows[2], windows[3]]+others)
+        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.1','windows-v0.2.0-preview.3'})
 
     def test_semver(self):
         self.assertGreater(m.compare('android-v0.1.0-beta.10', 'android-v0.1.0-beta.9'), 0)
