@@ -4,25 +4,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.24</title>
-            <pubDate>Tue, 29 Sep 2026 16:25:30 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.24</sparkle:fullReleaseNotesLink>
-            <sparkle:version>55</sparkle:version>
-            <sparkle:shortVersionString>0.4.24</sparkle:shortVersionString>
+            <title>0.4.25</title>
+            <pubDate>Tue, 29 Sep 2026 22:34:28 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.25</sparkle:fullReleaseNotesLink>
+            <sparkle:version>56</sparkle:version>
+            <sparkle:shortVersionString>0.4.25</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!doctype html><html lang="ru"><meta charset="utf-8"><body>
-<h2>SubVost VPN 0.4.24</h2>
-<ul><li>Стеклянные кнопки обновления и пинга в мобильном режиме.</li>
-<li>Убраны лишние подписи; исправлена подсветка свёрнутых настроек.</li>
-<li>В окне обновления теперь отображается список изменений.</li>
-<li>Корректные сообщения об истёкшей, заблокированной подписке и исчерпанном трафике.</li></ul>
-<p>После установки обновите системный компонент, если приложение предложит.</p>
-</body></html>
+            <description><![CDATA[<h2>macOS 0.4.25</h2>
+<p>Исправлен мобильный режим окна: круглая подсветка кнопок, индикация замера пинга и отсчёт после замера, края прокрутки и выравнивание кнопки подключения. Компактный список недоступен в мобильном режиме; выбранная настройка сохраняется.</p>
+<p>Проверены регрессионные тесты и четыре пакета Modern/Legacy для Apple Silicon и Intel. Отдельного натурного прогона на Intel и старых версиях macOS не проводилось.</p>
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.24/SubVost-VPN-macOS-x86_64-0.4.24.dmg" length="31731864" type="application/octet-stream" sparkle:edSignature="ymQcLveXi1QhDTFEhT0iLrFYwQ5Vtcpd8/DKWCtT2OtYFx+Q3glWXPJYsNgtq5cCNAUrWJcBWUxgU6tCBoXJCw=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.25/SubVost-VPN-macOS-x86_64-0.4.25.dmg" length="31760667" type="application/octet-stream" sparkle:edSignature="27sQS/+jnqAFuuliV/N8hxHu7rAApTKGFx8GyPRj72lC27+T4NPC11AFENCANXhXeCuCRFfhtBvVHXJLhRYHCg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: UZ8xBGekqgCjN7UsxYvxEJUfjLM0MUL2zO6Q/AwkCt0Urw/A4jLRMAjNy8TJVrfCPI0R/7QutlygaYebACHNAg==
-length: 2035
+edSignature: sjwEkjF4KwHzqltVbAlqfoBbwyAYS/sS7bsSybNTbQWinDAyVHGJW4pOOHRfoFTVyJ0j5iSf+jzcYhYJxWa7Ag==
+length: 1999
 -->

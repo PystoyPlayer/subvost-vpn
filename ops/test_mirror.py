@@ -19,15 +19,15 @@ class MirrorTests(unittest.TestCase):
         def release(tag,names):
             return dict(tag_name=tag,assets=[dict(name=name) for name in names])
         windows=[release(f'windows-v0.2.0-preview.{n}',[
-            f'SubVost-VPN-0.2.0-preview.{n}-Windows-{arch}-Setup.exe' for arch in ('x64','arm64','x86')]) for n in (1,2,3,4,5)]
+            f'SubVost-VPN-0.2.0-preview.{n}-Windows-{arch}-Setup.exe' for arch in ('x64','arm64','x86')]) for n in (1,2,3,4,5,6)]
         others=[release('v0.4.20',['SubVost-VPN-macOS-arm64-0.4.20.dmg']),
                 release('linux-v0.5.20',['SubVost-VPN-Linux-x86_64-0.5.20.deb']),
                 release('android-v0.1.0-beta.99',['SubVost-VPN-Android-0.1.0-beta.99.apk'])]
         selected=m.choose_releases(windows+others)
-        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.4'})
-        windows[3]['assets'] = [a for a in windows[3]['assets'] if '-x64-' in a['name']]
-        selected=m.choose_releases([windows[0], windows[3], windows[4]]+others)
-        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.1','windows-v0.2.0-preview.4'})
+        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.5'})
+        windows[4]['assets'] = [a for a in windows[4]['assets'] if '-x64-' in a['name']]
+        selected=m.choose_releases([windows[0], windows[4], windows[5]]+others)
+        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in others}|{'windows-v0.2.0-preview.1','windows-v0.2.0-preview.5'})
 
     def test_semver(self):
         self.assertGreater(m.compare('android-v0.1.0-beta.10', 'android-v0.1.0-beta.9'), 0)

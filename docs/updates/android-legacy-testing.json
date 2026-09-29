@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 25,
-  "version": "0.2.0-beta.3",
+  "build": 26,
+  "version": "0.2.0-beta.4",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.3/SubVost-VPN-Android-Legacy-0.2.0-beta.3.apk",
-  "size": 217284890,
-  "sha256": "e7fc92576b3428fb7892a95ed273cc6fd8d31044160022bddebcf3d70cb45f93",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.4/SubVost-VPN-Android-Legacy-0.2.0-beta.4.apk",
+  "size": 217284929,
+  "sha256": "b03b40187c6f5368a39333686b5ccc0d859728781f188ce25791f9f278c24d9b",
   "notes": {
-    "ru": "Исправлена обработка истёкшей, заблокированной подписки и исчерпанного трафика. Понятные сообщения и переход к боту; подписка сохраняется для продления. Сетевой сбой не считается блокировкой. Сохранены отмена обновления и резервный сетевой маршрут при работающем VPN.",
-    "en": "Correct handling of expired, disabled and traffic-limited subscriptions, with bot recovery links and saved subscription identity. Network outages do not revoke access. Cancellable refresh and active-VPN transport fallback retained."
+    "ru": "Системные и скрытые приложения доступны для выбора маршрутизации и поиска по пакету. Ускорен повторный доступ к управлению через уже работающий канал; при смене сети или сбое он проверяется заново. Проверены тесты и Modern/Legacy APK. Работа в конкретных мобильных сетях требует проверки на устройстве.",
+    "en": "System and headless apps can be selected and searched by package. Reuses a working control-plane route until network change or transport failure. Tests and Modern/Legacy APKs verified; physical-network qualification remains pending."
   }
 }
