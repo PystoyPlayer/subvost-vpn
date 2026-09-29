@@ -4,17 +4,26 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.23</title>
-            <pubDate>Mon, 28 Sep 2026 23:58:00 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.23</sparkle:fullReleaseNotesLink>
-            <sparkle:version>54</sparkle:version>
-            <sparkle:shortVersionString>0.4.23</sparkle:shortVersionString>
+            <title>0.4.24</title>
+            <pubDate>Tue, 29 Sep 2026 16:20:18 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.24</sparkle:fullReleaseNotesLink>
+            <sparkle:version>55</sparkle:version>
+            <sparkle:shortVersionString>0.4.24</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.23/SubVost-VPN-macOS-Legacy-arm64-0.4.23.dmg" length="28464933" type="application/octet-stream" sparkle:edSignature="APVozNK2GvsQdXpEeHltJBValalGcbLgskSRj21tU4Gs4x+AaV4s9ZGnMFCteAHKtFDr17EHj8P//PfTcHVCDw=="></enclosure>
+            <description><![CDATA[<!doctype html><html lang="ru"><meta charset="utf-8"><body>
+<h2>SubVost VPN 0.4.24</h2>
+<ul><li>Стеклянные кнопки обновления и пинга в мобильном режиме.</li>
+<li>Убраны лишние подписи; исправлена подсветка свёрнутых настроек.</li>
+<li>В окне обновления теперь отображается список изменений.</li>
+<li>Корректные сообщения об истёкшей, заблокированной подписке и исчерпанном трафике.</li></ul>
+<p>После установки обновите системный компонент, если приложение предложит.</p>
+</body></html>
+]]></description>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.24/SubVost-VPN-macOS-Legacy-arm64-0.4.24.dmg" length="30758660" type="application/octet-stream" sparkle:edSignature="sAAb6WDUShMnUTQjucZhzvZBbZCc5gYk7eNRFegt7V2EVyTIxJfc9GEQfAMqdCBq4JZ4j5JHYt9iOsesCwfYCg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: Wq3BKwxqTaYdA2XaF4QS3ahRWBNubgoRo1T7+n1J6neFjIgliLyipl2aRO0e21CxNE4GbVqEmOgas2FIViijCQ==
-length: 1296
+edSignature: ZqiO0Wn3ajgCTnPLDkGLQYQBhTXto4qeSjPrbSO0MWaCw3br2QHkQRxnUlxnwTM+vGUSH4/+aLR61J1/y9PgCA==
+length: 2120
 -->

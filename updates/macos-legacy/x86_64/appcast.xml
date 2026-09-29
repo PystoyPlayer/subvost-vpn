@@ -4,16 +4,25 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.23</title>
-            <pubDate>Mon, 28 Sep 2026 23:58:01 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.23</sparkle:fullReleaseNotesLink>
-            <sparkle:version>54</sparkle:version>
-            <sparkle:shortVersionString>0.4.23</sparkle:shortVersionString>
+            <title>0.4.24</title>
+            <pubDate>Tue, 29 Sep 2026 16:26:41 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.24</sparkle:fullReleaseNotesLink>
+            <sparkle:version>55</sparkle:version>
+            <sparkle:shortVersionString>0.4.24</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.23/SubVost-VPN-macOS-Legacy-x86_64-0.4.23.dmg" length="32377828" type="application/octet-stream" sparkle:edSignature="DWtMgrxKPPgQZaNH7alCfc4XdTSFgooA6fnx3ajS069/mc+iJtm601y7TVXNMTQMGPyByxKW2r0CB2Ap3b+oCQ=="></enclosure>
+            <description><![CDATA[<!doctype html><html lang="ru"><meta charset="utf-8"><body>
+<h2>SubVost VPN 0.4.24</h2>
+<ul><li>Стеклянные кнопки обновления и пинга в мобильном режиме.</li>
+<li>Убраны лишние подписи; исправлена подсветка свёрнутых настроек.</li>
+<li>В окне обновления теперь отображается список изменений.</li>
+<li>Корректные сообщения об истёкшей, заблокированной подписке и исчерпанном трафике.</li></ul>
+<p>После установки обновите системный компонент, если приложение предложит.</p>
+</body></html>
+]]></description>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.24/SubVost-VPN-macOS-Legacy-x86_64-0.4.24.dmg" length="32371250" type="application/octet-stream" sparkle:edSignature="U0MmxT+RWiyGNMFhACrZvvV6C3ztSbLeQQxuK/sBiq15m4aVUJzZP6srJBOFFRnPuJkDyK4n1c9MtoKLc+NfBw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 1Uret45BJr7r+qwVJlsf788kOIUnhxJLpAtS/eKHZHuW5/9tX5fVV3GQBjooaDeyhY0BGx8Dt55wh8nnGRv4Bw==
-length: 1218
+edSignature: HqI2fwxxGQxH0lpJG7cvF74ExC+kSVEkUxgpl3ngPrNInU2UNkk0EATtg6FuYSGhzTodP+SqUQcvsbEyvIS0Dg==
+length: 2042
 -->

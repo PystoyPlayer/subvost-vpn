@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 24,
-  "version": "0.2.0-beta.2",
+  "build": 25,
+  "version": "0.2.0-beta.3",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.2/SubVost-VPN-Android-Legacy-0.2.0-beta.2.apk",
-  "size": 217284904,
-  "sha256": "e8d801ba4614793cb2813c6a391fd9e206f036a81b4e32ba2d4632bafca2b3cb",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.3/SubVost-VPN-Android-Legacy-0.2.0-beta.3.apk",
+  "size": 217284890,
+  "sha256": "e7fc92576b3428fb7892a95ed273cc6fd8d31044160022bddebcf3d70cb45f93",
   "notes": {
-    "ru": "Обновление подписки: без VPN только напрямую; с VPN сначала через туннель, при сетевом сбое одна прямая попытка. Ограничены ожидание и число попыток, доступна отмена. Отказы подписки и ошибки TLS не запускают fallback. Исправлены скачки кнопок при обновлении; отключение VPN остаётся доступным. Бета: физическая сеть с БС и смена радиосетей не аттестованы.",
-    "en": "Subscription refresh uses direct networking without VPN; with VPN it prefers the tunnel and allows one direct retry after a transport failure. Bounded attempts and cancellation; no fallback on entitlement or TLS errors. Stable refresh controls. Beta: physical restricted networks and radio handover are not qualified."
+    "ru": "Исправлена обработка истёкшей, заблокированной подписки и исчерпанного трафика. Понятные сообщения и переход к боту; подписка сохраняется для продления. Сетевой сбой не считается блокировкой. Сохранены отмена обновления и резервный сетевой маршрут при работающем VPN.",
+    "en": "Correct handling of expired, disabled and traffic-limited subscriptions, with bot recovery links and saved subscription identity. Network outages do not revoke access. Cancellable refresh and active-VPN transport fallback retained."
   }
 }
