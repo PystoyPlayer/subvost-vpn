@@ -1,4 +1,4 @@
-import { buildCatalog, selectBuild } from './lib/catalog.mjs?v=20260925-windows-rollback';
+import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20260929-preview3';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
@@ -6,7 +6,7 @@ import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
 const $ = id => document.getElementById(id);
 const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
 let state = initialSelection();
-let builds = [], loading = true, catalogMessage = '';
+let builds = buildPublishedCatalog([]), loading = true, catalogMessage = '';
 let mirrorManifest = null;
 let mirrorLoading = true;
 let selectedSource = 'github';
@@ -191,12 +191,13 @@ async function loadCatalog() {
   let snapshot = [];
   try {
     const data = await fetchJSON('./catalog.json?v=20260920-mirror', 5000);
-    builds = buildCatalog(data.releases);
+    builds = buildPublishedCatalog(data.releases);
     snapshot = data.releases;
     catalogChanged();
   } catch { /* The live request can recover. */ }
-  // The Russian page needs no GitHub API request. Its catalogue is published
-  // only after the corresponding release bytes have passed SHA-256 checks.
+  // No GitHub API dependency on the Russian page. Both mirrored releases and
+  // the bundled public fallback have byte-verified publication records. Mirror
+  // download availability is checked independently against its own manifest.
   if (location.origin === MIRROR_ORIGIN && builds.length) {
     loading = false;
     catalogChanged();
@@ -216,7 +217,7 @@ async function loadCatalog() {
     // GitHub/CDN and the ten-minute browser cache can predate the published
     // snapshot. Keep the newest validated asset per OS/CPU/package in that case.
     // Release removal must also update the checked-in snapshot.
-    builds = buildCatalog([...snapshot, ...releases]);
+    builds = buildPublishedCatalog([...snapshot, ...releases]);
     catalogMessage = '';
   } catch {
     catalogMessage = builds.length ? '' : 'Не удалось загрузить каталог. Откройте «Все версии и изменения».';

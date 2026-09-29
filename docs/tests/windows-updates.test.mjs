@@ -1,7 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { buildCatalog, WINDOWS_RELEASE_CEILING } from '../lib/catalog.mjs';
+import { buildCatalog, buildPublishedCatalog, selectBuild, WINDOWS_RELEASE_CEILING } from '../lib/catalog.mjs';
+import { downloadSource } from '../lib/mirror.mjs';
+
+test('verified x64 publication survives a stale or unavailable mirror catalog', () => {
+  const builds = buildPublishedCatalog([]);
+  assert.equal(builds.length, 1);
+  const build = selectBuild(builds, { os: 'windows', arch: 'x64', variant: 'desktop' });
+  assert.equal(build.version, '0.2.0-preview.3');
+  assert.equal(build.size, 56807107);
+  assert.equal(build.sha256, '245b42ba7bee2ff3c3937e25d4740e2c25138f38519da820a1d67676c270b238');
+  assert.equal(downloadSource(build, null).mirrored, false);
+  assert.equal(selectBuild(builds, { os: 'windows', arch: 'arm64', variant: 'desktop' }), null);
+  assert.throws(() => buildPublishedCatalog(null));
+});
 
 test('publication ceiling cannot be bypassed by newer diagnostic releases', () => {
   assert.equal(WINDOWS_RELEASE_CEILING, '0.2.0-preview.3');
