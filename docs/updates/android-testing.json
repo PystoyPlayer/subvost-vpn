@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 26,
-  "version": "0.2.0-beta.4",
+  "build": 27,
+  "version": "0.2.0-beta.5",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.4/SubVost-VPN-Android-0.2.0-beta.4.apk",
-  "size": 217251971,
-  "sha256": "4ca397268f2a4c8a6e84bf5eeaae236280d27a58306480a1a0be1af60e297d72",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.5/SubVost-VPN-Android-0.2.0-beta.5.apk",
+  "size": 217251966,
+  "sha256": "5f61022a6c6c9d6a7646ef1523d522020d9b4b6b4aa1723d25b4f09ed69e441d",
   "notes": {
-    "ru": "Системные и скрытые приложения доступны для выбора маршрутизации и поиска по пакету. Ускорен повторный доступ к управлению через уже работающий канал; при смене сети или сбое он проверяется заново. Проверены тесты и Modern/Legacy APK. Работа в конкретных мобильных сетях требует проверки на устройстве.",
-    "en": "System and headless apps can be selected and searched by package. Reuses a working control-plane route until network change or transport failure. Tests and Modern/Legacy APKs verified; physical-network qualification remains pending."
+    "ru": "Ускорен переход к доступному обходу при запуске: прямой запрос сессии больше не задерживает его на 10 секунд. Исправлено сообщение об ошибке при ручном выборе страны. Полные таймауты работающих сессий, проверка TLS, маршрута и прав подписки сохранены. Проверены Modern/Legacy APK и регрессии. Жалобы на конкретных мобильных сетях не считаются закрытыми без проверки на устройстве.",
+    "en": "Faster startup fallback to the available bootstrap instead of a ten-second direct-session wait. Correct connection-service error for manually selected countries. Established-session budgets, TLS, route proofs and entitlement checks preserved. Modern/Legacy packages and regressions verified; affected physical networks remain unqualified."
   }
 }
