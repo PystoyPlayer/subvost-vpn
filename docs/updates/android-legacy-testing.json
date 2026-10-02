@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 27,
-  "version": "0.2.0-beta.5",
+  "build": 28,
+  "version": "0.2.0-beta.6",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.5/SubVost-VPN-Android-Legacy-0.2.0-beta.5.apk",
-  "size": 217284924,
-  "sha256": "6cf27d0100c8ecb77856337bc06335638176aa3da09885381459e78176b4045e",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.6/SubVost-VPN-Android-Legacy-0.2.0-beta.6.apk",
+  "size": 217284925,
+  "sha256": "267d718799abf2d1448e5890f88a5afeeec13aade4e751be5eae5bcddf0b8293",
   "notes": {
-    "ru": "Ускорен переход к доступному обходу при запуске: прямой запрос сессии больше не задерживает его на 10 секунд. Исправлено сообщение об ошибке при ручном выборе страны. Полные таймауты работающих сессий, проверка TLS, маршрута и прав подписки сохранены. Проверены Modern/Legacy APK и регрессии. Жалобы на конкретных мобильных сетях не считаются закрытыми без проверки на устройстве.",
-    "en": "Faster startup fallback to the available bootstrap instead of a ten-second direct-session wait. Correct connection-service error for manually selected countries. Established-session budgets, TLS, route proofs and entitlement checks preserved. Modern/Legacy packages and regressions verified; affected physical networks remain unqualified."
+    "ru": "Исправлено обновление подписки после продления в сети с белыми списками: когда SubVost отключён, запрос использует уже работающий системный VPN, например Incy. Автоматически другой VPN не запускается. Сохранённые ссылка и подписка не удаляются при сетевой ошибке; проверка TLS, прав доступа и резервный физический запрос сохранены. Modern/Legacy сборки и выбор действующего VPN в отдельном эмуляторе проверены. Минутные обрывы на конкретной мобильной сети этим исправлением не считаются закрытыми.",
+    "en": "Renewed subscriptions can refresh over an already-running default VPN while SubVost is disconnected. No VPN is automatically started. Transport errors preserve saved subscription identity; TLS, access checks and the physical fallback remain unchanged. Modern/Legacy builds and actual default-VPN selection in an isolated emulator verified. This does not establish remediation of the separate intermittent mobile-network stalls."
   }
 }
