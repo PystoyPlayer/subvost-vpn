@@ -4,20 +4,24 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SubVost VPN</title>
         <item>
-            <title>0.4.25</title>
-            <pubDate>Tue, 29 Sep 2026 22:34:28 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.25</sparkle:fullReleaseNotesLink>
-            <sparkle:version>56</sparkle:version>
-            <sparkle:shortVersionString>0.4.25</sparkle:shortVersionString>
+            <title>0.4.26</title>
+            <pubDate>Mon, 05 Oct 2026 06:38:24 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.26</sparkle:fullReleaseNotesLink>
+            <sparkle:version>57</sparkle:version>
+            <sparkle:shortVersionString>0.4.26</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>macOS 0.4.25</h2>
-<p>Исправлен мобильный режим окна: круглая подсветка кнопок, индикация замера пинга и отсчёт после замера, края прокрутки и выравнивание кнопки подключения. Компактный список недоступен в мобильном режиме; выбранная настройка сохраняется.</p>
-<p>Проверены регрессионные тесты и четыре пакета Modern/Legacy для Apple Silicon и Intel. Отдельного натурного прогона на Intel и старых версиях macOS не проводилось.</p>
+            <description><![CDATA[<html><body><h2>SubVost VPN 0.4.26</h2><ul>
+<li>Современные сборки macOS: Xray 26.9.30 с сохранёнными патчами SubVost. Legacy для macOS 11–12 сохраняет совместимое ядро 26.9.9.</li>
+<li>Сравнение системного DNS и нескольких защищённых DNS-путей в диагностике; результаты не содержат историю посещений.</li>
+<li>Более подробные ограниченные по размеру журналы и проверка целостности обновлений.</li>
+<li>Modern macOS builds use Xray 26.9.30 with SubVost patches. Legacy macOS 11–12 retains its compatible 26.9.9 core.</li>
+<li>Bounded diagnostics include system DNS versus multiple DoH paths without browsing history.</li>
+</ul></body></html>
 ]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.25/SubVost-VPN-macOS-x86_64-0.4.25.dmg" length="31760667" type="application/octet-stream" sparkle:edSignature="27sQS/+jnqAFuuliV/N8hxHu7rAApTKGFx8GyPRj72lC27+T4NPC11AFENCANXhXeCuCRFfhtBvVHXJLhRYHCg=="></enclosure>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.26/SubVost-VPN-macOS-x86_64-0.4.26.dmg" length="32050630" type="application/octet-stream" sparkle:edSignature="bFIq3d46OX51xro1oFyohIv6O+xiq8GUMDwIH5NLKkt3jT/LodMLgfYjh+GU+DX9yrUI2ncDiChDjnQEu/qOCg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: sjwEkjF4KwHzqltVbAlqfoBbwyAYS/sS7bsSybNTbQWinDAyVHGJW4pOOHRfoFTVyJ0j5iSf+jzcYhYJxWa7Ag==
-length: 1999
+edSignature: fEHo+qs7mVYW+1FZkr2bmKQrHg9+yVGjIrxtQA9Wsj5XajB/pcKuikzeMEdXUxxcdDuT0DQlQivD8cGi1906Dw==
+length: 2138
 -->
