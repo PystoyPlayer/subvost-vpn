@@ -11,6 +11,21 @@ spec.loader.exec_module(m)
 
 
 class MirrorTests(unittest.TestCase):
+    def test_qualified_set_fits_without_removing_old_versions(self):
+        # Measured RU mirror accounting on 2026-10-05: latest set 1.5 GiB,
+        # retained immutable versions 11.86 GiB, free 18.89 GiB.
+        m.check_disk_budget(1613917867, 12733729199, 1613917867, 18 * 1024**3)
+
+    def test_disk_limits_are_independent_and_inclusive(self):
+        m.check_disk_budget(m.CURRENT_SET_LIMIT, m.LIMIT - 10, 10, m.FREE_RESERVE + 10)
+        for values in ((m.CURRENT_SET_LIMIT + 1, 0, 0, m.FREE_RESERVE),
+                       (1, m.LIMIT, 1, m.FREE_RESERVE + 1),
+                       (1, 0, 1, m.FREE_RESERVE),
+                       (-1, 0, 0, m.FREE_RESERVE),
+                       (True, 0, 0, m.FREE_RESERVE)):
+            with self.subTest(values=values), self.assertRaises(ValueError):
+                m.check_disk_budget(*values)
+
     def test_windows_ceiling_matches_published_update_feed(self):
         feed = Path(__file__).parent.parent / 'updates' / 'windows-testing.json'
         self.assertEqual(m.WINDOWS_RELEASE_CEILING, json.loads(feed.read_text())['version'])

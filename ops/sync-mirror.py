@@ -25,7 +25,11 @@ SOURCE = f'https://github.com/{REPO}/releases/download/'
 ORIGIN = 'https://download.subvost.fun'
 ROOT = Path(os.environ.get('MIRROR_ROOT', '/var/www/subvost-downloads'))
 STATE = Path(os.environ.get('MIRROR_STATE', '/var/lib/subvost-download-mirror'))
-LIMIT = 12 * 1024**3
+# Retain immutable old links while making room for the qualified 2026-10-05 set.
+# The independent free-space reserve remains mandatory: no automatic deletion.
+LIMIT = 16 * 1024**3
+CURRENT_SET_LIMIT = 4 * 1024**3
+FREE_RESERVE = 8 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
 WINDOWS_RELEASE_CEILING = '0.2.0-preview.6'  # Explicit publication ceiling; future diagnostics remain excluded.
 
@@ -114,6 +118,17 @@ def digest(path):
     return h.hexdigest()
 
 
+def check_disk_budget(total, existing, needed, free):
+    if any(type(n) is not int or n < 0 for n in (total, existing, needed, free)):
+        raise ValueError('Invalid mirror disk accounting')
+    if total > CURRENT_SET_LIMIT:
+        raise ValueError('Mirror current release set exceeds safety limit; no publication')
+    if existing + needed > LIMIT:
+        raise ValueError('Mirror retained versions exceed safety limit; no publication')
+    if free < needed + FREE_RESERVE:
+        raise ValueError('Mirror free-space reserve would be crossed; no publication')
+
+
 def validate_asset(tag, asset):
     name, size, sha = asset['name'], asset['size'], asset.get('digest', '')
     if not NAME.fullmatch(tag) or not NAME.fullmatch(name) or '..' in (tag, name):
@@ -188,8 +203,7 @@ def run():
         total = sum(a['size'] for _, a in items)
         existing = sum(p.stat().st_size for p in (ROOT / 'releases').rglob('*') if p.is_file())
         needed = sum(a['size'] for tag, a in items if not (ROOT / 'releases' / tag / a['name']).exists())
-        if total > 4 * 1024**3 or existing + needed > LIMIT or shutil.disk_usage(ROOT).free < needed + 8 * 1024**3:
-            raise ValueError('Mirror disk safety limit reached; no publication')
+        check_disk_budget(total, existing, needed, shutil.disk_usage(ROOT).free)
         with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
             assets = list(pool.map(download, items))
         stamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
