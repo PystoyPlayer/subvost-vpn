@@ -1,6 +1,62 @@
 {
   "releases": [
     {
+      "tag_name": "windows-v0.2.0-preview.6",
+      "draft": false,
+      "prerelease": true,
+      "published_at": "2026-10-05T05:43:09Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 810,
+          "digest": "sha256:8dcf30037a5db6c926d490d82cd570bc3db8dfd2cbbb031bab9bdd2d49154571",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-0.2.0-preview.6-Windows-arm64-Setup.exe",
+          "size": 49633775,
+          "digest": "sha256:54d7483ae8cbb7ed4e3dc6211f608413a9d553e27aa297d1b71b0875c2573178",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-0.2.0-preview.6-Windows-arm64-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-0.2.0-preview.6-Windows-x64-Setup.exe",
+          "size": 56987330,
+          "digest": "sha256:a2c1f08753077dff4995608becff680e42b1939f085632ca212e73ded2ce164f",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-0.2.0-preview.6-Windows-x64-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-0.2.0-preview.6-Windows-x86-Setup.exe",
+          "size": 52614748,
+          "digest": "sha256:13d5e0c442bf6df4c6ac7d0686a66cf452ff84cf11e890214a11bf12d7286ca2",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-0.2.0-preview.6-Windows-x86-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.2.0-preview.6-manifest.json",
+          "size": 2401,
+          "digest": "sha256:e6e5adae7d8ede7e36c72a77ce91fed4c7b488de213845f7a322a0a98f602ace",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-Windows-0.2.0-preview.6-manifest.json"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.2.0-preview.6-win-arm64.zip",
+          "size": 73502168,
+          "digest": "sha256:d88760956e5a45e0c3933737ee2eab11113faf863964f35ced6480081102a575",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-Windows-0.2.0-preview.6-win-arm64.zip"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.2.0-preview.6-win-x64.zip",
+          "size": 79682395,
+          "digest": "sha256:169a6910d665d2f9cabaa968efc6e991354a5fc891c66a867d909be56a8ed204",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-Windows-0.2.0-preview.6-win-x64.zip"
+        },
+        {
+          "name": "SubVost-VPN-Windows-0.2.0-preview.6-win-x86.zip",
+          "size": 74808617,
+          "digest": "sha256:098bd2d82323b7d657a075512d87cee5e3ede32a4b4e85a54c3b743b083f90c5",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-Windows-0.2.0-preview.6-win-x86.zip"
+        }
+      ]
+    },
+    {
       "tag_name": "android-v0.2.0-beta.7",
       "draft": false,
       "prerelease": true,

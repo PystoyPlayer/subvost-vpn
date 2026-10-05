@@ -2,29 +2,33 @@
   "schema": 1,
   "platform": "windows",
   "channel": "testing",
-  "version": "0.2.0-preview.5",
+  "version": "0.2.0-preview.6",
+  "keyId": "subvost-p256-20261005",
   "notes": {
-    "ru": "Добавлены явные правила по имени исполняемого файла наряду с путём и папкой: обновление Discord больше не требует менять такое правило. 522 теста и пакеты x64/ARM64/x86 проверены. После установки обновите системный компонент. Это не подтверждение устранения всех полевых сбоев Discord или игр.",
-    "en": "Explicit executable-name rules alongside path/folder rules survive version-folder changes such as Discord updates. 522 tests and x64/ARM64/x86 packages verified. Update the system component after installation. This does not qualify all field Discord/game failures as resolved."
+    "ru": "Xray 26.9.30 с сохранёнными патчами SubVost. Ограниченные по размеру журналы, сравнение системного DNS и трёх DoH-путей, проверка подписи издателя и атомарная загрузка обновлений. Установка x64, служба, окно приложения, IPv4/IPv6 UDP/TCP и очистка TUN проверены на Windows 10; ARM64/x86 прошли сборочные и пакетные проверки. Голосовой Discord и Windows 11 требуют отдельной натурной проверки.",
+    "en": "Patched Xray 26.9.30, bounded diagnostics, system DNS versus three DoH paths, publisher-signed atomic updates. x64 installation, SCM service, WPF, IPv4/IPv6 UDP/TCP and TUN cleanup verified in Windows 10. ARM64/x86 build/package checks passed; physical Discord voice and Windows 11 acceptance remain separate."
   },
   "assets": [
     {
       "rid": "win-x64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.5/SubVost-VPN-0.2.0-preview.5-Windows-x64-Setup.exe",
-      "size": 56820958,
-      "sha256": "87a5200969b062edc19fb7539dae10bca3a364632408ef4f77548c6f243b2171"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-0.2.0-preview.6-Windows-x64-Setup.exe",
+      "size": 56987330,
+      "sha256": "a2c1f08753077dff4995608becff680e42b1939f085632ca212e73ded2ce164f",
+      "signature": "MEQCIAbVevi/wTCll7JLOauP7NHx6vsd4o2Zf87q9S4a+iUiAiAoA8I8JZy0BwNoGIABZhLP7GYpX9J3aVoFlzOKnRjjKQ=="
     },
     {
       "rid": "win-arm64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.5/SubVost-VPN-0.2.0-preview.5-Windows-arm64-Setup.exe",
-      "size": 49467831,
-      "sha256": "198fa6e8af4ab8161b25956e87dadc2898541c73fcc5fd4ad7d48dfadf7c6198"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-0.2.0-preview.6-Windows-arm64-Setup.exe",
+      "size": 49633775,
+      "sha256": "54d7483ae8cbb7ed4e3dc6211f608413a9d553e27aa297d1b71b0875c2573178",
+      "signature": "MEYCIQCTXZ0tG9w4iNNCqaVZVKgoRihRAAKXOf4IGubrUnZ5YgIhALXPAm6Iw7HBHA5U7P1U/gk/xDCPYJ6ZOiQr21c+Nsbh"
     },
     {
       "rid": "win-x86",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.5/SubVost-VPN-0.2.0-preview.5-Windows-x86-Setup.exe",
-      "size": 52456106,
-      "sha256": "38a46ce5cd089efefb06d17385f8e037fce92e8aa354e3d36b7e84569a1e0936"
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v0.2.0-preview.6/SubVost-VPN-0.2.0-preview.6-Windows-x86-Setup.exe",
+      "size": 52614748,
+      "sha256": "13d5e0c442bf6df4c6ac7d0686a66cf452ff84cf11e890214a11bf12d7286ca2",
+      "signature": "MEUCIGl0mkpVHRTTHr/PtkbuxhIMyzH/NUxKK95Pm2KH2i/YAiEA53Vcv2D6DThOCUrd3jED5Bd1Q+3mYUs2H2f5W58McAY="
     }
   ]
 }

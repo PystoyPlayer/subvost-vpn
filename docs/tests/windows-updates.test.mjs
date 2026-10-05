@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { createPublicKey, verify } from 'node:crypto';
 import { buildCatalog, buildPublishedCatalog, selectBuild, WINDOWS_RELEASE_CEILING } from '../lib/catalog.mjs';
 import { downloadSource } from '../lib/mirror.mjs';
 
@@ -68,5 +69,18 @@ test('the application feed and website advertise identical Windows releases and 
     assert.equal(build?.url, asset.url);
     assert.equal(build?.size, asset.size);
     assert.equal(build?.sha256, asset.sha256);
+  }
+});
+
+test('publisher signature authenticates every installer and its version, CPU, URL, size and digest', async () => {
+  const feed = JSON.parse(await readFile(new URL('../updates/windows-testing.json', import.meta.url)));
+  assert.equal(feed.keyId, 'subvost-p256-20261005');
+  const key = createPublicKey({key: Buffer.from('MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEtrAwWwfbMv+3D28Bt06M0n8Nm1WNceTPrG+GYLdcALJbiCCFhVkIQlczhtE+LEyNetUJ7QMgFh6P9qq6o/aQ2Q==', 'base64'), format:'der', type:'spki'});
+  const valid = (a, version=feed.version) => verify('sha256', Buffer.from(`subvost-release-v1\nwindows\n${version}\n${a.rid}\n${a.url}\n${a.size}\n${a.sha256}\n`, 'ascii'), key, Buffer.from(a.signature, 'base64'));
+  for (const a of feed.assets) {
+    assert.match(a.signature, /^[A-Za-z0-9+/]{80,110}={0,2}$/);
+    assert.equal(valid(a), true);
+    assert.equal(valid(a, '0.2.0-preview.999'), false);
+    for (const change of [{rid:'win-other'}, {url:a.url+'-changed'}, {size:a.size+1}, {sha256:'0'.repeat(64)}]) assert.equal(valid({...a,...change}),false);
   }
 });
