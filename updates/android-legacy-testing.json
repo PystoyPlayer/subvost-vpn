@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 28,
-  "version": "0.2.0-beta.6",
+  "build": 29,
+  "version": "0.2.0-beta.7",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.6/SubVost-VPN-Android-Legacy-0.2.0-beta.6.apk",
-  "size": 217284925,
-  "sha256": "267d718799abf2d1448e5890f88a5afeeec13aade4e751be5eae5bcddf0b8293",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.7/SubVost-VPN-Android-Legacy-0.2.0-beta.7.apk",
+  "size": 181236763,
+  "sha256": "5a7f651ba68da3fd261252cfcfc7a538ce3e86d7029407d285d07fb67d359495",
   "notes": {
-    "ru": "Исправлено обновление подписки после продления в сети с белыми списками: когда SubVost отключён, запрос использует уже работающий системный VPN, например Incy. Автоматически другой VPN не запускается. Сохранённые ссылка и подписка не удаляются при сетевой ошибке; проверка TLS, прав доступа и резервный физический запрос сохранены. Modern/Legacy сборки и выбор действующего VPN в отдельном эмуляторе проверены. Минутные обрывы на конкретной мобильной сети этим исправлением не считаются закрытыми.",
-    "en": "Renewed subscriptions can refresh over an already-running default VPN while SubVost is disconnected. No VPN is automatically started. Transport errors preserve saved subscription identity; TLS, access checks and the physical fallback remain unchanged. Modern/Legacy builds and actual default-VPN selection in an isolated emulator verified. This does not establish remediation of the separate intermittent mobile-network stalls."
+    "ru": "Xray 26.9.30 с патчами SubVost; ограниченные по размеру журналы и сравнение системного DNS с тремя DoH-путями. Размер, SHA-256, подпись и установка Modern/Legacy на Android 16 проверены; обновление с beta.6 прошло. Натурная проверка Honor и отдельных операторов остаётся отдельной задачей.",
+    "en": "Patched Xray 26.9.30, bounded persistent journals and system DNS versus three DoH paths. Exact size/hash/signature and Android 16 Modern/Legacy installs verified; beta.6 upgrade passed. Physical Honor and carrier-specific acceptance remain separate."
   }
 }
