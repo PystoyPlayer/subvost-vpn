@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>SubVost VPN</title>
+        <item>
+            <title>0.4.26</title>
+            <pubDate>Mon, 05 Oct 2026 06:47:47 +0300</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.26</sparkle:fullReleaseNotesLink>
+            <sparkle:version>57</sparkle:version>
+            <sparkle:shortVersionString>0.4.26</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<html><body><h2>SubVost VPN 0.4.26</h2><ul>
+<li>Современные сборки macOS: Xray 26.9.30 с сохранёнными патчами SubVost. Legacy для macOS 11–12 сохраняет совместимое ядро 26.9.9.</li>
+<li>Сравнение системного DNS и нескольких защищённых DNS-путей в диагностике; результаты не содержат историю посещений.</li>
+<li>Более подробные ограниченные по размеру журналы и проверка целостности обновлений.</li>
+<li>Modern macOS builds use Xray 26.9.30 with SubVost patches. Legacy macOS 11–12 retains its compatible 26.9.9 core.</li>
+<li>Bounded diagnostics include system DNS versus multiple DoH paths without browsing history.</li>
+</ul></body></html>
+]]></description>
+            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.26/SubVost-VPN-macOS-Legacy-x86_64-0.4.26.dmg" length="32469845" type="application/octet-stream" sparkle:edSignature="p9YORYkIoE3wgJRE6DyJQc3CIa7y/28m0lunrot9WbQmXeA9kKdiJe7u/sp7IYsvSxMsmD+cO1n+B8ny9NapCA=="></enclosure>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: Bvd7UGbuC3VHR/rcZIkJ9+UXNFyYbu/d/heOhORi5q0eXBeumPm4q2WnyFu8hpnMSbR882T0Hv2qMrscL5RXBg==
+length: 2145
+-->
