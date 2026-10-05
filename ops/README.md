@@ -23,11 +23,17 @@ The synchronizer selects the newest release for each supported installer slot,
 not the GitHub global `latest` flag. It also copies checksums and corresponding
 source archives from those release tags. Every file requires the exact official
 repository URL, size, and upstream SHA-256. Two bounded downloads at a time,
-atomic publication, failed-download cleanup, process lock, 12 GiB total mirror
+atomic publication, failed-download cleanup, process lock, 16 GiB total mirror
 ceiling, 4 GiB current-set ceiling, and 8 GiB free-disk reserve prevent a failed
 refresh from consuming the disk or publishing partial files. Old files are not
 automatically deleted or overwritten. A storage-limit failure retains the last
 working catalogue and is visible in the service journal.
+
+The retained-version ceiling was raised from 12 to 16 GiB on 2026-10-05 after
+measuring 11.86 GiB of retained releases and a 1.50 GiB qualified new set, with
+18.89 GiB free. No old installer was deleted. The independent 4 GiB current-set
+limit and 8 GiB free-space reserve remain unchanged; reaching either still
+refuses publication. Budget errors now identify the specific crossed limit.
 
 Manual refresh / inspection:
 
