@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 29,
-  "version": "0.2.0-beta.7",
+  "build": 30,
+  "version": "0.2.0-beta.8",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.7/SubVost-VPN-Android-Legacy-0.2.0-beta.7.apk",
-  "size": 181236763,
-  "sha256": "5a7f651ba68da3fd261252cfcfc7a538ce3e86d7029407d285d07fb67d359495",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.8/SubVost-VPN-Android-Legacy-0.2.0-beta.8.apk",
+  "size": 181236821,
+  "sha256": "c4a41d0abaf6296857b692eeac208dcaceba2401dd25b016daf2a454ab12c892",
   "notes": {
-    "ru": "Xray 26.9.30 с патчами SubVost; ограниченные по размеру журналы и сравнение системного DNS с тремя DoH-путями. Размер, SHA-256, подпись и установка Modern/Legacy на Android 16 проверены; обновление с beta.6 прошло. Натурная проверка Honor и отдельных операторов остаётся отдельной задачей.",
-    "en": "Patched Xray 26.9.30, bounded persistent journals and system DNS versus three DoH paths. Exact size/hash/signature and Android 16 Modern/Legacy installs verified; beta.6 upgrade passed. Physical Honor and carrier-specific acceptance remain separate."
+    "ru": "Повторные запросы управления и обновления подписки при временных сетевых ошибках ограничены по времени; добавлен отдельный доверенный вход. Проверка выбранного выхода не переключается на другой маршрут. Уточнены кодированные логи. В режиме обхода подсвечивается только текст трафика, а не фон карточки. Серверные сбои не считаются устранёнными этим обновлением.",
+    "en": "Bounded retries for temporary control/subscription transport failures and a separate trusted ingress. Selected-egress proof never switches routes. More coded diagnostics. Bypass highlights traffic text only. This update does not claim to resolve server outages."
   }
 }
