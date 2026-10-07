@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "testing",
-  "build": 30,
-  "version": "0.2.0-beta.8",
+  "build": 31,
+  "version": "0.2.0-beta.9",
   "minSdk": 21,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.8/SubVost-VPN-Android-Legacy-0.2.0-beta.8.apk",
-  "size": 181236821,
-  "sha256": "c4a41d0abaf6296857b692eeac208dcaceba2401dd25b016daf2a454ab12c892",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.9/SubVost-VPN-Android-Legacy-0.2.0-beta.9.apk",
+  "size": 181236818,
+  "sha256": "8f0195549acc0d1c1e2a425a6dcc4c27054ddae6ebabcf77badd037b86768828",
   "notes": {
-    "ru": "Повторные запросы управления и обновления подписки при временных сетевых ошибках ограничены по времени; добавлен отдельный доверенный вход. Проверка выбранного выхода не переключается на другой маршрут. Уточнены кодированные логи. В режиме обхода подсвечивается только текст трафика, а не фон карточки. Серверные сбои не считаются устранёнными этим обновлением.",
-    "en": "Bounded retries for temporary control/subscription transport failures and a separate trusted ingress. Selected-egress proof never switches routes. More coded diagnostics. Bypass highlights traffic text only. This update does not claim to resolve server outages."
+    "ru": "Обход белых списков на техработах: приложение показывает предупреждение и позволяет выключить обход, в том числе во время зависшего обновления подписки. Отключённый CDN больше не используется как резерв из кэша. При ошибке DNS управляющие запросы к фиксированным адресам SubVost могут обращаться к нашему RU-серверу без изменения имени TLS и проверки сертификата. Системный DNS и сайты не меняются. Обычный VPN и сохранённая подписка остаются отдельными от обхода; это обновление не восстанавливает обход на белых списках.",
+    "en": "Allowlist bypass maintenance is shown explicitly; bypass can be turned off even while a subscription refresh is stalled. The suspended CDN is no longer selected from cached bootstrap profiles. On DNS lookup failure, fixed SubVost control requests can use our RU server while preserving TLS authority and certificate verification. System DNS and other sites are unchanged. This update does not restore allowlist bypass."
   }
 }
