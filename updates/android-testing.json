@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 40,
-  "version": "1.0.0",
+  "build": 41,
+  "version": "1.0.1",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.0/SubVost-VPN-Android-1.0.0.apk",
-  "size": 232642202,
-  "sha256": "2c6c149145115a0872c2eab95a83b2353851ef5908c865511b1a16c25321b6c8",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.1/SubVost-VPN-Android-1.0.1.apk",
+  "size": 232642207,
+  "sha256": "520f1efd6b1d0c6596f25b5fd835e578ea75b28e68d6cd16d1a775435bc2577a",
   "notes": {
-    "ru": "SubVost VPN 1.0 для Android 6+ (ARM64, ARMv7 и x86_64). Обновлены подключение и обход ограничений.\n\nВажно: у версии 1.0 новый ключ подписи. Старые публичные beta нельзя обновить поверх установленного приложения. Сначала сохраните ссылку подписки и нужные настройки, отключите VPN, удалите старую beta и установите этот APK вручную. Удаление стирает локальные данные; затем импортируйте ссылку заново. При необходимости освободите запись старого устройства в боте. Проверка подписи в приложении не отключается.",
-    "en": "SubVost VPN 1.0 for Android 6+ (ARM64, ARMv7 and x86_64), with updated connection and bypass support.\n\nImportant: version 1.0 uses a new signing key. It cannot be installed over the old public betas. Save your subscription link and settings, disconnect VPN, uninstall the old beta, then install this APK manually and import your link again. Uninstalling removes local data; remove the old device entry in the bot if needed. The app's signature checks remain enabled."
+    "ru": "Android 1.0.1 улучшает запуск подключения в сетях с IPv6, добавляет получение обновлений через download.subvost.fun с резервным источником и уточняет диагностику ошибок подключения. Если подключение в 1.0.0 не работало, пожалуйста, повторно проверьте эту версию и пришлите новый журнал, если проблема сохранилась. Исправление всех сетевых случаев пока не подтверждено.\n\nОбновление с 1.0.0 сохраняет данные приложения и использует тот же сертификат подписи. Если GitHub недоступен, установите APK с сайта загрузки вручную один раз. Для старых бета-версий с прежним сертификатом переход по-прежнему ручной: заранее сохраните ссылку подписки и нужные настройки; удаление старого приложения стирает его локальные данные. При достижении лимита устройств отвяжите прежнее устройство через существующий бот.",
+    "en": "Android 1.0.1 improves connection startup on IPv6 networks, adds updates through download.subvost.fun with a fallback source, and improves connection-error diagnostics. If version 1.0.0 could not connect, please test this version and send a fresh log if the issue remains. Not every network scenario has been verified fixed.\n\nUpdating from 1.0.0 preserves app data and uses the same signing certificate. If GitHub is unavailable, manually install the APK from the download site once. Older betas using the previous certificate still require manual migration: save your subscription link and needed settings first; uninstalling the old app erases its local data. If the device limit is reached, unlink the previous device through the existing bot."
   }
 }
