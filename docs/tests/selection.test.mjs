@@ -2,12 +2,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { initialSelection, choose, selectionComplete } from '../lib/selection.mjs';
 
-test('Android uses one universal APK without asking for a CPU; switching OS resets it', () => {
+test('Android requires an explicit system version, without asking for a CPU', () => {
   const state = choose(initialSelection(), 'os', 'android');
-  assert.equal(selectionComplete(state), true);
-  assert.deepEqual(state, { os: 'android', arch: 'universal', variant: 'mobile', format: 'apk' });
+  assert.equal(selectionComplete(state), false);
+  assert.deepEqual(state, { os: 'android', arch: 'universal', variant: null, format: 'apk' });
+  assert.equal(selectionComplete(choose(state, 'variant', 'mobile')), true);
+  assert.equal(selectionComplete(choose(state, 'variant', 'legacy')), true);
   assert.equal(choose(state, 'os', 'windows').arch, null);
   assert.equal(choose(state, 'os', 'linux').format, null);
+});
+
+test('Android preserves explicit choices within the same OS but resets after switching away', () => {
+  for (const variant of ['mobile', 'legacy']) {
+    const explicit = choose(choose(initialSelection(), 'os', 'android'), 'variant', variant);
+    assert.deepEqual(choose(explicit, 'os', 'android'), explicit);
+    assert.equal(choose(choose(explicit, 'os', 'ios'), 'os', 'android').variant, null);
+  }
 });
 
 test('first visit has no implicit OS or CPU choice', () => {
