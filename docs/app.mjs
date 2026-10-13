@@ -1,5 +1,5 @@
 import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261013-mac68';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20261014-explicit-android';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
 
@@ -70,7 +70,7 @@ function renderOptions() {
     content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), processorHelp);
     if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
   } else if (state.os === 'android') {
-    content.append(group('Версия Android', 'variant', [['mobile', 'Android 6 и новее'], ['legacy', 'Android 5.0–5.1 · Legacy']], 'Android ниже 5 не поддерживается. Обе APK включают ARM64, ARMv7 и x86_64.'));
+    content.append(group('Версия Android', 'variant', [['mobile', 'Android 6 и новее'], ['legacy', 'Android 5.0–5.1 · Legacy · бета']], 'Выберите версию системы на телефоне. Legacy — старая бета-сборка, новой стабильной версии для Android 5 пока нет. Android ниже 5 не поддерживается. Обе APK включают ARM64, ARMv7 и x86_64.'));
   } else if (state.os === 'windows') {
     content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Для Windows 10 (1809 и новее) и Windows 11. Тип системы: Параметры → Система → О системе.'));
   } else if (state.os === 'linux') {
@@ -91,6 +91,7 @@ function renderOptions() {
 function renderResult() {
   result.classList.toggle('ios-result', state.os === 'ios');
   $('ios-prerequisite').hidden = state.os !== 'ios';
+  $('ios-release-warning').hidden = state.os !== 'ios';
   const supported = ['macos', 'linux', 'windows', 'android'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
@@ -110,6 +111,7 @@ function renderResult() {
   $('linux-help').hidden = state.os !== 'linux';
   $('install-help').hidden = !hasInstallHelp;
   $('download').hidden = !build; $('download').removeAttribute('href');
+  $('download').removeAttribute('aria-describedby');
   $('download-actions').hidden = !build;
   $('source-controls').hidden = !build;
   if (!build) sourceMenu.close();
@@ -127,14 +129,15 @@ function renderResult() {
     $('download').href = 'https://testflight.apple.com/join/XPHxBArP';
     $('download').setAttribute('aria-disabled', 'false');
     $('download').setAttribute('aria-label', 'Установить SubVost VPN через TestFlight');
+    $('download').setAttribute('aria-describedby', 'ios-release-warning-text');
     $('download').textContent = 'Установить SubVost VPN';
     $('download').prepend(brandIcon('apple'));
     return;
   }
   if (build) {
-    const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy' : 'Универсальная сборка') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') + (state.variant === 'legacy' ? ' · Legacy' : '') : state.arch;
+    const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy · старая бета-версия' : 'Универсальная сборка') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') + (state.variant === 'legacy' ? ' · Legacy' : '') : state.arch;
     $('result-title').textContent = `${osNames[state.os]} · ${build.version}`;
-    $('install-summary').textContent = build.prerelease ? 'Установка тестовой версии' : 'Как установить?';
+    $('install-summary').textContent = state.os === 'android' && state.variant === 'legacy' ? 'Установка старой бета-версии' : build.prerelease ? 'Установка тестовой версии' : 'Как установить?';
     $('result-detail').textContent = state.os === 'windows'
       ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
         ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
@@ -167,7 +170,7 @@ $('choices').addEventListener('change', event => {
   state = choose(state, input.name, input.value);
   renderOptions();
   renderResult();
-  $('step-status').textContent = !result.hidden ? '' : !state.arch ? 'Теперь выберите процессор.' : state.os === 'macos' ? 'Теперь выберите версию macOS.' : 'Теперь выберите формат пакета.';
+  $('step-status').textContent = !result.hidden ? '' : state.os === 'android' ? 'Теперь выберите версию Android.' : !state.arch ? 'Теперь выберите процессор.' : state.os === 'macos' ? 'Теперь выберите версию macOS.' : 'Теперь выберите формат пакета.';
 });
 
 $('copy-command').addEventListener('click', async () => {

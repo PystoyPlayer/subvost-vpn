@@ -7,7 +7,9 @@ test('Android normal and Legacy are distinct, explicit downloads',()=>{
   const tag='android-v0.1.0-beta.2';
   const builds=buildCatalog([{tag_name:tag,prerelease:true,assets:names.map(name=>({name,size:100,browser_download_url:`https://github.com/PystoyPlayer/subvost-vpn/releases/download/${tag}/${name}`}))}]);
   assert.equal(builds.length,2);
-  const normal=choose(initialSelection(),'os','android');
+  const pending=choose(initialSelection(),'os','android');
+  assert.equal(selectBuild(builds,pending),null);
+  const normal=choose(pending,'variant','mobile');
   assert.equal(selectBuild(builds,normal).name,names[0]);
   assert.equal(selectBuild(builds,choose(normal,'variant','legacy')).name,names[1]);
   assert.equal(selectBuild(builds.filter(b=>b.variant==='mobile'),choose(normal,'variant','legacy')),null);
