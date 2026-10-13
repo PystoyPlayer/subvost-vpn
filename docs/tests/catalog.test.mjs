@@ -16,7 +16,7 @@ test('Android alpha is explicit; unified releases respect the qualified Windows 
   const unified = buildCatalog([input, release('1.0.0', [mac('1.0.0'), 'SubVost-VPN-Linux-arm64-1.0.0.deb', 'SubVost-VPN-1.0.0-Windows-x64-Setup.exe', 'SubVost-VPN-Android-1.0.0.apk'])]);
   assert.equal(unified.length, 4);
   assert.ok(unified.every(b => b.version === '1.0.0' && !b.prerelease));
-  const future = buildCatalog([release('1.0.1', [mac('1.0.1'), 'SubVost-VPN-1.0.1-Windows-x64-Setup.exe'])]);
+  const future = buildCatalog([release('1.0.2', [mac('1.0.2'), 'SubVost-VPN-1.0.2-Windows-x64-Setup.exe'])]);
   assert.deepEqual(future.map(b => b.os), ['macos']); // A unified tag cannot bypass the Windows ceiling.
 });
 test('SemVer prerelease order and build metadata do not depend on tag prefixes', () => {
