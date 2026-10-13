@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://download.subvost.fun/">
   <link rel="icon" href="brand.png" type="image/png">
   <link rel="stylesheet" href="style.css?v=20261014-release-warning">
-  <script type="module" src="app.mjs?v=20261014-explicit-android-ios"></script>
+  <script type="module" src="app.mjs?v=20261014-android-install-help"></script>
 </head>
 <body>
   <a class="skip" href="#selector">К выбору файла</a>
@@ -86,7 +86,13 @@
     </section>
     <section class="help" aria-label="Установка и помощь" hidden>
       <details id="processor-help"><summary>Как узнать процессор?</summary><p id="processor-description">Меню Apple → «Об этом Mac». Если указано «Чип Apple M…» — выбирайте Apple Silicon. Если «Процессор Intel» — Intel.</p></details>
-      <details id="install-help" hidden><summary id="install-summary">Как установить?</summary><p id="result-detail"></p></details>
+      <details id="install-help" hidden><summary id="install-summary">Как установить?</summary><p id="result-detail"></p>
+        <div id="android-install-conflict" hidden>
+          <p><strong>Android пишет «Конфликт с другим пакетом»?</strong> Сначала проверьте установленную версию SubVost VPN в настройках приложения. Это сообщение не всегда означает проблему с подписью.</p>
+          <p><strong>Уже установлена версия 1.0.0 или новее.</strong> Эти выпуски сохраняют одну подпись и рассчитаны на обновление без удаления. При таком конфликте не удаляйте приложение: отправьте в поддержку установленную версию и текст ошибки. Не публикуйте ссылку подписки.</p>
+          <p><strong>Переходите со старой беты на 1.0 или новее.</strong> Подпись приложения изменилась. До удаления старой беты сохраните ссылку подписки из бота. После переустановки понадобится повторный импорт; приложение может занять новое место в лимите устройств. Удаление стирает локальные настройки. Если ссылка недоступна или лимит заполнен, сначала обратитесь в поддержку.</p>
+        </div>
+      </details>
       <div id="mac-help">
         <details><summary>Как установить на Mac?</summary><ol><li>Скачайте DMG для своего процессора и версии macOS.</li><li>Откройте DMG и перетащите SubVost VPN в папку «Программы» (Applications).</li><li>Откройте приложение из «Программ», добавьте ссылку из бота и следуйте инструкции установки VPN-компонента.</li></ol><div id="mac-notarized" hidden><p>Эта версия для macOS 13+ подписана Developer ID и нотариально заверена Apple. Снимать карантин командами Terminal не нужно.</p><p>При переходе со старой версии сначала отключите VPN и полностью закройте приложение, затем установите новую версию вручную. При первом подключении разрешите добавление системного VPN в окне macOS. С версии 1.0.0 (66) тоже нужно обновиться вручную: проверка обновлений в ней не запускалась. Старые версии автоматически на эту сборку не переводятся.</p></div><p>Для macOS 11–12 выбирайте Legacy. Проверка на вашем устройстве всё равно важна: она не заменяется сборкой пакета.</p></details>
         <details id="mac-legacy-open"><summary>macOS не даёт открыть приложение</summary><p>Сначала попробуйте: «Системные настройки» → «Конфиденциальность и безопасность» → «Всё равно открыть» после попытки запуска.</p><p>Для текущей сборки может понадобиться разово выполнить команды ниже в Terminal. Только если приложение скачано из <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">официальных релизов SubVost</a> и уже находится в Applications.</p>

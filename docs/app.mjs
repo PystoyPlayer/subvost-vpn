@@ -110,6 +110,7 @@ function renderResult() {
   $('mac-help').hidden = state.os !== 'macos' || !selectionComplete(state);
   $('linux-help').hidden = state.os !== 'linux';
   $('install-help').hidden = !hasInstallHelp;
+  $('android-install-conflict').hidden = !(build && state.os === 'android');
   $('download').hidden = !build; $('download').removeAttribute('href');
   $('download').removeAttribute('aria-describedby');
   $('download-actions').hidden = !build;
@@ -142,9 +143,7 @@ function renderResult() {
       ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
         ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
         : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.')
-      : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + (state.variant === 'legacy' ? 'Для Android 5.0–5.1. ' : 'Для Android 6 и новее. ') + (state.variant === 'mobile' && build.version === '1.0.0'
-        ? 'Откройте APK на телефоне. Версия 1.0.0 подписана новым ключом: переход со старых сборок требует переустановки. Сначала убедитесь, что ссылка подписки доступна в боте, затем удалите старое приложение, установите новое и добавьте ссылку заново. Локальные настройки при удалении не сохраняются. Если лимит устройств заполнен, удалите прежнее устройство в разделе управления устройствами бота.'
-        : 'Откройте APK на телефоне. При обновлении не удаляйте приложение — подписка сохранится. Проверки на реальных устройствах продолжаются.') : '';
+      : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + (state.variant === 'legacy' ? 'Для Android 5.0–5.1. ' : 'Для Android 6 и новее. ') + 'Откройте APK на телефоне. Перед переходом со старой беты прочитайте пояснение ниже. Проверки на реальных устройствах продолжаются.' : '';
     const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE', apk: 'APK' }[build.format] ?? build.format;
     const mirror = downloadSource(build, mirrorManifest);
     const url = selectedDownload(build, mirrorManifest, selectedSource);
