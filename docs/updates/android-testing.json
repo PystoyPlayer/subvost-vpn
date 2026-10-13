@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 41,
-  "version": "1.0.1",
+  "build": 42,
+  "version": "1.0.2",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.1/SubVost-VPN-Android-1.0.1.apk",
-  "size": 232642207,
-  "sha256": "520f1efd6b1d0c6596f25b5fd835e578ea75b28e68d6cd16d1a775435bc2577a",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.2/SubVost-VPN-Android-1.0.2.apk",
+  "size": 232658919,
+  "sha256": "e4cf965a5815d1d0043987191943d5e588b4c80d4774edca254d9672e96e5538",
   "notes": {
-    "ru": "Android 1.0.1 улучшает запуск подключения в сетях с IPv6, добавляет получение обновлений через download.subvost.fun с резервным источником и уточняет диагностику ошибок подключения. Если подключение в 1.0.0 не работало, пожалуйста, повторно проверьте эту версию и пришлите новый журнал, если проблема сохранилась. Исправление всех сетевых случаев пока не подтверждено.\n\nОбновление с 1.0.0 сохраняет данные приложения и использует тот же сертификат подписи. Если GitHub недоступен, установите APK с сайта загрузки вручную один раз. Для старых бета-версий с прежним сертификатом переход по-прежнему ручной: заранее сохраните ссылку подписки и нужные настройки; удаление старого приложения стирает его локальные данные. При достижении лимита устройств отвяжите прежнее устройство через существующий бот.",
-    "en": "Android 1.0.1 improves connection startup on IPv6 networks, adds updates through download.subvost.fun with a fallback source, and improves connection-error diagnostics. If version 1.0.0 could not connect, please test this version and send a fresh log if the issue remains. Not every network scenario has been verified fixed.\n\nUpdating from 1.0.0 preserves app data and uses the same signing certificate. If GitHub is unavailable, manually install the APK from the download site once. Older betas using the previous certificate still require manual migration: save your subscription link and needed settings first; uninstalling the old app erases its local data. If the device limit is reached, unlink the previous device through the existing bot."
+    "ru": "Android 1.0.2 исправляет несколько причин срыва начального подключения на медленных сетях и при недоступности части IPv4/IPv6-адресов. Диагностика теперь сохраняет режим, выбранную страну, этап и длительность попытки, а также результаты сетевых операций без секретов подписки. После обновления приложение удаляет свой оставшийся установочный APK из кэша при следующем запуске.\n\nВерсию можно установить поверх 1.0.0 или 1.0.1 без удаления приложения: сертификат подписи не менялся. Если соединение всё ещё не запускается, отправьте свежую диагностику из этой версии. Работа во всех сетях пока не подтверждена. Переход со старых бета-версий с другим сертификатом остаётся отдельной ручной процедурой; перед удалением такой версии сохраните ссылку подписки и нужные настройки.",
+    "en": "Android 1.0.2 fixes several causes of early connection failures on slow networks and when some IPv4/IPv6 addresses are unreachable. Diagnostics now include the mode, selected country, connection stage, timing, and network-operation results without subscription secrets. After an update, the app removes its leftover installer APK from its cache on the next launch.\n\nInstall over 1.0.0 or 1.0.1 without uninstalling: the signing certificate has not changed. If a connection still fails, send a fresh diagnostic log from this version. Not every network scenario has been verified. Older betas with a different signing certificate still require separate manual migration; save your subscription link and needed settings before uninstalling those versions."
   }
 }
