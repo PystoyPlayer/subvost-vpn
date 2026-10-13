@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 42,
-  "version": "1.0.2",
+  "build": 43,
+  "version": "1.0.3",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.2/SubVost-VPN-Android-1.0.2.apk",
-  "size": 232658919,
-  "sha256": "e4cf965a5815d1d0043987191943d5e588b4c80d4774edca254d9672e96e5538",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.3/SubVost-VPN-Android-1.0.3.apk",
+  "size": 232872274,
+  "sha256": "88910d29759a40bdd31d87d90b02996fd506230aca9db60a7b53c2274c12f26c",
   "notes": {
-    "ru": "Android 1.0.2 исправляет несколько причин срыва начального подключения на медленных сетях и при недоступности части IPv4/IPv6-адресов. Диагностика теперь сохраняет режим, выбранную страну, этап и длительность попытки, а также результаты сетевых операций без секретов подписки. После обновления приложение удаляет свой оставшийся установочный APK из кэша при следующем запуске.\n\nВерсию можно установить поверх 1.0.0 или 1.0.1 без удаления приложения: сертификат подписи не менялся. Если соединение всё ещё не запускается, отправьте свежую диагностику из этой версии. Работа во всех сетях пока не подтверждена. Переход со старых бета-версий с другим сертификатом остаётся отдельной ручной процедурой; перед удалением такой версии сохраните ссылку подписки и нужные настройки.",
-    "en": "Android 1.0.2 fixes several causes of early connection failures on slow networks and when some IPv4/IPv6 addresses are unreachable. Diagnostics now include the mode, selected country, connection stage, timing, and network-operation results without subscription secrets. After an update, the app removes its leftover installer APK from its cache on the next launch.\n\nInstall over 1.0.0 or 1.0.1 without uninstalling: the signing certificate has not changed. If a connection still fails, send a fresh diagnostic log from this version. Not every network scenario has been verified. Older betas with a different signing certificate still require separate manual migration; save your subscription link and needed settings before uninstalling those versions."
+    "ru": "Android 1.0.3 (43): исправлена остановка запуска обхода на первом недоступном реле; добавлен резервный адрес начальной настройки. Диагностика теперь различает этапы подключения вместо общей ошибки. Исправления проверены автоматическими тестами; проверка на мобильной сети, где возникал отказ, ещё нужна.\n\nAndroid 6 и новее. Версии 1.0.0–1.0.2 обновляются с прежней подписью — удалять приложение не нужно. У старой беты подпись отличается: переход требует отдельной инструкции и сохранения ссылки подписки до удаления. Этот выпуск не является обновлением Legacy для Android 5.",
+    "en": "Android 1.0.3 (43): bypass startup can move past a silent first relay, and initial configuration has an additional ingress. Diagnostics distinguish connection stages instead of reporting a generic failure. Automated regressions passed; verification on the affected cellular network remains pending.\n\nRequires Android 6 or newer. Releases 1.0.0–1.0.2 retain the same signing identity and are intended to update in place. The old beta used a different signer: follow migration instructions and preserve the subscription link before removing it. This is not a new Legacy release for Android 5."
   }
 }
