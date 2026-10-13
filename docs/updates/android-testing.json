@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 43,
-  "version": "1.0.3",
+  "build": 44,
+  "version": "1.0.4",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.3/SubVost-VPN-Android-1.0.3.apk",
-  "size": 232872274,
-  "sha256": "88910d29759a40bdd31d87d90b02996fd506230aca9db60a7b53c2274c12f26c",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.4/SubVost-VPN-Android-1.0.4.apk",
+  "size": 233101956,
+  "sha256": "e8e276f4b7395e7e80a6614f07306046a7b1e2d0c0bf5560699417de1bb9a4c9",
   "notes": {
-    "ru": "Android 1.0.3 (43): исправлена остановка запуска обхода на первом недоступном реле; добавлен резервный адрес начальной настройки. Диагностика теперь различает этапы подключения вместо общей ошибки. Исправления проверены автоматическими тестами; проверка на мобильной сети, где возникал отказ, ещё нужна.\n\nAndroid 6 и новее. Версии 1.0.0–1.0.2 обновляются с прежней подписью — удалять приложение не нужно. У старой беты подпись отличается: переход требует отдельной инструкции и сохранения ссылки подписки до удаления. Этот выпуск не является обновлением Legacy для Android 5.",
-    "en": "Android 1.0.3 (43): bypass startup can move past a silent first relay, and initial configuration has an additional ingress. Diagnostics distinguish connection stages instead of reporting a generic failure. Automated regressions passed; verification on the affected cellular network remains pending.\n\nRequires Android 6 or newer. Releases 1.0.0–1.0.2 retain the same signing identity and are intended to update in place. The old beta used a different signer: follow migration instructions and preserve the subscription link before removing it. This is not a new Legacy release for Android 5."
+    "ru": "Исправлен переход на резервный путь подключения при сетевом таймауте во время запуска обхода белых списков. Улучшена диагностика: таймаут соединения больше не обозначается как отказ авторизации.\n\nОбновление для Android 6 и новее. Версии 1.0–1.0.3 обновляются поверх установленного приложения с сохранением подписки. Старые бета-сборки с другой подписью требуют отдельного перехода. Исправление проверено автоматическими сетевыми тестами; работа на затронутой мобильной сети ещё требует подтверждения.",
+    "en": "Fixed fallback to another connection path when a network handshake times out during restricted-network startup. Diagnostics now distinguish connection timeouts from authorization failures.\n\nFor Android 6 and newer. Versions 1.0–1.0.3 update in place and retain the subscription. Older beta builds signed with a different key require a separate migration. The fix passed automated network tests; confirmation on the affected mobile network is still pending."
   }
 }
