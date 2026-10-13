@@ -1,15 +1,15 @@
 {
   "schema": 1,
   "platform": "android",
-  "channel": "testing",
-  "build": 31,
-  "version": "0.2.0-beta.9",
+  "channel": "stable",
+  "build": 40,
+  "version": "1.0.0",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.9/SubVost-VPN-Android-0.2.0-beta.9.apk",
-  "size": 181203862,
-  "sha256": "33f69c397ca43734261cf967ecf80fbca1eab2080689cca3293f1b63686c8c78",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.0/SubVost-VPN-Android-1.0.0.apk",
+  "size": 232642202,
+  "sha256": "2c6c149145115a0872c2eab95a83b2353851ef5908c865511b1a16c25321b6c8",
   "notes": {
-    "ru": "Обход белых списков на техработах: приложение показывает предупреждение и позволяет выключить обход, в том числе во время зависшего обновления подписки. Отключённый CDN больше не используется как резерв из кэша. При ошибке DNS управляющие запросы к фиксированным адресам SubVost могут обращаться к нашему RU-серверу без изменения имени TLS и проверки сертификата. Системный DNS и сайты не меняются. Обычный VPN и сохранённая подписка остаются отдельными от обхода; это обновление не восстанавливает обход на белых списках.",
-    "en": "Allowlist bypass maintenance is shown explicitly; bypass can be turned off even while a subscription refresh is stalled. The suspended CDN is no longer selected from cached bootstrap profiles. On DNS lookup failure, fixed SubVost control requests can use our RU server while preserving TLS authority and certificate verification. System DNS and other sites are unchanged. This update does not restore allowlist bypass."
+    "ru": "SubVost VPN 1.0 для Android 6+ (ARM64, ARMv7 и x86_64). Обновлены подключение и обход ограничений.\n\nВажно: у версии 1.0 новый ключ подписи. Старые публичные beta нельзя обновить поверх установленного приложения. Сначала сохраните ссылку подписки и нужные настройки, отключите VPN, удалите старую beta и установите этот APK вручную. Удаление стирает локальные данные; затем импортируйте ссылку заново. При необходимости освободите запись старого устройства в боте. Проверка подписи в приложении не отключается.",
+    "en": "SubVost VPN 1.0 for Android 6+ (ARM64, ARMv7 and x86_64), with updated connection and bypass support.\n\nImportant: version 1.0 uses a new signing key. It cannot be installed over the old public betas. Save your subscription link and settings, disconnect VPN, uninstall the old beta, then install this APK manually and import your link again. Uninstalling removes local data; remove the old device entry in the bot if needed. The app's signature checks remain enabled."
   }
 }
