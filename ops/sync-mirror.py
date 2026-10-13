@@ -65,7 +65,6 @@ def slot(asset):
         (r'SubVost-VPN-macOS-(Legacy-)?(arm64|x86_64)-(\d+\.\d+\.\d+)\.dmg', 'macos'),
         (r'SubVost-VPN-Android-(Legacy-)?(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)\.apk', 'android'),
         (r'SubVost-VPN-(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)-Windows-(x64|arm64|x86)-Setup\.exe', 'windows'),
-        (r'SubVost-VPN-Windows-(\d+\.\d+\.\d+(?:-(?:alpha|beta|rc|preview)\.\d+)?)-win-(x64|arm64|x86)\.zip', 'windows'),
         (r'SubVost-VPN-Linux-(x86_64|arm64|armv7)-(\d+\.\d+\.\d+)(?:-(glibc|musl))?\.(AppImage|deb|rpm|tar\.gz|tar\.xz|pkg\.tar\.zst|flatpak|snap)', 'linux'),
     ]
     for pattern, platform in patterns:
@@ -77,7 +76,7 @@ def slot(asset):
         if platform == 'android':
             return (platform, m[1] or 'mobile'), m[2]
         if platform == 'windows':
-            return (platform, m[2], 'exe' if name.endswith('.exe') else 'zip'), m[1]
+            return (platform, m[2]), m[1]
         return (platform, m[1], m[3] or 'glibc', m[4]), m[2]
     return None
 
