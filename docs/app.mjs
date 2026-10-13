@@ -118,7 +118,7 @@ function renderResult() {
   document.querySelector('.download-footer').hidden = state.os === 'ios';
   if (state.os === 'ios') {
     $('result-title').textContent = '2. Установите SubVost VPN';
-    $('result-meta').textContent = 'Тестовая версия для iOS · через TestFlight';
+    $('result-meta').textContent = 'iOS 17 и новее · через TestFlight';
     $('catalog-status').textContent = '';
     $('result-detail').textContent = '';
     $('download-actions').hidden = false;
