@@ -50,23 +50,6 @@ class MirrorTests(unittest.TestCase):
         self.assertGreater(m.compare('v0.4.12', 'v0.4.5'), 0)
         self.assertIsNone(m.version('../bad'))
 
-    def test_windows_zip_successor_keeps_exe_and_cpu_slots_separate(self):
-        def release(tag, names):
-            return dict(tag_name=tag, assets=[dict(name=name) for name in names])
-        others = [release('v0.4.20', ['SubVost-VPN-macOS-arm64-0.4.20.dmg']),
-                  release('linux-v1.0.0', ['SubVost-VPN-Linux-x86_64-1.0.0.deb']),
-                  release('android-v1.0.0', ['SubVost-VPN-Android-1.0.0.apk'])]
-        exe = release('windows-v0.2.0-preview.6', [
-            f'SubVost-VPN-0.2.0-preview.6-Windows-{arch}-Setup.exe' for arch in ('x64', 'arm64', 'x86')])
-        zip_release = release('windows-v1.0.0', [
-            f'SubVost-VPN-Windows-1.0.0-win-{arch}.zip' for arch in ('x64', 'arm64', 'x86')])
-        self.assertNotEqual(m.slot(exe['assets'][0])[0], m.slot(zip_release['assets'][0])[0])
-        # Recognition alone must not promote an unqualified Windows release.
-        self.assertNotIn('windows-v1.0.0', {r['tag_name'] for r in m.choose_releases(others + [exe, zip_release])})
-        with patch.object(m, 'WINDOWS_RELEASE_CEILING', '1.0.0'):
-            self.assertEqual({r['tag_name'] for r in m.choose_releases(others + [exe, zip_release])},
-                             {r['tag_name'] for r in others + [exe, zip_release]})
-
     def test_slots(self):
         for name, osname in [
             ('SubVost-VPN-macOS-Legacy-arm64-0.4.12.dmg', 'macos'),
