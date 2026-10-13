@@ -15,8 +15,24 @@ API = 'https://api.github.com/repos/' + REPO
 ROOT = Path('/var/lib/subvost-download-site')
 FILES = ('index.html', 'app.mjs', 'style.css', 'brand.png', 'icons/apple.svg',
          'icons/android.svg', 'icons/github.svg', 'icons/linux.svg', 'icons/NOTICE.txt',
-         'lib/catalog.mjs', 'lib/selection.mjs', 'lib/mirror.mjs', 'lib/source-menu.mjs')
+         'lib/catalog.mjs', 'lib/selection.mjs', 'lib/mirror.mjs', 'lib/source-menu.mjs',
+         'updates/android-testing.json')
 LIMIT = 8 * 1024 * 1024
+
+
+def validate_android_feed(data):
+    if len(data) > 65536:
+        raise ValueError('Android feed exceeds client size limit')
+    feed = json.loads(data)
+    if (feed.get('schema') != 1 or feed.get('platform') != 'android'
+            or feed.get('channel') not in ('stable', 'testing')
+            or type(feed.get('build')) is not int or not 1 <= feed['build'] <= 2100000000
+            or type(feed.get('minSdk')) is not int or not 23 <= feed['minSdk'] <= 1000
+            or type(feed.get('size')) is not int or not 1 <= feed['size'] <= 250000000
+            or not re.fullmatch(r'[0-9A-Za-z.+-]{1,60}', feed.get('version', ''))
+            or not re.fullmatch(r'[0-9a-f]{64}', feed.get('sha256', ''))
+            or not re.fullmatch(r'https://github\.com/PystoyPlayer/subvost-vpn/releases/download/android-[A-Za-z0-9.+-]+/SubVost-VPN-Android-[A-Za-z0-9.+-]+\.apk', feed.get('url', ''))):
+        raise ValueError('Invalid modern Android feed')
 
 
 def fetch(url):
@@ -63,6 +79,8 @@ def publish(root, sha, entries, download):
             digest = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
             if digest != blobs['docs/' + name]['sha']:
                 raise ValueError('Static file checksum mismatch: ' + name)
+            if name == 'updates/android-testing.json':
+                validate_android_feed(data)
             path = stage / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)
