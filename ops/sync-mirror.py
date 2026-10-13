@@ -31,7 +31,7 @@ LIMIT = 16 * 1024**3
 CURRENT_SET_LIMIT = 4 * 1024**3
 FREE_RESERVE = 8 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
-WINDOWS_RELEASE_CEILING = '0.2.0-preview.6'  # Explicit publication ceiling; future diagnostics remain excluded.
+WINDOWS_RELEASE_CEILING = '1.0.0'  # Explicit publication ceiling; future diagnostics remain excluded.
 
 
 def version(value):

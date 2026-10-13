@@ -6,7 +6,7 @@ function release(version, names, extra = {}) {
   return { tag_name: `v${version}`, draft: false, prerelease: false, assets: names.map(name => ({ name, size: 123, browser_download_url: `${RELEASES_URL}/download/v${version}/${name}` })), ...extra };
 }
 const mac = (version, arch = 'arm64', legacy = false) => `SubVost-VPN-macOS-${legacy ? 'Legacy-' : ''}${arch}-${version}.dmg`;
-test('Android alpha is explicit; unified releases preserve other platforms during Windows rollback', () => {
+test('Android alpha is explicit; unified releases respect the qualified Windows ceiling', () => {
   const tag = 'android-v0.1.0-alpha.1', name = 'SubVost-VPN-Android-0.1.0-alpha.1.apk';
   const input = { tag_name: tag, prerelease: true, assets: [{ name, size: 123, browser_download_url: `${RELEASES_URL}/download/${tag}/${name}` }] };
   const [apk] = buildCatalog([input]);
@@ -14,9 +14,10 @@ test('Android alpha is explicit; unified releases preserve other platforms durin
   assert.equal(classifyAsset(name + '.bak'), null);
   assert.equal(buildCatalog([{ ...input, draft: true }]).length, 0);
   const unified = buildCatalog([input, release('1.0.0', [mac('1.0.0'), 'SubVost-VPN-Linux-arm64-1.0.0.deb', 'SubVost-VPN-1.0.0-Windows-x64-Setup.exe', 'SubVost-VPN-Android-1.0.0.apk'])]);
-  assert.equal(unified.length, 3);
-  assert.ok(unified.every(b => b.os !== 'windows')); // A unified tag cannot bypass the rollback ceiling.
+  assert.equal(unified.length, 4);
   assert.ok(unified.every(b => b.version === '1.0.0' && !b.prerelease));
+  const future = buildCatalog([release('1.0.1', [mac('1.0.1'), 'SubVost-VPN-1.0.1-Windows-x64-Setup.exe'])]);
+  assert.deepEqual(future.map(b => b.os), ['macos']); // A unified tag cannot bypass the Windows ceiling.
 });
 test('SemVer prerelease order and build metadata do not depend on tag prefixes', () => {
   const sequence = ['1.0.0-alpha.1', '1.0.0-alpha.2', '1.0.0-alpha.10', '1.0.0-beta.1', '1.0.0-rc.1', '1.0.0', '1.0.1'];

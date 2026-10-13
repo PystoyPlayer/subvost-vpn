@@ -1,4 +1,4 @@
-import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20260929-preview3';
+import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261013-windows1';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
