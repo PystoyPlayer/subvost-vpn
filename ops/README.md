@@ -63,6 +63,13 @@ without a forced redirect. `download.subvost.fun` is the canonical website; both
 sites default to GitHub installers and offer the same official files from Russia.
 Legacy update feeds remain unchanged until clients explicitly trust the mirror.
 
+The signed native macOS 1.0.0 (build 66) appcast is a separate publication at
+`/macos-ne-universal/appcast.xml`, with source in `updates/macos-ne-universal/appcast.xml`.
+Deploy its exact signed bytes to `/var/www/subvost-downloads/macos-ne-universal/appcast.xml`
+with the isolated exact nginx location; do not reformat XML or point the older
+helper/Legacy feeds at it. The enclosure remains the official GitHub release URL.
+The site synchronizer cannot overwrite this independently signed feed.
+
 Inspect publication with `journalctl -u subvost-download-site.service -n 50`,
 `readlink /var/lib/subvost-download-site/current`, and
 `systemctl list-timers subvost-download-site.timer`. Stop this timer before a
