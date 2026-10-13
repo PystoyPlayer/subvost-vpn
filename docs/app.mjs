@@ -1,4 +1,4 @@
-import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261013-windows1';
+import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261013-mac67';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20260909-android2';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
@@ -97,8 +97,9 @@ function renderResult() {
   result.hidden = !show;
   const build = selectionComplete(state) ? selectBuild(builds, state) : null;
   // Notarization applies to these byte-verified public DMGs, not to Legacy or future artifacts.
-  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.0'
-    && build.sha256 === '053408ba7699a1d250b9bc4e3c7300bc92ce1d712eeca25a626e2e14f0d10b7b';
+  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && (
+    (build.version === '1.0.0' && build.sha256 === '053408ba7699a1d250b9bc4e3c7300bc92ce1d712eeca25a626e2e14f0d10b7b') ||
+    (build.version === '1.0.1' && build.sha256 === '69f97c4c2d63dc6b1d46ec0b55a6e0b1c39df98df432bcbcbeb9a9da8e04d690'));
   $('mac-notarized').hidden = !notarizedMac;
   $('mac-legacy-open').hidden = notarizedMac;
   $('mac-legacy-errors').hidden = notarizedMac;
@@ -198,7 +199,7 @@ async function fetchJSON(url, timeout, headers = {}) {
 async function loadCatalog() {
   let snapshot = [];
   try {
-    const data = await fetchJSON('./catalog.json?v=20260920-mirror', 5000);
+    const data = await fetchJSON('./catalog.json?v=20261013-mac67', 5000);
     builds = buildPublishedCatalog(data.releases);
     snapshot = data.releases;
     catalogChanged();
