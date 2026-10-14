@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 47,
-  "version": "1.0.7",
+  "build": 54,
+  "version": "1.0.9",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.7/SubVost-VPN-Android-1.0.7.apk",
-  "size": 233495411,
-  "sha256": "6691d702f708d4b5cf2329611cf5dedbc7daec7acc521d27c64635a23088864a",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.9/SubVost-VPN-Android-1.0.9.apk",
+  "size": 233495651,
+  "sha256": "4a689175f87d5ac6a55dac15e62281ba3c4603e9e1f771d3908719335b6616fa",
   "notes": {
-    "ru": "Исправлен этап входа на мобильной сети: зависший системный DNS больше не забирает весь тайм-аут подключения. Добавлены ограниченные резервные DNS-запросы через ту же физическую сеть и короткий кэш ответов на время подключения. Диагностика различает основной, резервный и кэшированный DNS-путь без адресов и персональных данных.\n\nСохранены исправления DNS из 1.0.6. Подпись приложения и нативное ядро не менялись: обновление с 1.0.0 и новее рассчитано на установку поверх. Проверка на конкретных мобильных операторах продолжается; работа на всех сетях не гарантируется.",
-    "en": "Fixed cellular connection bootstrap: a stalled system DNS lookup no longer consumes the entire connection acquisition timeout. Added bounded fallback DNS queries on the same captured physical network and a short per-connection answer cache. Diagnostics distinguish system, fallback and cached DNS paths without addresses or personal data.\n\nIncludes the DNS scheduling fixes from 1.0.6. The app signing certificate and native core are unchanged, so releases 1.0.0 and later are intended to update in place. Validation on individual mobile operators is ongoing; availability on every network is not guaranteed."
+    "ru": "Улучшено восстановление VPN при переключении мобильной сети и Wi-Fi: перед повторным подключением приложение ждёт стабилизации сети 2 секунды. Первое ручное подключение не задерживается. Исправлены зависание остановки и переключение истории журналов; расширена диагностика подключения.\n\nПеред установкой полностью отключите VPN. На Android 16 после обновления возможен системный сбой сетевого доступа: если подключение перестало работать, перезагрузите телефон без очистки кэша, настроек или данных. Добавлена подсказка для этого случая; сам системный сбой эта версия не устраняет. Проверка на затронутом устройстве продолжается. Android 6+. Подпись сохранена; обновление с 1.0.0 и новее устанавливается поверх.",
+    "en": "Improved recovery when switching between cellular and Wi-Fi: reconnection waits for 2 seconds of network stability. Initial manual connections are not delayed. Includes shutdown and diagnostic history fixes, plus more detailed connection diagnostics.\n\nFully disconnect the VPN before installing. Android 16 may lose network access after an app update; if connections stop working, reboot without clearing cache, settings or app data. Added conditional recovery guidance; this release does not fix the underlying system defect. Affected-device validation remains pending. Android 6+. Existing signing certificate retained; updates from 1.0.0 or later install in place."
   }
 }
