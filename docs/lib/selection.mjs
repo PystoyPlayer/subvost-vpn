@@ -1,6 +1,7 @@
 export const initialSelection = () => ({ os: null, arch: null, variant: null, format: null });
 
 export function choose(state, name, value) {
+  if (name === 'os' && value === 'ios') return state.os === 'ios' ? { ...state } : { os: value, arch: 'universal', variant: null, format: 'testflight' };
   if (name === 'os' && value === 'android') return state.os === 'android' ? { ...state } : { os: value, arch: 'universal', variant: null, format: 'apk' };
   if (name === 'os') return { os: value, arch: null, variant: value === 'linux' ? 'glibc' : value === 'windows' ? 'desktop' : null, format: value === 'macos' ? 'dmg' : value === 'windows' ? 'zip' : null };
   if (name === 'arch') return { ...state, arch: value, ...(state.os === 'macos' ? { variant: null } : state.os === 'windows' ? { format: 'zip' } : { format: null }) };
@@ -8,5 +9,6 @@ export function choose(state, name, value) {
 }
 
 export function selectionComplete(state) {
+  if (state.os === 'ios') return state.arch === 'universal' && state.format === 'testflight' && ['mobile', 'unsupported'].includes(state.variant);
   return Boolean(state.os && state.arch && state.variant && state.format);
 }
