@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 46,
-  "version": "1.0.6",
+  "build": 47,
+  "version": "1.0.7",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.6/SubVost-VPN-Android-1.0.6.apk",
-  "size": 233479018,
-  "sha256": "433e843ef4cd46b249d83aa5677c2c8b9b904631149d5b25acb11fa8c9a7e346",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.7/SubVost-VPN-Android-1.0.7.apk",
+  "size": 233495411,
+  "sha256": "6691d702f708d4b5cf2329611cf5dedbc7daec7acc521d27c64635a23088864a",
   "notes": {
-    "ru": "Исправлена очередь DNS при обходе белых списков: резервные серверы проверяются параллельно, ожидание укладывается в окно системного резолвера Android. Исправлено ложное сообщение о техработах после обычного подключения. Диагностика автоматически фиксирует режим DNS текущего VPN.\n\nПроверки сборки и тест сценария с зависшим основным DNS прошли. Работа на проблемной мобильной сети ещё требует повторной проверки. Подписку переимпортировать и удалять приложение не нужно.",
-    "en": "Fixed DNS failover scheduling for whitelist bypass: configured backup resolvers run in parallel within Android's resolver retry window. Fixed the misleading maintenance status inherited from a regular connection. Diagnostics record the current VPN DNS mode automatically.\n\nBuild checks and the stalled-primary DNS regression test passed. The affected mobile network still requires a field retest. Keep the existing app and subscription when updating."
+    "ru": "Исправлен этап входа на мобильной сети: зависший системный DNS больше не забирает весь тайм-аут подключения. Добавлены ограниченные резервные DNS-запросы через ту же физическую сеть и короткий кэш ответов на время подключения. Диагностика различает основной, резервный и кэшированный DNS-путь без адресов и персональных данных.\n\nСохранены исправления DNS из 1.0.6. Подпись приложения и нативное ядро не менялись: обновление с 1.0.0 и новее рассчитано на установку поверх. Проверка на конкретных мобильных операторах продолжается; работа на всех сетях не гарантируется.",
+    "en": "Fixed cellular connection bootstrap: a stalled system DNS lookup no longer consumes the entire connection acquisition timeout. Added bounded fallback DNS queries on the same captured physical network and a short per-connection answer cache. Diagnostics distinguish system, fallback and cached DNS paths without addresses or personal data.\n\nIncludes the DNS scheduling fixes from 1.0.6. The app signing certificate and native core are unchanged, so releases 1.0.0 and later are intended to update in place. Validation on individual mobile operators is ongoing; availability on every network is not guaranteed."
   }
 }
