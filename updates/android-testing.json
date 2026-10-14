@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 44,
-  "version": "1.0.4",
+  "build": 46,
+  "version": "1.0.6",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.4/SubVost-VPN-Android-1.0.4.apk",
-  "size": 233101956,
-  "sha256": "e8e276f4b7395e7e80a6614f07306046a7b1e2d0c0bf5560699417de1bb9a4c9",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.6/SubVost-VPN-Android-1.0.6.apk",
+  "size": 233479018,
+  "sha256": "433e843ef4cd46b249d83aa5677c2c8b9b904631149d5b25acb11fa8c9a7e346",
   "notes": {
-    "ru": "Исправлен переход на резервный путь подключения при сетевом таймауте во время запуска обхода белых списков. Улучшена диагностика: таймаут соединения больше не обозначается как отказ авторизации.\n\nОбновление для Android 6 и новее. Версии 1.0–1.0.3 обновляются поверх установленного приложения с сохранением подписки. Старые бета-сборки с другой подписью требуют отдельного перехода. Исправление проверено автоматическими сетевыми тестами; работа на затронутой мобильной сети ещё требует подтверждения.",
-    "en": "Fixed fallback to another connection path when a network handshake times out during restricted-network startup. Diagnostics now distinguish connection timeouts from authorization failures.\n\nFor Android 6 and newer. Versions 1.0–1.0.3 update in place and retain the subscription. Older beta builds signed with a different key require a separate migration. The fix passed automated network tests; confirmation on the affected mobile network is still pending."
+    "ru": "Исправлена очередь DNS при обходе белых списков: резервные серверы проверяются параллельно, ожидание укладывается в окно системного резолвера Android. Исправлено ложное сообщение о техработах после обычного подключения. Диагностика автоматически фиксирует режим DNS текущего VPN.\n\nПроверки сборки и тест сценария с зависшим основным DNS прошли. Работа на проблемной мобильной сети ещё требует повторной проверки. Подписку переимпортировать и удалять приложение не нужно.",
+    "en": "Fixed DNS failover scheduling for whitelist bypass: configured backup resolvers run in parallel within Android's resolver retry window. Fixed the misleading maintenance status inherited from a regular connection. Diagnostics record the current VPN DNS mode automatically.\n\nBuild checks and the stalled-primary DNS regression test passed. The affected mobile network still requires a field retest. Keep the existing app and subscription when updating."
   }
 }
