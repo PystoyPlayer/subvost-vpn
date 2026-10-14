@@ -3,9 +3,10 @@ export const REPOSITORY = 'PystoyPlayer/subvost-vpn';
 export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
 // Explicitly qualified publication ceiling; future diagnostic releases remain excluded.
 export const WINDOWS_RELEASE_CEILING = '1.0.1';
-// NE failed owner acceptance. Restore the working helper release until an
-// explicitly qualified helper successor is promoted.
-export const MACOS_RELEASE_CEILING = '0.4.26';
+// Only the promoted helper successor may replace the working beta. Withdrawn
+// NE builds must NEVER become a fallback when a newer asset is missing.
+export const MACOS_RELEASE_CEILING = '1.0.7';
+export const WITHDRAWN_MACOS_VERSIONS = new Set(['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6']);
 
 // Manually published, byte-verified release. The mirror's generated catalog
 // may lag its static UI. Advertise the public asset without claiming a local
@@ -94,7 +95,7 @@ export function buildCatalog(releases) {
     if (release.draft || !version || (testing && !['windows', 'android'].includes(platform))) continue;
     for (const asset of Array.isArray(release.assets) ? release.assets : []) {
       const info = classifyAsset(asset.name);
-      if (info?.os === 'macos' && compareVersions(info.version, MACOS_RELEASE_CEILING) > 0) continue;
+      if (info?.os === 'macos' && (compareVersions(info.version, MACOS_RELEASE_CEILING) > 0 || WITHDRAWN_MACOS_VERSIONS.has(info.version))) continue;
       if (info?.os === 'windows' && compareVersions(info.version, WINDOWS_RELEASE_CEILING) > 0) continue;
       if (!info || !versionParts(info.version) || (platform && info.os !== platform) || compareVersions(info.version, release.tag_name) !== 0) continue;
       const expected = `${RELEASES_URL}/download/${release.tag_name}/${asset.name}`;

@@ -1,28 +1,6 @@
-<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-    <channel>
-        <title>SubVost VPN</title>
-        <item>
-            <title>0.4.26</title>
-            <pubDate>Mon, 05 Oct 2026 06:35:41 +0300</pubDate>
-            <sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/v0.4.26</sparkle:fullReleaseNotesLink>
-            <sparkle:version>57</sparkle:version>
-            <sparkle:shortVersionString>0.4.26</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[<html><body><h2>SubVost VPN 0.4.26</h2><ul>
-<li>Современные сборки macOS: Xray 26.9.30 с сохранёнными патчами SubVost. Legacy для macOS 11–12 сохраняет совместимое ядро 26.9.9.</li>
-<li>Сравнение системного DNS и нескольких защищённых DNS-путей в диагностике; результаты не содержат историю посещений.</li>
-<li>Более подробные ограниченные по размеру журналы и проверка целостности обновлений.</li>
-<li>Modern macOS builds use Xray 26.9.30 with SubVost patches. Legacy macOS 11–12 retains its compatible 26.9.9 core.</li>
-<li>Bounded diagnostics include system DNS versus multiple DoH paths without browsing history.</li>
-</ul></body></html>
-]]></description>
-            <enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/v0.4.26/SubVost-VPN-macOS-arm64-0.4.26.dmg" length="29457169" type="application/octet-stream" sparkle:edSignature="AZhz46NcEwumJ9yFjm5O35S5jQRZrhT3a9pkpIp9jg4noPg7EH3BOKnBSfEqkhXTq5cppiyXUKxwXxMB0YppBg=="></enclosure>
-        </item>
-    </channel>
-</rss><!-- sparkle-signatures:
-edSignature: /OMpScjxEXjej0xRdO3ay0OXT5vMcIGNeFeapWMQb9ioUlUPTIKyJJlRXJiskckkakcQgJsVxD8dSRAw5rBuAw==
-length: 2216
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>SubVost VPN</title><item><title>SubVost VPN 1.0.7</title><pubDate>Wed, 14 Oct 2026 14:35:49 +0000</pubDate><sparkle:version>73</sparkle:version><sparkle:shortVersionString>1.0.7</sparkle:shortVersionString><sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion><sparkle:fullReleaseNotesLink>https://github.com/PystoyPlayer/subvost-vpn/releases/tag/macos-v1.0.7</sparkle:fullReleaseNotesLink><description>Возвращены системный компонент, sing-box и правила приложений. Упрощена автоматическая диагностика и возвращено плавное размытие в настройках. macOS13+, Intel и Apple Silicon.</description><enclosure url="https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.7/SubVost-VPN-macOS-arm64-1.0.7.dmg" length="82094374" type="application/octet-stream" sparkle:edSignature="HY94RMOjfGGymEAV0LM/OiqsI1AnAaRPEYqISNBJYPifYA6GiI0hvMRBVlYA4RGYjjU0zAIuB6DWvlVilVXUCA=="></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: mXN4Tdxdvy4zGYQnzGFBFjPDekDcjoHcQbUEhyAkCQFlLspe2JH7jH1kHbmfWyJTuwyEv+Qqge2nCfZQTVG/Bw==
+length: 1436
 -->

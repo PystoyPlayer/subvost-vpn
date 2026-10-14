@@ -32,7 +32,8 @@ CURRENT_SET_LIMIT = 4 * 1024**3
 FREE_RESERVE = 8 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
 WINDOWS_RELEASE_CEILING = '1.0.1'  # Explicit publication ceiling; future diagnostics remain excluded.
-MACOS_RELEASE_CEILING = '0.4.26'  # Withdraw NE; restore the working helper branch.
+MACOS_RELEASE_CEILING = '1.0.7'  # Promoted helper; keep failed NE out of every fallback.
+WITHDRAWN_MACOS_VERSIONS = frozenset(('1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6'))
 
 
 def version(value):
@@ -100,7 +101,7 @@ def choose_releases(releases):
             if not info:
                 continue
             key, asset_version = info
-            if key[0] == 'macos' and compare(asset_version, MACOS_RELEASE_CEILING) > 0:
+            if key[0] == 'macos' and (compare(asset_version, MACOS_RELEASE_CEILING) > 0 or asset_version in WITHDRAWN_MACOS_VERSIONS):
                 continue
             if key[0] == 'windows' and compare(asset_version, WINDOWS_RELEASE_CEILING) > 0:
                 continue
