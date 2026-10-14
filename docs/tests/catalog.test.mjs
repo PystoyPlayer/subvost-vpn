@@ -14,10 +14,17 @@ test('Android alpha is explicit; unified releases respect the qualified Windows 
   assert.equal(classifyAsset(name + '.bak'), null);
   assert.equal(buildCatalog([{ ...input, draft: true }]).length, 0);
   const unified = buildCatalog([input, release('1.0.0', [mac('1.0.0'), 'SubVost-VPN-Linux-arm64-1.0.0.deb', 'SubVost-VPN-1.0.0-Windows-x64-Setup.exe', 'SubVost-VPN-Android-1.0.0.apk'])]);
-  assert.equal(unified.length, 4);
+  assert.equal(unified.length, 3); // Withdrawn Mac NE must not reappear via unified tags.
   assert.ok(unified.every(b => b.version === '1.0.0' && !b.prerelease));
   const future = buildCatalog([release('1.0.2', [mac('1.0.2'), 'SubVost-VPN-1.0.2-Windows-x64-Setup.exe'])]);
-  assert.deepEqual(future.map(b => b.os), ['macos']); // A unified tag cannot bypass the Windows ceiling.
+  assert.deepEqual(future, []); // Unified tags cannot bypass either publication ceiling.
+});
+test('withdrawn Mac NE and unqualified successors cannot replace working helper builds', () => {
+  const old = release('0.4.26', ['arm64','x86_64'].flatMap(a => [mac('0.4.26',a),mac('0.4.26',a,true)]));
+  const bad = ['1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6'].map(v => release(v,[mac(v)]));
+  const selected = buildCatalog([...bad,old]);
+  assert.equal(selected.length,4);
+  assert.ok(selected.every(b => b.version === '0.4.26' && b.releaseUrl.endsWith('/v0.4.26')));
 });
 test('SemVer prerelease order and build metadata do not depend on tag prefixes', () => {
   const sequence = ['1.0.0-alpha.1', '1.0.0-alpha.2', '1.0.0-alpha.10', '1.0.0-beta.1', '1.0.0-rc.1', '1.0.0', '1.0.1'];
