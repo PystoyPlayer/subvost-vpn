@@ -24,6 +24,19 @@ test('first visit has no implicit OS or CPU choice', () => {
   assert.deepEqual(initialSelection(), { os: null, arch: null, variant: null, format: null });
   assert.equal(selectionComplete(initialSelection()), false);
 });
+test('iOS explicitly chooses compatibility and never defaults older phones to TestFlight', () => {
+  const initial = choose(initialSelection(), 'os', 'ios');
+  assert.deepEqual(initial, { os: 'ios', arch: 'universal', variant: null, format: 'testflight' });
+  assert.equal(selectionComplete(initial), false);
+  for (const variant of ['mobile', 'unsupported']) {
+    const selected = choose(initial, 'variant', variant);
+    assert.equal(selectionComplete(selected), true);
+    assert.deepEqual(choose(selected, 'os', 'ios'), selected);
+    assert.equal(choose(choose(selected, 'os', 'android'), 'os', 'ios').variant, null);
+  }
+  assert.equal(selectionComplete(choose(initial, 'variant', 'legacy')), false);
+  assert.equal(selectionComplete({ ...initial, variant: 'mobile', arch: null }), false);
+});
 test('Mac requires explicit CPU and OS compatibility confirmation', () => {
   let state = choose(initialSelection(), 'os', 'macos');
   assert.equal(selectionComplete(state), false);

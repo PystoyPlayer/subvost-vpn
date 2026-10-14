@@ -1,5 +1,5 @@
 import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261013-mac68';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20261014-explicit-android';
+import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20261014-explicit-ios';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
 
@@ -71,6 +71,8 @@ function renderOptions() {
     if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
   } else if (state.os === 'android') {
     content.append(group('Версия Android', 'variant', [['mobile', 'Android 6 и новее'], ['legacy', 'Android 5.0–5.1 · Legacy · бета']], 'Выберите версию системы на телефоне. Legacy — старая бета-сборка, новой стабильной версии для Android 5 пока нет. Android ниже 5 не поддерживается. Обе APK включают ARM64, ARMv7 и x86_64.'));
+  } else if (state.os === 'ios') {
+    content.append(group('Версия iOS', 'variant', [['mobile', 'iOS 17 и новее'], ['unsupported', 'Ниже iOS 17']], 'Версию можно посмотреть в «Настройки → Основные → Об этом устройстве».'));
   } else if (state.os === 'windows') {
     content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Для Windows 10 (1809 и новее) и Windows 11. Тип системы: Параметры → Система → О системе.'));
   } else if (state.os === 'linux') {
@@ -90,9 +92,10 @@ function renderOptions() {
 
 function renderResult() {
   result.classList.toggle('ios-result', state.os === 'ios');
-  $('ios-prerequisite').hidden = state.os !== 'ios';
-  $('ios-release-warning').hidden = state.os !== 'ios';
-  const supported = ['macos', 'linux', 'windows', 'android'].includes(state.os);
+  const supportedIOS = state.os === 'ios' && state.variant === 'mobile';
+  $('ios-prerequisite').hidden = !supportedIOS;
+  $('ios-release-warning').hidden = !supportedIOS;
+  const supported = ['macos', 'linux', 'windows', 'android', 'ios'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
   result.hidden = !show;
@@ -101,7 +104,10 @@ function renderResult() {
   const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && (
     (build.version === '1.0.0' && build.sha256 === '053408ba7699a1d250b9bc4e3c7300bc92ce1d712eeca25a626e2e14f0d10b7b') ||
     (build.version === '1.0.1' && build.sha256 === '69f97c4c2d63dc6b1d46ec0b55a6e0b1c39df98df432bcbcbeb9a9da8e04d690') ||
-    (build.version === '1.0.2' && build.sha256 === '24dbec1c686e1d2a0095f229d79e86cfcd87ca7bcd75af762609d7fb9f5b6ae9'));
+    (build.version === '1.0.2' && build.sha256 === '24dbec1c686e1d2a0095f229d79e86cfcd87ca7bcd75af762609d7fb9f5b6ae9') ||
+    (build.version === '1.0.3' && build.sha256 === '9cec55f6b676b69c58d1a090f31f78314eaf309cc1b2aba0c56054bdcc57abd8') ||
+    (build.version === '1.0.4' && build.sha256 === '123bdb6dd70c5a44497a2127602124d07bd3364466052fd7dcba700f24a0e3b3') ||
+    (build.version === '1.0.5' && build.sha256 === '570f00a2bf0126eb6c65aebdf6919e53b2991db1c6e50cb08c1f95e0061516d0'));
   $('mac-notarized').hidden = !notarizedMac;
   $('mac-legacy-open').hidden = notarizedMac;
   $('mac-legacy-errors').hidden = notarizedMac;
@@ -121,6 +127,13 @@ function renderResult() {
   $('catalog-status').textContent = catalogMessage;
   document.querySelector('.download-footer').hidden = state.os === 'ios';
   if (state.os === 'ios') {
+    if (!supportedIOS) {
+      $('result-title').textContent = 'Сборки для iOS ниже 17 пока нет';
+      $('result-meta').textContent = 'Эта версия iOS пока не поддерживается';
+      $('catalog-status').textContent = '';
+      $('result-detail').textContent = 'Отдельная совместимая сборка ещё не опубликована. Ссылку на TestFlight для iOS 17+ здесь не предлагаем.';
+      return;
+    }
     $('result-title').textContent = '2. Установите SubVost VPN';
     $('result-meta').textContent = 'iOS 17 и новее · через TestFlight';
     $('catalog-status').textContent = '';
@@ -169,7 +182,7 @@ $('choices').addEventListener('change', event => {
   state = choose(state, input.name, input.value);
   renderOptions();
   renderResult();
-  $('step-status').textContent = !result.hidden ? '' : state.os === 'android' ? 'Теперь выберите версию Android.' : !state.arch ? 'Теперь выберите процессор.' : state.os === 'macos' ? 'Теперь выберите версию macOS.' : 'Теперь выберите формат пакета.';
+  $('step-status').textContent = !result.hidden ? '' : state.os === 'ios' ? 'Теперь выберите версию iOS.' : state.os === 'android' ? 'Теперь выберите версию Android.' : !state.arch ? 'Теперь выберите процессор.' : state.os === 'macos' ? 'Теперь выберите версию macOS.' : 'Теперь выберите формат пакета.';
 });
 
 $('copy-command').addEventListener('click', async () => {
