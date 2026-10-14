@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://download.subvost.fun/">
   <link rel="icon" href="brand.png" type="image/png">
   <link rel="stylesheet" href="style.css?v=20261014-release-warning">
-  <script type="module" src="app.mjs?v=20261014-helper-rollback"></script>
+  <script type="module" src="app.mjs?v=20261014-helper73"></script>
 </head>
 <body>
   <a class="skip" href="#selector">К выбору файла</a>
@@ -32,11 +32,6 @@
     </form>
     <p id="step-status" class="sr-only" role="status"></p>
     <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true" hidden>
-      <div id="mac-helper-rollback" class="ios-release-warning" role="note" aria-labelledby="mac-helper-rollback-title" hidden>
-        <h2 id="mac-helper-rollback-title">Для Mac возвращена версия 0.4.26</h2>
-        <p>Версии 1.0.0–1.0.5 с Network Extension сняты с рекомендуемой загрузки из-за проблем подключения и потерянных возможностей.</p>
-        <p>Ниже — прежняя версия с sing-box, правилами по приложениям и системным компонентом с паролем администратора. Обновление нового обхода для этой ветки ещё готовится.</p>
-      </div>
       <div id="ios-release-warning" class="ios-release-warning" role="note" aria-labelledby="ios-release-warning-title" hidden>
         <h2 id="ios-release-warning-title">TestFlight может показывать старую версию</h2>
         <div id="ios-release-warning-text">
@@ -99,7 +94,7 @@
         </div>
       </details>
       <div id="mac-help">
-        <details><summary>Как установить на Mac?</summary><ol><li>Скачайте DMG для своего процессора и версии macOS.</li><li>Откройте DMG и перетащите SubVost VPN в папку «Программы» (Applications).</li><li>Откройте приложение из «Программ», добавьте ссылку из бота и следуйте инструкции установки VPN-компонента.</li></ol><div id="mac-notarized" hidden><p>Эта версия для macOS 13+ подписана Developer ID и нотариально заверена Apple. Снимать карантин командами Terminal не нужно.</p><p>При переходе со старой версии сначала отключите VPN и полностью закройте приложение, затем установите новую версию вручную. При первом подключении разрешите добавление системного VPN в окне macOS. С версии 1.0.0 (66) тоже нужно обновиться вручную: проверка обновлений в ней не запускалась. Старые версии автоматически на эту сборку не переводятся.</p></div><p>Для macOS 11–12 выбирайте Legacy. Проверка на вашем устройстве всё равно важна: она не заменяется сборкой пакета.</p></details>
+        <details><summary>Как установить на Mac?</summary><ol><li>Скачайте DMG для своего процессора и версии macOS.</li><li>Откройте DMG и перетащите SubVost VPN в папку «Программы» (Applications).</li><li>Откройте приложение из «Программ», добавьте ссылку из бота и подключитесь.</li></ol><div id="mac-notarized" hidden><p>Версия 1.0.7 для macOS 13+ подписана Developer ID и нотариально заверена Apple. Снимать карантин командами Terminal не нужно.</p><p>Возвращены sing-box и правила по приложениям; Network Extension не используется. Пароль администратора нужен только при установке или обновлении системного компонента. При ручном обновлении сначала отключите VPN и закройте старую версию.</p><p>Новый обход БС на Mac ещё проходит полевую проверку; подтверждённое обычное подключение не гарантирует работу обхода в каждой сети.</p></div><p>Для macOS 11–12 выбирайте Legacy: пока это версия 0.4.26, без нового обхода БС.</p></details>
         <details id="mac-legacy-open"><summary>macOS не даёт открыть приложение</summary><p>Сначала попробуйте: «Системные настройки» → «Конфиденциальность и безопасность» → «Всё равно открыть» после попытки запуска.</p><p>Для текущей сборки может понадобиться разово выполнить команды ниже в Terminal. Только если приложение скачано из <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">официальных релизов SubVost</a> и уже находится в Applications.</p>
           <pre><code id="install-command">xattr -dr com.apple.quarantine "/Applications/SubVost VPN.app"
 open "/Applications/SubVost VPN.app"</code></pre>

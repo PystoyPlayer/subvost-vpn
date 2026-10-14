@@ -1,4 +1,4 @@
-import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261014-helper-rollback';
+import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261014-helper73';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20261014-explicit-ios';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
@@ -91,7 +91,6 @@ function renderOptions() {
 }
 
 function renderResult() {
-  $('mac-helper-rollback').hidden = state.os !== 'macos';
   result.classList.toggle('ios-result', state.os === 'ios');
   const supportedIOS = state.os === 'ios' && state.variant === 'mobile';
   $('ios-prerequisite').hidden = !supportedIOS;
@@ -102,13 +101,7 @@ function renderResult() {
   result.hidden = !show;
   const build = selectionComplete(state) ? selectBuild(builds, state) : null;
   // Notarization applies to these byte-verified public DMGs, not to Legacy or future artifacts.
-  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && (
-    (build.version === '1.0.0' && build.sha256 === '053408ba7699a1d250b9bc4e3c7300bc92ce1d712eeca25a626e2e14f0d10b7b') ||
-    (build.version === '1.0.1' && build.sha256 === '69f97c4c2d63dc6b1d46ec0b55a6e0b1c39df98df432bcbcbeb9a9da8e04d690') ||
-    (build.version === '1.0.2' && build.sha256 === '24dbec1c686e1d2a0095f229d79e86cfcd87ca7bcd75af762609d7fb9f5b6ae9') ||
-    (build.version === '1.0.3' && build.sha256 === '9cec55f6b676b69c58d1a090f31f78314eaf309cc1b2aba0c56054bdcc57abd8') ||
-    (build.version === '1.0.4' && build.sha256 === '123bdb6dd70c5a44497a2127602124d07bd3364466052fd7dcba700f24a0e3b3') ||
-    (build.version === '1.0.5' && build.sha256 === '570f00a2bf0126eb6c65aebdf6919e53b2991db1c6e50cb08c1f95e0061516d0'));
+  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.7' && build.sha256 === 'e291d1b58a0c1a56521f2b2fa42726aea6b4de5e1c18181ca7a5ca3379bd66c6';
   $('mac-notarized').hidden = !notarizedMac;
   $('mac-legacy-open').hidden = notarizedMac;
   $('mac-legacy-errors').hidden = notarizedMac;

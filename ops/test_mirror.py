@@ -55,9 +55,19 @@ class MirrorTests(unittest.TestCase):
         releases=json.loads((Path(__file__).parent.parent/'catalog.json').read_text())['releases']
         selected=m.choose_releases(releases)
         mac_assets=[a for r in selected for a in r['assets'] if (m.slot(a) or ((None,),))[0][0]=='macos']
-        self.assertEqual(len(mac_assets),4)
-        self.assertTrue(all(a['name'].endswith('-0.4.26.dmg') for a in mac_assets))
-        self.assertEqual(m.MACOS_RELEASE_CEILING,'0.4.26')
+        self.assertEqual(len({m.slot(a)[0] for a in mac_assets}),4)
+        self.assertTrue(all(a['name'].endswith(('-0.4.26.dmg','-1.0.7.dmg')) for a in mac_assets))
+        self.assertTrue(all(not any(a['name'].endswith('-'+v+'.dmg') for v in m.WITHDRAWN_MACOS_VERSIONS) for a in mac_assets))
+        self.assertEqual(m.MACOS_RELEASE_CEILING,'1.0.7')
+
+    def test_helper_successor_and_missing_cpu_ne_fallback(self):
+        releases=json.loads((Path(__file__).parent.parent/'catalog.json').read_text())['releases']
+        releases=[r for r in releases if r['tag_name']!='macos-v1.0.7']
+        releases += [dict(tag_name='macos-v1.0.7',assets=[dict(name='SubVost-VPN-macOS-arm64-1.0.7.dmg')])]
+        selected=m.choose_releases(releases)
+        self.assertIn('macos-v1.0.7',{r['tag_name'] for r in selected})
+        self.assertFalse(any(r['tag_name'] in {'macos-v'+v for v in m.WITHDRAWN_MACOS_VERSIONS} for r in selected))
+        self.assertIn('v0.4.26',{r['tag_name'] for r in selected})
 
     def test_slots(self):
         for name, osname in [
