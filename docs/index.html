@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://download.subvost.fun/">
   <link rel="icon" href="brand.png" type="image/png">
   <link rel="stylesheet" href="style.css?v=20261014-release-warning">
-  <script type="module" src="app.mjs?v=20261014-mac71-ios-choice"></script>
+  <script type="module" src="app.mjs?v=20261014-helper-rollback"></script>
 </head>
 <body>
   <a class="skip" href="#selector">К выбору файла</a>
@@ -32,6 +32,11 @@
     </form>
     <p id="step-status" class="sr-only" role="status"></p>
     <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true" hidden>
+      <div id="mac-helper-rollback" class="ios-release-warning" role="note" aria-labelledby="mac-helper-rollback-title" hidden>
+        <h2 id="mac-helper-rollback-title">Для Mac возвращена версия 0.4.26</h2>
+        <p>Версии 1.0.0–1.0.5 с Network Extension сняты с рекомендуемой загрузки из-за проблем подключения и потерянных возможностей.</p>
+        <p>Ниже — прежняя версия с sing-box, правилами по приложениям и системным компонентом с паролем администратора. Обновление нового обхода для этой ветки ещё готовится.</p>
+      </div>
       <div id="ios-release-warning" class="ios-release-warning" role="note" aria-labelledby="ios-release-warning-title" hidden>
         <h2 id="ios-release-warning-title">TestFlight может показывать старую версию</h2>
         <div id="ios-release-warning-text">

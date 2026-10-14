@@ -51,6 +51,14 @@ class MirrorTests(unittest.TestCase):
         self.assertGreater(m.compare('v0.4.12', 'v0.4.5'), 0)
         self.assertIsNone(m.version('../bad'))
 
+    def test_ne_releases_are_withdrawn_without_affecting_other_platforms(self):
+        releases=json.loads((Path(__file__).parent.parent/'catalog.json').read_text())['releases']
+        selected=m.choose_releases(releases)
+        mac_assets=[a for r in selected for a in r['assets'] if (m.slot(a) or ((None,),))[0][0]=='macos']
+        self.assertEqual(len(mac_assets),4)
+        self.assertTrue(all(a['name'].endswith('-0.4.26.dmg') for a in mac_assets))
+        self.assertEqual(m.MACOS_RELEASE_CEILING,'0.4.26')
+
     def test_slots(self):
         for name, osname in [
             ('SubVost-VPN-macOS-Legacy-arm64-0.4.12.dmg', 'macos'),

@@ -32,6 +32,7 @@ CURRENT_SET_LIMIT = 4 * 1024**3
 FREE_RESERVE = 8 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
 WINDOWS_RELEASE_CEILING = '1.0.1'  # Explicit publication ceiling; future diagnostics remain excluded.
+MACOS_RELEASE_CEILING = '0.4.26'  # Withdraw NE; restore the working helper branch.
 
 
 def version(value):
@@ -99,6 +100,8 @@ def choose_releases(releases):
             if not info:
                 continue
             key, asset_version = info
+            if key[0] == 'macos' and compare(asset_version, MACOS_RELEASE_CEILING) > 0:
+                continue
             if key[0] == 'windows' and compare(asset_version, WINDOWS_RELEASE_CEILING) > 0:
                 continue
             if compare(tag, asset_version) != 0 or (platform and key[0] != platform):
