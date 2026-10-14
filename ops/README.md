@@ -37,6 +37,12 @@ refuses publication. Budget errors now identify the specific crossed limit.
 
 Manual refresh / inspection:
 
+On 2026-10-15 the bounded retained-version ceiling was raised from 18 to 19 GiB
+for Android 1.0.9 (54), after inspecting the retained releases and the server's
+11 GiB available space. Old immutable links are retained; no file was deleted.
+The separate 4 GiB current-set limit and mandatory 8 GiB free-space reserve
+remain unchanged. Publication still refuses a release that crosses either guard.
+
 ```sh
 systemctl start subvost-download-mirror.service
 systemctl status subvost-download-mirror.service
