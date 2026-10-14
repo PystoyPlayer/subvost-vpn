@@ -101,7 +101,7 @@ function renderResult() {
   result.hidden = !show;
   const build = selectionComplete(state) ? selectBuild(builds, state) : null;
   // Notarization applies to these byte-verified public DMGs, not to Legacy or future artifacts.
-  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.7' && build.sha256 === 'e291d1b58a0c1a56521f2b2fa42726aea6b4de5e1c18181ca7a5ca3379bd66c6';
+  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.8' && build.sha256 === '44ac6849de95c1ffed5098b2d7562a006633f9274664583c50e38ed83c7f3eb8';
   $('mac-notarized').hidden = !notarizedMac;
   $('mac-legacy-open').hidden = notarizedMac;
   $('mac-legacy-errors').hidden = notarizedMac;
