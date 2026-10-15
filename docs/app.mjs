@@ -94,7 +94,6 @@ function renderResult() {
   result.classList.toggle('ios-result', state.os === 'ios');
   const supportedIOS = state.os === 'ios' && state.variant === 'mobile';
   $('ios-prerequisite').hidden = !supportedIOS;
-  $('ios-release-warning').hidden = !supportedIOS;
   const supported = ['macos', 'linux', 'windows', 'android', 'ios'].includes(state.os);
   const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
   const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
@@ -137,7 +136,6 @@ function renderResult() {
     $('download').href = 'https://testflight.apple.com/join/XPHxBArP';
     $('download').setAttribute('aria-disabled', 'false');
     $('download').setAttribute('aria-label', 'Установить SubVost VPN через TestFlight');
-    $('download').setAttribute('aria-describedby', 'ios-release-warning-text');
     $('download').textContent = 'Установить SubVost VPN';
     $('download').prepend(brandIcon('apple'));
     return;
