@@ -47,10 +47,6 @@ label input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px
 /* One primary action, with source and history on a quieter shared baseline. */
 .result{padding:24px 24px 10px;text-align:left;border:1px solid var(--line);border-radius:16px;background:var(--surface);margin-top:24px}
 .result.ios-result{padding-bottom:24px}
-.ios-release-warning{margin:-24px -24px 24px;padding:20px 24px;background:#42272d;color:#ffe0e5;border-bottom:1px solid #ae6572;border-radius:15px 15px 0 0}
-.result .ios-release-warning h2{font-size:20px;color:#ffb9c5;letter-spacing:0;margin-bottom:12px}
-.ios-release-warning p{font-size:15px;line-height:1.6;max-width:70ch;margin:0 0 12px}
-.ios-release-warning p:last-child{margin-bottom:0}
 .ios-prerequisite{padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid var(--line)}
 .ios-step-meta{font-size:14px;line-height:1.6;margin:0;color:var(--muted)}
 .ios-result h2{font-size:20px;letter-spacing:0}
@@ -131,7 +127,6 @@ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
   #platform-options fieldset[data-step="format"] .segments{grid-template-columns:1fr}
   .result{padding:20px 20px 10px}.download-row{grid-template-columns:1fr;gap:18px}
   .result.ios-result{padding-bottom:20px}
-  .ios-release-warning{margin:-20px -20px 20px;padding:20px}
   .ios-result .download-actions{width:100%}
   .result h2{font-size:21px}.download-actions{min-width:0}
   .download-footer{flex-wrap:wrap;gap:0 12px;margin-top:14px}
