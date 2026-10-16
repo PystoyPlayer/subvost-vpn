@@ -11,6 +11,18 @@ spec.loader.exec_module(m)
 
 
 class MirrorTests(unittest.TestCase):
+    def test_android57_retains_old_releases_without_weakening_reserves(self):
+        # Measured 2026-10-16 after the immutable Android57 assets were seeded.
+        # The retained set crossed 19 GiB, not the independent free-space guard.
+        self.assertEqual(m.LIMIT, 20 * 1024**3)
+        self.assertEqual(m.FREE_RESERVE, 8 * 1024**3)
+        self.assertEqual(m.CURRENT_SET_LIMIT, 4 * 1024**3)
+        retained, free = 20472429275, 10231066624
+        self.assertGreater(retained, 19 * 1024**3)
+        m.check_disk_budget(m.CURRENT_SET_LIMIT, retained, 0, free)
+        with self.assertRaisesRegex(ValueError, 'free-space reserve'):
+            m.check_disk_budget(1, retained, 0, m.FREE_RESERVE - 1)
+
     def test_qualified_set_fits_without_removing_old_versions(self):
         # Measured RU mirror accounting on 2026-10-05: latest set 1.5 GiB,
         # retained immutable versions 11.86 GiB, free 18.89 GiB.
