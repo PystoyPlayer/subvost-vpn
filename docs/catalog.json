@@ -1,6 +1,32 @@
 {
   "releases": [
     {
+      "tag_name": "android-v1.0.11",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-10-16T21:38:57Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 204,
+          "digest": "sha256:dd253a582ca539702f553c46e68ebf46cd07df6636cad6939f4abcb4bbd4962c",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.11/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.11-manifest.json",
+          "size": 2566,
+          "digest": "sha256:f77174bb6f3ea96aac7ac3c3a0b262e39002bb972c97af57dc207c0f986bef4a",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.11/SubVost-VPN-Android-1.0.11-manifest.json"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.11.apk",
+          "size": 233546173,
+          "digest": "sha256:f15d294bb5a5db7606f486706ee49fa9db2f02d52a7e098c20706d2d32c772da",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.11/SubVost-VPN-Android-1.0.11.apk"
+        }
+      ]
+    },
+    {
       "tag_name": "android-v1.0.10",
       "draft": false,
       "prerelease": false,

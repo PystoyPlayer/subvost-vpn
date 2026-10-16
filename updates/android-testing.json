@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 57,
-  "version": "1.0.10",
+  "build": 58,
+  "version": "1.0.11",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.10/SubVost-VPN-Android-1.0.10.apk",
-  "size": 233495991,
-  "sha256": "43599a060edc053e16da24ae2da85c5609f388d01c324d7995143faaa2743314",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.11/SubVost-VPN-Android-1.0.11.apk",
+  "size": 233546173,
+  "sha256": "f15d294bb5a5db7606f486706ee49fa9db2f02d52a7e098c20706d2d32c772da",
   "notes": {
-    "ru": "Исправлена авария при неудачном запуске обхода белых списков. Временные ошибки продления транспортного соединения теперь обрабатываются ограниченными повторными попытками, пока соединение ещё действительно. Диагностика открывается напрямую из сообщения об ошибке, содержит пояснение для поддержки и позволяет отправить журнал файлом. Улучшены восстановление сохранённой подписки и список приложений.\n\nПеред обновлением отключите VPN. Подпись сохранена, обновление устанавливается поверх без удаления данных. Android 6+. Исправления прошли автоматические проверки; длительная работа на затронутых мобильных сетях ещё требует подтверждения. Это не гарантия устранения всех сетевых ограничений. Если после обновления Android 16 перестал пропускать сеть, перезагрузите телефон без очистки данных приложения.",
-    "en": "Fixed a crash after a failed allowlist-bypass startup. Transient transport renewal errors now use bounded retries while the acknowledged connection remains valid. Errors open diagnostics directly, with support instructions and log-file sharing. Improved saved-subscription recovery and the application list.\n\nDisconnect the VPN before updating. Existing signing certificate retained; install in place without clearing app data. Android 6+. Automated checks passed; long-running acceptance on affected mobile networks is still pending. This does not guarantee removal of every network restriction. If Android 16 loses network access after updating, reboot without clearing app data."
+    "ru": "Улучшено подключение при потере первого ответа сервера. Добавлено ограниченное восстановление отдельных оборвавшихся транспортных каналов, пока другие каналы ещё работают. Срок подписки и отзыв доступа сохраняются. Диагностика стала компактнее: одна кнопка отправки файла, технический журнал по раскрытию, переходы к началу и последним событиям. История и полный файл журнала сохранены.\n\nПеред обновлением отключите VPN. Подпись сохранена, обновление устанавливается поверх без удаления данных. Android 6+. Исправления прошли автоматические проверки; длительная работа на затронутых мобильных сетях ещё требует подтверждения. Это не гарантия устранения всех сетевых ограничений. Если после обновления Android 16 перестал пропускать сеть, перезагрузите телефон без очистки данных приложения.",
+    "en": "Improved startup when the first server response is lost. Added bounded recovery of individual failed transport paths while other paths remain alive. Subscription expiry and revocation remain enforced. Diagnostics now has one log-file sharing button, expandable technical details, and beginning/latest navigation. History and full-file export are preserved.\n\nDisconnect the VPN before updating. Existing signing certificate retained; install in place without clearing app data. Android 6+. Automated checks passed; long-running acceptance on affected mobile networks is still pending. This does not guarantee removal of every network restriction. If Android 16 loses network access after updating, reboot without clearing app data."
   }
 }
