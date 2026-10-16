@@ -27,7 +27,7 @@ ROOT = Path(os.environ.get('MIRROR_ROOT', '/var/www/subvost-downloads'))
 STATE = Path(os.environ.get('MIRROR_STATE', '/var/lib/subvost-download-mirror'))
 # Retain immutable old links while making room for the qualified 2026-10-05 set.
 # The independent free-space reserve remains mandatory: no automatic deletion.
-LIMIT = 19 * 1024**3  # Android54 retention headroom; mandatory8GiB free reserve unchanged.
+LIMIT = 20 * 1024**3  # Android57 retention headroom; mandatory8GiB free reserve unchanged.
 CURRENT_SET_LIMIT = 4 * 1024**3
 FREE_RESERVE = 8 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
