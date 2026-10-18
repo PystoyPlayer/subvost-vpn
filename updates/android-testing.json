@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 59,
-  "version": "1.0.12",
+  "build": 60,
+  "version": "1.0.13",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.12/SubVost-VPN-Android-1.0.12.apk",
-  "size": 233546176,
-  "sha256": "304027d864f7b9aee94ab3caffb49e8cace419c89fece567b7220f2f31ff1f47",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.13/SubVost-VPN-Android-1.0.13.apk",
+  "size": 233546174,
+  "sha256": "3001cb72df17437921efe124d7c62a3cc241a05107f864d854cac5759e3a954e",
   "notes": {
-    "ru": "Сохраняется причина остановки транспорта перед очисткой состояния. Ограничение доступа приложения к выбранной сети Android теперь учитывается отдельно и не расходует попытки сетевого восстановления; устаревшие результаты проверок игнорируются. HTTP 404 при загрузке подписки больше не выдаётся за подтверждённый отзыв доступа. Настоящие ограничения подписки и устройств сохранены. Английские названия локаций и координаты карты обновляются с сервера после успешного обновления подписки; русские названия берутся из самой подписки. Исправлена совместимость загрузчика каталога с Android 6.\n\nПеред обновлением отключите VPN. Установите поверх, без удаления приложения или его данных. Android 6+. Автоматические тесты, lint, подпись и упаковка проверены. Длительная проверка на проблемных телефонах и сетях ещё требуется; обновление не гарантирует устранение всех обрывов или сетевых ограничений.",
-    "en": "Preserves terminal transport diagnostics before cleanup. Android access restrictions on the selected network no longer consume network recovery attempts, and stale probe results are ignored. A subscription HTTP 404 is no longer classified as confirmed access revocation; real subscription and device restrictions remain enforced. English location names and map coordinates refresh from the server after successful subscription updates; Russian names remain subscription-owned. Fixed catalog download compatibility with Android 6.\n\nDisconnect VPN before updating. Install in place without clearing app data. Android 6+. Automated tests, lint, signing and packaging passed. Long-running acceptance on affected phones and networks is still pending; this does not claim to fix all disconnects or network restrictions."
+    "ru": "Исправлена сетка локаций: длинное название страны или города больше не переключает весь список в один столбец. Названия переносятся внутри карточек без уменьшения выбранного размера шрифта. Высота карточек сохраняется при появлении пинга. На узком экране с крупным системным шрифтом один столбец остаётся для доступности.\n\nПеред обновлением отключите VPN. Установите поверх, без удаления приложения или его данных. Android 6+. Сетевое ядро не менялось: это обновление интерфейса, а не исправление всех отключений или ограничений мобильной сети.",
+    "en": "Fixed the location grid: a long country or city name no longer switches the whole list to one column. Names wrap inside each card without reducing the selected text size. Card height stays stable when latency arrives. A narrow screen with large system text can still use one column for accessibility.\n\nDisconnect VPN before updating. Install in place without clearing app data. Android 6+. The network core is unchanged: this is a layout update, not a fix for all disconnects or mobile-network restrictions."
   }
 }
