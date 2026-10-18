@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 60,
-  "version": "1.0.13",
+  "build": 61,
+  "version": "1.0.14",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.13/SubVost-VPN-Android-1.0.13.apk",
-  "size": 233546174,
-  "sha256": "3001cb72df17437921efe124d7c62a3cc241a05107f864d854cac5759e3a954e",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.14/SubVost-VPN-Android-1.0.14.apk",
+  "size": 233546171,
+  "sha256": "f789de3c3ff92ecfecc3266dda15322236c5b21db64c8e4786fc3fe33ebb4a27",
   "notes": {
-    "ru": "Исправлена сетка локаций: длинное название страны или города больше не переключает весь список в один столбец. Названия переносятся внутри карточек без уменьшения выбранного размера шрифта. Высота карточек сохраняется при появлении пинга. На узком экране с крупным системным шрифтом один столбец остаётся для доступности.\n\nПеред обновлением отключите VPN. Установите поверх, без удаления приложения или его данных. Android 6+. Сетевое ядро не менялось: это обновление интерфейса, а не исправление всех отключений или ограничений мобильной сети.",
-    "en": "Fixed the location grid: a long country or city name no longer switches the whole list to one column. Names wrap inside each card without reducing the selected text size. Card height stays stable when latency arrives. A narrow screen with large system text can still use one column for accessibility.\n\nDisconnect VPN before updating. Install in place without clearing app data. Android 6+. The network core is unchanged: this is a layout update, not a fix for all disconnects or mobile-network restrictions."
+    "ru": "Исправлено завершение зависших DNS-запросов на Android 10 и новее. Раньше такой запрос мог задерживать очистку старого подключения, мешать переподключению и вызывать ошибку отключения VPN. Теперь запрос действительно отменяется при остановке или смене подключения. Запрос DNS для загрузки параметров подключения ограничен по времени; проверка сертификатов и привязка к выбранной сети сохранены.\n\nПеред обновлением отключите VPN. Установите поверх, без удаления приложения или его данных. Android 6+; на Android 6–9 прежний путь DNS сохранён. Нативное сетевое ядро не менялось. Исправление проверено тестами; это не гарантия работы во всех мобильных сетях.",
+    "en": "Fixed cancellation of stalled DNS queries on Android 10 and newer. Previously, a stuck query could delay cleanup of the old connection, block reconnection, and report a VPN disconnect failure. Queries now cancel when the connection is stopped or replaced. Connection-parameter DNS lookup now has a deadline; certificate verification and binding to the selected network remain unchanged.\n\nDisconnect VPN before updating. Install in place without clearing app data. Android 6+; Android 6–9 keep the previous DNS path. The native networking core is unchanged. Automated tests passed; this is not a guarantee for every mobile network."
   }
 }
