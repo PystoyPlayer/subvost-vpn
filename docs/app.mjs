@@ -1,4 +1,4 @@
-import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261015-helper75';
+import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261018-helper76';
 import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20261014-explicit-ios';
 import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
@@ -100,7 +100,7 @@ function renderResult() {
   result.hidden = !show;
   const build = selectionComplete(state) ? selectBuild(builds, state) : null;
   // Notarization applies to these byte-verified public DMGs, not to Legacy or future artifacts.
-  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.9' && build.sha256 === '205e8e6f7b4dc1d7deaeeed7b10bff0c726eb0643a5f0a9f6e9916181a7375fb';
+  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.10' && build.sha256 === 'c8321ab434accb324c40f85694353bf1b20fbf1ab3ffa8a6c292f7e3249f2aa6';
   $('mac-notarized').hidden = !notarizedMac;
   $('mac-legacy-open').hidden = notarizedMac;
   $('mac-legacy-errors').hidden = notarizedMac;

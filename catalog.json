@@ -1,6 +1,58 @@
 {
   "releases": [
     {
+      "tag_name": "android-v1.0.12",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-10-18T03:23:59Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 204,
+          "digest": "sha256:a447d18d42e0cd3dd72ee20453c0012a0a7a159cdce59551fb30ef533049c62a",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.12/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.12-manifest.json",
+          "size": 2825,
+          "digest": "sha256:621914e2113e4001bbef3e86b40e6b4e9ea38acb3926b5d2cb31c3eb83c449c7",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.12/SubVost-VPN-Android-1.0.12-manifest.json"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.12.apk",
+          "size": 233546176,
+          "digest": "sha256:304027d864f7b9aee94ab3caffb49e8cace419c89fece567b7220f2f31ff1f47",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.12/SubVost-VPN-Android-1.0.12.apk"
+        }
+      ]
+    },
+    {
+      "tag_name": "macos-v1.0.10",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-10-18T03:32:36Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 203,
+          "digest": "sha256:1a14b7f93a30fbbd2323f1846e07fdb242df64281a7267494d0e6f7d0fb10b83",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.10/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-macOS-arm64-1.0.10.dmg",
+          "size": 81186569,
+          "digest": "sha256:c8321ab434accb324c40f85694353bf1b20fbf1ab3ffa8a6c292f7e3249f2aa6",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.10/SubVost-VPN-macOS-arm64-1.0.10.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-x86_64-1.0.10.dmg",
+          "size": 81186569,
+          "digest": "sha256:c8321ab434accb324c40f85694353bf1b20fbf1ab3ffa8a6c292f7e3249f2aa6",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.10/SubVost-VPN-macOS-x86_64-1.0.10.dmg"
+        }
+      ]
+    },
+    {
       "tag_name": "android-v1.0.11",
       "draft": false,
       "prerelease": false,
