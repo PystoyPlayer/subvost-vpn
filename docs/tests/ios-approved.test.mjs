@@ -12,5 +12,5 @@ test('approved iOS download has no review warning or dangling accessibility refe
   assert.match(script, /if \(!supportedIOS\)/);
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   assert.match(html, /https:\/\/apps\.apple\.com\/app\/testflight\/id899247664/);
-  assert.match(html, /app\.mjs\?v=20261015-helper75/);
+  assert.match(html, /app\.mjs\?v=20261018-helper76/);
 });
