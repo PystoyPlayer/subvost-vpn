@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 61,
-  "version": "1.0.14",
+  "build": 62,
+  "version": "1.0.15",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.14/SubVost-VPN-Android-1.0.14.apk",
-  "size": 233546171,
-  "sha256": "f789de3c3ff92ecfecc3266dda15322236c5b21db64c8e4786fc3fe33ebb4a27",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.15/SubVost-VPN-Android-1.0.15.apk",
+  "size": 233546170,
+  "sha256": "dbe598a7ec4f3c3632dec4c590fa51b7f84d4067b5f78ed81dfcc502442672d2",
   "notes": {
-    "ru": "Исправлено завершение зависших DNS-запросов на Android 10 и новее. Раньше такой запрос мог задерживать очистку старого подключения, мешать переподключению и вызывать ошибку отключения VPN. Теперь запрос действительно отменяется при остановке или смене подключения. Запрос DNS для загрузки параметров подключения ограничен по времени; проверка сертификатов и привязка к выбранной сети сохранены.\n\nПеред обновлением отключите VPN. Установите поверх, без удаления приложения или его данных. Android 6+; на Android 6–9 прежний путь DNS сохранён. Нативное сетевое ядро не менялось. Исправление проверено тестами; это не гарантия работы во всех мобильных сетях.",
-    "en": "Fixed cancellation of stalled DNS queries on Android 10 and newer. Previously, a stuck query could delay cleanup of the old connection, block reconnection, and report a VPN disconnect failure. Queries now cancel when the connection is stopped or replaced. Connection-parameter DNS lookup now has a deadline; certificate verification and binding to the selected network remain unchanged.\n\nDisconnect VPN before updating. Install in place without clearing app data. Android 6+; Android 6–9 keep the previous DNS path. The native networking core is unchanged. Automated tests passed; this is not a guarantee for every mobile network."
+    "ru": "Обновление подписки больше не блокирует включение и выключение обхода белых списков. При переключении режима незавершённый запрос подписки отменяется; сохранённые локации не удаляются. Интервал автоматического обновления теперь сохраняется между запусками приложения: 15 минут после успеха и две минуты после неудачной или отменённой попытки. Ручное обновление остаётся доступным.\n\nПереключатель обхода выбирает режим; для запуска VPN нажмите «Подключить». Перед обновлением отключите VPN. Установите поверх, без удаления данных. Android 6+; нативное сетевое ядро не менялось. Это исправление управления подключением, а не гарантия работы обхода во всех мобильных сетях.",
+    "en": "Refreshing the subscription no longer blocks turning allowlist bypass on or off. Changing the mode cancels a pending subscription request without deleting saved locations. The automatic refresh interval now survives app restarts: 15 minutes after success and two minutes after a failed or cancelled attempt. Manual refresh remains available.\n\nThe bypass switch selects a mode; tap Connect to start VPN. Disconnect VPN before updating. Install in place without clearing app data. Android 6+; the native networking core is unchanged. This fixes connection controls, not every carrier restriction."
   }
 }
