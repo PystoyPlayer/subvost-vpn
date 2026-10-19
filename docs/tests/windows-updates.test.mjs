@@ -20,7 +20,7 @@ test('verified publication survives a stale or unavailable mirror catalog for ev
 });
 
 test('publication ceiling cannot be bypassed by newer diagnostic releases', () => {
-  assert.equal(WINDOWS_RELEASE_CEILING, '1.0.1');
+  assert.equal(WINDOWS_RELEASE_CEILING, '1.0.2');
   const release = version => {
     const tag=`windows-v${version}`;
     return {tag_name:tag,prerelease:version.includes('-'),assets:['x64','arm64','x86'].map(arch=>{
@@ -28,14 +28,14 @@ test('publication ceiling cannot be bypassed by newer diagnostic releases', () =
       return {name,size:1234,browser_download_url:`https://github.com/PystoyPlayer/subvost-vpn/releases/download/${tag}/${name}`};
     })};
   };
-  for (const releases of [[release('1.0.2'),release('1.0.1'),release('1.0.0'),release('0.2.0-preview.6')], [release('1.0.1'),release('1.1.0-preview.1')]]) {
+  for (const releases of [[release('1.0.3'),release('1.0.2'),release('1.0.1'),release('0.2.0-preview.6')], [release('1.0.2'),release('1.1.0-preview.1')]]) {
     const builds=buildCatalog(releases);
     assert.equal(builds.length,3);
     assert.ok(builds.every(b=>b.version===WINDOWS_RELEASE_CEILING));
   }
-  assert.equal(buildCatalog([release('1.0.2'),release('1.1.0-preview.1')]).length,0);
-  const x64 = release('1.0.1'); x64.assets = x64.assets.filter(a => a.name.includes('-x64-'));
-  const mixed = buildCatalog([release('1.0.2'), x64, release('0.2.0-preview.6')]);
+  assert.equal(buildCatalog([release('1.0.3'),release('1.1.0-preview.1')]).length,0);
+  const x64 = release('1.0.2'); x64.assets = x64.assets.filter(a => a.name.includes('-x64-'));
+  const mixed = buildCatalog([release('1.0.3'), x64, release('0.2.0-preview.6')]);
   assert.equal(mixed.find(b => b.arch === 'x64').version, WINDOWS_RELEASE_CEILING);
   for (const arch of ['arm64', 'x86']) assert.equal(mixed.find(b => b.arch === arch).version, '0.2.0-preview.6');
 });
@@ -47,7 +47,7 @@ test('Windows update feeds agree and provide a matching installer for every supp
   assert.equal(feed.schema, 1);
   assert.equal(feed.platform, 'windows');
   assert.equal(feed.channel, 'stable');
-  assert.equal(feed.version, '1.0.1');
+  assert.equal(feed.version, '1.0.2');
   assert.deepEqual(feed.assets.map(a => a.rid).sort(), ['win-arm64', 'win-x64', 'win-x86']);
   for (const asset of feed.assets) {
     assert.equal(asset.url, `https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v${feed.version}/SubVost-VPN-${feed.version}-Windows-${asset.rid.slice(4)}-Setup.exe`);
