@@ -2,33 +2,33 @@
   "schema": 1,
   "platform": "windows",
   "channel": "stable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keyId": "subvost-p256-20261005",
   "notes": {
-    "ru": "Исправлены остановка предыдущей попытки и повторное подключение. Согласованы тайм-ауты загрузки данных; улучшены диагностика и определение приложения для правил TCP/UDP. Подписка и настройки сохраняются.",
-    "en": "Fixes previous-attempt teardown and reconnection races. Aligns connection-data deadlines and improves diagnostics and application identification for TCP/UDP rules. Subscription and settings are preserved."
+    "ru": "Обновлён резервный путь подключения и загрузки подписки. Исправлены обрывы активных передач при смене соединения и обработка сетей без IPv6. Диагностика сохраняет контекст ошибки отдельно от сетевых проверок. Подписка и настройки сохраняются.",
+    "en": "Updates the reserve connection and subscription path. Fixes active-transfer interruption during connection rotation and handling of networks without IPv6. Diagnostics retain failure context separately from network probes. Subscription and settings are preserved."
   },
   "assets": [
     {
       "rid": "win-x64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.2/SubVost-VPN-1.0.2-Windows-x64-Setup.exe",
-      "size": 65904925,
-      "sha256": "01a3d26063428eb2392392a8bd73e299832dfef02b237d7791a62fa9981f791c",
-      "signature": "MEQCIGiDrc8ytLNf2exVrSHfc/bJhMqGbZRVYtYGbqjYNh3WAiAj1LIWC3B+YSZeYWQtwdlwsyJcigjqaMpP1+Oh0E8jig=="
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.3/SubVost-VPN-1.0.3-Windows-x64-Setup.exe",
+      "size": 65914147,
+      "sha256": "67bf39bceb68a3d50e00370873491cfc2e675a1cd9811a30477e62c95ed83edc",
+      "signature": "MEQCIDetdOpBQl2RhUcgpFbyhujD8Wp/c2rVUt83XutEEbUwAiAnBZB1BURZZYE96DnutSk6sdRQrTnMTStrmPnhzpEjCA=="
     },
     {
       "rid": "win-arm64",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.2/SubVost-VPN-1.0.2-Windows-arm64-Setup.exe",
-      "size": 56992744,
-      "sha256": "ddc272f42b37303a5c00ce68f7d64862edbf0fd8630e5add5399c2cb3121ffb1",
-      "signature": "MEQCIA+qUYCci+WO2iHDjpDEHKGoGMHArF82btjyM77OA2ccAiBwuUZBUCyLMGsLrhaWpUj8oxGNL/IBHAqBwoAZjMPHGw=="
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.3/SubVost-VPN-1.0.3-Windows-arm64-Setup.exe",
+      "size": 56999589,
+      "sha256": "8a1f3f5ab5307ec1f55ce6f7c9bfa2a4bd41416ea3338c39a01dce7bd529e562",
+      "signature": "MEUCIBhXLHrxdrn4ewsFgeTZRkZlLM/eX/HEzxRT5IU+aGeSAiEA4bV0LSn9ID9Nq0I3y+kShCna8pB2EZMz4e1CNx+HRtI="
     },
     {
       "rid": "win-x86",
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.2/SubVost-VPN-1.0.2-Windows-x86-Setup.exe",
-      "size": 61069340,
-      "sha256": "d5159e9c02058eb5ede715df40b3070e1471ccd5af70ce5002058d6a0df9056a",
-      "signature": "MEUCIQCObo2O3j3S3bn/IAPkx/041YkJZmknV/45KRnFvlLcwQIgdoBeGfbNHT4WaKJzIY9jQPaczeWevIjj1opP6imis5o="
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.3/SubVost-VPN-1.0.3-Windows-x86-Setup.exe",
+      "size": 61059381,
+      "sha256": "053daa10446d92cd71e56b89b029a532899c7b9e04b3565a1b9c445faf5b7b05",
+      "signature": "MEUCIQDGR1oY1qEhqm7T/kYcKwQqJ7k+g3yw7SY0l1aPrnSe/QIgFWv9Vs5snvyLJeCCRb12uQaeei7bYOEMSRBdUmCImpU="
     }
   ]
 }
