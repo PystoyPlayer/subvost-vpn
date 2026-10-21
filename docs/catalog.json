@@ -1,6 +1,32 @@
 {
   "releases": [
     {
+      "tag_name": "macos-v1.0.11",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-10-21T13:12:14Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 203,
+          "digest": "sha256:79d10b8b2eb7213c198583d47d7b79ac5a44877ff99ea6c5d441d7544259ded1",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.11/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-macOS-arm64-1.0.11.dmg",
+          "size": 81188451,
+          "digest": "sha256:e173f677fe496f11032e89c6ccdbeb4d760696771b2344efa356786c7293e958",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.11/SubVost-VPN-macOS-arm64-1.0.11.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-x86_64-1.0.11.dmg",
+          "size": 81188451,
+          "digest": "sha256:e173f677fe496f11032e89c6ccdbeb4d760696771b2344efa356786c7293e958",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.11/SubVost-VPN-macOS-x86_64-1.0.11.dmg"
+        }
+      ]
+    },
+    {
       "tag_name": "windows-v1.0.3",
       "draft": false,
       "prerelease": false,
