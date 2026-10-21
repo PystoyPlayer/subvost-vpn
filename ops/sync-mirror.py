@@ -31,7 +31,7 @@ LIMIT = 20 * 1024**3  # Android57 retention headroom; mandatory8GiB free reserve
 CURRENT_SET_LIMIT = 4 * 1024**3
 FREE_RESERVE = 8 * 1024**3
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,180}\Z')
-WINDOWS_RELEASE_CEILING = '1.0.3'  # Explicit publication ceiling; future diagnostics remain excluded.
+WINDOWS_RELEASE_CEILING = '1.0.4'  # Explicit publication ceiling; future diagnostics remain excluded.
 MACOS_RELEASE_CEILING = '1.0.11'  # Promoted helper; keep failed NE out of every fallback.
 WITHDRAWN_MACOS_VERSIONS = frozenset(('1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6'))
 

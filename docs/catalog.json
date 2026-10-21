@@ -1,6 +1,44 @@
 {
   "releases": [
     {
+      "tag_name": "windows-v1.0.4",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-10-21T21:48:26Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 320,
+          "digest": "sha256:d4524b9adc529088e8b578b9abd26750eec5d7533354659e33fcfcddb9b1f9e7",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.4/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-1.0.4-Windows-arm64-Setup.exe",
+          "size": 56986949,
+          "digest": "sha256:f1ad798081b588a4153aa7f45623dcc4889b1ee7218ffe987557605d892ac67c",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.4/SubVost-VPN-1.0.4-Windows-arm64-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-1.0.4-Windows-x64-Setup.exe",
+          "size": 65914480,
+          "digest": "sha256:84547b7ce196ec8a11e0647ec071611545ade3c08bb1bd787ec909243abcf264",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.4/SubVost-VPN-1.0.4-Windows-x64-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-1.0.4-Windows-x86-Setup.exe",
+          "size": 61063979,
+          "digest": "sha256:9885827ff4587629ee0b9a0b4bab1c37de61ece391e46c9ddfe7831bd5061923",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.4/SubVost-VPN-1.0.4-Windows-x86-Setup.exe"
+        },
+        {
+          "name": "windows-testing.json",
+          "size": 2018,
+          "digest": "sha256:05b8c021a9a447a28a77a57d2bded4a1959678b4fe72e6856a123a3e05bd20ec",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.4/windows-testing.json"
+        }
+      ]
+    },
+    {
       "tag_name": "linux-v1.0.3",
       "draft": false,
       "prerelease": false,
