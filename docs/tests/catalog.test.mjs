@@ -16,7 +16,7 @@ test('Android alpha is explicit; unified releases respect the qualified Windows 
   const unified = buildCatalog([input, release('1.0.0', [mac('1.0.0'), 'SubVost-VPN-Linux-arm64-1.0.0.deb', 'SubVost-VPN-1.0.0-Windows-x64-Setup.exe', 'SubVost-VPN-Android-1.0.0.apk'])]);
   assert.equal(unified.length, 3); // Withdrawn Mac NE must not reappear via unified tags.
   assert.ok(unified.every(b => b.version === '1.0.0' && !b.prerelease));
-  const future = buildCatalog([release('1.0.3', [mac('1.0.3'), 'SubVost-VPN-1.0.3-Windows-x64-Setup.exe'])]);
+  const future = buildCatalog([release('1.0.4', [mac('1.0.4'), 'SubVost-VPN-1.0.4-Windows-x64-Setup.exe'])]);
   assert.deepEqual(future, []); // Unified tags cannot bypass either publication ceiling.
 });
 test('withdrawn Mac NE and unqualified successors cannot replace working helper builds', () => {
