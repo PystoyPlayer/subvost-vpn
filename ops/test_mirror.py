@@ -1,4 +1,5 @@
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import tempfile
@@ -11,6 +12,81 @@ spec.loader.exec_module(m)
 
 
 class MirrorTests(unittest.TestCase):
+    def alias_assets(self):
+        releases = json.loads((Path(__file__).parent.parent / 'docs' / 'catalog.json').read_text())['releases']
+        assets = []
+        for release in m.choose_releases(releases):
+            for asset in release['assets']:
+                if m.slot(asset):
+                    payload = asset['name'].encode()
+                    path = release['tag_name'] + '/' + asset['name']
+                    assets.append(dict(url=m.ORIGIN + '/releases/' + path, source=m.SOURCE + path,
+                                       size=len(payload), sha256=hashlib.sha256(payload).hexdigest()))
+        return assets
+
+    def seed_alias_assets(self, root, assets):
+        for asset in assets:
+            path = root / asset['url'][len(m.ORIGIN) + 1:]
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(path.name.encode())
+
+    def test_subscription_page_alias_contract_all_platforms(self):
+        aliases = m.select_aliases(self.alias_assets())
+        self.assertEqual(set(aliases), m.REQUIRED_ALIASES)
+        self.assertEqual(len(aliases), 19)
+        self.assertTrue(aliases['SubVost-VPN-Android.apk']['url'].endswith('SubVost-VPN-Android-1.0.16.apk'))
+        self.assertTrue(aliases['SubVost-VPN-Android-Legacy.apk']['url'].endswith('SubVost-VPN-Android-Legacy-0.2.0-beta.9.apk'))
+        self.assertTrue(aliases['SubVost-VPN-Windows-x64-Setup.exe']['url'].endswith('SubVost-VPN-1.0.3-Windows-x64-Setup.exe'))
+        self.assertTrue(aliases['SubVost-VPN-macOS-arm64.dmg']['url'].endswith('-1.0.11.dmg'))
+        self.assertTrue(aliases['SubVost-VPN-Linux-arm64.deb']['url'].endswith('-1.0.3.deb'))
+        self.assertEqual(aliases, m.select_aliases(list(reversed(self.alias_assets()))))
+
+    def test_alias_publication_resolves_exact_bytes_and_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as d:
+            root, assets = Path(d), self.alias_assets()
+            self.seed_alias_assets(root, assets)
+            result = m.publish_aliases(root, assets)
+            self.assertEqual(result['aliases'], 19)
+            self.assertEqual(result, m.publish_aliases(root, assets))
+            for name, asset in m.select_aliases(assets).items():
+                self.assertEqual(m.digest(root / 'get' / name), asset['sha256'])
+                self.assertEqual((root / 'get' / name).stat().st_size, asset['size'])
+
+    def test_alias_failure_retains_previous_pointer_and_old_files(self):
+        with tempfile.TemporaryDirectory() as d:
+            root, assets = Path(d), self.alias_assets()
+            self.seed_alias_assets(root, assets)
+            m.publish_aliases(root, assets)
+            before = (root / 'get').readlink()
+            old_files = {str(p) for p in (root / 'releases').rglob('*') if p.is_file()}
+            incomplete = [a for a in assets if not a['url'].endswith('.rpm')]
+            with self.assertRaisesRegex(ValueError, 'Incomplete'):
+                m.publish_aliases(root, incomplete)
+            corrupt = dict(assets[0], sha256='a' * 64)
+            with self.assertRaisesRegex(ValueError, 'unverified'):
+                m.publish_aliases(root, [corrupt] + assets[1:])
+            self.assertEqual((root / 'get').readlink(), before)
+            self.assertEqual({str(p) for p in (root / 'releases').rglob('*') if p.is_file()}, old_files)
+
+    def test_alias_targets_cannot_escape_mirror_or_change_origin(self):
+        assets = self.alias_assets()
+        for changes in (dict(url='https://other.invalid/file.apk'),
+                        dict(source='https://other.invalid/file.apk'),
+                        dict(url=m.ORIGIN + '/releases/../../etc/passwd'),
+                        dict(sha256='invalid')):
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                m.select_aliases([dict(assets[0], **changes)] + assets[1:])
+
+    def test_alias_pointer_collision_does_not_remove_unrelated_state(self):
+        with tempfile.TemporaryDirectory() as d:
+            root, assets = Path(d), self.alias_assets()
+            self.seed_alias_assets(root, assets)
+            (root / '.get-next').write_text('retained')
+            with self.assertRaisesRegex(ValueError, 'Reconcile'):
+                m.publish_aliases(root, assets)
+            self.assertEqual((root / '.get-next').read_text(), 'retained')
+            self.assertFalse((root / 'get').exists())
+
     def test_android57_retains_old_releases_without_weakening_reserves(self):
         # Measured 2026-10-16 after the immutable Android57 assets were seeded.
         # The retained set crossed 19 GiB, not the independent free-space guard.

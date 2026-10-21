@@ -2,7 +2,7 @@
 
 Public entry point: https://download.subvost.fun/
 
-This is a static copy on RU-MOW (195.209.221.5), **not VK CDN**. It does not
+This is a static copy on the current Russian download ingress, **not VK CDN**. It does not
 proxy arbitrary URLs, subscriptions, or VPN traffic. GitHub Releases remains
 the canonical publisher and primary download; Russia is an explicit secondary
 option for slow GitHub downloads on both selectors. Existing application update
@@ -87,6 +87,23 @@ and count toward that shared guard; a guard cutoff or RU outage can affect the
 mirror. The GitHub download alternative remains available on the main page.
 
 ## Verification and rollback
+
+### Subscription-page download links
+
+The versionless `/get/SubVost-VPN-…` links are a public contract, not files in
+the website UI snapshot. Nginx must serve `/get/` from the release mirror root.
+The release synchronizer now selects the newest eligible installer for each
+platform/architecture/Legacy/package slot and publishes all 19 required links
+atomically, after checking every target's size and SHA-256. Old immutable release
+files are preserved. Missing slots, unverified files, and disallowed releases do
+not replace the working link set. Versionless responses use `Cache-Control:
+no-store`; versioned `/releases/` responses retain their existing cache policy.
+
+Deploy `sync-mirror.py` and `subvost-downloads.nginx.conf` together, run the mirror
+sync, validate `nginx -t`, and reload only nginx. Check the actual `/get/` URLs,
+not just the homepage. The `get` symlink points at a content-pinned directory
+under `.aliases/`; previous tiny link sets are retained for an atomic pointer
+rollback. A release-directory deletion is never part of rollback.
 
 Run `node --test docs/tests/*.test.mjs` and
 `python3 -m unittest discover -s ops -p 'test_*.py' -v` before deployment. Verify

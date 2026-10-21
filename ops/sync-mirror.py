@@ -188,6 +188,99 @@ def atomic(path, content):
         Path(tmp).unlink(missing_ok=True)
 
 
+def stable_name(key):
+    """The versionless download contract used by the subscription page."""
+    platform = key[0]
+    if platform == 'android':
+        return 'SubVost-VPN-Android' + ('-Legacy' if key[1] == 'Legacy-' else '') + '.apk'
+    if platform == 'macos':
+        return 'SubVost-VPN-macOS-' + ('Legacy-' if key[1] == 'Legacy-' else '') + key[2] + '.dmg'
+    if platform == 'windows':
+        return 'SubVost-VPN-Windows-' + key[1] + '-Setup.exe'
+    return 'SubVost-VPN-Linux-' + key[1] + ('-' + key[2] if key[2] != 'glibc' else '') + '.' + key[3]
+
+
+REQUIRED_ALIASES = frozenset(
+    [stable_name(('android', kind)) for kind in ('mobile', 'Legacy-')]
+    + [stable_name(('macos', kind, arch)) for kind in ('modern', 'Legacy-') for arch in ('arm64', 'x86_64')]
+    + [stable_name(('windows', arch)) for arch in ('x64', 'arm64', 'x86')]
+    + [stable_name(('linux', arch, 'glibc', ext)) for arch in ('x86_64', 'arm64')
+       for ext in ('deb', 'rpm', 'pkg.tar.zst', 'AppImage', 'tar.gz')])
+
+
+def select_aliases(assets):
+    selected = {}
+    versions = {}
+    for asset in assets:
+        prefix = ORIGIN + '/releases/'
+        url = asset.get('url', '')
+        if not url.startswith(prefix) or len(url[len(prefix):].split('/')) != 2:
+            raise ValueError('Unsafe alias target')
+        tag, name = url[len(prefix):].split('/')
+        validate_asset(tag, dict(name=name, size=asset['size'],
+                                digest='sha256:' + asset['sha256'],
+                                browser_download_url=asset['source']))
+        info = slot(dict(name=name))
+        if info is None:
+            continue
+        key, ver = info
+        if not version(tag) or compare(tag, ver) != 0:
+            raise ValueError('Alias release and installer versions differ')
+        platform_tag = re.match(r'(windows|macos|linux|android)-v', tag)
+        if platform_tag and platform_tag[1] != key[0]:
+            raise ValueError('Alias release and installer platforms differ')
+        if key[0] == 'macos' and (ver in WITHDRAWN_MACOS_VERSIONS or compare(ver, MACOS_RELEASE_CEILING) > 0):
+            continue
+        if key[0] == 'windows' and compare(ver, WINDOWS_RELEASE_CEILING) > 0:
+            continue
+        alias = stable_name(key)
+        if alias not in selected or compare(ver, versions[alias]) > 0:
+            selected[alias], versions[alias] = asset, ver
+        elif compare(ver, versions[alias]) == 0 and selected[alias] != asset:
+            raise ValueError('Conflicting targets for a stable download')
+    if not REQUIRED_ALIASES.issubset(selected):
+        raise ValueError('Incomplete stable download set; retain previous aliases')
+    return selected
+
+
+def publish_aliases(root, assets):
+    aliases = select_aliases(assets)
+    # Validate every destination before touching the live pointer. There is no
+    # release execution, file copying, arbitrary redirect, or latest-tag guess.
+    for asset in aliases.values():
+        target = root / asset['url'][len(ORIGIN) + 1:]
+        if target.is_symlink() or not target.is_file() or target.stat().st_size != asset['size'] or digest(target) != asset['sha256']:
+            raise ValueError('Stable download target is missing or unverified')
+    revision = hashlib.sha256(json.dumps(aliases, sort_keys=True).encode()).hexdigest()
+    revisions = root / '.aliases'
+    revisions.mkdir(mode=0o755, exist_ok=True)
+    target = revisions / revision
+    links = {name: '../../' + asset['url'][len(ORIGIN) + 1:] for name, asset in aliases.items()}
+    if target.exists():
+        if not target.is_dir() or target.is_symlink() or {p.name: str(p.readlink()) for p in target.iterdir() if p.is_symlink()} != links or len(list(target.iterdir())) != len(links):
+            raise ValueError('Existing stable download revision differs')
+    else:
+        stage = Path(tempfile.mkdtemp(prefix='.staging-aliases-', dir=revisions))
+        try:
+            for name, link in links.items():
+                (stage / name).symlink_to(link)
+            stage.chmod(0o755)
+            stage.rename(target)
+        finally:
+            if stage.exists():
+                shutil.rmtree(stage)
+    # Keep previous tiny revisions for rollback. Never delete old installers.
+    pointer = root / '.get-next'
+    if pointer.exists() or pointer.is_symlink() or ((root / 'get').exists() and not (root / 'get').is_symlink()):
+        raise ValueError('Reconcile existing stable download pointer before publication')
+    try:
+        pointer.symlink_to('.aliases/' + revision)
+        pointer.replace(root / 'get')
+    finally:
+        pointer.unlink(missing_ok=True)
+    return dict(revision=revision, aliases=len(aliases))
+
+
 def run():
     ROOT.mkdir(parents=True, exist_ok=True)
     STATE.mkdir(parents=True, exist_ok=True)
@@ -210,6 +303,7 @@ def run():
         check_disk_budget(total, existing, needed, shutil.disk_usage(ROOT).free)
         with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
             assets = list(pool.map(download, items))
+        aliases = publish_aliases(ROOT, assets)
         stamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
         manifest = dict(schema=1, generatedAt=stamp, assets=assets)
         # Publish manifest first: a newly published catalogue must never point
@@ -226,7 +320,7 @@ def run():
             lines.append('</ul>')
         lines.append('</main></html>')
         atomic(ROOT / 'files.html', '\n'.join(lines))
-        atomic(STATE / 'last-success.json', json.dumps(dict(at=stamp, files=len(assets), bytes=total, tags=[r['tag_name'] for r in releases]), indent=2) + '\n')
+        atomic(STATE / 'last-success.json', json.dumps(dict(at=stamp, files=len(assets), bytes=total, tags=[r['tag_name'] for r in releases], stableDownloads=aliases), indent=2) + '\n')
         print('PUBLISHED', len(assets), 'assets,', total, 'bytes', flush=True)
 
 
