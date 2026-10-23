@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 66,
-  "version": "1.0.16",
+  "build": 69,
+  "version": "1.0.19",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.16/SubVost-VPN-Android-1.0.16.apk",
-  "size": 233331908,
-  "sha256": "50da8b1e431560b2f7e982f3db4bb2e7760592183d520990a55d0a6dc9699337",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.19/SubVost-VPN-Android-1.0.19.apk",
+  "size": 233331234,
+  "sha256": "d0f9299d0ed1bfaad003501e4848f228686415759041c7db66404ced42eb407f",
   "notes": {
-    "ru": "Обновлено резервное подключение к сервису после переноса входного сервера: новые адрес и проверка сертификата встроены в сетевое ядро всех трёх архитектур. Обновлён DNS-резерв Android. Исправлено управление общим HTTP-транспортом при завершении вспомогательных запросов.\n\nДиагностика теперь показывает понятную сводку отдельно от технического журнала; исправлены переход к началу журнала и сохранение контекста подключения. Результаты действий отображаются в приложении. Раздел «В этой версии» привязан к установленной сборке.\n\nAndroid 6+. Отключите VPN и установите поверх текущей версии, без удаления приложения и подписки. Работа в каждой ограниченной сети и все причины разрывов ещё проверяются; этот выпуск не означает закрытие всех проблем стабильности.",
-    "en": "Updated fallback service connectivity after the ingress migration: the new peer and certificate pin are compiled into all three native architectures. Updated Android DNS fallback. Fixed shared HTTP transport ownership when auxiliary requests finish.\n\nDiagnostics now separates the summary from technical logs; fixed jump-to-top and connection-context retention. Action results stay in the app. Installed release notes are tied to this build.\n\nAndroid 6+. Disconnect VPN and install over the existing version without clearing app data or removing your subscription. Restricted-carrier and long-session acceptance remain under investigation; not every stability issue is resolved by this release."
+    "ru": "Повышена надёжность подключения после выхода устройства из сна.",
+    "en": "Improved connection reliability after the device wakes from sleep."
   }
 }
