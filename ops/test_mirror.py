@@ -37,7 +37,7 @@ class MirrorTests(unittest.TestCase):
         self.assertTrue(aliases['SubVost-VPN-Android.apk']['url'].endswith('SubVost-VPN-Android-1.0.16.apk'))
         self.assertTrue(aliases['SubVost-VPN-Android-Legacy.apk']['url'].endswith('SubVost-VPN-Android-Legacy-0.2.0-beta.9.apk'))
         self.assertTrue(aliases['SubVost-VPN-Windows-x64-Setup.exe']['url'].endswith('SubVost-VPN-1.0.4-Windows-x64-Setup.exe'))
-        self.assertTrue(aliases['SubVost-VPN-macOS-arm64.dmg']['url'].endswith('-1.0.11.dmg'))
+        self.assertTrue(aliases['SubVost-VPN-macOS-arm64.dmg']['url'].endswith('-1.0.12.dmg'))
         self.assertTrue(aliases['SubVost-VPN-Linux-arm64.deb']['url'].endswith('-1.0.3.deb'))
         self.assertEqual(aliases, m.select_aliases(list(reversed(self.alias_assets()))))
 
@@ -144,17 +144,25 @@ class MirrorTests(unittest.TestCase):
         selected=m.choose_releases(releases)
         mac_assets=[a for r in selected for a in r['assets'] if (m.slot(a) or ((None,),))[0][0]=='macos']
         self.assertEqual(len({m.slot(a)[0] for a in mac_assets}),4)
-        self.assertTrue(all(a['name'].endswith(('-0.4.26.dmg','-1.0.11.dmg')) for a in mac_assets))
+        self.assertTrue(all(a['name'].endswith(('-0.4.26.dmg','-1.0.12.dmg')) for a in mac_assets))
         self.assertTrue(all(not any(a['name'].endswith('-'+v+'.dmg') for v in m.WITHDRAWN_MACOS_VERSIONS) for a in mac_assets))
-        self.assertEqual(m.MACOS_RELEASE_CEILING,'1.0.11')
+        self.assertEqual(m.MACOS_RELEASE_CEILING,'1.0.12')
+
+    def test_mac_ceiling_rejects_unqualified_future_without_changing_other_slots(self):
+        releases=json.loads((Path(__file__).parent.parent/'catalog.json').read_text())['releases']
+        before=m.choose_releases(releases)
+        future=dict(tag_name='macos-v1.0.13',assets=[dict(name='SubVost-VPN-macOS-'+arch+'-1.0.13.dmg') for arch in ('arm64','x86_64')])
+        selected=m.choose_releases(releases+[future])
+        self.assertEqual({r['tag_name'] for r in selected},{r['tag_name'] for r in before})
+        self.assertNotIn('macos-v1.0.13',{r['tag_name'] for r in selected})
 
     def test_helper_successor_and_missing_cpu_ne_fallback(self):
         releases=json.loads((Path(__file__).parent.parent/'catalog.json').read_text())['releases']
-        releases=[r for r in releases if r['tag_name']!='macos-v1.0.11']
-        releases += [dict(tag_name='macos-v1.0.11',assets=[dict(name='SubVost-VPN-macOS-arm64-1.0.11.dmg')])]
+        releases=[r for r in releases if r['tag_name']!='macos-v1.0.12']
+        releases += [dict(tag_name='macos-v1.0.12',assets=[dict(name='SubVost-VPN-macOS-arm64-1.0.12.dmg')])]
         selected=m.choose_releases(releases)
+        self.assertIn('macos-v1.0.12',{r['tag_name'] for r in selected})
         self.assertIn('macos-v1.0.11',{r['tag_name'] for r in selected})
-        self.assertIn('macos-v1.0.10',{r['tag_name'] for r in selected})
         self.assertFalse(any(r['tag_name'] in {'macos-v'+v for v in m.WITHDRAWN_MACOS_VERSIONS} for r in selected))
         self.assertIn('v0.4.26',{r['tag_name'] for r in selected})
 
