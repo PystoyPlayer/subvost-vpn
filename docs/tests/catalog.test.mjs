@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCatalog, classifyAsset, compareVersions, RELEASES_URL, selectBuild, reconcileLinuxFormat } from '../lib/catalog.mjs';
+import { readFileSync } from 'node:fs';
+import { buildCatalog, buildPublishedCatalog, classifyAsset, compareVersions, RELEASES_URL, selectBuild, reconcileLinuxFormat } from '../lib/catalog.mjs';
 
 function release(version, names, extra = {}) {
   return { tag_name: `v${version}`, draft: false, prerelease: false, assets: names.map(name => ({ name, size: 123, browser_download_url: `${RELEASES_URL}/download/v${version}/${name}` })), ...extra };
@@ -123,4 +124,18 @@ test('late catalog with only DEB reconciles pending Linux choice', () => {
   const loaded = reconcileLinuxFormat(catalog, pending);
   assert.equal(loaded.format, 'deb');
   assert.ok(selectBuild(catalog, loaded));
+});
+
+test('both published Android catalog snapshots select stable 69 without a live API', () => {
+  const state = { os: 'android', variant: 'mobile', arch: 'universal', format: 'apk' };
+  for (const relative of ['../catalog.json', '../../catalog.json']) {
+    const releases = JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8')).releases;
+    const selected = selectBuild(buildPublishedCatalog(releases), state);
+    assert.equal(selected.version, '1.0.19', relative);
+    assert.equal(selected.prerelease, false, relative);
+    assert.equal(selected.name, 'SubVost-VPN-Android-1.0.19.apk', relative);
+    assert.equal(selected.size, 233331234, relative);
+    assert.equal(selected.sha256, 'd0f9299d0ed1bfaad003501e4848f228686415759041c7db66404ced42eb407f', relative);
+    assert.equal(selected.url, `${RELEASES_URL}/download/android-v1.0.19/SubVost-VPN-Android-1.0.19.apk`, relative);
+  }
 });
