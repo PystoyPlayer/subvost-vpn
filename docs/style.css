@@ -141,3 +141,11 @@ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
 @media(max-width:380px){header{padding:0 14px}.brand{font-size:17px}nav{gap:10px}nav a{font-size:12px}main{padding-left:14px;padding-right:14px}}
 @media(prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @supports not selector(:focus-visible){label input:focus+span,a:focus,button:focus,summary:focus{outline:2px solid var(--focus);outline-offset:3px}}
+
+/* Recovery is secondary to the platform choice and stays usable without scripts. */
+.download-assistance{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:4px 0 18px;font-size:13px;line-height:1.5;color:var(--muted)}
+.download-assistance .secondary{flex-shrink:0;margin:0;min-height:44px}
+.platform-help{margin-top:24px;padding-top:8px;border-top:1px solid #3a3d42}
+.platform-help summary{color:var(--muted)}
+.platform-help summary:hover{color:var(--text)}
+@media(max-width:520px){.download-assistance{flex-direction:column;align-items:stretch;gap:8px}.download-assistance .secondary{align-self:flex-start}}

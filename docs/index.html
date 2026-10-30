@@ -8,7 +8,7 @@
   <title>Скачать SubVost VPN</title>
   <link rel="canonical" href="https://download.subvost.fun/">
   <link rel="icon" href="brand.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=20261015-ios-approved">
+  <link rel="stylesheet" href="style.css?v=20261030-download-help">
   <script type="module" src="app.mjs?v=20261018-helper76"></script>
 </head>
 <body>
@@ -19,9 +19,7 @@
   </header>
   <main id="selector">
     <h1>Скачать SubVost VPN</h1>
-    <p class="intro">Выберите систему — подберём подходящую сборку.</p>
-    <p class="note" id="simple-downloads">Кнопки не работают? <a href="https://download.subvost.fun/files.html">Откройте простой список файлов</a> — он работает без JavaScript.</p>
-    <details id="tizen-help"><summary>Можно установить на телевизор Samsung?</summary><p>Телевизоры Samsung с Tizen не запускают Android APK и наши приложения для компьютеров. Для подключения такого телевизора SubVost нужно настроить на совместимом роутере или использовать отдельную приставку с поддерживаемой системой. Замена DNS сама по себе не включает VPN.</p></details>
+    <p class="intro">Сначала выберите систему устройства, на которое устанавливаете VPN.</p>
     <form id="choices">
       <fieldset class="os"><legend class="sr-only">Операционная система</legend>
         <label><input type="radio" name="os" value="macos"><span>macOS</span></label>
@@ -32,6 +30,10 @@
       </fieldset>
       <div id="platform-options"></div>
     </form>
+    <div class="download-assistance" id="simple-downloads">
+      <span>Не получается выбрать сборку?</span>
+      <a class="secondary" href="https://download.subvost.fun/files.html">Открыть все файлы</a>
+    </div>
     <p id="step-status" class="sr-only" role="status"></p>
     <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true" hidden>
       <div id="ios-prerequisite" class="download-row ios-prerequisite" hidden>
@@ -101,6 +103,13 @@ open "/Applications/SubVost VPN.app"</code></pre>
         <details><summary>Туннель запускается, но интернет не работает</summary><p>Повторите подключение или выберите другую локацию. Если ошибка повторяется, откройте «Настройки» → «Диагностика» и отправьте в поддержку журнал последней неудачной попытки. Не отправляйте публично ссылку подписки, UUID и полную конфигурацию. Обычный TCP-пинг не гарантирует, что VPN-маршрут проходит ограничения сети.</p></details>
       </div>
       <div id="linux-help" hidden><details><summary>Как выбрать пакет для Linux?</summary><p>DEB — Debian, Ubuntu и производные. RPM — Fedora и openSUSE, с проверкой зависимостей конкретной сборки. AppImage и переносимый архив удобны без пакетного менеджера, но не гарантируют работу на любой версии glibc или на Alpine/musl.</p><p>Совместимость с NixOS, системами без systemd, Flatpak/Snap и архитектурами проверяется отдельно. Не запускайте графическое приложение через sudo и не отключайте его sandbox ради запуска.</p></details></div>
+    </section>
+    <section class="platform-help" aria-label="Совместимость с телевизорами">
+      <details id="tizen-help">
+        <summary>VPN на телевизоре Samsung</summary>
+        <p>Для встроенной системы Tizen версии SubVost пока нет. Android APK не установится на телевизор, в том числе с флешки.</p>
+        <p>Можно использовать совместимую приставку с Android или запустить VPN и браузер на компьютере, подключённом к телевизору по HDMI. Совместимость приставки Tricolor нужно проверять по её модели.</p>
+      </details>
     </section>
     <noscript><p>Для селектора нужен JavaScript. Откройте <a href="https://download.subvost.fun/files.html">список файлов на российском зеркале</a> или <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">GitHub Releases</a>.</p></noscript>
   </main>
