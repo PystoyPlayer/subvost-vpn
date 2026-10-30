@@ -16,7 +16,7 @@ ROOT = Path('/var/lib/subvost-download-site')
 FILES = ('index.html', 'app.mjs', 'style.css', 'brand.png', 'icons/apple.svg',
          'icons/android.svg', 'icons/github.svg', 'icons/linux.svg', 'icons/NOTICE.txt',
          'lib/catalog.mjs', 'lib/selection.mjs', 'lib/mirror.mjs', 'lib/source-menu.mjs',
-         'updates/android-testing.json')
+         'updates/android-testing.json', 'location-catalog-v2.json')
 LIMIT = 8 * 1024 * 1024
 
 
@@ -33,6 +33,86 @@ def validate_android_feed(data):
             or not re.fullmatch(r'[0-9a-f]{64}', feed.get('sha256', ''))
             or not re.fullmatch(r'https://github\.com/PystoyPlayer/subvost-vpn/releases/download/android-[A-Za-z0-9.+-]+/SubVost-VPN-Android-[A-Za-z0-9.+-]+\.apk', feed.get('url', ''))):
         raise ValueError('Invalid modern Android feed')
+
+
+def validate_location_catalog(data):
+    """Match the public map-only v2 contract shipped in macOS 83."""
+    import math
+    import unicodedata
+    if len(data) > 65536:
+        raise ValueError('Location catalogue exceeds client size limit')
+    def pairs(rows):
+        result = {}
+        for key, value in rows:
+            if key in result:
+                raise ValueError('Duplicate catalogue key')
+            result[key] = value
+        return result
+    def keys(value, expected):
+        if not isinstance(value, dict) or set(value) != set(expected):
+            raise ValueError('Unexpected location catalogue fields')
+    def text(value):
+        if (not isinstance(value, str) or not value or value.strip() != value
+                or len(value) > 80 or len(value.encode('utf-8')) > 256
+                or any(unicodedata.category(c) in ('Cc', 'Cf') for c in value)):
+            raise ValueError('Invalid catalogue label')
+        return value
+    def number(value):
+        if type(value) not in (int, float) or not math.isfinite(value):
+            raise ValueError('Invalid catalogue number')
+        return value
+    def depth(value, level=1):
+        if level > 12:
+            raise ValueError('Catalogue nesting exceeds client limit')
+        if isinstance(value, dict):
+            for child in value.values():
+                if isinstance(child, (dict, list)):
+                    depth(child, level + 1)
+        elif isinstance(value, list):
+            for child in value:
+                if isinstance(child, (dict, list)):
+                    depth(child, level + 1)
+    root = json.loads(data, object_pairs_hook=pairs)
+    depth(root)
+    keys(root, ('format', 'schemaVersion', 'revision', 'countries'))
+    if root['format'] != 'subvost-location-catalog' or number(root['schemaVersion']) != 2:
+        raise ValueError('Unsupported location catalogue schema')
+    if not re.fullmatch(r'[A-Za-z0-9._-]{1,64}', text(root['revision'])):
+        raise ValueError('Invalid catalogue revision')
+    countries = root['countries']
+    if not isinstance(countries, dict) or not 1 <= len(countries) <= 256:
+        raise ValueError('Invalid catalogue countries')
+    count = 0
+    for flag, group in countries.items():
+        if len(flag) != 2 or not all(0x1F1E6 <= ord(c) <= 0x1F1FF for c in flag):
+            raise ValueError('Invalid country flag')
+        keys(group, ('en', 'cities'))
+        text(group['en'])
+        rows = group['cities']
+        if not isinstance(rows, dict) or not rows:
+            raise ValueError('Empty country')
+        names = set()
+        for name, row in rows.items():
+            normalized = unicodedata.normalize('NFC', text(name)).lower()
+            if normalized in names:
+                raise ValueError('Ambiguous source city')
+            names.add(normalized)
+            keys(row, ('en', 'point', 'aliases') if 'aliases' in row else ('en', 'point'))
+            text(row['en'])
+            aliases = row.get('aliases', [])
+            if not isinstance(aliases, list) or len(aliases) > 16:
+                raise ValueError('Invalid city aliases')
+            for alias in aliases:
+                text(alias)
+            point = row['point']
+            keys(point, ('latitude', 'longitude', 'precision'))
+            if (not -90 <= number(point['latitude']) <= 90
+                    or not -180 <= number(point['longitude']) <= 180
+                    or text(point['precision']) not in ('city', 'region', 'country')):
+                raise ValueError('Invalid location point')
+            count += 1
+            if count > 256:
+                raise ValueError('Catalogue entry limit exceeded')
 
 
 def fetch(url):
@@ -81,6 +161,8 @@ def publish(root, sha, entries, download):
                 raise ValueError('Static file checksum mismatch: ' + name)
             if name == 'updates/android-testing.json':
                 validate_android_feed(data)
+            if name == 'location-catalog-v2.json':
+                validate_location_catalog(data)
             path = stage / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(data)

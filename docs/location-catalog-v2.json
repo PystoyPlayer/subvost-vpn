@@ -1,0 +1,177 @@
+{
+  "format": "subvost-location-catalog",
+  "schemaVersion": 2,
+  "revision": "2026-10-31.1",
+  "countries": {
+    "🇩🇪": {
+      "en": "Germany",
+      "cities": {
+        "Франкфурт": {
+          "en": "Frankfurt",
+          "aliases": [
+            "Frankfurt am Main",
+            "Франкфурт-на-Майне"
+          ],
+          "point": {
+            "latitude": 50.11552,
+            "longitude": 8.68417,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇱🇹": {
+      "en": "Lithuania",
+      "cities": {
+        "Вильнюс": {
+          "en": "Vilnius",
+          "point": {
+            "latitude": 54.68916,
+            "longitude": 25.2798,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇸🇪": {
+      "en": "Sweden",
+      "cities": {
+        "Стокгольм": {
+          "en": "Stockholm",
+          "point": {
+            "latitude": 59.32938,
+            "longitude": 18.06871,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇰🇿": {
+      "en": "Kazakhstan",
+      "cities": {
+        "Павлодар": {
+          "en": "Pavlodar",
+          "point": {
+            "latitude": 52.27601,
+            "longitude": 76.96881,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇺🇸": {
+      "en": "USA",
+      "cities": {
+        "Канзас-Сити": {
+          "en": "Kansas City",
+          "aliases": [
+            "Канзас Сити"
+          ],
+          "point": {
+            "latitude": 39.09973,
+            "longitude": -94.57857,
+            "precision": "region"
+          }
+        }
+      }
+    },
+    "🇯🇵": {
+      "en": "Japan",
+      "cities": {
+        "Токио": {
+          "en": "Tokyo",
+          "point": {
+            "latitude": 35.6895,
+            "longitude": 139.69171,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇳🇱": {
+      "en": "Netherlands",
+      "cities": {
+        "Амстердам": {
+          "en": "Amsterdam",
+          "point": {
+            "latitude": 52.37403,
+            "longitude": 4.88969,
+            "precision": "city"
+          }
+        },
+        "Лелистад": {
+          "en": "Lelystad",
+          "aliases": [
+            "Лелистадт"
+          ],
+          "point": {
+            "latitude": 52.50833,
+            "longitude": 5.475,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇲🇩": {
+      "en": "Moldova",
+      "cities": {
+        "Кишинёв": {
+          "en": "Chișinău",
+          "aliases": [
+            "Кишинев",
+            "Chisinau"
+          ],
+          "point": {
+            "latitude": 47.00902,
+            "longitude": 28.85938,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇹🇷": {
+      "en": "Turkey",
+      "cities": {
+        "Стамбул": {
+          "en": "Istanbul",
+          "point": {
+            "latitude": 41.01384,
+            "longitude": 28.94966,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇱🇻": {
+      "en": "Latvia",
+      "cities": {
+        "Рига": {
+          "en": "Riga",
+          "point": {
+            "latitude": 56.946,
+            "longitude": 24.10589,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇪🇪": {
+      "en": "Estonia",
+      "cities": {
+        "Таллин": {
+          "en": "Tallinn",
+          "aliases": [
+            "Талин",
+            "Таллинн",
+            "Tallinn"
+          ],
+          "point": {
+            "latitude": 59.43696,
+            "longitude": 24.75353,
+            "precision": "city"
+          }
+        }
+      }
+    }
+  }
+}
