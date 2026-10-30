@@ -5,8 +5,8 @@ export const RELEASES_URL = `https://github.com/${REPOSITORY}/releases`;
 export const WINDOWS_RELEASE_CEILING = '1.0.4';
 // Only the promoted helper successor may replace the working beta. Withdrawn
 // NE builds must NEVER become a fallback when a newer asset is missing.
-export const MACOS_RELEASE_CEILING = '1.0.13';
-export const WITHDRAWN_MACOS_VERSIONS = new Set(['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6']);
+export const MACOS_RELEASE_CEILING = '1.0.16';
+export const WITHDRAWN_MACOS_VERSIONS = new Set(['1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6', '1.0.14', '1.0.15']);
 
 // Manually published, byte-verified release. The mirror's generated catalog
 // may lag its static UI. Advertise the public asset without claiming a local

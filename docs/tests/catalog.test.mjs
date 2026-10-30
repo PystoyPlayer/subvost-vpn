@@ -22,17 +22,17 @@ test('Android alpha is explicit; unified releases respect the qualified Windows 
 });
 test('withdrawn Mac NE and unqualified successors cannot replace working helper builds', () => {
   const old = release('0.4.26', ['arm64','x86_64'].flatMap(a => [mac('0.4.26',a),mac('0.4.26',a,true)]));
-  const bad = ['1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.14'].map(v => release(v,[mac(v)]));
+  const bad = ['1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.14','1.0.15','1.0.17'].map(v => release(v,[mac(v)]));
   const selected = buildCatalog([...bad,old]);
   assert.equal(selected.length,4);
   assert.ok(selected.every(b => b.version === '0.4.26' && b.releaseUrl.endsWith('/v0.4.26')));
 });
-test('helper 1.0.13 replaces modern only, with working beta fallback for any missing CPU', () => {
+test('helper 1.0.16 replaces modern only, with working beta fallback for any missing CPU', () => {
   const old = release('0.4.26', ['arm64','x86_64'].flatMap(a => [mac('0.4.26',a),mac('0.4.26',a,true)]));
   const ne = release('1.0.5', ['arm64','x86_64'].map(a => mac('1.0.5',a)));
-  const newer = release('1.0.13',[mac('1.0.13')]);
+  const newer = release('1.0.16',[mac('1.0.16')]);
   const catalog=buildCatalog([newer,ne,old]);
-  assert.equal(selectBuild(catalog,{os:'macos',arch:'arm64',variant:'modern',format:'dmg'}).version,'1.0.13');
+  assert.equal(selectBuild(catalog,{os:'macos',arch:'arm64',variant:'modern',format:'dmg'}).version,'1.0.16');
   assert.equal(selectBuild(catalog,{os:'macos',arch:'x86_64',variant:'modern',format:'dmg'}).version,'0.4.26');
   assert.ok(catalog.filter(b=>b.variant==='legacy').every(b=>b.version==='0.4.26'));
 });
