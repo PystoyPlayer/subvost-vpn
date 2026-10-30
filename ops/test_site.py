@@ -1,4 +1,5 @@
 import hashlib
+import copy
 import importlib.util
 import json
 import tempfile
@@ -20,12 +21,15 @@ class SiteTests(unittest.TestCase):
                          minSdk=23, size=123, sha256='a'*64,
                          url='https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.1/SubVost-VPN-Android-1.0.1.apk')
         self.feed_data = json.dumps(self.feed).encode()
+        self.catalog_data = (Path(__file__).resolve().parent.parent / "docs/location-catalog-v2.json").read_bytes()
         def digest(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
         self.entries = [dict(path='docs/' + name, type='blob', mode='100644', sha=digest(self.download(name)))
                         for name in site.FILES]
         self.sha = 'a' * 40
 
     def download(self, name):
+        if name == 'location-catalog-v2.json':
+            return self.catalog_data
         return self.feed_data if name == 'updates/android-testing.json' else self.data
 
     def test_exact_successful_main_push_required(self):
@@ -97,6 +101,56 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(config.count('location = /updates/android-testing.json {'),1)
         self.assertIn('location ^~ /updates/ { return 404; }',config)
         self.assertNotIn('location = /updates/android-legacy-testing.json',config)
+
+
+    def test_catalog_covers_current_ordinary_cities(self):
+        site.validate_location_catalog(self.catalog_data)
+        catalog = json.loads(self.catalog_data)
+        for flag, city in [('🇳🇱','Амстердам'),('🇲🇩','Кишинёв'),('🇪🇪','Таллин'),
+                           ('🇹🇷','Стамбул'),('🇸🇪','Стокгольм'),('🇩🇪','Франкфурт'),
+                           ('🇺🇸','Канзас-Сити'),('🇰🇿','Павлодар'),('🇯🇵','Токио')]:
+            self.assertIn(city, catalog['countries'][flag]['cities'])
+        site.publish(self.root, self.sha, self.entries, self.download)
+        self.assertEqual((self.root/'current/location-catalog-v2.json').read_bytes(), self.catalog_data)
+
+    def test_client_rejects_malformed_catalogs_before_publication(self):
+        good = json.loads(self.catalog_data)
+        cases = [b' '*65537, b'{}', self.catalog_data[:-2],
+                 self.catalog_data.replace(b'"schemaVersion": 2', b'"schemaVersion": true'),
+                 self.catalog_data.replace(b'"schemaVersion": 2', b'"schemaVersion": 2, "schemaVersion": 2')]
+        for key, value in [('latitude',91),('longitude',181),('latitude',True),
+                           ('latitude',float('nan')),('precision','exact-server')]:
+            bad = copy.deepcopy(good)
+            bad['countries']['🇪🇪']['cities']['Таллин']['point'][key] = value
+            cases.append(json.dumps(bad).encode())
+        for key, value in [('format','other'),('schemaVersion',1),('countries',{}),
+                           ('revision','../invalid')]:
+            cases.append(json.dumps(dict(good, **{key:value})).encode())
+        bad = copy.deepcopy(good); bad['countries']['🇪🇪']['cities']['Таллин']['en'] = ' hidden '
+        cases.append(json.dumps(bad).encode())
+        bad = copy.deepcopy(good); bad['countries']['🇪🇪']['grant'] = True
+        cases.append(json.dumps(bad).encode())
+        for data in cases:
+            with self.subTest(data=data[:60]):
+                with self.assertRaises(ValueError): site.validate_location_catalog(data)
+
+    def test_invalid_catalog_preserves_live_revision(self):
+        site.publish(self.root,self.sha,self.entries,self.download)
+        bad = self.catalog_data.replace(b'"schemaVersion": 2', b'"schemaVersion": 1')
+        digest = hashlib.sha1(b'blob '+str(len(bad)).encode()+b'\0'+bad).hexdigest()
+        entries = [dict(e,sha=digest) if e['path']=='docs/location-catalog-v2.json' else e for e in self.entries]
+        with self.assertRaises(ValueError):
+            site.publish(self.root,'b'*40,entries,lambda n:bad if n=='location-catalog-v2.json' else self.download(n))
+        self.assertEqual((self.root/'current').readlink(),Path('revisions/'+self.sha))
+        self.assertEqual((self.root/'current/location-catalog-v2.json').read_bytes(),self.catalog_data)
+        self.assertFalse(list(self.root.glob('.staging-*')))
+
+    def test_missing_catalog_preserves_live_revision(self):
+        site.publish(self.root,self.sha,self.entries,self.download)
+        entries = [e for e in self.entries if e['path']!='docs/location-catalog-v2.json']
+        with self.assertRaises(ValueError):
+            site.publish(self.root,'b'*40,entries,self.download)
+        self.assertEqual((self.root/'current').readlink(),Path('revisions/'+self.sha))
 
 
 if __name__ == '__main__':
