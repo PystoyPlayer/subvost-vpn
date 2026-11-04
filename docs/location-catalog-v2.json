@@ -1,7 +1,7 @@
 {
   "format": "subvost-location-catalog",
   "schemaVersion": 2,
-  "revision": "2026-10-31.1",
+  "revision": "2026-11-04.1",
   "countries": {
     "🇩🇪": {
       "en": "Germany",
@@ -168,6 +168,19 @@
           "point": {
             "latitude": 59.43696,
             "longitude": 24.75353,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇭🇺": {
+      "en": "Hungary",
+      "cities": {
+        "Будапешт": {
+          "en": "Budapest",
+          "point": {
+            "latitude": 47.49835,
+            "longitude": 19.04045,
             "precision": "city"
           }
         }
