@@ -1,23 +1,166 @@
 import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261018-helper76';
-import { initialSelection, choose, selectionComplete } from './lib/selection.mjs?v=20261014-explicit-ios';
-import { downloadSource, selectedDownload, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
-import { createSourceMenu } from './lib/source-menu.mjs?v=20260920-polish';
+import { initialSelection, choose } from './lib/selection.mjs?v=20261014-explicit-ios';
+import { downloadSource, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 
 const $ = id => document.getElementById(id);
-const osNames = { macos: 'macOS', linux: 'Linux', windows: 'Windows', ios: 'iOS', android: 'Android' };
 let state = initialSelection();
-let builds = buildPublishedCatalog([]), loading = true, catalogMessage = '';
-let mirrorManifest = null;
-let mirrorLoading = true;
-let selectedSource = 'github';
-const processorHelp = $('processor-help');
-const result = document.querySelector('.result');
-const help = document.querySelector('.help');
-const sourceMenu = createSourceMenu($('source-picker'), source => {
-  selectedSource = source;
-  renderResult();
-});
+let path = [];
+let onResult = false;
+let builds = buildPublishedCatalog([]);
+let loading = true, catalogUnavailable = false, mirrorManifest = null;
+const platforms = [
+  ['android','Android'], ['ios','iPhone и iPad'], ['macos','Mac'], ['windows','Windows'], ['linux','Linux']
+];
+const names = Object.fromEntries(platforms);
+const version = {
+  android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
+  ios:[['mobile','iOS или iPadOS 17+'],['unsupported','Ниже iOS или iPadOS 17']],
+  macos:[['modern','macOS 13+'],['legacy','macOS 11–12','Legacy'],['unsupported','Ниже macOS 11']]
+};
+const architectures = {
+  macos:[['arm64','Apple Silicon','Чипы Apple M'],['x86_64','Intel','Процессоры Intel']],
+  windows:[['x64','Intel / AMD','64 бита · x64'],['arm64','ARM','64 бита · ARM64'],['x86','Intel / AMD','32 бита · x86']],
+  linux:[['x86_64','Intel / AMD','64 бита · x86_64'],['arm64','ARM','64 бита · aarch64']]
+};
+const formats = { deb:'DEB · Debian и Ubuntu',rpm:'RPM · Fedora и openSUSE','pkg.tar.zst':'Пакет Arch Linux',AppImage:'AppImage','tar.gz':'Архив .tar.gz' };
+const instructions = {
+  android:'Откройте скачанный APK. Если Android запросит разрешение на установку, разрешите её для приложения, из которого открываете файл.',
+  macos:'Откройте DMG и перетащите SubVost VPN в «Программы». Запустите приложение оттуда.',
+  ios:'Установите TestFlight из App Store, затем вернитесь сюда и откройте приглашение.',
+  windows:'Запустите скачанный установщик и следуйте подсказкам Windows.',
+  linux:'Установите пакет средствами своего дистрибутива. Для AppImage разрешите выполнение файла.'
+};
 
+function nextStep(s) {
+  if (!s.os) return ['os','На какое устройство?','Можно скачать для себя или для другого устройства.',platforms];
+  if (s.variant === 'unsupported') return null;
+  if (version[s.os] && !s.variant) {
+    const hints = {android:'Посмотрите в настройках телефона, в разделе «О телефоне».',macos:'Откройте меню Apple и выберите «Об этом Mac».',ios:'Откройте «Настройки» → «Основные» → «Об этом устройстве».'};
+    return ['variant','Какая версия системы?',hints[s.os],version[s.os]];
+  }
+  if (!s.arch) {
+    const hints = {windows:'Windows 10 (1809+) или 11. Откройте «Параметры» → «Система» → «О системе» и посмотрите тип системы.',macos:'В меню Apple → «Об этом Mac» указано название чипа или процессора.',linux:'Команда uname -m в терминале покажет архитектуру.'};
+    return ['arch','Какой процессор?',hints[s.os],architectures[s.os]];
+  }
+  if (s.os === 'linux' && !s.format) {
+    const options = [...new Set(builds.filter(b => b.os === s.os && b.arch === s.arch && b.variant === s.variant).map(b => b.format))];
+    if (!options.length) return null;
+    return ['format','Какой пакет?','Выберите формат для своего дистрибутива.',options.map(f => [f,formats[f] || f])];
+  }
+  return null;
+}
+
+function route(moveFocus = false) {
+  const parts = location.hash.slice(1).split('/').filter(Boolean);
+  state = initialSelection();
+  path = [];
+  let step = nextStep(state);
+  for (const part of parts) {
+    if (!step || !step[3].some(([key]) => key === part)) break;
+    const [field] = step;
+    const picked = choose(state, field, part);
+    if (field === 'arch' && state.os === 'macos') picked.variant = state.variant;
+    state = picked;
+    path.push(part);
+    step = nextStep(state);
+  }
+  onResult = !step;
+  $('step').hidden = onResult;
+  $('result').hidden = !onResult;
+  $('navigation').hidden = !path.length;
+  $('back').href = '#' + path.slice(0,-1).join('/');
+  if (step) {
+    const [field,question,hint,options] = step;
+    $('question').textContent = question;
+    $('hint').textContent = hint;
+    const rows = options.map(([key,title,subtitle]) => {
+      const row = document.createElement('a');
+      row.className = 'row';
+      row.href = '#' + [...path,key].join('/');
+      const caption = document.createElement('span');
+      caption.textContent = title;
+      if (subtitle) {
+        const small = document.createElement('small');
+        small.textContent = subtitle;
+        caption.append(small);
+      }
+      if (field === 'os') row.append(['macos','linux','android'].includes(key) ? brandIcon(key === 'macos' ? 'apple' : key) : svgIcon(key === 'ios' ? 'phone' : 'windows'));
+      row.append(caption);
+      return row;
+    });
+    $('choices').replaceChildren(...rows);
+  } else renderResult();
+  if (moveFocus) {
+    for (const id of ['install','trouble']) $(id).open = false;
+    const section = $(onResult ? 'result' : 'step');
+    section.classList.remove('enter');
+    void section.offsetWidth;
+    section.classList.add('enter');
+    $(onResult ? 'title' : 'question').focus({preventScroll:true});
+    window.scrollTo(0,0);
+  }
+}
+
+function action(caption,url) {
+  $('download').href = url;
+  $('download').textContent = caption;
+  $('download').hidden = false;
+}
+function renderResult() {
+  const build = selectBuild(builds,state);
+  const supportedIOS = state.os === 'ios' && state.variant === 'mobile';
+  $('download').hidden = true;
+  $('download').removeAttribute('href');
+  $('alternative').hidden = true;
+  $('alternative').removeAttribute('href');
+  $('install').hidden = !(build || supportedIOS);
+  $('trouble').hidden = false;
+  $('flight').hidden = !supportedIOS;
+  $('android-install-conflict').hidden = !(build && state.os === 'android');
+  $('instruction').textContent = instructions[state.os];
+  $('meta').textContent = '';
+  if (state.os === 'ios') {
+    if (!supportedIOS) {
+      $('title').textContent = 'Требуется iOS или iPadOS 17+';
+      action('Выбрать другое устройство','#');
+      return;
+    }
+    $('title').textContent = 'SubVost для iPhone и iPad';
+    $('meta').textContent = 'Для установки понадобится TestFlight.';
+    action('Открыть в TestFlight','https://testflight.apple.com/join/XPHxBArP');
+    return;
+  }
+  if (state.variant === 'unsupported') {
+    $('title').textContent = state.os === 'android' ? 'Требуется Android 5+' : 'Требуется macOS 11+';
+    action('Выбрать другое устройство','#');
+    return;
+  }
+  if (!build) {
+    $('title').textContent = loading ? 'Загружаем каталог…' : catalogUnavailable ? 'Каталог временно недоступен' : 'Для этого устройства пока нет сборки';
+    if (!loading) action('Открыть список файлов','https://download.subvost.fun/files.html');
+    return;
+  }
+  const system = state.os === 'android' ? (state.variant === 'mobile' ? 'Android 6+' : 'Android 5') : names[state.os];
+  $('title').textContent = 'SubVost для ' + system;
+  const size = (build.size / 1048576).toLocaleString('ru',{maximumFractionDigits:1});
+  const cpu = architectures[state.os]?.find(([id]) => id === state.arch);
+  const info = [build.version + (build.prerelease ? ' · бета' : ''),cpu && (state.os === 'macos' ? cpu[1] : state.arch),state.os === 'macos' && (state.variant === 'modern' ? 'macOS 13+' : 'macOS 11–12'),size + ' МБ'];
+  $('meta').textContent = info.filter(Boolean).join(' · ');
+  if (state.os === 'windows' && build.format === 'zip') $('instruction').textContent = 'Распакуйте ZIP в отдельную папку и запустите SubVost VPN.';
+  action('Скачать ' + build.format.toUpperCase(),build.url);
+  const mirror = downloadSource(build,mirrorManifest);
+  if (mirror.mirrored) {
+    $('alternative').textContent = 'Скачать тот же файл с сервера в РФ';
+    $('alternative').href = mirror.url;
+    $('alternative').hidden = false;
+  }
+}
+function catalogChanged() {
+  if (state.os === 'linux') route();
+  else if (onResult) renderResult();
+}
+window.addEventListener('hashchange',() => route(true));
+route();
 function svgIcon(kind) {
   const paths = {
     cpu: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v5m6-5v5M9 18v5m6-5v5M1 9h5m-5 6h5m12-6h5m-5 6h5"/><rect x="9" y="9" width="6" height="6" rx="1"/>',
@@ -35,162 +178,6 @@ function svgIcon(kind) {
 }
 function brandIcon(name) {
   const img = document.createElement('img'); img.src = `icons/${name}.svg`; img.alt = ''; img.className = 'icon brand-symbol'; return img;
-}
-for (const label of document.querySelectorAll('.os label')) {
-  const value = label.querySelector('input').value;
-  label.querySelector('span').prepend(['macos', 'linux', 'android'].includes(value) ? brandIcon(value === 'macos' ? 'apple' : value) : svgIcon(value === 'ios' ? 'phone' : 'windows'));
-}
-document.querySelector('nav a').prepend(brandIcon('github'));
-document.querySelector('nav a:last-child').prepend(svgIcon('help'));
-
-function group(title, name, options, hint = '') {
-  const field = document.createElement('fieldset');
-  field.dataset.step = name;
-  const legend = document.createElement('legend'); legend.textContent = title; field.append(legend);
-  const segments = document.createElement('div'); segments.className = 'segments';
-  for (const [value, caption] of options) {
-    const label = document.createElement('label'), input = document.createElement('input'), span = document.createElement('span');
-    input.type = 'radio'; input.name = name; input.value = value; input.checked = state[name] === value;
-    span.textContent = caption;
-    if (name === 'arch') span.prepend(svgIcon('cpu'));
-    label.append(input, span); segments.append(label);
-  }
-  field.append(segments);
-  if (hint) { const p = document.createElement('p'); p.className = 'hint'; p.textContent = hint; field.append(p); }
-  return field;
-}
-
-function renderOptions() {
-  const content = $('platform-options');
-  const active = document.activeElement;
-  const restore = active instanceof HTMLInputElement && content.contains(active) ? { name: active.name, value: active.value } : null;
-  processorHelp.remove();
-  content.replaceChildren();
-  if (state.os === 'macos') {
-    content.append(group('Процессор', 'arch', [['arm64', 'Apple Silicon (M1 и новее)'], ['x86_64', 'Intel']]), processorHelp);
-    if (state.arch) content.append(group('Версия macOS', 'variant', [['modern', 'macOS 13 и новее'], ['legacy', 'macOS 11–12 · Legacy']], 'Версию системы можно посмотреть в меню Apple → «Об этом Mac».'));
-  } else if (state.os === 'android') {
-    content.append(group('Версия Android', 'variant', [['mobile', 'Android 6 и новее'], ['legacy', 'Android 5.0–5.1 · Legacy · бета']], 'Выберите версию системы на телефоне. Legacy — старая бета-сборка, новой стабильной версии для Android 5 пока нет. Android ниже 5 не поддерживается. Обе APK включают ARM64, ARMv7 и x86_64.'));
-  } else if (state.os === 'ios') {
-    content.append(group('Версия iOS', 'variant', [['mobile', 'iOS 17 и новее'], ['unsupported', 'Ниже iOS 17']], 'Версию можно посмотреть в «Настройки → Основные → Об этом устройстве».'));
-  } else if (state.os === 'windows') {
-    content.append(group('Процессор', 'arch', [['x64', 'Intel / AMD · x64'], ['arm64', 'ARM64 · Snapdragon'], ['x86', '32-битный · x86']], 'Для Windows 10 (1809 и новее) и Windows 11. Тип системы: Параметры → Система → О системе.'));
-  } else if (state.os === 'linux') {
-    content.append(group('Процессор', 'arch', [['x86_64', 'Intel / AMD · x86_64'], ['arm64', 'ARM · arm64']]), processorHelp);
-    const available = [...new Set(builds.filter(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant).map(b => b.format))];
-    if (!available.includes(state.format)) state.format = null;
-    if (available.length) {
-      const captions = { deb: 'DEB · Ubuntu / Debian', rpm: 'RPM · Fedora / openSUSE', 'pkg.tar.zst': 'Arch Linux', AppImage: 'AppImage', 'tar.gz': 'Архив .tar.gz' };
-      content.append(group('Формат пакета', 'format', available.map(format => [format, captions[format] ?? format])));
-    }
-  }
-  if (restore) content.querySelector(`input[name="${restore.name}"][value="${restore.value}"]`)?.focus({ preventScroll: true });
-  processorHelp.querySelector('p').textContent = state.os === 'linux'
-    ? 'В Terminal выполните uname -m. x86_64 означает Intel / AMD, aarch64 — ARM64. armv7l и riscv64 требуют отдельной сборки: не выбирайте вместо них ARM64.'
-    : 'Меню Apple → «Об этом Mac». Если указано «Чип Apple M…» — выбирайте Apple Silicon. Если «Процессор Intel» — Intel.';
-}
-
-function renderResult() {
-  result.classList.toggle('ios-result', state.os === 'ios');
-  const supportedIOS = state.os === 'ios' && state.variant === 'mobile';
-  $('ios-prerequisite').hidden = !supportedIOS;
-  const supported = ['macos', 'linux', 'windows', 'android', 'ios'].includes(state.os);
-  const noLinuxFormats = state.os === 'linux' && state.arch && !builds.some(b => b.os === 'linux' && b.arch === state.arch && b.variant === state.variant);
-  const show = Boolean(state.os && (!supported || selectionComplete(state) || noLinuxFormats));
-  result.hidden = !show;
-  const build = selectionComplete(state) ? selectBuild(builds, state) : null;
-  // Notarization applies to these byte-verified public DMGs, not to Legacy or future artifacts.
-  const notarizedMac = build?.os === 'macos' && build.variant === 'modern' && build.version === '1.0.10' && build.sha256 === 'c8321ab434accb324c40f85694353bf1b20fbf1ab3ffa8a6c292f7e3249f2aa6';
-  $('mac-notarized').hidden = !notarizedMac;
-  $('mac-legacy-open').hidden = notarizedMac;
-  $('mac-legacy-errors').hidden = notarizedMac;
-  const hasInstallHelp = Boolean(build && ['android', 'windows'].includes(state.os));
-  help.hidden = !(hasInstallHelp || (state.os === 'macos' && selectionComplete(state)) || (state.os === 'linux' && state.arch));
-  $('mac-help').hidden = state.os !== 'macos' || !selectionComplete(state);
-  $('linux-help').hidden = state.os !== 'linux';
-  $('install-help').hidden = !hasInstallHelp;
-  $('android-install-conflict').hidden = !(build && state.os === 'android');
-  $('download').hidden = !build; $('download').removeAttribute('href');
-  $('download').removeAttribute('aria-describedby');
-  $('download-actions').hidden = !build;
-  $('source-controls').hidden = !build;
-  if (!build) sourceMenu.close();
-  $('source-status').textContent = '';
-  $('result-meta').textContent = '';
-  $('catalog-status').textContent = catalogMessage;
-  document.querySelector('.download-footer').hidden = state.os === 'ios';
-  if (state.os === 'ios') {
-    if (!supportedIOS) {
-      $('result-title').textContent = 'Сборки для iOS ниже 17 пока нет';
-      $('result-meta').textContent = 'Эта версия iOS пока не поддерживается';
-      $('catalog-status').textContent = '';
-      $('result-detail').textContent = 'Отдельная совместимая сборка ещё не опубликована. Ссылку на TestFlight для iOS 17+ здесь не предлагаем.';
-      return;
-    }
-    $('result-title').textContent = '2. Установите SubVost VPN';
-    $('result-meta').textContent = 'iOS 17 и новее · через TestFlight';
-    $('catalog-status').textContent = '';
-    $('result-detail').textContent = '';
-    $('download-actions').hidden = false;
-    $('download').hidden = false;
-    $('download').href = 'https://testflight.apple.com/join/XPHxBArP';
-    $('download').setAttribute('aria-disabled', 'false');
-    $('download').setAttribute('aria-label', 'Установить SubVost VPN через TestFlight');
-    $('download').textContent = 'Установить SubVost VPN';
-    $('download').prepend(brandIcon('apple'));
-    return;
-  }
-  if (build) {
-    const cpu = state.os === 'android' ? (state.variant === 'legacy' ? 'Legacy · старая бета-версия' : 'Универсальная сборка') : state.os === 'macos' ? (state.arch === 'arm64' ? 'Apple Silicon' : 'Intel') + (state.variant === 'legacy' ? ' · Legacy' : '') : state.arch;
-    $('result-title').textContent = `${osNames[state.os]} · ${build.version}`;
-    $('install-summary').textContent = state.os === 'android' && state.variant === 'legacy' ? 'Установка старой бета-версии' : build.prerelease ? 'Установка тестовой версии' : 'Как установить?';
-    $('result-detail').textContent = state.os === 'windows'
-      ? (build.prerelease ? 'Тестовая версия. ' : '') + (build.format === 'exe'
-        ? 'Запустите установщик. Приложение появится в меню «Пуск» и на рабочем столе.'
-        : 'Для этого процессора пока доступен архив. Распакуйте его и запустите SubVost VPN.')
-      : state.os === 'android' ? (build.prerelease ? 'Тестовая версия. ' : '') + (state.variant === 'legacy' ? 'Для Android 5.0–5.1. ' : 'Для Android 6 и новее. ') + 'Откройте APK на телефоне. Перед переходом со старой беты прочитайте пояснение ниже. Проверки на реальных устройствах продолжаются.' : '';
-    const format = { dmg: 'DMG', deb: 'DEB', rpm: 'RPM', zip: 'ZIP', exe: 'EXE', apk: 'APK' }[build.format] ?? build.format;
-    const mirror = downloadSource(build, mirrorManifest);
-    const url = selectedDownload(build, mirrorManifest, selectedSource);
-    $('result-meta').textContent = `${cpu} · ${format} · ${(build.size / 1048576).toLocaleString('ru', { maximumFractionDigits: 1 })} МБ`;
-    if (url) $('download').href = url;
-    $('download').setAttribute('aria-disabled', String(!url));
-    $('download').textContent = 'Скачать ' + format;
-    $('download').setAttribute('aria-label', `Скачать ${format} ${selectedSource === 'mirror' ? 'с сервера в РФ' : 'с GitHub'}`);
-    $('download').prepend(svgIcon('download'));
-    sourceMenu.update(selectedSource, mirror.mirrored, mirrorLoading ? 'Проверяем наличие файла…' : mirrorManifest ? 'Этой сборки пока нет' : 'Не удалось проверить файл');
-    if (!url) $('source-status').textContent = 'Этой сборки на зеркале пока нет. Выберите GitHub или попробуйте позже.';
-  } else {
-    $('result-title').textContent = loading && supported ? 'Загружаем список версий…' : supported && !builds.length ? 'Каталог временно недоступен' : `Сборка для ${osNames[state.os]} пока не опубликована`;
-    $('result-detail').textContent = '';
-  }
-}
-
-$('choices').addEventListener('submit', event => event.preventDefault());
-$('choices').addEventListener('change', event => {
-  const input = event.target;
-  if (!(input instanceof HTMLInputElement) || input.type !== 'radio') return;
-  if (!['os', 'arch', 'variant', 'format'].includes(input.name)) return;
-  state = choose(state, input.name, input.value);
-  renderOptions();
-  renderResult();
-  $('step-status').textContent = !result.hidden ? '' : state.os === 'ios' ? 'Теперь выберите версию iOS.' : state.os === 'android' ? 'Теперь выберите версию Android.' : !state.arch ? 'Теперь выберите процессор.' : state.os === 'macos' ? 'Теперь выберите версию macOS.' : 'Теперь выберите формат пакета.';
-});
-
-$('copy-command').addEventListener('click', async () => {
-  try { await navigator.clipboard.writeText($('install-command').textContent); $('copy-status').textContent = 'Скопировано'; }
-  catch { $('copy-status').textContent = 'Выделите и скопируйте команды вручную.'; }
-});
-
-renderOptions(); renderResult();
-function catalogChanged() {
-  if (state.os === 'linux') {
-    const active = document.activeElement;
-    const restore = active instanceof HTMLInputElement && $('platform-options').contains(active) ? { name: active.name, value: active.value } : null;
-    renderOptions();
-    if (restore) document.querySelector(`input[name="${restore.name}"][value="${restore.value}"]`)?.focus();
-  }
-  renderResult();
 }
 // One request per ten minutes per browser; no perpetual polling or tracking.
 // A checked-in snapshot keeps the page usable if GitHub API is blocked/rate-limited.
@@ -215,7 +202,7 @@ async function loadCatalog() {
   // No GitHub API dependency on the Russian page. Both mirrored releases and
   // the bundled public fallback have byte-verified publication records. Mirror
   // download availability is checked independently against its own manifest.
-  if (location.origin === MIRROR_ORIGIN && builds.length) {
+  if (location.origin === MIRROR_ORIGIN && snapshot.length) {
     loading = false;
     catalogChanged();
     return;
@@ -235,9 +222,9 @@ async function loadCatalog() {
     // snapshot. Keep the newest validated asset per OS/CPU/package in that case.
     // Release removal must also update the checked-in snapshot.
     builds = buildPublishedCatalog([...snapshot, ...releases]);
-    catalogMessage = '';
+
   } catch {
-    catalogMessage = builds.length ? '' : 'Не удалось загрузить каталог. Откройте «Все версии и изменения».';
+    catalogUnavailable = !snapshot.length;
   }
   loading = false;
   catalogChanged();
@@ -246,4 +233,4 @@ loadCatalog();
 fetchJSON(`${MIRROR_ORIGIN}/manifest.json`, 5000)
   .then(manifest => { mirrorManifest = manifest; })
   .catch(() => { /* GitHub remains available; unverified mirror options stay disabled. */ })
-  .finally(() => { mirrorLoading = false; renderResult(); });
+  .finally(() => { if (onResult) renderResult(); });

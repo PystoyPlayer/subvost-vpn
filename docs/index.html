@@ -8,110 +8,38 @@
   <title>Скачать SubVost VPN</title>
   <link rel="canonical" href="https://download.subvost.fun/">
   <link rel="icon" href="brand.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=20261030-download-help">
-  <script type="module" src="app.mjs?v=20261018-helper76"></script>
+  <link rel="stylesheet" href="style.css?v=20261106-steps">
+  <script type="module" src="app.mjs?v=20261106-steps"></script>
 </head>
 <body>
-  <a class="skip" href="#selector">К выбору файла</a>
-  <header>
-    <a class="brand" href="https://t.me/subvost_vpn" aria-label="SubVost VPN — канал в Telegram"><img src="brand.png" alt="" width="38" height="38">SubVost VPN</a>
-    <nav aria-label="Основная навигация"><a href="https://github.com/PystoyPlayer/subvost-vpn">GitHub</a><a href="https://t.me/subvost_vpn_bot">Бот</a></nav>
+  <header><a class="brand" href="./"><img src="brand.png" alt="" width="36" height="36">SubVost VPN</a>
+    <details class="service-help"><summary aria-label="Помощь">?</summary><div>
+      <a href="https://download.subvost.fun/files.html">Прямые ссылки на файлы</a>
+      <a href="https://t.me/subvost_vpn_bot">Помощь в Telegram</a>
+      <p>Для Samsung TV с Tizen отдельного приложения пока нет.</p>
+    </div></details>
   </header>
-  <main id="selector">
-    <h1>Скачать SubVost VPN</h1>
-    <p class="intro">Сначала выберите систему устройства, на которое устанавливаете VPN.</p>
-    <form id="choices">
-      <fieldset class="os"><legend class="sr-only">Операционная система</legend>
-        <label><input type="radio" name="os" value="macos"><span>macOS</span></label>
-        <label><input type="radio" name="os" value="linux"><span>Linux</span></label>
-        <label><input type="radio" name="os" value="windows"><span>Windows</span></label>
-        <label><input type="radio" name="os" value="ios"><span>iOS</span></label>
-        <label><input type="radio" name="os" value="android"><span>Android</span></label>
-      </fieldset>
-      <div id="platform-options"></div>
-    </form>
-    <div class="download-assistance" id="simple-downloads">
-      <span>Не получается выбрать сборку?</span>
-      <a class="secondary" href="https://download.subvost.fun/files.html">Открыть все файлы</a>
-    </div>
-    <p id="step-status" class="sr-only" role="status"></p>
-    <section class="result" aria-label="Подходящая сборка" aria-live="polite" aria-atomic="true" hidden>
-      <div id="ios-prerequisite" class="download-row ios-prerequisite" hidden>
-        <div class="build-info">
-          <h2>1. Установите TestFlight</h2>
-          <p class="ios-step-meta">Уже установлен? Перейдите к шагу 2.</p>
-        </div>
-        <div class="download-actions">
-          <a id="testflight-install" class="secondary" href="https://apps.apple.com/app/testflight/id899247664">Скачать TestFlight</a>
-        </div>
-      </div>
-      <div class="download-row">
-        <div class="build-info">
-          <h2 id="result-title"></h2>
-          <p id="result-meta"></p>
-        </div>
-        <div id="download-actions" class="download-actions" hidden>
-          <a id="download" class="primary" hidden>Скачать</a>
-        </div>
-      </div>
-      <div class="download-footer">
-        <a class="history" href="https://github.com/PystoyPlayer/subvost-vpn/releases">Все версии и изменения <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
-        <div id="source-controls" class="download-source" hidden>
-          <span class="source-label" id="source-label">Источник</span>
-          <div id="source-picker" class="source-picker">
-            <button id="source-toggle" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="source-menu" aria-labelledby="source-label source-current">
-              <span id="source-current">GitHub</span>
-              <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg>
-            </button>
-            <div id="source-menu" class="source-menu" role="menu" aria-label="Источник загрузки" hidden>
-              <button type="button" role="menuitemradio" aria-checked="true" data-source="github" tabindex="-1" aria-label="GitHub" aria-describedby="github-description">
-                <img class="source-icon brand-symbol" src="icons/github.svg" alt="" width="20" height="20">
-                <span class="source-copy"><span class="source-name">GitHub</span><span class="source-description" id="github-description">Основной источник</span></span>
-                <svg class="source-check" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 3 3 7-7"/></svg>
-              </button>
-              <button type="button" role="menuitemradio" aria-checked="false" aria-disabled="true" data-source="mirror" tabindex="-1" aria-label="Сервер в РФ" aria-describedby="mirror-description">
-                <svg class="source-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M16 6.5h2M16 17.5h2"/></svg>
-                <span class="source-copy"><span class="source-name">Сервер в РФ</span><span class="source-description" id="mirror-description">Проверяем наличие файла…</span></span>
-                <svg class="source-check" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 3 3 7-7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p id="source-status" class="note"></p>
-      <p id="catalog-status" class="note"></p>
+  <main>
+    <nav id="navigation" aria-label="Выбор сборки" hidden><a id="back" href="#">←&nbsp; Назад</a></nav>
+    <section id="step"><div><h1 id="question" tabindex="-1">На какое устройство?</h1>
+      <p id="hint">Можно скачать для себя или для другого устройства.</p></div>
+      <div id="choices"><a href="https://download.subvost.fun/files.html">Открыть список файлов</a></div>
     </section>
-    <section class="help" aria-label="Установка и помощь" hidden>
-      <details id="processor-help"><summary>Как узнать процессор?</summary><p id="processor-description">Меню Apple → «Об этом Mac». Если указано «Чип Apple M…» — выбирайте Apple Silicon. Если «Процессор Intel» — Intel.</p></details>
-      <details id="install-help" hidden><summary id="install-summary">Как установить?</summary><p id="result-detail"></p>
-        <div id="android-install-conflict" hidden>
+    <section id="result" hidden><h1 id="title" tabindex="-1"></h1><p id="meta" role="status"></p>
+      <a id="download" class="primary" hidden></a>
+      <details id="install"><summary>Как установить</summary>
+        <p id="instruction"></p><a id="flight" href="https://apps.apple.com/app/testflight/id899247664" hidden>Установить TestFlight</a>
+      </details>
+      <details id="trouble"><summary>Проблема со скачиванием или установкой?</summary>
+        <a id="alternative" hidden></a><div id="android-install-conflict" hidden>
+          <p><strong>«Пакет недействителен».</strong> Дождитесь окончания загрузки. Если ошибка повторилась, скачайте APK с запасного сервера и попробуйте открыть новый файл. Если и он не устанавливается, пришлите в поддержку версию Android и снимок ошибки.</p>
           <p><strong>Android пишет «Конфликт с другим пакетом»?</strong> Сначала проверьте установленную версию SubVost VPN в настройках приложения. Это сообщение не всегда означает проблему с подписью.</p>
           <p><strong>Уже установлена версия 1.0.0 или новее.</strong> Эти выпуски сохраняют одну подпись и рассчитаны на обновление без удаления. При таком конфликте не удаляйте приложение: отправьте в поддержку установленную версию и текст ошибки. Не публикуйте ссылку подписки.</p>
           <p><strong>Переходите со старой беты на 1.0 или новее.</strong> Подпись приложения изменилась. До удаления старой беты сохраните ссылку подписки из бота. После переустановки понадобится повторный импорт; приложение может занять новое место в лимите устройств. Удаление стирает локальные настройки. Если ссылка недоступна или лимит заполнен, сначала обратитесь в поддержку.</p>
         </div>
-      </details>
-      <div id="mac-help">
-        <details><summary>Как установить на Mac?</summary><ol><li>Скачайте DMG для своего процессора и версии macOS.</li><li>Откройте DMG и перетащите SubVost VPN в папку «Программы» (Applications).</li><li>Откройте приложение из «Программ», добавьте ссылку из бота и подключитесь.</li></ol><div id="mac-notarized" hidden><p>Версия 1.0.16 для macOS 13+ подписана Developer ID и нотариально заверена Apple. Снимать карантин командами Terminal не нужно.</p><p>Возвращены sing-box и правила по приложениям; Network Extension не используется. Пароль администратора нужен только при установке или обновлении системного компонента. При ручном обновлении сначала отключите VPN и закройте старую версию.</p><p>Новый обход БС на Mac ещё проходит полевую проверку; подтверждённое обычное подключение не гарантирует работу обхода в каждой сети.</p></div><p>Для macOS 11–12 выбирайте Legacy: пока это версия 0.4.26, без нового обхода БС.</p></details>
-        <details id="mac-legacy-open"><summary>macOS не даёт открыть приложение</summary><p>Сначала попробуйте: «Системные настройки» → «Конфиденциальность и безопасность» → «Всё равно открыть» после попытки запуска.</p><p>Для текущей сборки может понадобиться разово выполнить команды ниже в Terminal. Только если приложение скачано из <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">официальных релизов SubVost</a> и уже находится в Applications.</p>
-          <pre><code id="install-command">xattr -dr com.apple.quarantine "/Applications/SubVost VPN.app"
-open "/Applications/SubVost VPN.app"</code></pre>
-          <button id="copy-command" type="button" class="secondary">Копировать команды</button><span id="copy-status" role="status"></span>
-          <p>Первая команда снимает карантин только с SubVost VPN и его содержимого, вторая запускает приложение. Снятие карантина обходит проверку запуска для этой копии — оно не проверяет безопасность файла. Не применяйте команды к неизвестным приложениям.</p>
-          <p>Если macOS сообщает, что приложение содержит вредоносное ПО или «повредит компьютер», не обходите предупреждение: удалите скачанную копию и обратитесь в поддержку. <a href="https://support.apple.com/102445">Рекомендации Apple</a>.</p>
-        </details>
-        <details id="mac-legacy-errors"><summary>«No such file», «Operation not permitted» или ошибка процессора</summary><p>«No such file» — проверьте, что приложение перенесено в Applications и называется SubVost VPN.app. В Terminal вставляйте только команды, без приглашения вида <code>user@Mac %</code> и без текста прошлой ошибки.</p><p>«Bad CPU type» или несовместимая версия системы — проверьте процессор и выбор Legacy. При «Operation not permitted» после инструкции выше пришлите точный текст в поддержку; не отключайте SIP или Gatekeeper целиком и не запускайте приложение через sudo.</p></details>
-        <details><summary>Туннель запускается, но интернет не работает</summary><p>Повторите подключение или выберите другую локацию. Если ошибка повторяется, откройте «Настройки» → «Диагностика» и отправьте в поддержку журнал последней неудачной попытки. Не отправляйте публично ссылку подписки, UUID и полную конфигурацию. Обычный TCP-пинг не гарантирует, что VPN-маршрут проходит ограничения сети.</p></details>
-      </div>
-      <div id="linux-help" hidden><details><summary>Как выбрать пакет для Linux?</summary><p>DEB — Debian, Ubuntu и производные. RPM — Fedora и openSUSE, с проверкой зависимостей конкретной сборки. AppImage и переносимый архив удобны без пакетного менеджера, но не гарантируют работу на любой версии glibc или на Alpine/musl.</p><p>Совместимость с NixOS, системами без systemd, Flatpak/Snap и архитектурами проверяется отдельно. Не запускайте графическое приложение через sudo и не отключайте его sandbox ради запуска.</p></details></div>
-    </section>
-    <section class="platform-help" aria-label="Совместимость с телевизорами">
-      <details id="tizen-help">
-        <summary>VPN на телевизоре Samsung</summary>
-        <p>Для встроенной системы Tizen версии SubVost пока нет. Android APK не установится на телевизор, в том числе с флешки.</p>
-        <p>Можно использовать совместимую приставку с Android или запустить VPN и браузер на компьютере, подключённом к телевизору по HDMI. Совместимость приставки Tricolor нужно проверять по её модели.</p>
+        <a href="https://t.me/subvost_vpn_bot">Написать в поддержку</a>
       </details>
     </section>
-    <noscript><p>Для селектора нужен JavaScript. Откройте <a href="https://download.subvost.fun/files.html">список файлов на российском зеркале</a> или <a href="https://github.com/PystoyPlayer/subvost-vpn/releases">GitHub Releases</a>.</p></noscript>
   </main>
 </body>
 </html>
