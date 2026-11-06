@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 69,
-  "version": "1.0.19",
+  "build": 78,
+  "version": "1.0.28",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.19/SubVost-VPN-Android-1.0.19.apk",
-  "size": 233331234,
-  "sha256": "d0f9299d0ed1bfaad003501e4848f228686415759041c7db66404ced42eb407f",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.28/SubVost-VPN-Android-1.0.28.apk",
+  "size": 219498735,
+  "sha256": "7a9f0520d0644996bdfc822ecc6db5a3fd9ac955e8700fc1e0e8586b5cebcdf2",
   "notes": {
-    "ru": "Повышена надёжность подключения после выхода устройства из сна.",
-    "en": "Improved connection reliability after the device wakes from sleep."
+    "ru": "Исправлено зависание при отключении VPN, если сеть пропала во время подключения. После возврата сети можно подключиться снова.",
+    "en": "Fixed a hang when stopping the VPN if the network dropped during connection. You can reconnect once the network returns."
   }
 }
