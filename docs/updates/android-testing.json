@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 78,
-  "version": "1.0.28",
+  "build": 79,
+  "version": "1.0.29",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.28/SubVost-VPN-Android-1.0.28.apk",
-  "size": 219498735,
-  "sha256": "7a9f0520d0644996bdfc822ecc6db5a3fd9ac955e8700fc1e0e8586b5cebcdf2",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.29/SubVost-VPN-Android-1.0.29.apk",
+  "size": 219515186,
+  "sha256": "a3bdbce9eff3fc0260e91e4fb8a7c7515f13388de0608a0c11c75ab4ddbc97de",
   "notes": {
-    "ru": "Исправлено зависание при отключении VPN, если сеть пропала во время подключения. После возврата сети можно подключиться снова.",
-    "en": "Fixed a hang when stopping the VPN if the network dropped during connection. You can reconnect once the network returns."
+    "ru": "Теперь отчёт об ошибке можно отправить прямо из приложения, даже без VPN и доступа к Telegram. После отправки появится номер обращения.",
+    "en": "Send an error report directly from the app, even without a working VPN or access to Telegram. The app shows a report number after delivery."
   }
 }

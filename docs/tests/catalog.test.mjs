@@ -126,22 +126,22 @@ test('late catalog with only DEB reconciles pending Linux choice', () => {
   assert.ok(selectBuild(catalog, loaded));
 });
 
-test('both published Android catalog snapshots select stable 78 without a live API', () => {
+test('both published Android catalog snapshots select stable 79 without a live API', () => {
   const state = { os: 'android', variant: 'mobile', arch: 'universal', format: 'apk' };
   const feed = JSON.parse(readFileSync(new URL('../updates/android-testing.json', import.meta.url), 'utf8'));
-  assert.equal(feed.build, 78);
+  assert.equal(feed.build, 79);
   assert.equal(feed.channel, 'stable');
   assert.deepEqual(feed, JSON.parse(readFileSync(new URL('../../updates/android-testing.json', import.meta.url), 'utf8')));
   for (const relative of ['../catalog.json', '../../catalog.json']) {
     const releases = JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8')).releases;
     const selected = selectBuild(buildPublishedCatalog(releases), state);
-    assert.equal(selected.version, '1.0.28', relative);
+    assert.equal(selected.version, '1.0.29', relative);
     assert.equal(selected.prerelease, false, relative);
     assert.equal(selected.sha256, feed.sha256, relative);
     assert.equal(selected.url, feed.url, relative);
-    assert.equal(selected.name, 'SubVost-VPN-Android-1.0.28.apk', relative);
-    assert.equal(selected.size, 219498735, relative);
-    assert.equal(selected.sha256, '7a9f0520d0644996bdfc822ecc6db5a3fd9ac955e8700fc1e0e8586b5cebcdf2', relative);
-    assert.equal(selected.url, `${RELEASES_URL}/download/android-v1.0.28/SubVost-VPN-Android-1.0.28.apk`, relative);
+    assert.equal(selected.name, 'SubVost-VPN-Android-1.0.29.apk', relative);
+    assert.equal(selected.size, 219515186, relative);
+    assert.equal(selected.sha256, 'a3bdbce9eff3fc0260e91e4fb8a7c7515f13388de0608a0c11c75ab4ddbc97de', relative);
+    assert.equal(selected.url, `${RELEASES_URL}/download/android-v1.0.29/SubVost-VPN-Android-1.0.29.apk`, relative);
   }
 });
