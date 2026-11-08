@@ -1,5 +1,5 @@
 import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261018-helper76';
-import { initialSelection, choose } from './lib/selection.mjs?v=20261014-explicit-ios';
+import { initialSelection, choose } from './lib/selection.mjs?v=20261108-appletv';
 import { downloadSource, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 
 const $ = id => document.getElementById(id);
@@ -9,11 +9,12 @@ let onResult = false;
 let builds = buildPublishedCatalog([]);
 let loading = true, catalogUnavailable = false, mirrorManifest = null;
 const platforms = [
-  ['android','Android'], ['ios','iPhone и iPad'], ['macos','Mac'], ['windows','Windows'], ['linux','Linux']
+  ['android','Android'], ['ios','iPhone и iPad'], ['macos','Mac'], ['windows','Windows'], ['linux','Linux'], ['tvos','Apple TV']
 ];
 const names = Object.fromEntries(platforms);
 const version = {
   android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
+  tvos:[['mobile','tvOS 18+'],['unsupported','Ниже tvOS 18']],
   ios:[['mobile','iOS или iPadOS 17+'],['unsupported','Ниже iOS или iPadOS 17']],
   macos:[['modern','macOS 13+'],['legacy','macOS 11–12','Legacy'],['unsupported','Ниже macOS 11']]
 };
@@ -26,6 +27,7 @@ const formats = { deb:'DEB · Debian и Ubuntu',rpm:'RPM · Fedora и openSUSE',
 const instructions = {
   android:'Откройте скачанный APK. Если Android запросит разрешение на установку, разрешите её для приложения, из которого открываете файл.',
   macos:'Откройте DMG и перетащите SubVost VPN в «Программы». Запустите приложение оттуда.',
+  tvos:'Установите TestFlight на iPhone или iPad и Apple TV с одним аккаунтом App Store. Примите приглашение на телефоне, затем откройте TestFlight на Apple TV и установите SubVost.',
   ios:'Установите TestFlight из App Store, затем вернитесь сюда и откройте приглашение.',
   windows:'Запустите скачанный установщик и следуйте подсказкам Windows.',
   linux:'Установите пакет средствами своего дистрибутива. Для AppImage разрешите выполнение файла.'
@@ -35,7 +37,7 @@ function nextStep(s) {
   if (!s.os) return ['os','На какое устройство?','Можно скачать для себя или для другого устройства.',platforms];
   if (s.variant === 'unsupported') return null;
   if (version[s.os] && !s.variant) {
-    const hints = {android:'Посмотрите в настройках телефона, в разделе «О телефоне».',macos:'Откройте меню Apple и выберите «Об этом Mac».',ios:'Откройте «Настройки» → «Основные» → «Об этом устройстве».'};
+    const hints = {tvos:'На Apple TV откройте «Настройки» → «Основные» → «Об этом устройстве».',android:'Посмотрите в настройках телефона, в разделе «О телефоне».',macos:'Откройте меню Apple и выберите «Об этом Mac».',ios:'Откройте «Настройки» → «Основные» → «Об этом устройстве».'};
     return ['variant','Какая версия системы?',hints[s.os],version[s.os]];
   }
   if (!s.arch) {
@@ -84,7 +86,7 @@ function route(moveFocus = false) {
         small.textContent = subtitle;
         caption.append(small);
       }
-      if (field === 'os') row.append(['macos','linux','android'].includes(key) ? brandIcon(key === 'macos' ? 'apple' : key) : svgIcon(key === 'ios' ? 'phone' : 'windows'));
+      if (field === 'os') row.append(['macos','linux','android'].includes(key) ? brandIcon(key === 'macos' ? 'apple' : key) : svgIcon(key === 'ios' ? 'phone' : key === 'tvos' ? 'tv' : 'windows'));
       row.append(caption);
       return row;
     });
@@ -108,7 +110,7 @@ function action(caption,url) {
 }
 function renderResult() {
   const build = selectBuild(builds,state);
-  const supportedIOS = state.os === 'ios' && state.variant === 'mobile';
+  const supportedIOS = ['ios','tvos'].includes(state.os) && state.variant === 'mobile';
   $('download').hidden = true;
   $('download').removeAttribute('href');
   $('alternative').hidden = true;
@@ -119,14 +121,14 @@ function renderResult() {
   $('android-install-conflict').hidden = !(build && state.os === 'android');
   $('instruction').textContent = instructions[state.os];
   $('meta').textContent = '';
-  if (state.os === 'ios') {
+  if (['ios','tvos'].includes(state.os)) {
     if (!supportedIOS) {
-      $('title').textContent = 'Требуется iOS или iPadOS 17+';
+      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : 'Требуется iOS или iPadOS 17+';
       action('Выбрать другое устройство','#');
       return;
     }
-    $('title').textContent = 'SubVost для iPhone и iPad';
-    $('meta').textContent = 'Для установки понадобится TestFlight.';
+    $('title').textContent = state.os === 'tvos' ? 'SubVost для Apple TV' : 'SubVost для iPhone и iPad';
+    $('meta').textContent = state.os === 'tvos' ? 'tvOS 18+ · TestFlight. Откройте приглашение на iPhone или iPad.' : 'Для установки понадобится TestFlight.';
     action('Открыть в TestFlight','https://testflight.apple.com/join/XPHxBArP');
     return;
   }
@@ -164,6 +166,7 @@ route();
 function svgIcon(kind) {
   const paths = {
     cpu: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v5m6-5v5M9 18v5m6-5v5M1 9h5m-5 6h5m12-6h5m-5 6h5"/><rect x="9" y="9" width="6" height="6" rx="1"/>',
+    tv: '<rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 22h8m-4-4v4"/>',
     phone: '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/>',
     windows: '<path d="M3 4h8v7H3zm10 0h8v7h-8zM3 13h8v7H3zm10 0h8v7h-8z"/>',
     download: '<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
