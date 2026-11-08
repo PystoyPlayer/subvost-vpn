@@ -1,28 +1,28 @@
 {
   "releases": [
     {
-      "tag_name": "android-v1.0.29",
+      "tag_name": "android-v1.0.30",
       "draft": false,
       "prerelease": false,
-      "published_at": "2026-11-07T20:09:31Z",
+      "published_at": "2026-11-08T08:48:58Z",
       "assets": [
         {
           "name": "SHA256SUMS.txt",
           "size": 204,
-          "digest": "sha256:11b68618ceba65f252569898ee5c4f2cb94de5a9acfa39adab3fb8345dafd5aa",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.29/SHA256SUMS.txt"
+          "digest": "sha256:ca5e14323f9eed536e74d769bd447ec8aeffaeae2b3f692041954fa3bb3a7038",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.30/SHA256SUMS.txt"
         },
         {
-          "name": "SubVost-VPN-Android-1.0.29-manifest.json",
+          "name": "SubVost-VPN-Android-1.0.30-manifest.json",
           "size": 336,
-          "digest": "sha256:1644c19b1b5c9ccdf842213db0a146392e8d801ffea8f79750d7b8487d57b90f",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.29/SubVost-VPN-Android-1.0.29-manifest.json"
+          "digest": "sha256:04114ad167c1e83d93361048caf87eb7d3385994862138215d1ad3f310fd3ac6",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.30/SubVost-VPN-Android-1.0.30-manifest.json"
         },
         {
-          "name": "SubVost-VPN-Android-1.0.29.apk",
-          "size": 219515186,
-          "digest": "sha256:a3bdbce9eff3fc0260e91e4fb8a7c7515f13388de0608a0c11c75ab4ddbc97de",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.29/SubVost-VPN-Android-1.0.29.apk"
+          "name": "SubVost-VPN-Android-1.0.30.apk",
+          "size": 219950321,
+          "digest": "sha256:66e88cdac40fb69fa7c029ecce0d3e8be5dabed96b779205454301b45a02c4c0",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.30/SubVost-VPN-Android-1.0.30.apk"
         }
       ]
     },
