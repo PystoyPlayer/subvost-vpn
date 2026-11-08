@@ -1,5 +1,5 @@
 import { buildCatalog, buildPublishedCatalog, selectBuild } from './lib/catalog.mjs?v=20261018-helper76';
-import { initialSelection, choose } from './lib/selection.mjs?v=20261108-appletv';
+import { initialSelection, choose } from './lib/selection.mjs?v=20261109-apple-family';
 import { downloadSource, MIRROR_ORIGIN } from './lib/mirror.mjs?v=20260920-compact';
 
 const $ = id => document.getElementById(id);
@@ -8,14 +8,14 @@ let path = [];
 let onResult = false;
 let builds = buildPublishedCatalog([]);
 let loading = true, catalogUnavailable = false, mirrorManifest = null;
-const platforms = [
-  ['android','Android'], ['ios','iPhone и iPad'], ['macos','Mac'], ['windows','Windows'], ['linux','Linux'], ['tvos','Apple TV']
-];
-const names = Object.fromEntries(platforms);
+const platforms = [['android','Android'], ['apple','Apple'], ['linux','Linux'], ['windows','Windows']];
+const appleDevices = [['ios','iPhone'], ['ipad','iPad'], ['tvos','Apple TV'], ['macos','Mac']];
+const names = Object.fromEntries([...platforms, ...appleDevices]);
 const version = {
   android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
   tvos:[['mobile','tvOS 18+'],['unsupported','Ниже tvOS 18']],
-  ios:[['mobile','iOS или iPadOS 17+'],['unsupported','Ниже iOS или iPadOS 17']],
+  ios:[['mobile','iOS 17+'],['unsupported','Ниже iOS 17']],
+  ipad:[['mobile','iPadOS 17+'],['unsupported','Ниже iPadOS 17']],
   macos:[['modern','macOS 13+'],['legacy','macOS 11–12','Legacy'],['unsupported','Ниже macOS 11']]
 };
 const architectures = {
@@ -28,6 +28,7 @@ const instructions = {
   android:'Откройте скачанный APK. Если Android запросит разрешение на установку, разрешите её для приложения, из которого открываете файл.',
   macos:'Откройте DMG и перетащите SubVost VPN в «Программы». Запустите приложение оттуда.',
   tvos:'Установите TestFlight на iPhone или iPad и Apple TV с одним аккаунтом App Store. Примите приглашение на телефоне, затем откройте TestFlight на Apple TV и установите SubVost.',
+  ipad:'Установите TestFlight из App Store, затем вернитесь сюда и откройте приглашение.',
   ios:'Установите TestFlight из App Store, затем вернитесь сюда и откройте приглашение.',
   windows:'Запустите скачанный установщик и следуйте подсказкам Windows.',
   linux:'Установите пакет средствами своего дистрибутива. Для AppImage разрешите выполнение файла.'
@@ -35,10 +36,11 @@ const instructions = {
 
 function nextStep(s) {
   if (!s.os) return ['os','На какое устройство?','Можно скачать для себя или для другого устройства.',platforms];
+  if (s.os === 'apple') return ['os','Какое устройство Apple?','Выберите устройство, на которое хотите установить SubVost.',appleDevices];
   if (s.variant === 'unsupported') return null;
   if (version[s.os] && !s.variant) {
     const hints = {tvos:'На Apple TV откройте «Настройки» → «Основные» → «Об этом устройстве».',android:'Посмотрите в настройках телефона, в разделе «О телефоне».',macos:'Откройте меню Apple и выберите «Об этом Mac».',ios:'Откройте «Настройки» → «Основные» → «Об этом устройстве».'};
-    return ['variant','Какая версия системы?',hints[s.os],version[s.os]];
+    return ['variant','Какая версия системы?',hints[s.os === 'ipad' ? 'ios' : s.os],version[s.os]];
   }
   if (!s.arch) {
     const hints = {windows:'Windows 10 (1809+) или 11. Откройте «Параметры» → «Система» → «О системе» и посмотрите тип системы.',macos:'В меню Apple → «Об этом Mac» указано название чипа или процессора.',linux:'Команда uname -m в терминале покажет архитектуру.'};
@@ -54,6 +56,8 @@ function nextStep(s) {
 
 function route(moveFocus = false) {
   const parts = location.hash.slice(1).split('/').filter(Boolean);
+  // Preserve existing shared links while adding the Apple family step.
+  if (appleDevices.some(([key]) => key === parts[0])) parts.unshift('apple');
   state = initialSelection();
   path = [];
   let step = nextStep(state);
@@ -86,7 +90,7 @@ function route(moveFocus = false) {
         small.textContent = subtitle;
         caption.append(small);
       }
-      if (field === 'os') row.append(['macos','linux','android'].includes(key) ? brandIcon(key === 'macos' ? 'apple' : key) : svgIcon(key === 'ios' ? 'phone' : key === 'tvos' ? 'tv' : 'windows'));
+      if (field === 'os') row.append(['apple','macos','linux','android'].includes(key) ? brandIcon(key === 'macos' ? 'apple' : key) : svgIcon(['ios','ipad'].includes(key) ? 'phone' : key === 'tvos' ? 'tv' : 'windows'));
       row.append(caption);
       return row;
     });
@@ -110,7 +114,7 @@ function action(caption,url) {
 }
 function renderResult() {
   const build = selectBuild(builds,state);
-  const supportedIOS = ['ios','tvos'].includes(state.os) && state.variant === 'mobile';
+  const supportedIOS = ['ios','ipad','tvos'].includes(state.os) && state.variant === 'mobile';
   $('download').hidden = true;
   $('download').removeAttribute('href');
   $('alternative').hidden = true;
@@ -121,13 +125,13 @@ function renderResult() {
   $('android-install-conflict').hidden = !(build && state.os === 'android');
   $('instruction').textContent = instructions[state.os];
   $('meta').textContent = '';
-  if (['ios','tvos'].includes(state.os)) {
+  if (['ios','ipad','tvos'].includes(state.os)) {
     if (!supportedIOS) {
-      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : 'Требуется iOS или iPadOS 17+';
+      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : state.os === 'ipad' ? 'Требуется iPadOS 17+' : 'Требуется iOS 17+';
       action('Выбрать другое устройство','#');
       return;
     }
-    $('title').textContent = state.os === 'tvos' ? 'SubVost для Apple TV' : 'SubVost для iPhone и iPad';
+    $('title').textContent = state.os === 'tvos' ? 'SubVost для Apple TV' : state.os === 'ipad' ? 'SubVost для iPad' : 'SubVost для iPhone';
     $('meta').textContent = state.os === 'tvos' ? 'tvOS 18+ · TestFlight. Откройте приглашение на iPhone или iPad.' : 'Для установки понадобится TestFlight.';
     action('Открыть в TestFlight','https://testflight.apple.com/join/XPHxBArP');
     return;
