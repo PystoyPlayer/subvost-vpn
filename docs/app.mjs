@@ -9,13 +9,12 @@ let onResult = false;
 let builds = buildPublishedCatalog([]);
 let loading = true, catalogUnavailable = false, mirrorManifest = null;
 const platforms = [['android','Android'], ['apple','Apple'], ['linux','Linux'], ['windows','Windows']];
-const appleDevices = [['ios','iPhone'], ['ipad','iPad'], ['tvos','Apple TV'], ['macos','Mac']];
+const appleDevices = [['ios','iPhone и iPad'], ['tvos','Apple TV'], ['macos','Mac']];
 const names = Object.fromEntries([...platforms, ...appleDevices]);
 const version = {
   android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
   tvos:[['mobile','tvOS 18+'],['unsupported','Ниже tvOS 18']],
-  ios:[['mobile','iOS 17+'],['unsupported','Ниже iOS 17']],
-  ipad:[['mobile','iPadOS 17+'],['unsupported','Ниже iPadOS 17']],
+  ios:[['mobile','iOS / iPadOS 17+'],['unsupported','Ниже iOS / iPadOS 17']],
   macos:[['modern','macOS 13+'],['legacy','macOS 11–12','Legacy'],['unsupported','Ниже macOS 11']]
 };
 const architectures = {
@@ -56,6 +55,9 @@ function nextStep(s) {
 
 function route(moveFocus = false) {
   const parts = location.hash.slice(1).split('/').filter(Boolean);
+  // Keep old iPad links working with the unified iPhone and iPad flow.
+  if (parts[0] === 'ipad') parts[0] = 'ios';
+  if (parts[0] === 'apple' && parts[1] === 'ipad') parts[1] = 'ios';
   // Preserve existing shared links while adding the Apple family step.
   if (appleDevices.some(([key]) => key === parts[0])) parts.unshift('apple');
   state = initialSelection();
@@ -127,11 +129,11 @@ function renderResult() {
   $('meta').textContent = '';
   if (['ios','ipad','tvos'].includes(state.os)) {
     if (!supportedIOS) {
-      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : state.os === 'ipad' ? 'Требуется iPadOS 17+' : 'Требуется iOS 17+';
+      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : state.os === 'ipad' ? 'Требуется iPadOS 17+' : 'Требуется iOS / iPadOS 17+';
       action('Выбрать другое устройство','#');
       return;
     }
-    $('title').textContent = state.os === 'tvos' ? 'SubVost для Apple TV' : state.os === 'ipad' ? 'SubVost для iPad' : 'SubVost для iPhone';
+    $('title').textContent = state.os === 'tvos' ? 'SubVost для Apple TV' : state.os === 'ipad' ? 'SubVost для iPad' : 'SubVost для iPhone и iPad';
     $('meta').textContent = state.os === 'tvos' ? 'tvOS 18+ · TestFlight. Откройте приглашение на iPhone или iPad.' : 'Для установки понадобится TestFlight.';
     action('Открыть в TestFlight','https://testflight.apple.com/join/XPHxBArP');
     return;
