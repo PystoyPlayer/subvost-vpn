@@ -9,7 +9,7 @@ let onResult = false;
 let builds = buildPublishedCatalog([]);
 let loading = true, catalogUnavailable = false, mirrorManifest = null;
 const platforms = [['android','Android'], ['apple','Apple'], ['linux','Linux'], ['windows','Windows']];
-const appleDevices = [['ios','iPhone и iPad'], ['tvos','Apple TV'], ['macos','Mac']];
+const appleDevices = [['ios','iPhone и iPad'], ['macos','Mac'], ['tvos','Apple TV']];
 const names = Object.fromEntries([...platforms, ...appleDevices]);
 const version = {
   android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
