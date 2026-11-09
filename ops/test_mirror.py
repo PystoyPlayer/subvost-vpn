@@ -35,7 +35,7 @@ class MirrorTests(unittest.TestCase):
         self.assertEqual(set(aliases), m.REQUIRED_ALIASES)
         self.assertEqual(len(aliases), 19)
         self.assertTrue(aliases['SubVost-VPN-Android.apk']['url'].endswith('SubVost-VPN-Android-1.0.32.apk'))
-        self.assertTrue(aliases['SubVost-VPN-Android-Legacy.apk']['url'].endswith('SubVost-VPN-Android-Legacy-0.2.0-beta.9.apk'))
+        self.assertTrue(aliases['SubVost-VPN-Android-Legacy.apk']['url'].endswith('SubVost-VPN-Android-Legacy-1.0.32.apk'))
         self.assertTrue(aliases['SubVost-VPN-Windows-x64-Setup.exe']['url'].endswith('SubVost-VPN-1.0.4-Windows-x64-Setup.exe'))
         self.assertTrue(aliases['SubVost-VPN-macOS-arm64.dmg']['url'].endswith('-1.0.19.dmg'))
         for arch in ('arm64', 'x86_64'):
