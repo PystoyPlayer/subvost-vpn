@@ -13,7 +13,7 @@ const appleDevices = [['ios','iPhone и iPad'], ['macos','Mac'], ['tvos','Apple 
 const names = Object.fromEntries([...platforms, ...appleDevices]);
 const appleMobileMinimum = 'iOS / iPadOS 16.7';
 const version = {
-  android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
+  android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy'],['unsupported','Ниже Android 5']],
   tvos:[['mobile','tvOS 18+'],['unsupported','Ниже tvOS 18']],
   ios:[['mobile',appleMobileMinimum + '+'],['unsupported','Ниже ' + appleMobileMinimum]],
   macos:[['modern','macOS 13+'],['legacy','macOS 11–12','Legacy'],['unsupported','Ниже macOS 11']]
@@ -154,6 +154,10 @@ function renderResult() {
   const size = (build.size / 1048576).toLocaleString('ru',{maximumFractionDigits:1});
   const cpu = architectures[state.os]?.find(([id]) => id === state.arch);
   const info = [build.version + (build.prerelease ? ' · бета' : ''),cpu && (state.os === 'macos' ? cpu[1] : state.arch),state.os === 'macos' && (state.variant === 'modern' ? 'macOS 13+' : 'macOS 11–12'),size + ' МБ'];
+  if (state.os === 'android' && state.variant === 'legacy' && !build.prerelease) {
+    info.push('С беты 0.2 нужна переустановка');
+    $('instruction').textContent += ' Если у вас бета 0.2, сохраните ссылку подписки из бота перед переустановкой. После неё добавьте подписку снова.';
+  }
   $('meta').textContent = info.filter(Boolean).join(' · ');
   if (state.os === 'windows' && build.format === 'zip') $('instruction').textContent = 'Распакуйте ZIP в отдельную папку и запустите SubVost VPN.';
   action('Скачать ' + build.format.toUpperCase(),build.url);

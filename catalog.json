@@ -161,6 +161,12 @@
           "size": 219950415,
           "digest": "sha256:5ad44d3fba6ba5350fa2517f0662100f847180f1e8f9c5ee9bc6b15ea741e3b1",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.32/SubVost-VPN-Android-1.0.32.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-Legacy-1.0.32.apk",
+          "size": 219983267,
+          "digest": "sha256:90002e870ea4cc0f6b3af3811eddeac000fd6f357c11f0723ca017d57e7240c9",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.32/SubVost-VPN-Android-Legacy-1.0.32.apk"
         }
       ]
     },
