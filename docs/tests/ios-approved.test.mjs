@@ -12,5 +12,13 @@ test('approved iOS download has no review warning or dangling accessibility refe
   assert.match(script, /if \(!supportedIOS\)/);
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   assert.match(html, /https:\/\/apps\.apple\.com\/app\/testflight\/id899247664/);
-  assert.match(html, /app\.mjs\?v=20261109-apple-unified/);
+  assert.match(html, /app\.mjs\?v=20261109-ios-16-7/);
+});
+
+test('iPhone and iPad use the same 16.7 minimum in the chooser and results', () => {
+  const script = readFileSync(new URL('../app.mjs', import.meta.url), 'utf8');
+  assert.match(script, /const appleMobileMinimum = 'iOS \/ iPadOS 16\.7'/);
+  assert.match(script, /\['mobile',appleMobileMinimum \+ '\+'\],\['unsupported','Ниже ' \+ appleMobileMinimum\]/);
+  assert.match(script, /'Требуется ' \+ appleMobileMinimum \+ '\+'/);
+  assert.match(script, /appleMobileMinimum \+ '\+ · TestFlight'/);
 });

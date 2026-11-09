@@ -11,10 +11,11 @@ let loading = true, catalogUnavailable = false, mirrorManifest = null;
 const platforms = [['android','Android'], ['apple','Apple'], ['linux','Linux'], ['windows','Windows']];
 const appleDevices = [['ios','iPhone и iPad'], ['macos','Mac'], ['tvos','Apple TV']];
 const names = Object.fromEntries([...platforms, ...appleDevices]);
+const appleMobileMinimum = 'iOS / iPadOS 16.7';
 const version = {
   android:[['mobile','Android 6+'],['legacy','Android 5.0–5.1','Legacy · бета'],['unsupported','Ниже Android 5']],
   tvos:[['mobile','tvOS 18+'],['unsupported','Ниже tvOS 18']],
-  ios:[['mobile','iOS / iPadOS 17+'],['unsupported','Ниже iOS / iPadOS 17']],
+  ios:[['mobile',appleMobileMinimum + '+'],['unsupported','Ниже ' + appleMobileMinimum]],
   macos:[['modern','macOS 13+'],['legacy','macOS 11–12','Legacy'],['unsupported','Ниже macOS 11']]
 };
 const architectures = {
@@ -129,12 +130,12 @@ function renderResult() {
   $('meta').textContent = '';
   if (['ios','ipad','tvos'].includes(state.os)) {
     if (!supportedIOS) {
-      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : state.os === 'ipad' ? 'Требуется iPadOS 17+' : 'Требуется iOS / iPadOS 17+';
+      $('title').textContent = state.os === 'tvos' ? 'Требуется tvOS 18+' : 'Требуется ' + appleMobileMinimum + '+';
       action('Выбрать другое устройство','#');
       return;
     }
     $('title').textContent = state.os === 'tvos' ? 'SubVost для Apple TV' : state.os === 'ipad' ? 'SubVost для iPad' : 'SubVost для iPhone и iPad';
-    $('meta').textContent = state.os === 'tvos' ? 'tvOS 18+ · TestFlight. Откройте приглашение на iPhone или iPad.' : 'Для установки понадобится TestFlight.';
+    $('meta').textContent = state.os === 'tvos' ? 'tvOS 18+ · TestFlight. Откройте приглашение на iPhone или iPad.' : appleMobileMinimum + '+ · TestFlight';
     action('Открыть в TestFlight','https://testflight.apple.com/join/XPHxBArP');
     return;
   }
