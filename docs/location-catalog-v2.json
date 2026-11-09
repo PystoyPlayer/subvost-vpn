@@ -1,7 +1,7 @@
 {
   "format": "subvost-location-catalog",
   "schemaVersion": 2,
-  "revision": "2026-11-04.1",
+  "revision": "2026-11-09.1",
   "countries": {
     "🇩🇪": {
       "en": "Germany",
@@ -15,6 +15,17 @@
           "point": {
             "latitude": 50.11552,
             "longitude": 8.68417,
+            "precision": "city"
+          }
+        },
+        "Лейпциг": {
+          "en": "Leipzig",
+          "aliases": [
+            "Лайпциг"
+          ],
+          "point": {
+            "latitude": 51.33962,
+            "longitude": 12.37129,
             "precision": "city"
           }
         }
