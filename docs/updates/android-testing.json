@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 80,
-  "version": "1.0.30",
+  "build": 81,
+  "version": "1.0.31",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.30/SubVost-VPN-Android-1.0.30.apk",
-  "size": 219950321,
-  "sha256": "66e88cdac40fb69fa7c029ecce0d3e8be5dabed96b779205454301b45a02c4c0",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.31/SubVost-VPN-Android-1.0.31.apk",
+  "size": 219950338,
+  "sha256": "ed9f48937b1751be41852f5fb7bd00e6574815f2efad051780e44f83b488f202",
   "notes": {
-    "ru": "Исправлено зависание сетевых операций при отключении и повторном подключении VPN. Улучшена остановка подключения после потери сети.",
-    "en": "Fixed network operations hanging during VPN shutdown and reconnection. Improved cancellation after loss of connectivity."
+    "ru": "Улучшена проверка VPN-подключения, если основной адрес сервиса не отвечает.",
+    "en": "Improved VPN connection verification when the primary service address times out."
   }
 }
