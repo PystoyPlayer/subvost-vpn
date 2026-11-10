@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 82,
-  "version": "1.0.32",
+  "build": 83,
+  "version": "1.0.33",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.32/SubVost-VPN-Android-1.0.32.apk",
-  "size": 219950415,
-  "sha256": "5ad44d3fba6ba5350fa2517f0662100f847180f1e8f9c5ee9bc6b15ea741e3b1",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.33/SubVost-VPN-Android-1.0.33.apk",
+  "size": 219950257,
+  "sha256": "8b95648bef4611a9675fdbf1cb19421cdb45d3d9520edcecb313b13c6179e42b",
   "notes": {
-    "ru": "Исправлены тайм-ауты подключения и выбор резервного сервера в группе локаций.",
-    "en": "Fixed connection timeouts and selection of the backup server within a location group."
+    "ru": "При смене локации приложение переиспользует действующую сессию. Это уменьшает число повторных проверок подключения.",
+    "en": "Switching locations reuses a valid session and reduces repeated connection checks."
   }
 }
