@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 86,
-  "version": "1.0.36",
+  "build": 88,
+  "version": "1.0.38",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.36/SubVost-VPN-Android-1.0.36.apk",
-  "size": 219377635,
-  "sha256": "0cc5e5aceac35057a481de09c0726479987dc7adf699a0e5e5661e835600ac3e",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.38/SubVost-VPN-Android-1.0.38.apk",
+  "size": 219377990,
+  "sha256": "011859e8c529872a15615a98aafc3a603ebe570c985614cbf691a3c73d15a8a6",
   "notes": {
-    "ru": "Исправлено зависание «Не удалось отключить VPN»: отключение больше не ждёт соединения, которые перестали отвечать. В мобильных сетях с ограничениями дополнительный вход используется для всех серверов страны. Отчёт в поддержку уходит и через подключённый VPN, если отправить напрямую не удалось.",
-    "en": "Fixed the “Could not disconnect VPN” lock: disconnecting no longer waits for connections that stopped responding. On restricted mobile networks the additional server entrance is now used for every server of a country. A support report also goes through the connected VPN when it cannot be sent directly."
+    "ru": "В режиме «Обход белых списков» исправлена ошибка «Не удалось отключить VPN»: кнопка «Отключить» срабатывает за несколько секунд, даже когда приложения в этот момент отправляют данные. Если сеть пропала или сменилась, обход больше не остаётся выключенным с ошибкой, а подключается заново сам (иногда на это уходит около минуты). После смены сети (Wi-Fi ↔ мобильная) и при кратких сбоях связи интернет через VPN возвращается быстрее: приложение сразу заменяет соединения с сервером, которые перестали отвечать. Если выбранная страна больше не обслуживается, приложение подключается через авто-выбор вместо ошибки.",
+    "en": "In the whitelist bypass mode the \"Could not stop VPN\" error is fixed: Disconnect takes a few seconds even while apps are sending data. When the network is lost or replaced, the bypass no longer stays off with an error but reconnects by itself (sometimes this takes about a minute). After a network change (Wi-Fi ↔ mobile) and after short connectivity failures, traffic through the VPN comes back faster: the app replaces server connections that stopped responding right away. When the chosen country is no longer served, the app connects through automatic selection instead of failing."
   }
 }
