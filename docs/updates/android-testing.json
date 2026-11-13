@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 85,
-  "version": "1.0.35",
+  "build": 86,
+  "version": "1.0.36",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.35/SubVost-VPN-Android-1.0.35.apk",
-  "size": 219950455,
-  "sha256": "e5367818bdc222e0b8533ab824f354388fe5a815eb788add20f8b1f142e30672",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.36/SubVost-VPN-Android-1.0.36.apk",
+  "size": 219377635,
+  "sha256": "0cc5e5aceac35057a481de09c0726479987dc7adf699a0e5e5661e835600ac3e",
   "notes": {
-    "ru": "Мобильные сети с новыми ограничениями: приложение сначала подключается через дополнительный вход на серверах, устойчивый к этим ограничениям, а если он недоступен — через обычный.",
-    "en": "Mobile networks with new restrictions: the app first connects through an additional server entrance that withstands them and falls back to the usual one when it is unavailable."
+    "ru": "Исправлено зависание «Не удалось отключить VPN»: отключение больше не ждёт соединения, которые перестали отвечать. В мобильных сетях с ограничениями дополнительный вход используется для всех серверов страны. Отчёт в поддержку уходит и через подключённый VPN, если отправить напрямую не удалось.",
+    "en": "Fixed the “Could not disconnect VPN” lock: disconnecting no longer waits for connections that stopped responding. On restricted mobile networks the additional server entrance is now used for every server of a country. A support report also goes through the connected VPN when it cannot be sent directly."
   }
 }
