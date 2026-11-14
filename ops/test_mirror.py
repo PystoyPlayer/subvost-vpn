@@ -39,7 +39,7 @@ class MirrorTests(unittest.TestCase):
         self.assertTrue(aliases['SubVost-VPN-Windows-x64-Setup.exe']['url'].endswith('SubVost-VPN-1.0.4-Windows-x64-Setup.exe'))
         self.assertTrue(aliases['SubVost-VPN-macOS-arm64.dmg']['url'].endswith('-1.0.19.dmg'))
         for arch in ('arm64', 'x86_64'):
-            self.assertTrue(aliases[f'SubVost-VPN-Linux-{arch}.deb']['url'].endswith('-1.0.6.deb'))
+            self.assertTrue(aliases[f'SubVost-VPN-Linux-{arch}.deb']['url'].endswith('-1.0.7.deb'))
         self.assertEqual(aliases, m.select_aliases(list(reversed(self.alias_assets()))))
 
     def test_alias_publication_resolves_exact_bytes_and_is_idempotent(self):
@@ -91,7 +91,7 @@ class MirrorTests(unittest.TestCase):
     def test_android57_retains_old_releases_without_weakening_reserves(self):
         # Measured 2026-10-16 after the immutable Android57 assets were seeded.
         # The retained set crossed 19 GiB, not the independent free-space guard.
-        self.assertEqual(m.LIMIT, 20 * 1024**3)
+        self.assertEqual(m.LIMIT, 21 * 1024**3)
         self.assertEqual(m.FREE_RESERVE, 8 * 1024**3)
         self.assertEqual(m.CURRENT_SET_LIMIT, 4 * 1024**3)
         retained, free = 20472429275, 10231066624
