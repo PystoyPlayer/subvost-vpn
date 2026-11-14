@@ -2,14 +2,14 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 88,
-  "version": "1.0.38",
+  "build": 89,
+  "version": "1.0.39",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.38/SubVost-VPN-Android-1.0.38.apk",
-  "size": 219377990,
-  "sha256": "011859e8c529872a15615a98aafc3a603ebe570c985614cbf691a3c73d15a8a6",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.39/SubVost-VPN-Android-1.0.39.apk",
+  "size": 78356256,
+  "sha256": "a6bcd03d4daa288c0dbc6a50d1a7d26a66d0b4f8d574f94d3e33bbdf235e619a",
   "notes": {
-    "ru": "В режиме «Обход белых списков» исправлена ошибка «Не удалось отключить VPN»: кнопка «Отключить» срабатывает за несколько секунд, даже когда приложения в этот момент отправляют данные. Если сеть пропала или сменилась, обход больше не остаётся выключенным с ошибкой, а подключается заново сам (иногда на это уходит около минуты). После смены сети (Wi-Fi ↔ мобильная) и при кратких сбоях связи интернет через VPN возвращается быстрее: приложение сразу заменяет соединения с сервером, которые перестали отвечать. Если выбранная страна больше не обслуживается, приложение подключается через авто-выбор вместо ошибки.",
-    "en": "In the whitelist bypass mode the \"Could not stop VPN\" error is fixed: Disconnect takes a few seconds even while apps are sending data. When the network is lost or replaced, the bypass no longer stays off with an error but reconnects by itself (sometimes this takes about a minute). After a network change (Wi-Fi ↔ mobile) and after short connectivity failures, traffic through the VPN comes back faster: the app replaces server connections that stopped responding right away. When the chosen country is no longer served, the app connects through automatic selection instead of failing."
+    "ru": "Обновление стало втрое меньше — около 80 МБ вместо 220 — и докачивается с того же места, если связь оборвалась. В режиме «Обход белых списков» ежечасная замена соединения проходит за несколько секунд, даже когда приложения в этот момент передают данные; если при подключении посредник на мгновение отказал, приложение само пробует ещё раз. При автовыборе приложение само уходит с локации, которая перестала пропускать данные. Подключение больше не срывается, если телефон в момент включения VPN на секунду переключается между Wi‑Fi и мобильной сетью. Вход, устойчивый к блокировкам в мобильных сетях, теперь настраивается с сервера без обновления приложения.",
+    "en": "The update is three times smaller, about 80 MB instead of 220, and an interrupted download continues from where it stopped. In the whitelist bypass mode the hourly replacement of the connection takes a few seconds even while apps are sending data; when the relay refuses for a moment during a connection, the app tries once more by itself. With automatic selection the app leaves a location that stopped passing data. A connection no longer fails when the phone briefly switches between Wi-Fi and mobile data at the moment the VPN turns on. The entrance that withstands blocking on mobile networks is now configured from the server without an app update."
   }
 }
