@@ -126,10 +126,10 @@ test('late catalog with only DEB reconciles pending Linux choice', () => {
   assert.ok(selectBuild(catalog, loaded));
 });
 
-test('both published Android catalog snapshots select stable 93 without a live API', () => {
+test('both published Android catalog snapshots select stable 94 without a live API', () => {
   const state = { os: 'android', variant: 'mobile', arch: 'universal', format: 'apk' };
   const feed = JSON.parse(readFileSync(new URL('../updates/android-testing.json', import.meta.url), 'utf8'));
-  assert.equal(feed.build, 93);
+  assert.equal(feed.build, 94);
   assert.equal(feed.channel, 'stable');
   assert.deepEqual(feed, JSON.parse(readFileSync(new URL('../../updates/android-testing.json', import.meta.url), 'utf8')));
   for (const relative of ['../catalog.json', '../../catalog.json']) {
@@ -138,13 +138,13 @@ test('both published Android catalog snapshots select stable 93 without a live A
     const legacy = selectBuild(catalog, { ...state, variant: 'legacy' });
     assert.equal(legacy?.version, '1.0.32', relative);
     const selected = selectBuild(catalog, state);
-    assert.equal(selected.version, '1.0.43', relative);
+    assert.equal(selected.version, '1.0.44', relative);
     assert.equal(selected.prerelease, false, relative);
     assert.equal(selected.sha256, feed.sha256, relative);
     assert.equal(selected.url, feed.url, relative);
-    assert.equal(selected.name, 'SubVost-VPN-Android-1.0.43.apk', relative);
-    assert.equal(selected.size, 87536494, relative);
-    assert.equal(selected.sha256, '3b41f216f2c74fec4c164e54bfb9d154f83d017eeb33f415f59404165d686a4b', relative);
-    assert.equal(selected.url, `${RELEASES_URL}/download/android-v1.0.43/SubVost-VPN-Android-1.0.43.apk`, relative);
+    assert.equal(selected.name, 'SubVost-VPN-Android-1.0.44.apk', relative);
+    assert.equal(selected.size, 87563157, relative);
+    assert.equal(selected.sha256, '96948230cdbec190063fb6ae04c48fb644ea685d14882226168c293d5e82d4ef', relative);
+    assert.equal(selected.url, `${RELEASES_URL}/download/android-v1.0.44/SubVost-VPN-Android-1.0.44.apk`, relative);
   }
 });
