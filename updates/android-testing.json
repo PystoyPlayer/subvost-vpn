@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "platform": "android",
+  "channel": "stable",
+  "build": 96,
+  "version": "1.0.46",
+  "minSdk": 23,
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46.apk",
+  "size": 104896923,
+  "sha256": "cca64b09881d4ba01730f2abe09bd37746549dd6790d0750d29a9f9768eba7b0",
+  "notes": {
+    "ru": "Ускорена отправка данных в режиме обхода белых списков. Подготовка к новому способу обхода: приложение сможет переключаться на него по команде сервера.",
+    "en": "Faster uploads in whitelist-bypass mode. Preparation for a new bypass method the server can switch on."
+  },
+  "variants": {
+    "arm64-v8a": {
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-arm64-v8a.apk",
+      "sha256": "49bd32af3c5f1346cdf485cb499e7565a3d2e59fce7b0769f29905c89cdd22ec",
+      "size": 45915205
+    },
+    "armeabi-v7a": {
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-armeabi-v7a.apk",
+      "sha256": "614bb71d0969eeecfc04a4aa8f025e8bf98b517c6544dbe0f4349f698efc04be",
+      "size": 36704358
+    },
+    "x86_64": {
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-x86-64.apk",
+      "sha256": "14b6d9c82b562ed01d77b8240b491dacf5a4b881746a69b2c077d97950d9d29f",
+      "size": 39193550
+    }
+  }
+}
