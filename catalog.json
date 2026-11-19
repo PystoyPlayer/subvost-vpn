@@ -4,11 +4,12 @@
       "tag_name": "windows-v1.0.5",
       "draft": false,
       "prerelease": false,
+      "published_at": "2026-11-19T23:19:53Z",
       "assets": [
         {
           "name": "SHA256SUMS.txt",
           "size": 407,
-          "digest": "sha256:15f56b10e27db3b0be0961af24d5eb20eb22f2659c5c16cfe03befec298b03dd",
+          "digest": "sha256:c9f1dc0970724e90a2ef1e9d0563df5760527019e1ddbe0cb1cdd0da9a71f2a1",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SHA256SUMS.txt"
         },
         {
@@ -31,38 +32,37 @@
         },
         {
           "name": "windows-testing.json",
-          "size": 2001,
-          "digest": "sha256:6b343dc8634082a5696c8172f4bd8f3aa51b29ce9d7238de3ea1e07c5f7cb539",
+          "size": 2006,
+          "digest": "sha256:c70cc1bfde01ac6cad3e527e2e305c6c723cd56a3fe65ec38a667a20032c04de",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/windows-testing.json"
         }
-      ],
-      "published_at": "2026-11-19T23:19:53Z"
+      ]
     },
     {
-      "assets": [
-        {
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SHA256SUMS.txt",
-          "digest": "sha256:4152f64cd920e7760d455ffc3a4b22eb634a04a611afcf9b6a7fbd355bcb52cc",
-          "name": "SHA256SUMS.txt",
-          "size": 203
-        },
-        {
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SubVost-VPN-macOS-arm64-1.0.20.dmg",
-          "digest": "sha256:718675ae251f3559c2f7a276fd82616eb9666a689457a08759c84455e7db1a09",
-          "name": "SubVost-VPN-macOS-arm64-1.0.20.dmg",
-          "size": 80596507
-        },
-        {
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SubVost-VPN-macOS-x86_64-1.0.20.dmg",
-          "digest": "sha256:718675ae251f3559c2f7a276fd82616eb9666a689457a08759c84455e7db1a09",
-          "name": "SubVost-VPN-macOS-x86_64-1.0.20.dmg",
-          "size": 80596507
-        }
-      ],
+      "tag_name": "macos-v1.0.20",
       "draft": false,
       "prerelease": false,
       "published_at": "2026-11-19T14:19:05Z",
-      "tag_name": "macos-v1.0.20"
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 203,
+          "digest": "sha256:4152f64cd920e7760d455ffc3a4b22eb634a04a611afcf9b6a7fbd355bcb52cc",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-macOS-arm64-1.0.20.dmg",
+          "size": 80596507,
+          "digest": "sha256:718675ae251f3559c2f7a276fd82616eb9666a689457a08759c84455e7db1a09",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SubVost-VPN-macOS-arm64-1.0.20.dmg"
+        },
+        {
+          "name": "SubVost-VPN-macOS-x86_64-1.0.20.dmg",
+          "size": 80596507,
+          "digest": "sha256:718675ae251f3559c2f7a276fd82616eb9666a689457a08759c84455e7db1a09",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SubVost-VPN-macOS-x86_64-1.0.20.dmg"
+        }
+      ]
     },
     {
       "tag_name": "android-v1.0.46",
@@ -121,16 +121,16 @@
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.8/SHA256SUMS.txt"
         },
         {
-          "name": "SubVost-VPN-Linux-1.0.8-MPL-source-offer.tar.gz",
-          "size": 23140,
-          "digest": "sha256:52dba492a22eb0855c9b99867792d91b92488b8d1638f12052584a494715ab14",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.8/SubVost-VPN-Linux-1.0.8-MPL-source-offer.tar.gz"
-        },
-        {
           "name": "SubVost-VPN-Linux-1.0.8-manifest.json",
           "size": 4833,
           "digest": "sha256:f99403b5917ada9cfd6c4dd9aaff1ba11bfae067ab84f38e2258b4d7e06de8dc",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.8/SubVost-VPN-Linux-1.0.8-manifest.json"
+        },
+        {
+          "name": "SubVost-VPN-Linux-1.0.8-MPL-source-offer.tar.gz",
+          "size": 23140,
+          "digest": "sha256:52dba492a22eb0855c9b99867792d91b92488b8d1638f12052584a494715ab14",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.8/SubVost-VPN-Linux-1.0.8-MPL-source-offer.tar.gz"
         },
         {
           "name": "SubVost-VPN-Linux-arm64-1.0.8.AppImage",
@@ -258,6 +258,12 @@
       "prerelease": true,
       "published_at": "2026-10-07T19:29:14Z",
       "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 213,
+          "digest": "sha256:bf8eec8fcd65e30baaa2a704f97d3b22d6c4c5e70440ef89963926d3a5cdfc7d",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v0.2.0-beta.9/SHA256SUMS.txt"
+        },
         {
           "name": "SubVost-VPN-Android-0.2.0-beta.9.apk",
           "size": 181203862,

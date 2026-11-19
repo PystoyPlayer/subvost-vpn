@@ -160,7 +160,10 @@ class MirrorTests(unittest.TestCase):
     def test_helper_successor_and_missing_cpu_ne_fallback(self):
         releases=json.loads((Path(__file__).parent.parent/'catalog.json').read_text())['releases']
         releases=[r for r in releases if r['tag_name'] not in ('macos-v1.0.16','macos-v1.0.18','macos-v1.0.19','macos-v1.0.20')]
-        releases += [dict(tag_name='macos-v1.0.16',assets=[dict(name='SubVost-VPN-macOS-arm64-1.0.16.dmg')])]
+        releases += [
+            dict(tag_name='macos-v1.0.16', assets=[dict(name='SubVost-VPN-macOS-arm64-1.0.16.dmg')]),
+            dict(tag_name='macos-v1.0.13', assets=[dict(name='SubVost-VPN-macOS-x86_64-1.0.13.dmg')]),
+        ]
         selected=m.choose_releases(releases)
         self.assertIn('macos-v1.0.16',{r['tag_name'] for r in selected})
         self.assertIn('macos-v1.0.13',{r['tag_name'] for r in selected})
