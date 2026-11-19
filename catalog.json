@@ -1,6 +1,44 @@
 {
   "releases": [
     {
+      "tag_name": "windows-v1.0.5",
+      "draft": false,
+      "prerelease": false,
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 407,
+          "digest": "sha256:15f56b10e27db3b0be0961af24d5eb20eb22f2659c5c16cfe03befec298b03dd",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-1.0.5-Windows-arm64-Setup.exe",
+          "size": 73764439,
+          "digest": "sha256:d5aeea27a6491c9466a499c498ba73d211b58caa28bba3c27fc62844d1718dab",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SubVost-VPN-1.0.5-Windows-arm64-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-1.0.5-Windows-x64-Setup.exe",
+          "size": 85190807,
+          "digest": "sha256:6d4c1dd0984b4ea86808895cf374d99af250298f748933d8c5831d636d866f99",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SubVost-VPN-1.0.5-Windows-x64-Setup.exe"
+        },
+        {
+          "name": "SubVost-VPN-1.0.5-Windows-x86-Setup.exe",
+          "size": 80326805,
+          "digest": "sha256:385fce763bacfa2c62f099f242d32e5acdf5800743b9046e72de268450385e8e",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SubVost-VPN-1.0.5-Windows-x86-Setup.exe"
+        },
+        {
+          "name": "windows-testing.json",
+          "size": 2001,
+          "digest": "sha256:6b343dc8634082a5696c8172f4bd8f3aa51b29ce9d7238de3ea1e07c5f7cb539",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/windows-testing.json"
+        }
+      ],
+      "published_at": "2026-11-19T23:19:53Z"
+    },
+    {
       "assets": [
         {
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SHA256SUMS.txt",
