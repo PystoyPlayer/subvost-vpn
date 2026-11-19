@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "platform": "windows",
+  "channel": "stable",
+  "version": "1.0.5",
+  "keyId": "subvost-p256-20261005",
+  "notes": {
+    "ru": "Улучшено переключение локаций и восстановление подключения. Улучшен обход белых списков: более надёжное подключение и автоматический запасной вариант. Исправлены настройки DNS для выбранных приложений и отображение ошибок обхода.",
+    "en": "Improves location switching and connection recovery. Improves allowlist bypass with a more reliable connection and an automatic fallback. Fixes DNS for selected apps and improves bypass error reporting."
+  },
+  "assets": [
+    {
+      "rid": "win-arm64",
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SubVost-VPN-1.0.5-Windows-arm64-Setup.exe",
+      "size": 73764439,
+      "sha256": "d5aeea27a6491c9466a499c498ba73d211b58caa28bba3c27fc62844d1718dab",
+      "signature": "MEUCIQC680OIcnHvuMwpG6XF5g+CDyqPFVysoKkZDSdQy91OIgIgP7tSP5qHGN48THjpwX/rsVh6Jpwg5D3e3HInJ5910sg="
+    },
+    {
+      "rid": "win-x64",
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SubVost-VPN-1.0.5-Windows-x64-Setup.exe",
+      "size": 85190807,
+      "sha256": "6d4c1dd0984b4ea86808895cf374d99af250298f748933d8c5831d636d866f99",
+      "signature": "MEYCIQCmPtg22x1OddcgdA0bFW0gmjMBV6KstejjXPRRVu9R6AIhAKpsv6uzYGwQgKUA0W88VgQvRksfjaTnHfPmMGkfI3xf"
+    },
+    {
+      "rid": "win-x86",
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.5/SubVost-VPN-1.0.5-Windows-x86-Setup.exe",
+      "size": 80326805,
+      "sha256": "385fce763bacfa2c62f099f242d32e5acdf5800743b9046e72de268450385e8e",
+      "signature": "MEUCIDNz+wZ8KxEQZeBbA9F+o7sOlOMawOCmTtV4AB6iS9TEAiEA0pbF2tXLAfUsi+1dRxlv3tP5AUtgVMFVF6+e0KxsbMA="
+    }
+  ]
+}
