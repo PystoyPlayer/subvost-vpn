@@ -30,7 +30,7 @@ const instructions = {
   tvos:'Установите TestFlight на iPhone или iPad и Apple TV с одним аккаунтом App Store. Примите приглашение на телефоне, затем откройте TestFlight на Apple TV и установите SubVost.',
   ipad:'Установите TestFlight из App Store, затем вернитесь сюда и откройте приглашение.',
   ios:'Установите TestFlight из App Store, затем вернитесь сюда и откройте приглашение.',
-  windows:'Запустите скачанный установщик и следуйте подсказкам Windows.',
+  windows:'Запустите установщик SubVost Connect и следуйте подсказкам Windows.',
   linux:'Установите пакет средствами своего дистрибутива. Для AppImage разрешите выполнение файла.'
 };
 
@@ -159,7 +159,7 @@ function renderResult() {
     $('instruction').textContent += ' Если у вас бета 0.2, сохраните ссылку подписки из бота перед переустановкой. После неё добавьте подписку снова.';
   }
   $('meta').textContent = info.filter(Boolean).join(' · ');
-  if (state.os === 'windows' && build.format === 'zip') $('instruction').textContent = 'Распакуйте ZIP в отдельную папку и запустите SubVost VPN.';
+  if (state.os === 'windows' && build.format === 'zip') $('instruction').textContent = 'Распакуйте ZIP в отдельную папку и запустите SubVost Connect.';
   action('Скачать ' + build.format.toUpperCase(),build.url);
   const mirror = downloadSource(build,mirrorManifest);
   if (mirror.mirrored) {

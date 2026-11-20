@@ -311,7 +311,7 @@ def run():
         atomic(ROOT / 'manifest.json', json.dumps(manifest, indent=2) + '\n')
         safe_releases = [{k: r[k] for k in ('tag_name', 'draft', 'prerelease', 'published_at', 'assets')} for r in releases]
         atomic(ROOT / 'catalog.json', json.dumps(dict(releases=safe_releases), indent=2) + '\n')
-        lines = ['<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Файлы SubVost VPN</title><link rel="stylesheet" href="/style.css"><main><h1>Файлы SubVost VPN</h1><p><a href="/">Выбрать сборку</a></p><p>Официальные файлы, скопированные без изменений. Размеры и SHA-256: <a href="/manifest.json">манифест</a>.</p>']
+        lines = ['<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Файлы SubVost Connect</title><link rel="stylesheet" href="/style.css"><main><h1>Файлы SubVost Connect</h1><p><a href="/">Выбрать сборку</a></p><p>Официальные файлы, скопированные без изменений. Размеры и SHA-256: <a href="/manifest.json">манифест</a>.</p>']
         for release in releases:
             lines.append('<h2>' + html.escape(release['tag_name']) + '</h2><ul>')
             for asset in assets:
