@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "platform": "ios",
+  "channel": "testing",
+  "build": 139,
+  "version": "1.0.0",
+  "minBuild": 0,
+  "critical": false,
+  "notes": {
+    "ru": "Улучшена устойчивость подключения при долгой работе.",
+    "en": "Connection is steadier during long sessions."
+  },
+  "testflight": "https://testflight.apple.com/join/XPHxBArP"
+}
