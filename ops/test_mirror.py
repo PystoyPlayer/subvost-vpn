@@ -39,7 +39,7 @@ class MirrorTests(unittest.TestCase):
         self.assertTrue(aliases['SubVost-VPN-Windows-x64-Setup.exe']['url'].endswith('SubVost-VPN-1.0.10-Windows-x64-Setup.exe'))
         self.assertTrue(aliases['SubVost-VPN-macOS-arm64.dmg']['url'].endswith('-1.0.20.dmg'))
         for arch in ('arm64', 'x86_64'):
-            self.assertTrue(aliases[f'SubVost-VPN-Linux-{arch}.deb']['url'].endswith('-1.0.12.deb'))
+            self.assertTrue(aliases[f'SubVost-VPN-Linux-{arch}.deb']['url'].endswith('-1.0.13.deb'))
         self.assertEqual(aliases, m.select_aliases(list(reversed(self.alias_assets()))))
 
     def test_alias_publication_resolves_exact_bytes_and_is_idempotent(self):

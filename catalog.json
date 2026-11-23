@@ -1,6 +1,92 @@
 {
   "releases": [
     {
+      "tag_name": "linux-v1.0.13",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-11-23T15:57:05Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 1267,
+          "digest": "sha256:6353f8cd2af89fd79004b6b8a30d71847f815e73760021d49959fccce93895aa",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-Linux-1.0.13-MPL-source-offer.tar.gz",
+          "size": 23142,
+          "digest": "sha256:84a7ee9d9e3bd4d6b57845c28ab23764a0fa363875874f5adbf1364bb19e8c86",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-1.0.13-MPL-source-offer.tar.gz"
+        },
+        {
+          "name": "SubVost-VPN-Linux-1.0.13-manifest.json",
+          "size": 4866,
+          "digest": "sha256:c450a0464475e96c17b9fca09b24870b9d39afb01b7b37c2b35830bf221425e2",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-1.0.13-manifest.json"
+        },
+        {
+          "name": "SubVost-VPN-Linux-arm64-1.0.13.AppImage",
+          "size": 83851784,
+          "digest": "sha256:febd1a17a1676bfe07f7a08a831e3415cc4585b3bfb9e5c41d5bc8db439aef83",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-arm64-1.0.13.AppImage"
+        },
+        {
+          "name": "SubVost-VPN-Linux-arm64-1.0.13.deb",
+          "size": 63097312,
+          "digest": "sha256:f43a8c270367305b20dffc4f2f4175a28eaf4561e18472f51f9a8951f839d9db",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-arm64-1.0.13.deb"
+        },
+        {
+          "name": "SubVost-VPN-Linux-arm64-1.0.13.pkg.tar.zst",
+          "size": 88626690,
+          "digest": "sha256:2d32782cd4092973b3c59bc69571777a8339ff61479cd56a5a63a94d40de3058",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-arm64-1.0.13.pkg.tar.zst"
+        },
+        {
+          "name": "SubVost-VPN-Linux-arm64-1.0.13.rpm",
+          "size": 99491276,
+          "digest": "sha256:675d33c25f93c96eb741c3c76e7ff31491b94ad63f825344350d2cf7e2357869",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-arm64-1.0.13.rpm"
+        },
+        {
+          "name": "SubVost-VPN-Linux-arm64-1.0.13.tar.gz",
+          "size": 98510703,
+          "digest": "sha256:3e552fde1358a89db3afcf08f11408cac82138d63f47fc5236ea17e31db7783a",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-arm64-1.0.13.tar.gz"
+        },
+        {
+          "name": "SubVost-VPN-Linux-x86_64-1.0.13.AppImage",
+          "size": 90933752,
+          "digest": "sha256:558ca1336849998ddac0a8776a22d5b4e12f4b70defd85d7a6b0d007242d3faa",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-x86_64-1.0.13.AppImage"
+        },
+        {
+          "name": "SubVost-VPN-Linux-x86_64-1.0.13.deb",
+          "size": 70788868,
+          "digest": "sha256:6486e145040c1e9a0471f8e8fe2f742b1db88f39b47172dfe8f25abda8a9a984",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-x86_64-1.0.13.deb"
+        },
+        {
+          "name": "SubVost-VPN-Linux-x86_64-1.0.13.pkg.tar.zst",
+          "size": 95576218,
+          "digest": "sha256:1e49866831c7f921909875901144fd0771cba9512d3748ef3e66344fe90bdb3b",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-x86_64-1.0.13.pkg.tar.zst"
+        },
+        {
+          "name": "SubVost-VPN-Linux-x86_64-1.0.13.rpm",
+          "size": 106797960,
+          "digest": "sha256:880c3181aab5b16558fddad7bd4150b6f7c4a9f17e64c12a3fe450037a4899be",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-x86_64-1.0.13.rpm"
+        },
+        {
+          "name": "SubVost-VPN-Linux-x86_64-1.0.13.tar.gz",
+          "size": 105827369,
+          "digest": "sha256:4ff005862731a15c3b451ebda198d0eb79d253ee95ad04aea9c233042d470549",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.13/SubVost-VPN-Linux-x86_64-1.0.13.tar.gz"
+        }
+      ]
+    },
+    {
       "tag_name": "windows-v1.0.10",
       "draft": false,
       "prerelease": false,
@@ -35,92 +121,6 @@
           "size": 2037,
           "digest": "sha256:17ac7c9ad723311cb463288449253c5bd27b9fc9f838c562060a9e00d99bdfce",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/windows-v1.0.10/windows-testing.json"
-        }
-      ]
-    },
-    {
-      "tag_name": "linux-v1.0.12",
-      "draft": false,
-      "prerelease": false,
-      "published_at": "2026-11-23T09:22:30Z",
-      "assets": [
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 1267,
-          "digest": "sha256:376dc9287ff7dbf5c5ac0839433ed7867d94284acb4bc1342975291014442095",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SHA256SUMS.txt"
-        },
-        {
-          "name": "SubVost-VPN-Linux-1.0.12-MPL-source-offer.tar.gz",
-          "size": 23140,
-          "digest": "sha256:e9e06121931cf14484b4bb89b01d1e26abe15db9895c5a309eb89ad812518907",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-1.0.12-MPL-source-offer.tar.gz"
-        },
-        {
-          "name": "SubVost-VPN-Linux-1.0.12-manifest.json",
-          "size": 4866,
-          "digest": "sha256:b551a1ca5bbafc50628e16aa3c5809594d8f0d487d97b6c518baef05d867e493",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-1.0.12-manifest.json"
-        },
-        {
-          "name": "SubVost-VPN-Linux-arm64-1.0.12.AppImage",
-          "size": 83855880,
-          "digest": "sha256:3ea77740ee7c2655a679ac54a4962c1fe7c77bfe6eb4c0e9654bd56885753e57",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-arm64-1.0.12.AppImage"
-        },
-        {
-          "name": "SubVost-VPN-Linux-arm64-1.0.12.deb",
-          "size": 63090124,
-          "digest": "sha256:3b45261ec2d6bb9f1ee0d272516f83d594e8af2a4dbc6ef149ecb8f962ead3f9",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-arm64-1.0.12.deb"
-        },
-        {
-          "name": "SubVost-VPN-Linux-arm64-1.0.12.pkg.tar.zst",
-          "size": 88623252,
-          "digest": "sha256:7a05c336b53f9a45726da46f53c85eeeb303f036d04b7a251c5d898d0ba5a3a7",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-arm64-1.0.12.pkg.tar.zst"
-        },
-        {
-          "name": "SubVost-VPN-Linux-arm64-1.0.12.rpm",
-          "size": 99492071,
-          "digest": "sha256:de2a0894457356ad803105597b3cc86d1705b472dc39f2bcae5868e5378ba071",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-arm64-1.0.12.rpm"
-        },
-        {
-          "name": "SubVost-VPN-Linux-arm64-1.0.12.tar.gz",
-          "size": 98510449,
-          "digest": "sha256:0ec42d665109b7fc5a23db87b7c5c26053242462dc367b3179dad04e48870aa4",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-arm64-1.0.12.tar.gz"
-        },
-        {
-          "name": "SubVost-VPN-Linux-x86_64-1.0.12.AppImage",
-          "size": 90929656,
-          "digest": "sha256:4a29ffc7928bf00e3559d5c8d75668a9112c0a2ca928da5ff6ef8004e81d7afb",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-x86_64-1.0.12.AppImage"
-        },
-        {
-          "name": "SubVost-VPN-Linux-x86_64-1.0.12.deb",
-          "size": 70785332,
-          "digest": "sha256:344d2e620ae62c73df01d51bc4fbb9fd53d4590ed1fd59c6bb74b47895fce60c",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-x86_64-1.0.12.deb"
-        },
-        {
-          "name": "SubVost-VPN-Linux-x86_64-1.0.12.pkg.tar.zst",
-          "size": 95576241,
-          "digest": "sha256:0b0599e892b514b819a0c4d997426a2c927ca56dc1bcd4a2d85f746adb8a4036",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-x86_64-1.0.12.pkg.tar.zst"
-        },
-        {
-          "name": "SubVost-VPN-Linux-x86_64-1.0.12.rpm",
-          "size": 106798291,
-          "digest": "sha256:f15e915c7ea618f0276bc63b67c36357de696a88c5fe84d8eaa63c1e9aaa9e6c",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-x86_64-1.0.12.rpm"
-        },
-        {
-          "name": "SubVost-VPN-Linux-x86_64-1.0.12.tar.gz",
-          "size": 105828421,
-          "digest": "sha256:0f1d9c980c7074ce125383958245b6eee4516a65c1088b39a62c941f8cf812ce",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/linux-v1.0.12/SubVost-VPN-Linux-x86_64-1.0.12.tar.gz"
         }
       ]
     },
