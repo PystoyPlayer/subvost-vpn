@@ -16,8 +16,9 @@ ROOT = Path('/var/lib/subvost-download-site')
 FILES = ('index.html', 'app.mjs', 'style.css', 'brand.png', 'icons/apple.svg',
          'icons/android.svg', 'icons/github.svg', 'icons/linux.svg', 'icons/NOTICE.txt',
          'lib/catalog.mjs', 'lib/selection.mjs', 'lib/mirror.mjs', 'lib/source-menu.mjs',
-         'updates/android-testing.json', 'location-catalog-v2.json')
+         'updates/android-testing.json', 'updates/ios-testing.json', 'location-catalog-v2.json')
 LIMIT = 8 * 1024 * 1024
+IOS_TESTFLIGHT = 'https://testflight.apple.com/join/XPHxBArP'
 
 
 def validate_android_feed(data):
@@ -33,6 +34,25 @@ def validate_android_feed(data):
             or not re.fullmatch(r'[0-9a-f]{64}', feed.get('sha256', ''))
             or not re.fullmatch(r'https://github\.com/PystoyPlayer/subvost-vpn/releases/download/android-[A-Za-z0-9.+-]+/SubVost-VPN-Android-[A-Za-z0-9.+-]+\.apk', feed.get('url', ''))):
         raise ValueError('Invalid modern Android feed')
+
+
+def validate_ios_feed(data):
+    """Match IOSUpdateFeed.parse in the iOS app: 16 KiB, build 1...9999999, version N[.N[.N]], our TestFlight link."""
+    if len(data) > 16384:
+        raise ValueError('iOS feed exceeds client size limit')
+    feed = json.loads(data)
+    notes = feed.get('notes', {}) if isinstance(feed, dict) else None
+    if (not isinstance(feed, dict) or feed.get('schema') != 1 or feed.get('platform') != 'ios'
+            or feed.get('channel') not in ('stable', 'testing')
+            or type(feed.get('build')) is not int or not 1 <= feed['build'] <= 9999999
+            or not isinstance(feed.get('version'), str)
+            or not re.fullmatch(r'[0-9]+(\.[0-9]+){0,2}', feed['version'])
+            or ('minBuild' in feed and (type(feed['minBuild']) is not int or feed['minBuild'] < 0))
+            or ('critical' in feed and type(feed['critical']) is not bool)
+            or not isinstance(notes, dict)
+            or any(not isinstance(notes.get(lang, ''), str) for lang in ('ru', 'en'))
+            or ('testflight' in feed and feed['testflight'] != IOS_TESTFLIGHT)):
+        raise ValueError('Invalid iOS feed')
 
 
 def validate_location_catalog(data):
@@ -161,6 +181,8 @@ def publish(root, sha, entries, download):
                 raise ValueError('Static file checksum mismatch: ' + name)
             if name == 'updates/android-testing.json':
                 validate_android_feed(data)
+            if name == 'updates/ios-testing.json':
+                validate_ios_feed(data)
             if name == 'location-catalog-v2.json':
                 validate_location_catalog(data)
             path = stage / name

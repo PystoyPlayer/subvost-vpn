@@ -21,6 +21,10 @@ class SiteTests(unittest.TestCase):
                          minSdk=23, size=123, sha256='a'*64,
                          url='https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.1/SubVost-VPN-Android-1.0.1.apk')
         self.feed_data = json.dumps(self.feed).encode()
+        self.ios_feed = dict(schema=1, platform='ios', channel='testing', build=139, version='1.0.0',
+                             minBuild=0, critical=False, notes=dict(ru='Текст', en='Text'),
+                             testflight=site.IOS_TESTFLIGHT)
+        self.ios_feed_data = json.dumps(self.ios_feed, ensure_ascii=False).encode()
         self.catalog_data = (Path(__file__).resolve().parent.parent / "docs/location-catalog-v2.json").read_bytes()
         def digest(data):return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
         self.entries = [dict(path='docs/' + name, type='blob', mode='100644', sha=digest(self.download(name)))
@@ -30,6 +34,8 @@ class SiteTests(unittest.TestCase):
     def download(self, name):
         if name == 'location-catalog-v2.json':
             return self.catalog_data
+        if name == 'updates/ios-testing.json':
+            return self.ios_feed_data
         return self.feed_data if name == 'updates/android-testing.json' else self.data
 
     def test_exact_successful_main_push_required(self):
@@ -48,6 +54,7 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(len(list((self.root / 'current').rglob('*.*'))), len(site.FILES))
         self.assertFalse((self.root / 'current/manifest.json').exists())
         self.assertEqual((self.root / 'current/updates/android-testing.json').read_bytes(), self.feed_data)
+        self.assertEqual((self.root / 'current/updates/ios-testing.json').read_bytes(), self.ios_feed_data)
         self.assertFalse((self.root / 'current/updates/android-legacy-testing.json').exists())
         self.assertFalse((self.root / 'current/updates/windows-testing.json').exists())
 
@@ -99,8 +106,41 @@ class SiteTests(unittest.TestCase):
     def test_exact_modern_route_not_directory_exposure(self):
         config=Path(__file__).with_name('subvost-downloads.nginx.conf').read_text()
         self.assertEqual(config.count('location = /updates/android-testing.json {'),1)
+        self.assertEqual(config.count('location = /updates/ios-testing.json {'),1)
         self.assertIn('location ^~ /updates/ { return 404; }',config)
         self.assertNotIn('location = /updates/android-legacy-testing.json',config)
+
+    def test_ios_feed_validation(self):
+        site.validate_ios_feed(self.ios_feed_data)
+        repo = Path(__file__).resolve().parent.parent
+        published = (repo / 'docs/updates/ios-testing.json').read_bytes()
+        self.assertEqual(published, (repo / 'updates/ios-testing.json').read_bytes())
+        site.validate_ios_feed(published)
+        minimal = dict(schema=1, platform='ios', channel='testing', build=139, version='1.0.0')
+        site.validate_ios_feed(json.dumps(minimal).encode())
+        for key, value in [('platform','android'),('schema',2),('channel','legacy'),('build',0),('build',True),
+                           ('build',10000000),('build','139'),('build',139.0),('version','1.0.0.0'),
+                           ('version','broken'),('version',100),('minBuild',-1),('minBuild',True),
+                           ('critical','true'),('notes','text'),('notes',{'ru':7}),
+                           ('testflight','https://testflight.apple.com/join/Example7'),
+                           ('testflight',site.IOS_TESTFLIGHT.replace('https:','http:'))]:
+            with self.subTest(key=key, value=value):
+                with self.assertRaises(ValueError):site.validate_ios_feed(json.dumps(dict(self.ios_feed,**{key:value})).encode())
+        for key in ('build', 'version', 'schema', 'platform'):
+            bad = dict(self.ios_feed); del bad[key]
+            with self.assertRaises(ValueError):site.validate_ios_feed(json.dumps(bad).encode())
+        for data in (b'[]', b'not json', b' '*16385):
+            with self.assertRaises(ValueError):site.validate_ios_feed(data)
+
+    def test_invalid_ios_feed_preserves_live_revision(self):
+        site.publish(self.root,self.sha,self.entries,self.download)
+        bad=json.dumps(dict(self.ios_feed,build=0)).encode()
+        digest=hashlib.sha1(b'blob '+str(len(bad)).encode()+b'\0'+bad).hexdigest()
+        entries=[dict(e,sha=digest) if e['path']=='docs/updates/ios-testing.json' else e for e in self.entries]
+        with self.assertRaises(ValueError):site.publish(self.root,'b'*40,entries,lambda n:bad if n=='updates/ios-testing.json' else self.download(n))
+        self.assertEqual((self.root/'current').readlink(),Path('revisions/'+self.sha))
+        self.assertEqual((self.root/'current/updates/ios-testing.json').read_bytes(),self.ios_feed_data)
+        self.assertFalse(list(self.root.glob('.staging-*')))
 
 
     def test_catalog_covers_current_ordinary_cities(self):
