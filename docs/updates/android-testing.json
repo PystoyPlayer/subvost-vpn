@@ -2,31 +2,31 @@
   "schema": 1,
   "platform": "android",
   "channel": "stable",
-  "build": 96,
-  "version": "1.0.46",
+  "build": 98,
+  "version": "1.0.48",
   "minSdk": 23,
-  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46.apk",
-  "size": 104896923,
-  "sha256": "cca64b09881d4ba01730f2abe09bd37746549dd6790d0750d29a9f9768eba7b0",
+  "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48.apk",
+  "size": 104092826,
+  "sha256": "95892f2c02cecefa62fc8fa9fae86f76d0f97e29be3e41b62d985b6a896be421",
   "notes": {
-    "ru": "Ускорена отправка данных в режиме обхода белых списков. Подготовка к новому способу обхода: приложение сможет переключаться на него по команде сервера.",
-    "en": "Faster uploads in whitelist-bypass mode. Preparation for a new bypass method the server can switch on."
+    "ru": "Стабильнее подключение в сложных сетях и при смене сети во время подключения. Меньше расход батареи, пока сервер недоступен. Обход белых списков включается быстрее и надёжнее. Приложение можно запускать на Android TV. Журнал для поддержки стал подробнее. Поддерживается системная настройка «Постоянный VPN»; локация меняется надёжно, даже если сразу свернуть приложение.",
+    "en": "More stable connections on difficult networks and when the network changes while connecting. Less battery drain while the server is unreachable. The allowlist bypass starts faster and more reliably. The app can now be launched on Android TV. A more detailed log for support. The system Always-on VPN setting is supported; the location changes reliably even if you minimize the app right away."
   },
   "variants": {
     "arm64-v8a": {
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-arm64-v8a.apk",
-      "sha256": "49bd32af3c5f1346cdf485cb499e7565a3d2e59fce7b0769f29905c89cdd22ec",
-      "size": 45915205
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-arm64-v8a.apk",
+      "sha256": "512d404b81c3a12cf87899fd298527ecf01f384ebaf839c76209bdcb5846d687",
+      "size": 45111149
     },
     "armeabi-v7a": {
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-armeabi-v7a.apk",
-      "sha256": "614bb71d0969eeecfc04a4aa8f025e8bf98b517c6544dbe0f4349f698efc04be",
-      "size": 36704358
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-armeabi-v7a.apk",
+      "sha256": "6637e6161a2383562aaffb330d0e48a7bc4c46bbe831d547030950212c2459bd",
+      "size": 35895698
     },
     "x86_64": {
-      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-x86-64.apk",
-      "sha256": "14b6d9c82b562ed01d77b8240b491dacf5a4b881746a69b2c077d97950d9d29f",
-      "size": 39193550
+      "url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-x86-64.apk",
+      "sha256": "5af543c647072845cf5ae346ae659c0655fe3c6eb4365ebbec7c8f9cb76cebe2",
+      "size": 38385382
     }
   }
 }

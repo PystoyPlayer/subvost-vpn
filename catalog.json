@@ -1,6 +1,56 @@
 {
   "releases": [
     {
+      "tag_name": "android-v1.0.48",
+      "draft": false,
+      "prerelease": false,
+      "published_at": "2026-11-23T16:16:21Z",
+      "assets": [
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 628,
+          "digest": "sha256:497dc12db595e6178c2fd1ab239445894efdc82b7657c3666a7079dc9949dcd8",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SHA256SUMS.txt"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.48-arm64-v8a.apk",
+          "size": 45111149,
+          "digest": "sha256:512d404b81c3a12cf87899fd298527ecf01f384ebaf839c76209bdcb5846d687",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-arm64-v8a.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.48-armeabi-v7a.apk",
+          "size": 35895698,
+          "digest": "sha256:6637e6161a2383562aaffb330d0e48a7bc4c46bbe831d547030950212c2459bd",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-armeabi-v7a.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.48-manifest.json",
+          "size": 927,
+          "digest": "sha256:6fe4e13c5d8c7dd86913ccfade0b6f5f240a70b92e9661a573f03cb38298cdad",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-manifest.json"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.48-x86-64.apk",
+          "size": 38385382,
+          "digest": "sha256:5af543c647072845cf5ae346ae659c0655fe3c6eb4365ebbec7c8f9cb76cebe2",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48-x86-64.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-1.0.48.apk",
+          "size": 104092826,
+          "digest": "sha256:95892f2c02cecefa62fc8fa9fae86f76d0f97e29be3e41b62d985b6a896be421",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-1.0.48.apk"
+        },
+        {
+          "name": "SubVost-VPN-Android-Legacy-1.0.48.apk",
+          "size": 77704617,
+          "digest": "sha256:37a388e513dd5fa6c0bdf9f389d698c35d668141e8cf3453d4489ff75dacce59",
+          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.48/SubVost-VPN-Android-Legacy-1.0.48.apk"
+        }
+      ]
+    },
+    {
       "tag_name": "linux-v1.0.13",
       "draft": false,
       "prerelease": false,
@@ -147,50 +197,6 @@
           "size": 80596507,
           "digest": "sha256:718675ae251f3559c2f7a276fd82616eb9666a689457a08759c84455e7db1a09",
           "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/macos-v1.0.20/SubVost-VPN-macOS-x86_64-1.0.20.dmg"
-        }
-      ]
-    },
-    {
-      "tag_name": "android-v1.0.46",
-      "draft": false,
-      "prerelease": false,
-      "published_at": "2026-11-19T04:20:23Z",
-      "assets": [
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 524,
-          "digest": "sha256:8e0b41072b46d9279d9c034e9897cbc45f072aa41abee8d32bf0aa89110449ba",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SHA256SUMS.txt"
-        },
-        {
-          "name": "SubVost-VPN-Android-1.0.46-arm64-v8a.apk",
-          "size": 45915205,
-          "digest": "sha256:49bd32af3c5f1346cdf485cb499e7565a3d2e59fce7b0769f29905c89cdd22ec",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-arm64-v8a.apk"
-        },
-        {
-          "name": "SubVost-VPN-Android-1.0.46-armeabi-v7a.apk",
-          "size": 36704358,
-          "digest": "sha256:614bb71d0969eeecfc04a4aa8f025e8bf98b517c6544dbe0f4349f698efc04be",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-armeabi-v7a.apk"
-        },
-        {
-          "name": "SubVost-VPN-Android-1.0.46-manifest.json",
-          "size": 927,
-          "digest": "sha256:51cc56c88074536d07907c4f108122a9612bcf5e3c13b6ab6c7eddfe9a240d1b",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-manifest.json"
-        },
-        {
-          "name": "SubVost-VPN-Android-1.0.46-x86-64.apk",
-          "size": 39193550,
-          "digest": "sha256:14b6d9c82b562ed01d77b8240b491dacf5a4b881746a69b2c077d97950d9d29f",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46-x86-64.apk"
-        },
-        {
-          "name": "SubVost-VPN-Android-1.0.46.apk",
-          "size": 104896923,
-          "digest": "sha256:cca64b09881d4ba01730f2abe09bd37746549dd6790d0750d29a9f9768eba7b0",
-          "browser_download_url": "https://github.com/PystoyPlayer/subvost-vpn/releases/download/android-v1.0.46/SubVost-VPN-Android-1.0.46.apk"
         }
       ]
     },

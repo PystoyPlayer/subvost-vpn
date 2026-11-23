@@ -156,7 +156,7 @@ function renderResult() {
   const info = [build.version + (build.prerelease ? ' · бета' : ''),cpu && (state.os === 'macos' ? cpu[1] : state.arch),state.os === 'macos' && (state.variant === 'modern' ? 'macOS 13+' : 'macOS 11–12'),size + ' МБ'];
   if (state.os === 'android' && state.variant === 'legacy' && !build.prerelease) {
     info.push('С беты 0.2 нужна переустановка');
-    $('instruction').textContent += ' Если у вас бета 0.2, сохраните ссылку подписки из бота перед переустановкой. После неё добавьте подписку снова.';
+    $('instruction').textContent += ' Если у вас бета 0.2, сохраните ссылку подписки из бота перед переустановкой. После неё добавьте подписку снова. Если обновление не устанавливается поверх старой бета-версии, удалите её и установите приложение заново.';
   }
   $('meta').textContent = info.filter(Boolean).join(' · ');
   if (state.os === 'windows' && build.format === 'zip') $('instruction').textContent = 'Распакуйте ZIP в отдельную папку и запустите SubVost Connect.';
