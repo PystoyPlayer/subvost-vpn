@@ -1,7 +1,7 @@
 {
   "format": "subvost-location-catalog",
   "schemaVersion": 2,
-  "revision": "2026-11-09.1",
+  "revision": "2026-11-26.1",
   "countries": {
     "🇩🇪": {
       "en": "Germany",
@@ -179,6 +179,19 @@
           "point": {
             "latitude": 59.43696,
             "longitude": 24.75353,
+            "precision": "city"
+          }
+        }
+      }
+    },
+    "🇫🇮": {
+      "en": "Finland",
+      "cities": {
+        "Хельсинки": {
+          "en": "Helsinki",
+          "point": {
+            "latitude": 60.16952,
+            "longitude": 24.93545,
             "precision": "city"
           }
         }
